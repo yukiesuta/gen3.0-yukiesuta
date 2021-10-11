@@ -1,71 +1,32 @@
-version: "3.9"
-volumes:
-  php-fpm-socket:
-  db-store:
-  psysh-store:
+version: "3"
+
 services:
+  db:
+    build:
+      context: ./infra/docker/mysql
+    environment:
+      - MYSQL_DATABASE=laravel
+      - MYSQL_USER=laravel
+      - MYSQL_PASSWORD=password
+      - MYSQL_ROOT_PASSWORD=password
   app:
     build:
-      context: .
-      dockerfile: ./infra/docker/php/Dockerfile
+      context: ./infra/docker/php
     volumes:
-      - type: volume
-        source: php-fpm-socket
-        target: /var/run/php-fpm
-        volume:
-          nocopy: true
-      - type: bind
-        source: ./backend
-        target: /work/backend
-      - type: volume
-        source: psysh-store
-        target: /root/.config/psysh
-        volume:
-          nocopy: true
+      - ./src:/work/backend
     environment:
       - DB_CONNECTION=mysql
       - DB_HOST=db
       - DB_PORT=3306
-      - DB_DATABASE=${DB_NAME:-laravel_local}
-      - DB_USERNAME=${DB_USER:-phper}
-      - DB_PASSWORD=${DB_PASS:-secret}
-
+      - DB_DATABASE=laravel
+      - DB_USERNAME=laravel
+      - DB_PASSWORD=password
+    depends_on: ["db"]
   web:
     build:
-      context: .
-      dockerfile: ./infra/docker/nginx/Dockerfile
+      context: ./infra/docker/nginx
     ports:
-      - target: 80
-        published: ${WEB_PORT:-80}
-        protocol: tcp
-        mode: host
+      - 80:80
     volumes:
-      - type: volume
-        source: php-fpm-socket
-        target: /var/run/php-fpm
-        volume:
-          nocopy: true
-      - type: bind
-        source: ./backend
-        target: /work/backend
-
-  db:
-    build:
-      context: .
-      dockerfile: ./infra/docker/mysql/Dockerfile
-    ports:
-      - target: 3306
-        published: ${DB_PORT:-3306}
-        protocol: tcp
-        mode: host
-    volumes:
-      - type: volume
-        source: db-store
-        target: /var/lib/mysql
-        volume:
-          nocopy: true
-    environment:
-      - MYSQL_DATABASE=${DB_NAME:-laravel_local}
-      - MYSQL_USER=${DB_USER:-phper}
-      - MYSQL_PASSWORD=${DB_PASS:-secret}
-      - MYSQL_ROOT_PASSWORD=${DB_PASS:-secret}
+      - ./src:/work/backend
+    depends_on: ["app"]
