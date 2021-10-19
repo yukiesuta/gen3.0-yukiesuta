@@ -8,4 +8,6 @@
 
 `docker-compose up -d`
 
+`docker exec -it <appコンテナID> composer install`
+
 And you can access `http://localhost`
