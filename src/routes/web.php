@@ -13,3 +13,6 @@
 
 Route::get('/', 'IndexController@index');
 Route::get('quiz/{id}', 'QuizController@index')->name('quiz.id');
+Route::get('admin/login', function() {
+    return view('admin.login');
+});
