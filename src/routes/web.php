@@ -12,7 +12,8 @@
 */
 
 Route::get('/', 'IndexController@index');
-Route::get('quiz/{id}', 'QuizController@index')->name('quiz.id');
-Route::get('admin/login', function() {
-    return view('admin.login');
-});
+Route::get('/quiz/{id}', 'QuizController@index')->name('quiz.id');
+Route::get('/admin/login', 'AdminController@loginIndex');
+Route::post('/admin/login', 'AdminController@loginPost');
+Route::get('/admin', 'AdminController@index');
+Route::get('/admin/edit/{id}', 'AdminController@editIndex');

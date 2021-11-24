@@ -22,9 +22,9 @@
                             name="answerlist_{{ $question->id }}"
                             class="answerlist"
                             onclick="check(
-                              {{ $question->id }},
-                              {{ $loop->index + 1 }},
-                              {{ $choices->where('question_id', $question->id)->where('valid', true)->first()->id - (($question->id - 1) * 3) }}
+                                {{ $question->id }},
+                                {{ $loop->index + 1 }},
+                                {{ $choices->where('question_id', $question->id)->where('valid', true)->first()->id - (($question->id - 1) * 3) }}
                             )"
                         >{{ $choice->name }}</li>
                     @endforeach

@@ -3,6 +3,7 @@
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Hash;
 
 class AdminUsersTableSeeder extends Seeder
 {
@@ -16,7 +17,7 @@ class AdminUsersTableSeeder extends Seeder
         $params = [
             [
                 'user_id' => 'posse_admin',
-                'password' => encrypt('password')
+                'password' => Hash::make('password')
             ],
         ];
 

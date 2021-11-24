@@ -10,6 +10,7 @@
 
 <body>
     <form action="/admin/login" method="POST">
+        @csrf
         <div>
             <span>ユーザーID</span>
             <input type="text" name="userId">
