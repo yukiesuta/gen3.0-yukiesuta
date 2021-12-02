@@ -18,7 +18,7 @@
                     <img src="/img/{{ $question->image }}" width="200">
                 </a>
                 @endforeach
-                <a href="">新規追加</a>
+                <a href="/admin/add/{{ $big_question->id }}">新規追加</a>
             </div>
         @endforeach
     </ul>

@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Hash;
 use App\AdminUser;
 use App\Question;
 use App\BigQuestion;
-use Illuminate\Foundation\Console\Presets\React;
+use App\Choice;
 
 class AdminController extends Controller
 {
@@ -52,6 +52,39 @@ class AdminController extends Controller
             }
             $choice->save();
         }
+        return redirect('/admin');
+    }
+
+    public function addIndex($id) {
+        $big_question = BigQuestion::find($id);
+        return view('admin.add.id', compact('big_question'));
+    }
+
+    public function add(Request $request, $id) {
+        $file = $request->file;
+        $fileName = $request->{'name'.$request->valid} . '.png';
+        $path = public_path('img/');
+        $file->move($path, $fileName);
+
+        $question = new Question;
+        $question->big_question_id = $id;
+        $question->image = $fileName;
+        $question->save();
+        $question->choices()->saveMany([
+            new Choice([
+                'name' => $request->name1,
+                'valid' => intval($request->valid) === 1,
+            ]),
+            new Choice([
+                'name' => $request->name2,
+                'valid' => intval($request->valid) === 2,
+            ]),
+            new Choice([
+                'name' => $request->name3,
+                'valid' => intval($request->valid) === 3,
+            ]),
+        ]);
+
         return redirect('/admin');
     }
 }
