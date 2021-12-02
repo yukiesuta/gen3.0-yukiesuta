@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Hash;
 use App\AdminUser;
 use App\Question;
 use App\BigQuestion;
+use Illuminate\Foundation\Console\Presets\React;
 
 class AdminController extends Controller
 {
@@ -14,7 +15,7 @@ class AdminController extends Controller
         return view('admin.login');
     }
 
-    public function loginPost(Request $request) {
+    public function login(Request $request) {
         $userId = $request->userId;
         $password = $request->password;
         if (!AdminUser::where('user_id', $userId)->first()) {
@@ -36,6 +37,21 @@ class AdminController extends Controller
     }
 
     public function editIndex($id) {
-        dd(Question::find($id)->image);
+        $question = Question::find($id);
+        return view('admin.edit.id', compact('question'));
+    }
+
+    public function edit(Request $request, $id) {
+        $choices = Question::find($id)->choices;
+        foreach ($choices as $index => $choice) {
+            $choice->name = $request->{'name'.$index};
+            if ($index === intval($request->valid)) {
+                $choice->valid = true;
+            } else {
+                $choice->valid = false;
+            }
+            $choice->save();
+        }
+        return redirect('/admin');
     }
 }
