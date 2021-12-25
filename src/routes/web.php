@@ -20,3 +20,7 @@ Route::get('/admin/edit/{id}', 'AdminController@editIndex');
 Route::post('/admin/edit/{id}', 'AdminController@edit');
 Route::get('/admin/add/{id}', 'AdminController@addIndex');
 Route::post('/admin/add/{id}', 'AdminController@add');
+Route::get('/admin/big_question/add', 'AdminController@bigQuestionAddIndex');
+Route::post('/admin/big_question/add', 'AdminController@bigQuestionAdd');
+Route::get('/admin/big_question/delete/{big_question_id}', 'AdminController@bigQuestionDeleteIndex');
+Route::post('/admin/big_question/delete/{big_question_id}', 'AdminController@bigQuestionDelete');

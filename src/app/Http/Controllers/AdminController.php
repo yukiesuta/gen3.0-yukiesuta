@@ -87,4 +87,34 @@ class AdminController extends Controller
 
         return redirect('/admin');
     }
+
+    public function bigQuestionAddIndex() {
+        return view('admin.big_question.add');
+    }
+    public function bigQuestionAdd(Request $request) {
+        BigQuestion::create([
+            'name' => $request->title
+        ]);
+        return redirect('/admin');
+    }
+
+    public function bigQuestionDeleteIndex($id) {
+        $big_question = BigQuestion::find($id);
+        return view('admin.big_question.delete', compact('big_question'));
+    }
+
+    public function bigQuestionDelete(Request $request, $big_question_id) {
+        $big_question = BigQuestion::find($big_question_id);
+        $questions = $big_question->questions;
+        foreach($questions as $question){
+            $choices = $question->choices;
+            foreach($choices as $choice){
+                $choice->delete();
+            }
+            $question->delete();
+        }
+        $big_question->delete();
+
+        return redirect('/admin');  
+    }
 }
