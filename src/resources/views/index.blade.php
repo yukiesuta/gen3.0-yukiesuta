@@ -16,6 +16,7 @@
             </a>
         </p>
     @endforeach
+    <a href="./admin">管理画面はこちら</a>
 </body>
 
 </html>
