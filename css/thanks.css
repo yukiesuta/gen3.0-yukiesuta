@@ -1,0 +1,22 @@
+header{
+    background-color: #52A49A;
+    height: 100px;
+    width: 100%;
+    max-width: 100%;
+    color: white;
+}
+.navigations{
+    margin-bottom: 0;
+}
+.navigation{
+    color: white;
+    text-decoration: none;
+    list-style: none;
+}
+.thanks-img{
+    height: 300px;
+    width: auto;
+}
+.thanks-container{
+    text-align: center;
+}
