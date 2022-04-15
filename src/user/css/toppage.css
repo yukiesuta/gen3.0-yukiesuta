@@ -53,5 +53,15 @@ main{
 .logo{
     width: 200px;
     height: 80px;
-    /* object-fit: cover; */
+}
+.checked-content{
+    background-color: white;
+    border-radius: 10px;
+}
+.checked-logo{
+    width: 100px;
+    height: auto;
+}
+.checked-paragraph{
+    color: #626262;
 }
