@@ -30,3 +30,28 @@ main{
     background-color: white;
     color: #626262;
 }
+.company-content-wrapper{
+    background-color: white;
+    align-items: center;
+    border-radius: 10px;
+}
+.company-content{
+    align-items: center;
+}
+.company-content-title{
+    background-color: #80cbc4;
+    color: white;
+    text-align: center;
+    /* width: 300px; */
+}
+.company-content-paragraph{
+    color: #626262;
+}
+.logo-container{
+    align-items: center;
+}
+.logo{
+    width: 200px;
+    height: 80px;
+    /* object-fit: cover; */
+}
