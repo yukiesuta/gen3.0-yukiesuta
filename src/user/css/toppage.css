@@ -30,6 +30,13 @@ main{
     background-color: white;
     color: #626262;
 }
+.drop-down{
+    background-color: #80cbc4;
+    width: 150px;
+    margin: auto;
+    color: #626262;
+    border-radius: 10px;
+}
 .company-content-wrapper{
     background-color: white;
     align-items: center;
