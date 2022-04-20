@@ -62,15 +62,15 @@ SET
 INSERT INTO
   agency_information(agency_name,mail_adress,phone_number,img,achievements,contract_numbers,bases_numbers,support,place,industry_id,major_id,feature_id) VALUES
   (
-    'エージェンシー名',
-    'メールアドレス',
-    '08094076666',
-    '写真',
-    '実績数',
-    '契約数',
-    '拠点数',
-    'サポート',
-    '場所',
+    'POSE',
+    'sumple@gmail.com',
+    '0120102030',
+    'posselogo.img',
+    '100万',
+    '2万',
+    '50',
+    'ES添削',
+    '神奈川',
     1,
     2,
     3
