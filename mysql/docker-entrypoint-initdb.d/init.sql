@@ -41,7 +41,7 @@ SET
 
   DROP TABLE IF EXISTS agency_information;
 
-CREATE TABLE agency_information (
+  CREATE TABLE agency_information (
     id INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
     agency_name VARCHAR(255) NOT NULL,
     mail_adress VARCHAR(255) NOT NULL,
@@ -58,8 +58,6 @@ CREATE TABLE agency_information (
     created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
     updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
   );
-
-
 
 INSERT INTO
   agency_information(agency_name,mail_adress,phone_number,img,achievements,contract_numbers,bases_numbers,support,place,industry_id,major_id,feature_id) VALUES
