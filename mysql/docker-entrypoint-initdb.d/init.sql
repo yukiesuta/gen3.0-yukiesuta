@@ -74,4 +74,52 @@ INSERT INTO
     1,
     2,
     3
+  );
+  INSERT INTO
+  agency_information(agency_name,mail_adress,phone_number,img,achievements,contract_numbers,bases_numbers,support,place,industry_id,major_id,feature_id) VALUES
+  (
+    'POSE',
+    'sumple@gmail.com',
+    '0120102030',
+    'posselogo.img',
+    '100万',
+    '2万',
+    '50',
+    'ES添削',
+    '神奈川',
+    1,
+    2,
+    3
+  );
+  INSERT INTO
+  agency_information(agency_name,mail_adress,phone_number,img,achievements,contract_numbers,bases_numbers,support,place,industry_id,major_id,feature_id) VALUES
+  (
+    'PO',
+    'aaaa@gmail.com',
+    '0120104030',
+    'posselogo.img',
+    '100万',
+    '2万',
+    '50',
+    'ES添削',
+    '神奈川',
+    1,
+    2,
+    3
+  );
+  INSERT INTO
+  agency_information(agency_name,mail_adress,phone_number,img,achievements,contract_numbers,bases_numbers,support,place,industry_id,major_id,feature_id) VALUES
+  (
+    'POSE',
+    'sumple@gmail.com',
+    '0120102030',
+    'posselogo.img',
+    '100万',
+    '2万',
+    '50',
+    'ES添削',
+    '神奈川',
+    1,
+    2,
+    3
   )
