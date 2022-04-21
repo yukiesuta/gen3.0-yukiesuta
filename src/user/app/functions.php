@@ -1,7 +1,6 @@
 <?php
 
-function h($str)
-{
+function h($str){
     return htmlspecialchars($str, ENT_QUOTES, 'UTF-8');
 }
 
@@ -17,7 +16,6 @@ function getPdoInstance(){
             PDO::ATTR_EMULATE_PREPARES => false,
         ]
         );
-
         return $pdo;
     } catch (PDOException $e) {
         echo $e->getMessage();
@@ -25,9 +23,8 @@ function getPdoInstance(){
     }
 }
 
-function get_agency_informations($pdo)
-    {
-        $stmt = $pdo->query("SELECT * FROM agency_information");
-        $agency_informations = $stmt->fetchAll();
-        return $agency_informations;
-    }
+function get_agency_informations($pdo){
+    $stmt = $pdo->query("SELECT * FROM agency_information");
+    $agency_informations = $stmt->fetchAll();
+    return $agency_informations;
+}
