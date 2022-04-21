@@ -2,11 +2,14 @@
 
 echo 'わーーーひらけたーー';
 
-require_once(__DIR__  .'/../app/config.php');
+require_once(__DIR__  . '/../app/config.php');
 
 $pdo = getPdoInstance();
 
 $agency_informations = get_agency_informations($pdo);
+$industry_conditions = get_industry_conditions($pdo);
+$major_conditions = get_major_conditions($pdo);
+$feature_conditions = get_feature_conditions($pdo);
 
 ?>
 
@@ -18,8 +21,7 @@ $agency_informations = get_agency_informations($pdo);
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/normalize.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="../css/toppage.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <title>Craft</title>
@@ -64,102 +66,36 @@ $agency_informations = get_agency_informations($pdo);
             <div class="main-left-content col-md-3">
                 <div class="mt-5 ms-5 me-5 p-3 search">
                     <div class="search-title p-1 text-center">業種</div>
-                    <div class="form-check mt-1">
-                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                        <label class="form-check-label" for="flexCheckDefault">
-                            コンサル
-                        </label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                        <label class="form-check-label" for="flexCheckDefault">
-                            エンジニア
-                        </label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                        <label class="form-check-label" for="flexCheckDefault">
-                            メーカー
-                        </label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                        <label class="form-check-label" for="flexCheckDefault">
-                            金融
-                        </label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                        <label class="form-check-label" for="flexCheckDefault">
-                            商社
-                        </label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                        <label class="form-check-label" for="flexCheckDefault">
-                            ベンチャー
-                        </label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                        <label class="form-check-label" for="flexCheckDefault">
-                            サービス
-                        </label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                        <label class="form-check-label" for="flexCheckDefault">
-                            インフラ
-                        </label>
-                    </div>
+                    <?php foreach ($industry_conditions as $industry_condition) : ?>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                            <label class="form-check-label" for="flexCheckDefault">
+                                <?= h($industry_condition->industry); ?>
+                            </label>
+                        </div>
+                    <?php endforeach; ?>
                 </div>
                 <div class="mt-4 ms-5 me-5 p-3 search">
                     <div class="search-title p-1 text-center">文理</div>
-                    <div class="form-check mt-1">
-                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                        <label class="form-check-label" for="flexCheckDefault">
-                            文系
-                        </label>
-                    </div>
-                    <div class="form-check mt-1">
-                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                        <label class="form-check-label" for="flexCheckDefault">
-                            理系
-                        </label>
-                    </div>
+                    <?php foreach ($major_conditions as $major_condition) : ?>
+                        <div class="form-check mt-1">
+                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                            <label class="form-check-label" for="flexCheckDefault">
+                                <?= h($major_condition->major); ?>
+                            </label>
+                        </div>
+                    <?php endforeach; ?>
                 </div>
                 <div class="mt-4 ms-5 me-5 p-3 search">
                     <div class="search-title p-1 text-center">特徴</div>
-                    <div class="form-check mt-1">
-                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                        <label class="form-check-label" for="flexCheckDefault">
-                            ES添削あり
-                        </label>
-                    </div>
-                    <div class="form-check mt-1">
-                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                        <label class="form-check-label" for="flexCheckDefault">
-                            面接対策あり
-                        </label>
-                    </div>
-                    <div class="form-check mt-1">
-                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                        <label class="form-check-label" for="flexCheckDefault">
-                            即日連絡
-                        </label>
-                    </div>
-                    <div class="form-check mt-1">
-                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                        <label class="form-check-label" for="flexCheckDefault">
-                            オンライン可能
-                        </label>
-                    </div>
-                    <div class="form-check mt-1">
-                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                        <label class="form-check-label" for="flexCheckDefault">
-                            担当者変更可能
-                        </label>
-                    </div>
+                    <?php foreach ($feature_conditions as $feature_condition) : ?>
+                        <div class="form-check mt-1">
+                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                            <label class="form-check-label" for="flexCheckDefault">
+                                <?= h($feature_condition->feature); ?>
+                            </label>
+                        </div>
+                    <?php endforeach; ?>
                 </div>
             </div>
             <div class="main-center-content col-md-6">
@@ -171,7 +107,7 @@ $agency_informations = get_agency_informations($pdo);
                         <option value="number">実績数</option>
                     </select>
                 </div>
-                <?php foreach ($agency_informations as $agency_information): ?>
+                <?php foreach ($agency_informations as $agency_information) : ?>
                     <div class="mt-4 ms-5 me-5 mb-5 p-3 company-content-wrapper">
                         <div class="d-flex company-content">
                             <a href="">
@@ -184,7 +120,7 @@ $agency_informations = get_agency_informations($pdo);
                                     <div class="company-content-title p-1"><?= h($agency_information->agency_name); ?></div>
                                 </a>
                                 <div class="p-3 company-content-paragraph">
-                                <?= h($agency_information->catch_copy); ?>
+                                    <?= h($agency_information->catch_copy); ?>
                                 </div>
                             </div>
                         </div>
@@ -231,9 +167,7 @@ $agency_informations = get_agency_informations($pdo);
         </div>
     </main>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <script src="../js/toppage.js"></script>
 </body>
 
