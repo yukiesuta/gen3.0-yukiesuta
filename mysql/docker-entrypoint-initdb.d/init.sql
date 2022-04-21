@@ -44,6 +44,7 @@ SET
   CREATE TABLE agency_information (
     id INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
     agency_name VARCHAR(255) NOT NULL,
+    catch_copy VARCHAR(255) NOT NULL,
     mail_adress VARCHAR(255) NOT NULL,
     phone_number VARCHAR(255) NOT NULL,
     img VARCHAR(255) NOT NULL,
@@ -60,9 +61,10 @@ SET
   );
 
 INSERT INTO
-  agency_information(agency_name,mail_adress,phone_number,img,achievements,contract_numbers,bases_numbers,support,place,industry_id,major_id,feature_id) VALUES
+  agency_information(agency_name,catch_copy,mail_adress,phone_number,img,achievements,contract_numbers,bases_numbers,support,place,industry_id,major_id,feature_id) VALUES
   (
     'POSE',
+    '風通しの良い会社',
     'sumple@gmail.com',
     '0120102030',
     'posselogo.img',
@@ -76,9 +78,10 @@ INSERT INTO
     3
   );
   INSERT INTO
-  agency_information(agency_name,mail_adress,phone_number,img,achievements,contract_numbers,bases_numbers,support,place,industry_id,major_id,feature_id) VALUES
+  agency_information(agency_name,catch_copy,mail_adress,phone_number,img,achievements,contract_numbers,bases_numbers,support,place,industry_id,major_id,feature_id) VALUES
   (
     'POSE',
+    '風通しの良い会社',
     'sumple@gmail.com',
     '0120102030',
     'posselogo.img',
@@ -92,9 +95,10 @@ INSERT INTO
     3
   );
   INSERT INTO
-  agency_information(agency_name,mail_adress,phone_number,img,achievements,contract_numbers,bases_numbers,support,place,industry_id,major_id,feature_id) VALUES
+  agency_information(agency_name,catch_copy,mail_adress,phone_number,img,achievements,contract_numbers,bases_numbers,support,place,industry_id,major_id,feature_id) VALUES
   (
     'PO',
+    '風通しの悪い会社',
     'aaaa@gmail.com',
     '0120104030',
     'posselogo.img',
@@ -108,9 +112,10 @@ INSERT INTO
     3
   );
   INSERT INTO
-  agency_information(agency_name,mail_adress,phone_number,img,achievements,contract_numbers,bases_numbers,support,place,industry_id,major_id,feature_id) VALUES
+  agency_information(agency_name,catch_copy,mail_adress,phone_number,img,achievements,contract_numbers,bases_numbers,support,place,industry_id,major_id,feature_id) VALUES
   (
     'POSE',
+    '普通の会社',
     'sumple@gmail.com',
     '0120102030',
     'posselogo.img',
