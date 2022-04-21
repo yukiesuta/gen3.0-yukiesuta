@@ -63,7 +63,24 @@ SET
 INSERT INTO
   agency_information(agency_name,catch_copy,mail_adress,phone_number,img,achievements,contract_numbers,bases_numbers,support,place,industry_id,major_id,feature_id) VALUES
   (
-    'POSE',
+    'わーー',
+    '楽しい会社',
+    'sumple@gmail.com',
+    '0120102030',
+    'posselogo.img',
+    '100万',
+    '2万',
+    '50',
+    'ES添削',
+    '神奈川',
+    1,
+    2,
+    3
+  );
+  INSERT INTO
+  agency_information(agency_name,catch_copy,mail_adress,phone_number,img,achievements,contract_numbers,bases_numbers,support,place,industry_id,major_id,feature_id) VALUES
+  (
+    'POSEE',
     '風通しの良い会社',
     'sumple@gmail.com',
     '0120102030',
@@ -80,24 +97,7 @@ INSERT INTO
   INSERT INTO
   agency_information(agency_name,catch_copy,mail_adress,phone_number,img,achievements,contract_numbers,bases_numbers,support,place,industry_id,major_id,feature_id) VALUES
   (
-    'POSE',
-    '風通しの良い会社',
-    'sumple@gmail.com',
-    '0120102030',
-    'posselogo.img',
-    '100万',
-    '2万',
-    '50',
-    'ES添削',
-    '神奈川',
-    1,
-    2,
-    3
-  );
-  INSERT INTO
-  agency_information(agency_name,catch_copy,mail_adress,phone_number,img,achievements,contract_numbers,bases_numbers,support,place,industry_id,major_id,feature_id) VALUES
-  (
-    'PO',
+    'アマゾン',
     '風通しの悪い会社',
     'aaaa@gmail.com',
     '0120104030',
@@ -114,7 +114,7 @@ INSERT INTO
   INSERT INTO
   agency_information(agency_name,catch_copy,mail_adress,phone_number,img,achievements,contract_numbers,bases_numbers,support,place,industry_id,major_id,feature_id) VALUES
   (
-    'POSE',
+    'まーーー',
     '普通の会社',
     'sumple@gmail.com',
     '0120102030',
