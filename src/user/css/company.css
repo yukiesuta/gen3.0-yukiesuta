@@ -1,0 +1,30 @@
+header{
+    background-color: #52A49A;
+    height: 100px;
+    width: 100%;
+    max-width: 100%;
+    color: white;
+}
+.navigations{
+    margin-bottom: 0;
+}
+.navigation{
+    color: white;
+    text-decoration: none;
+    list-style: none;
+}
+
+main{
+    margin: auto;
+    /* background-color: azure; */
+}
+
+.company-title{
+    margin: auto;
+    font-size: 1.5rem;
+    color: white;
+    background-color: #80cbc4;
+}
+.table{
+    margin: auto;
+}
