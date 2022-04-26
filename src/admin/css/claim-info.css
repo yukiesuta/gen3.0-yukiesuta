@@ -1,0 +1,19 @@
+header{
+    background-color: #5663D3;
+    height: 100px;
+    width: 100%;
+    max-width: 100%;
+    color: white;
+    font-size: 3rem;
+}
+.main-left{
+    background-color: #7CA4E1;
+    height: 800px;
+}
+.table{
+    margin: auto;
+}
+.navigate-button{
+    border: none;
+    background-color: white;
+}
