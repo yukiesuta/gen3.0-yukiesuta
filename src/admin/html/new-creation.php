@@ -1,7 +1,5 @@
 <?php
 
-echo 'わーーーひらけたーー';
-
 require_once(__DIR__  . '/../app/config.php');
 
 $pdo = getPdoInstance();
