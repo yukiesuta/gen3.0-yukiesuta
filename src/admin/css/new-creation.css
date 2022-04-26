@@ -1,0 +1,20 @@
+header{
+    background-color: #5663D3;
+    height: 100px;
+    width: 100%;
+    max-width: 100%;
+    color: white;
+    font-size: 3rem;
+}
+.form-group{
+    margin: auto;
+}
+.form-check{
+    margin: auto;
+}
+.title{
+    font-size: 2rem;
+}
+.form{
+    background-color: #F3EAEA;
+}
