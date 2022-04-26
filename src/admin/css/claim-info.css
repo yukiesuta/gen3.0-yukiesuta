@@ -13,3 +13,7 @@ header{
 .table{
     margin: auto;
 }
+.navigate-button{
+    border: none;
+    background-color: white;
+}
