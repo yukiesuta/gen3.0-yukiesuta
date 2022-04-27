@@ -42,9 +42,9 @@ function add_agency_information($pdo)
         :img,
         :achievements,
         :contract_numbers,
-        "r",
-        "r",
-        "r",
+        "ダミー",
+        "ダミー",
+        "ダミー",
         0,
         0,
         0
