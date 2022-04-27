@@ -179,7 +179,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     </a>
                 </div>
                 <div>
-                    <button type="button" class="btn btn-primary mt-5"><input type="submit" value="この情報で登録する"></button>
+                    <button type="submit" class="btn btn-primary mt-5" >この情報で登録する＞</button>
                 </div>
             </div>
         </form>
