@@ -1,19 +1,5 @@
-<?php
-
-echo 'わーーーひらけたーー';
-
-require_once(__DIR__  . '/../app/config.php');
-
-$pdo = getPdoInstance();
-
-$agency_informations = get_agency_informations($pdo);
-$industry_conditions = get_industry_conditions($pdo);
-$major_conditions = get_major_conditions($pdo);
-$feature_conditions = get_feature_conditions($pdo);
-
-?>
-
 <!DOCTYPE html>
+
 <html lang="ja">
 
 <head>
@@ -67,34 +53,34 @@ $feature_conditions = get_feature_conditions($pdo);
                 <div class="mt-5 ms-5 me-5 p-3 search">
                     <div class="search-title p-1 text-center">業種</div>
                     <?php foreach ($industry_conditions as $industry_condition) : ?>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                            <label class="form-check-label" for="flexCheckDefault">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                        <label class="form-check-label" for="flexCheckDefault">
                                 <?= h($industry_condition->industry); ?>
                             </label>
-                        </div>
+                    </div>
                     <?php endforeach; ?>
                 </div>
                 <div class="mt-4 ms-5 me-5 p-3 search">
                     <div class="search-title p-1 text-center">文理</div>
                     <?php foreach ($major_conditions as $major_condition) : ?>
-                        <div class="form-check mt-1">
-                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                            <label class="form-check-label" for="flexCheckDefault">
+                    <div class="form-check mt-1">
+                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                        <label class="form-check-label" for="flexCheckDefault">
                                 <?= h($major_condition->major); ?>
                             </label>
-                        </div>
+                    </div>
                     <?php endforeach; ?>
                 </div>
                 <div class="mt-4 ms-5 me-5 p-3 search">
                     <div class="search-title p-1 text-center">特徴</div>
                     <?php foreach ($feature_conditions as $feature_condition) : ?>
-                        <div class="form-check mt-1">
-                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                            <label class="form-check-label" for="flexCheckDefault">
+                    <div class="form-check mt-1">
+                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                        <label class="form-check-label" for="flexCheckDefault">
                                 <?= h($feature_condition->feature); ?>
                             </label>
-                        </div>
+                    </div>
                     <?php endforeach; ?>
                 </div>
             </div>
@@ -119,8 +105,7 @@ $feature_conditions = get_feature_conditions($pdo);
                                 <div class="company-content-title p-1">株式会社POSSE</div>
                             </a>
                             <div class="p-3 company-content-paragraph">
-                                学生プログラミングコミュニティ「POSSE」では、プロのエンジニアが作成したカリキュラムをもとに、未経験からチーム学習・チーム開発を行い技術の習得と実践経験を積んでいきます。
-                                そして高いITスキルを持った人材を輩出することで、社会の発展に寄与することを目指します。
+                                学生プログラミングコミュニティ「POSSE」では、プロのエンジニアが作成したカリキュラムをもとに、未経験からチーム学習・チーム開発を行い技術の習得と実践経験を積んでいきます。 そして高いITスキルを持った人材を輩出することで、社会の発展に寄与することを目指します。
                             </div>
                         </div>
                     </div>
@@ -143,7 +128,9 @@ $feature_conditions = get_feature_conditions($pdo);
                             </a>
                             <div>
                                 <a href="" class="text-decoration-none">
-                                    <div class="company-content-title p-1"><?= h($agency_information->agency_name); ?></div>
+                                    <div class="company-content-title p-1">
+                                        <?= h($agency_information->agency_name); ?>
+                                    </div>
                                 </a>
                                 <div class="p-3 company-content-paragraph">
                                     <?= h($agency_information->catch_copy); ?>
@@ -169,8 +156,7 @@ $feature_conditions = get_feature_conditions($pdo);
                                 <div class="company-content-title p-1">株式会社POSSE</div>
                             </a>
                             <div class="p-3 company-content-paragraph">
-                                学生プログラミングコミュニティ「POSSE」では、プロのエンジニアが作成したカリキュラムをもとに、未経験からチーム学習・チーム開発を行い技術の習得と実践経験を積んでいきます。
-                                そして高いITスキルを持った人材を輩出することで、社会の発展に寄与することを目指します。
+                                学生プログラミングコミュニティ「POSSE」では、プロのエンジニアが作成したカリキュラムをもとに、未経験からチーム学習・チーム開発を行い技術の習得と実践経験を積んでいきます。 そして高いITスキルを持った人材を輩出することで、社会の発展に寄与することを目指します。
                             </div>
                         </div>
                     </div>
@@ -192,8 +178,7 @@ $feature_conditions = get_feature_conditions($pdo);
                                 <div class="company-content-title p-1">株式会社POSSE</div>
                             </a>
                             <div class="p-3 company-content-paragraph">
-                                学生プログラミングコミュニティ「POSSE」では、プロのエンジニアが作成したカリキュラムをもとに、未経験からチーム学習・チーム開発を行い技術の習得と実践経験を積んでいきます。
-                                そして高いITスキルを持った人材を輩出することで、社会の発展に寄与することを目指します。
+                                学生プログラミングコミュニティ「POSSE」では、プロのエンジニアが作成したカリキュラムをもとに、未経験からチーム学習・チーム開発を行い技術の習得と実践経験を積んでいきます。 そして高いITスキルを持った人材を輩出することで、社会の発展に寄与することを目指します。
                             </div>
                         </div>
                     </div>
@@ -215,8 +200,7 @@ $feature_conditions = get_feature_conditions($pdo);
                                 <div class="company-content-title p-1">株式会社POSSE</div>
                             </a>
                             <div class="p-3 company-content-paragraph">
-                                学生プログラミングコミュニティ「POSSE」では、プロのエンジニアが作成したカリキュラムをもとに、未経験からチーム学習・チーム開発を行い技術の習得と実践経験を積んでいきます。
-                                そして高いITスキルを持った人材を輩出することで、社会の発展に寄与することを目指します。
+                                学生プログラミングコミュニティ「POSSE」では、プロのエンジニアが作成したカリキュラムをもとに、未経験からチーム学習・チーム開発を行い技術の習得と実践経験を積んでいきます。 そして高いITスキルを持った人材を輩出することで、社会の発展に寄与することを目指します。
                             </div>
                         </div>
                     </div>

@@ -1,3 +1,15 @@
+<?php
+
+require_once(__DIR__  . '/../app/config.php');
+
+$pdo = getPdoInstance();
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    add_agency_information($pdo);
+}
+
+
+?>
 <!DOCTYPE html>
 <html lang="ja">
 
@@ -17,93 +29,94 @@
         Craft
     </header>
     <main>
-        <form class=" p-5 ms-5 me-5 form">
+        <form class=" p-5 ms-5 me-5 form"  method="post" id="inquiry">
             <div class=" mb-3 ms-5 me-5 text-center title">
                 新規作成フォーム
             </div>
             <div>
                 <div class="form-group w-50 mt-3">
                     <label>エージェンシー名</label>
-                    <input class="form-control" id="form-name" placeholder="エージェンシー名をご入力ください">
-                </div>
-                <div class="form-group w-50 mt-3">
-                    <label>メールアドレス</label>
-                    <input class="form-control" id="form-name" placeholder="お名前をご入力ください">
-                </div>
-                <div class="form-group w-50 mt-3">
-                    <label>電話番号</label>
-                    <input class="form-control" id="form-name" placeholder="大学名をご入力ください">
-                </div>
-                <div class="form-group w-50 mt-3">
-                    <label>実績数</label>
-                    <input class="form-control" id="form-name" placeholder="電話番号をご入力ください">
-                </div>
-                <div class="form-group w-50 mt-3">
-                    <label>契約数</label>
-                    <input class="form-control" id="form-name" placeholder="住所をご入力ください">
+                    <input type="text"  name="agency_name" class="form-control" id="form-name" placeholder="エージェンシー名をご入力ください">
                 </div>
                 <div class="form-group w-50 mt-3">
                     <label>キャッチフレーズ</label>
-                    <input class="form-control" id="form-name" placeholder="住所をご入力ください">
+                    <input type="text" name="catch_copy" class="form-control" id="form-name" placeholder="住所をご入力ください">
+                </div>
+                <div class="form-group w-50 mt-3">
+                    <label for="exampleFormControlTextarea1">詳細説明</label>
+                    <!-- <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea> -->
+                    <input type="text" name="detail" class="form-control" id="exampleFormControlTextarea1" placeholder="詳細説明をご入力ください">
+                </div>
+                <div class="form-group w-50 mt-3">
+                    <label>メールアドレス</label>
+                    <input type="text" name="mail_address" class="form-control" id="form-name" placeholder="お名前をご入力ください">
+                </div>
+                <div class="form-group w-50 mt-3">
+                    <label>電話番号</label>
+                    <input type="text" name="phone_number" class="form-control" id="form-name" placeholder="大学名をご入力ください">
                 </div>
                 <div class="form-group w-50 mt-3">
                     <div>
                         <label>会社ロゴ</label>
                     </div>
-                    <input type="file" class="form-control-file mt-2" id="exampleFormControlFile1">
+                    <input type="file" name="img" class="form-control-file mt-2" id="exampleFormControlFile1">
                 </div>
                 <div class="form-group w-50 mt-3">
-                    <label for="exampleFormControlTextarea1">詳細説明</label>
-                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                    <label>実績数</label>
+                    <input type="text" name="achievements" class="form-control" id="form-name" placeholder="電話番号をご入力ください">
+                </div>
+                <div class="form-group w-50 mt-3">
+                    <label>契約数</label>
+                    <input type="text" name="contract_numbers" class="form-control" id="form-name" placeholder="住所をご入力ください">
                 </div>
             </div>
             <div>
                 <div class="mt-5 ms-5 me-5 p-3 search">
                     <div class="search-title p-1 text-center">得意業種</div>
                     <div class="form-check w-25">
-                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                        <input name="" class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
                         <label class="form-check-label" for="flexCheckDefault">
                             コンサル
                         </label>
                     </div>
                     <div class="form-check w-25">
-                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                        <input name="" class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
                         <label class="form-check-label" for="flexCheckDefault">
                             エンジニア
                         </label>
                     </div>
                     <div class="form-check w-25">
-                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                        <input name="" class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
                         <label class="form-check-label" for="flexCheckDefault">
                             メーカー
                         </label>
                     </div>
                     <div class="form-check w-25">
-                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                        <input name="" class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
                         <label class="form-check-label" for="flexCheckDefault">
                             金融
                         </label>
                     </div>
                     <div class="form-check w-25">
-                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                        <input name="" class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
                         <label class="form-check-label" for="flexCheckDefault">
                             商社
                         </label>
                     </div>
                     <div class="form-check w-25">
-                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                        <input name="" class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
                         <label class="form-check-label" for="flexCheckDefault">
                             ベンチャー
                         </label>
                     </div>
                     <div class="form-check w-25">
-                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                        <input name="" class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
                         <label class="form-check-label" for="flexCheckDefault">
                             サービス
                         </label>
                     </div>
                     <div class="form-check w-25">
-                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                        <input name="" class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
                         <label class="form-check-label" for="flexCheckDefault">
                             インフラ
                         </label>
@@ -112,13 +125,13 @@
                 <div class="mt-5 ms-5 me-5 p-3 search">
                     <div class="search-title p-1 text-center">文理</div>
                     <div class="form-check w-25">
-                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                        <input name="" class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
                         <label class="form-check-label" for="flexCheckDefault">
                             文系
                         </label>
                     </div>
                     <div class="form-check w-25">
-                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                        <input name="" class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
                         <label class="form-check-label" for="flexCheckDefault">
                             理系
                         </label>
@@ -127,31 +140,31 @@
                 <div class="mt-5 ms-5 me-5 p-3 search">
                     <div class="search-title p-1 text-center">特徴</div>
                     <div class="form-check w-25">
-                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                        <input name="" class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
                         <label class="form-check-label" for="flexCheckDefault">
                             ES添削あり
                         </label>
                     </div>
                     <div class="form-check w-25">
-                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                        <input name="" class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
                         <label class="form-check-label" for="flexCheckDefault">
                             面接対策あり
                         </label>
                     </div>
                     <div class="form-check w-25">
-                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                        <input name="" class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
                         <label class="form-check-label" for="flexCheckDefault">
                             即日連絡
                         </label>
                     </div>
                     <div class="form-check w-25">
-                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                        <input name="" class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
                         <label class="form-check-label" for="flexCheckDefault">
                             オンライン可能
                         </label>
                     </div>
                     <div class="form-check w-25">
-                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                        <input name="" class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
                         <label class="form-check-label" for="flexCheckDefault">
                             担当者変更可能
                         </label>
@@ -166,7 +179,7 @@
                     </a>
                 </div>
                 <div>
-                    <button type="button" class="btn btn-primary mt-5">この情報で登録する＞</button>
+                    <button type="submit" class="btn btn-primary mt-5" >この情報で登録する＞</button>
                 </div>
             </div>
         </form>
