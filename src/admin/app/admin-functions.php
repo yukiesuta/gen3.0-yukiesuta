@@ -29,9 +29,35 @@ function add_agency_information($pdo)
     $detail = $_POST["detail"];
     $mail_address = $_POST["mail_address"];
     $phone_number = $_POST["phone_number"];
-    $img = $_POST["img"];
+
+
+    $uploading_img = $_FILES["img"];
+
+
+    $filename = basename($uploading_img["name"]);
+    $temp_path = $uploading_img['tmp_name'];
+    $file_err = $uploading_img['error'];
+    $filesize = $uploading_img['size'];
+    $upload_dir = __DIR__ . '/../../user/uploaded_img/'. $agency_name .'.png';
+
+    $allow_ext = array('jpg','jpeg','png');
+    // $file_ext = pathinfo($uploading_img,PATHINFO_EXTENSION);
+
+    // if(!in_array(strtolower($file_ext),$allow_ext)){
+        // echo '画像ファイルを送ってください';
+    // }elseif($filesize > 100000000){
+        // echo 'データがデカすぎる';
+    // }else{
+    $temp_path = $uploading_img['tmp_name'];
+        move_uploaded_file($temp_path,$upload_dir);
+        // echo '成功';
+        echo $file_err;
+    // }
+
     $achievements = $_POST["achievements"];
     $contract_numbers = $_POST["contract_numbers"];
+
+    
 
     $stmt = $pdo->prepare('INSERT INTO agency_information(agency_name,catch_copy,detail,mail_address,phone_number,img,achievements,contract_numbers,bases_numbers,support,place,industry_id,major_id,feature_id) VALUES(
         :agency_name,
@@ -55,7 +81,7 @@ $stmt->bindValue(':catch_copy', $catch_copy);
 $stmt->bindValue(':detail', $detail);
 $stmt->bindValue(':mail_address', $mail_address);
 $stmt->bindValue(':phone_number', $phone_number);
-$stmt->bindValue(':img', $img);
+$stmt->bindValue(':img', $filename);
 $stmt->bindValue(':achievements', $achievements);
 $stmt->bindValue(':contract_numbers', $contract_numbers);
 

@@ -112,15 +112,9 @@ $feature_conditions = get_feature_conditions($pdo);
                         <div class="d-flex company-content">
                             <a href="">
                                 <div class="logo-container p-1">
-                                    <!-- <img src= " -->
-                                        <?php
-                                            // header関数でコンテンツの形式が画像であると宣言
-                                            // header('Content-type: image/png');
-                                            //データを出力
-                                            // $rrr = file_get_contents($agency_information->img);
-                                            // header('Content-type: image/jpeg');
-                                            echo gettype($agency_information->img);
-                                        ?>
+                                    <img src="../uploaded_img/<?= h($agency_information->agency_name); ?>.png" alt="">
+                                    <img src="../uploaded_img/<?= h($agency_information->agency_name); ?>.jpg" alt="">
+                                    <img src="../uploaded_img/<?= h($agency_information->agency_name); ?>.jpeg" alt="">
                                 </div>
                             </a>
                             <div>
