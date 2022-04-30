@@ -1,6 +1,6 @@
 <?php
 
-echo 'わーーーひらけたーー';
+// echo 'わーーーひらけたーー';
 
 require_once(__DIR__  . '/../app/config.php');
 
@@ -112,7 +112,9 @@ $feature_conditions = get_feature_conditions($pdo);
                         <div class="d-flex company-content">
                             <a href="">
                                 <div class="logo-container p-1">
-                                    <img src="../img/posseLogo.png" alt="" class="logo">
+                                    <img src="../uploaded_img/<?= h($agency_information->agency_name); ?>.png" alt="">
+                                    <img src="../uploaded_img/<?= h($agency_information->agency_name); ?>.jpg" alt="">
+                                    <img src="../uploaded_img/<?= h($agency_information->agency_name); ?>.jpeg" alt="">
                                 </div>
                             </a>
                             <div>
