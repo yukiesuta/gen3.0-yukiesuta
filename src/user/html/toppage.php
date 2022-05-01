@@ -128,11 +128,27 @@ $feature_conditions = get_feature_conditions($pdo);
                         </div>
                         <div class="d-flex justify-content-end">
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault<?= h($agency_information->id);?>">
                             </div>
                         </div>
                     </div>
                 <?php endforeach; ?>
+            </div>
+            <div class="main-right-content col-md-3">
+            <?php foreach ($agency_informations as $agency_information) : ?>
+                <a href="./company.html" class="text-decoration-none">
+                    <div class="d-flex checked-content m-5 p-3">
+                        <div class="me-2">
+                            <img src="../uploaded_img/<?= h($agency_information->agency_name); ?>.png" alt="">
+                            <img src="../uploaded_img/<?= h($agency_information->agency_name); ?>.jpg" alt="">
+                            <img src="../uploaded_img/<?= h($agency_information->agency_name); ?>.jpeg" alt="">
+                        </div>
+                        <div class="checked-paragraph">
+                            <?= h($agency_information->agency_name); ?>
+                        </div>
+                    </div>
+                </a>
+            <?php endforeach; ?>
             </div>
         </div>
         <div class="d-flex justify-content-center icons">
