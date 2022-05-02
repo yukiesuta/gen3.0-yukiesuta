@@ -74,16 +74,62 @@ function add_agency_information($pdo)
         0,
         0,
         0
-)');
+    )');  
 
-$stmt->bindValue(':agency_name', $agency_name);
-$stmt->bindValue(':catch_copy', $catch_copy);
-$stmt->bindValue(':detail', $detail);
-$stmt->bindValue(':mail_address', $mail_address);
-$stmt->bindValue(':phone_number', $phone_number);
-$stmt->bindValue(':img', $filename);
-$stmt->bindValue(':achievements', $achievements);
-$stmt->bindValue(':contract_numbers', $contract_numbers);
+    $stmt->bindValue(':agency_name', $agency_name);
+    $stmt->bindValue(':catch_copy', $catch_copy);
+    $stmt->bindValue(':detail', $detail);
+    $stmt->bindValue(':mail_address', $mail_address);
+    $stmt->bindValue(':phone_number', $phone_number);
+    $stmt->bindValue(':img', $filename);
+    $stmt->bindValue(':achievements', $achievements);
+    $stmt->bindValue(':contract_numbers', $contract_numbers);
 
-$stmt->execute();
+    $stmt->execute();
+}
+function edit_agency_information($pdo)
+{
+    $agency_name = $_POST["agency_name"];
+    $catch_copy = $_POST["catch_copy"];
+    $detail = $_POST["detail"];
+    $mail_address = $_POST["mail_address"];
+    $phone_number = $_POST["phone_number"];
+
+
+    $achievements = $_POST["achievements"];
+    $contract_numbers = $_POST["contract_numbers"];
+
+    $stmt = $pdo->prepare('UPDATE agency_information SET
+        agency_name = :agency_name,
+        catch_copy = :catch_copy,
+        detail = :detail,
+        mail_address = :mail_address,
+        phone_number = :phone_number,
+        achievements = :achievements,
+        contract_numbers = :contract_numbers 
+        WHERE id = :id');
+    $stmt->bindParam( ':agency_name', $agency_name);
+
+    $stmt->execute(array(
+        ':agency_name' => $_POST['agency_name'],
+        ':catch_copy' => $_POST['catch_copy'],
+        ':detail' => $_POST['detail'],
+        ':mail_address' => $_POST['mail_address'],
+        ':phone_number' => $_POST['phone_number'],
+        ':achievements' => $_POST['achievements'],
+        ':contract_numbers' => $_POST['contract_numbers'],
+        ':id' => $_GET["id"]));
+
+    echo $agency_name;
+
+    echo '情報を更新しました';
+
+}
+
+
+function get_agency_informations($pdo)
+{
+    $stmt = $pdo->query("SELECT * FROM agency_information");
+    $agency_informations = $stmt->fetchAll();
+    return $agency_informations;
 }
