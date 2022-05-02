@@ -112,9 +112,7 @@ $feature_conditions = get_feature_conditions($pdo);
                         <div class="d-flex company-content">
                             <a href="">
                                 <div class="logo-container p-1">
-                                    <img src="../uploaded_img/<?= h($agency_information->agency_name); ?>.png" alt="">
-                                    <img src="../uploaded_img/<?= h($agency_information->agency_name); ?>.jpg" alt="">
-                                    <img src="../uploaded_img/<?= h($agency_information->agency_name); ?>.jpeg" alt="">
+                                    <img src="../uploaded_img/agency<?= h($agency_information->id); ?>.png" alt="">
                                 </div>
                             </a>
                             <div>
@@ -139,9 +137,7 @@ $feature_conditions = get_feature_conditions($pdo);
                 <a href="./company.html" class="text-decoration-none">
                     <div class="d-flex checked-content m-5 p-3">
                         <div class="me-2">
-                            <img src="../uploaded_img/<?= h($agency_information->agency_name); ?>.png" alt="">
-                            <img src="../uploaded_img/<?= h($agency_information->agency_name); ?>.jpg" alt="">
-                            <img src="../uploaded_img/<?= h($agency_information->agency_name); ?>.jpeg" alt="">
+                        <img src="../uploaded_img/agency<?= h($agency_information->id); ?>.png" alt="">
                         </div>
                         <div class="checked-paragraph">
                             <?= h($agency_information->agency_name); ?>
