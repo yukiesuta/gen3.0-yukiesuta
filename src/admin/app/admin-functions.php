@@ -35,24 +35,6 @@ function add_agency_information($pdo)
 
 
     $filename = basename($uploading_img["name"]);
-    $temp_path = $uploading_img['tmp_name'];
-    $file_err = $uploading_img['error'];
-    $filesize = $uploading_img['size'];
-    $upload_dir = __DIR__ . '/../../user/uploaded_img/'. $agency_name .'.png';
-
-    $allow_ext = array('jpg','jpeg','png');
-    // $file_ext = pathinfo($uploading_img,PATHINFO_EXTENSION);
-
-    // if(!in_array(strtolower($file_ext),$allow_ext)){
-        // echo '画像ファイルを送ってください';
-    // }elseif($filesize > 100000000){
-        // echo 'データがデカすぎる';
-    // }else{
-    $temp_path = $uploading_img['tmp_name'];
-        move_uploaded_file($temp_path,$upload_dir);
-        // echo '成功';
-        echo $file_err;
-    // }
 
     $achievements = $_POST["achievements"];
     $contract_numbers = $_POST["contract_numbers"];
@@ -86,6 +68,27 @@ function add_agency_information($pdo)
     $stmt->bindValue(':contract_numbers', $contract_numbers);
 
     $stmt->execute();
+
+    $stmt = $pdo->query("SELECT MAX(id) FROM agency_information");
+    $now_id= $stmt->fetch(PDO::FETCH_ASSOC);
+    $temp_path = $uploading_img['tmp_name'];
+    $file_err = $uploading_img['error'];
+    $filesize = $uploading_img['size'];
+    $upload_dir = __DIR__ . '/../../user/uploaded_img/agency'. $now_id['MAX(id)'] .'.png';
+
+    $allow_ext = array('jpg','jpeg','png');
+    // $file_ext = pathinfo($uploading_img,PATHINFO_EXTENSION);
+
+    // if(!in_array(strtolower($file_ext),$allow_ext)){
+        // echo '画像ファイルを送ってください';
+    // }elseif($filesize > 100000000){
+        // echo 'データがデカすぎる';
+    // }else{
+    $temp_path = $uploading_img['tmp_name'];
+        move_uploaded_file($temp_path,$upload_dir);
+        // echo '成功';
+        echo $file_err;
+    // }
 }
 function edit_agency_information($pdo)
 {
