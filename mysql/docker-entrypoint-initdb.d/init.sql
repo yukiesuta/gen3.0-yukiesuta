@@ -177,3 +177,14 @@ CREATE TABLE agency_information (
 --   2,
 --   3
 -- );
+
+DROP TABLE IF EXISTS inquiry;
+
+CREATE TABLE inquiry (
+  name VARCHAR(255)  NOT NULL,
+  birthday INT  NOT NULL,
+  university VARCHAR(255)  NOT NULL,
+  phone INT  NOT NULL,
+  address VARCHAR(255)  NOT NULL,
+  email VARCHAR(255)  NOT NULL
+);
