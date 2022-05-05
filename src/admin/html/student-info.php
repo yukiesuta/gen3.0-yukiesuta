@@ -1,15 +1,16 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/normalize.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="../css/student-info.css">
     <title>学生情報</title>
 </head>
+
 <body>
     <header class="text-center p-2">
         Craft
@@ -32,8 +33,8 @@
                         請求情報管理
                     </a>
                 </div>
-                
-                
+
+
             </div>
             <div class="main-right col-10">
                 <div class="table">
@@ -49,78 +50,41 @@
                             </tr>
                         </thead>
                         <tbody class="text-center">
-                            <tr>
-                                <th scope="row">田中太郎</th>
-                                <td>KO大学</td>
-                                <td>tanaka@gmail.com</td>
-                                <td>080-111-222</td>
-                                <td>2022/04/15</td>
-                                <td>株式会社マイナベ</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">田中太郎</th>
-                                <td>KO大学</td>
-                                <td>tanaka@gmail.com</td>
-                                <td>080-111-222</td>
-                                <td>2022/04/15</td>
-                                <td>株式会社マイナベ</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">田中太郎</th>
-                                <td>KO大学</td>
-                                <td>tanaka@gmail.com</td>
-                                <td>080-111-222</td>
-                                <td>2022/04/15</td>
-                                <td>株式会社マイナベ</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">田中太郎</th>
-                                <td>KO大学</td>
-                                <td>tanaka@gmail.com</td>
-                                <td>080-111-222</td>
-                                <td>2022/04/15</td>
-                                <td>株式会社マイナベ</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">田中太郎</th>
-                                <td>KO大学</td>
-                                <td>tanaka@gmail.com</td>
-                                <td>080-111-222</td>
-                                <td>2022/04/15</td>
-                                <td>株式会社マイナベ</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">田中太郎</th>
-                                <td>KO大学</td>
-                                <td>tanaka@gmail.com</td>
-                                <td>080-111-222</td>
-                                <td>2022/04/15</td>
-                                <td>株式会社マイナベ</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">田中太郎</th>
-                                <td>KO大学</td>
-                                <td>tanaka@gmail.com</td>
-                                <td>080-111-222</td>
-                                <td>2022/04/15</td>
-                                <td>株式会社マイナベ</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">田中太郎</th>
-                                <td>KO大学</td>
-                                <td>tanaka@gmail.com</td>
-                                <td>080-111-222</td>
-                                <td>2022/04/15</td>
-                                <td>株式会社マイナベ</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">田中太郎</th>
-                                <td>KO大学</td>
-                                <td>tanaka@gmail.com</td>
-                                <td>080-111-222</td>
-                                <td>2022/04/15</td>
-                                <td>株式会社マイナベ</td>
-                            </tr>
+                            <?php
+                            $dsn = 'mysql:dbname=shukatsu;host=db';
+                            $user = 'root';
+                            $password = 'password';
+                            $db = new PDO($dsn, $user, $password);
+                            $db->query('SET NAMES utf8');
+
+                            $sql = 'SELECT * FROM inquiry';
+                            $stmt = $db->prepare($sql);
+                            $stmt->execute();
+                            // print_r($stmt) ;
+
+
+                            while (1) {
+                                $rec = $stmt->fetch(PDO::FETCH_ASSOC);
+                                if ($rec == false) {
+                                    break;
+                                }
+                                echo '<tr>';
+                                // echo '<th>'.$rec['code'].'</th>';
+                                echo '<td>' . $rec['name'] . '</td>';
+                                echo '<td>' . $rec['university'] . '</td>';
+                                echo '<td>' . $rec['email'] . '</td>';
+                                echo '<td>' . $rec['phone'] . '</td>';
+                                echo '<td>' . $rec['birthday'] . '</td>';
+                                echo '<td>' . $rec['address'] . '</td>';
+                                echo '</tr>';
+                            }
+                            // echo '</table>' . "\n";
+                            // echo '<ul>' . "\n";
+                            // echo '<li><a href="menu.html">メニューに戻る</a></li>' . "\n";
+                            // echo '</ul>' . "\n";
+
+                            $db = null;
+                            ?>
                         </tbody>
                     </table>
                 </div>
@@ -128,4 +92,5 @@
         </div>
     </main>
 </body>
+
 </html>

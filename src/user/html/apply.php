@@ -163,41 +163,39 @@ require_once(__DIR__  . '/../app/config.php');
             </a>
         </div>
         <div>
-            <form class="text-center p-5 ms-5 me-5 compare">
+            <form class="text-center p-5 ms-5 me-5 compare" action="check.php" method="post" id="inquiry">
                 <div class=" mb-3 ms-5 me-5 text-center title">
                     申し込みフォーム
                 </div>
                 <div>
-                    <form action="?action=add" method="post">
-                        <div class="form-group w-50 mt-3">
-                            <label>お名前</label>
-                            <input class="form-control" id="form-name" placeholder="お名前をご入力ください">
-                        </div>
-                    </form>
+                    <div class="form-group w-50 mt-3">
+                        <label>お名前</label>
+                        <input class="form-control" id="name" name="name" placeholder="お名前をご入力ください">
+                    </div>
                     <div class="form-group w-50 mt-3">
                         <label>生年月日</label>
-                        <input class="form-control" id="form-name" placeholder="お名前をご入力ください">
+                        <input class="form-control" id="birthday" name="birthday" placeholder="お名前をご入力ください">
                     </div>
                     <div class="form-group w-50 mt-3">
                         <label>大学名</label>
-                        <input class="form-control" id="form-name" placeholder="大学名をご入力ください">
+                        <input class="form-control" id="university" name="university" placeholder="大学名をご入力ください">
                     </div>
                     <div class="form-group w-50 mt-3">
                         <label>電話番号</label>
-                        <input class="form-control" id="form-name" placeholder="電話番号をご入力ください">
+                        <input class="form-control" id="phone-number" name="phone" placeholder="電話番号をご入力ください">
                     </div>
                     <div class="form-group w-50 mt-3">
                         <label>住所</label>
-                        <input class="form-control" id="form-name" placeholder="住所をご入力ください">
+                        <input class="form-control" id="address" placeholder="住所をご入力ください" name="address">
                     </div>
                     <div class="form-group w-50 mt-3">
                         <label for="exampleInputEmail1">メールアドレス</label>
-                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                            placeholder="メールアドレスをご入力ください">
+                        <!-- <input type="text" class="form-control" id="email" name="email" aria-describedby="emailHelp" placeholder="メールアドレスをご入力ください"> -->
+                        <input type="text" name="email" size="30" id="email" class="text2" placeholder="例）xxx@example.com">
                     </div>
-                    <div>
+                    <!-- <div>
                         <div class="form-check mt-3 w-50">
-                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" name="email">
                             <label class="form-check-label" for="flexCheckDefault">
                                 弊社のプライバシーポリシーに同意いたしますか？
                             </label>
@@ -205,11 +203,14 @@ require_once(__DIR__  . '/../app/config.php');
                                 <div>株式会社boozer プライバシーポリシー</div>
                             </a>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
-                <a href="../html/thanks.html">
+                <div class="submit">
+                    <input type="submit" value="確認画面へ">
+                </div>
+                <!-- <a href="../html/thanks.html">
                     <button type="button" class="btn btn-success mt-5">上記で申し込む</button>
-                </a>
+                </a> -->
             </form>
         </div>
     </main>
