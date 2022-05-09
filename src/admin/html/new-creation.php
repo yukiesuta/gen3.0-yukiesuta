@@ -66,57 +66,69 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <input type="text" name="achievements" class="form-control" id="form-name" placeholder="電話番号をご入力ください">
                 </div>
                 <div class="form-group w-50 mt-3">
+                    <label>拠点数</label>
+                    <input type="text" name="bases_numbers" class="form-control" id="form-name" placeholder="住所をご入力ください">
+                </div>
+                <div class="form-group w-50 mt-3">
+                    <label>サポート</label>
+                    <input type="text" name="support" class="form-control" id="form-name" placeholder="住所をご入力ください">
+                </div>
+                <div class="form-group w-50 mt-3">
                     <label>契約数</label>
                     <input type="text" name="contract_numbers" class="form-control" id="form-name" placeholder="住所をご入力ください">
+                </div>
+                <div class="form-group w-50 mt-3">
+                    <label>場所</label>
+                    <input type="text" name="place" class="form-control" id="form-name" placeholder="住所をご入力ください">
                 </div>
             </div>
             <div>
                 <div class="mt-5 ms-5 me-5 p-3 search">
                     <div class="search-title p-1 text-center">得意業種</div>
                     <div class="form-check w-25">
-                        <input name="" class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                        <input name="industry1" class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
                         <label class="form-check-label" for="flexCheckDefault">
                             コンサル
                         </label>
                     </div>
                     <div class="form-check w-25">
-                        <input name="" class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                        <input name="industry2" class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
                         <label class="form-check-label" for="flexCheckDefault">
                             エンジニア
                         </label>
                     </div>
                     <div class="form-check w-25">
-                        <input name="" class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                        <input name="industry3" class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
                         <label class="form-check-label" for="flexCheckDefault">
                             メーカー
                         </label>
                     </div>
                     <div class="form-check w-25">
-                        <input name="" class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                        <input name="industry4" class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
                         <label class="form-check-label" for="flexCheckDefault">
                             金融
                         </label>
                     </div>
                     <div class="form-check w-25">
-                        <input name="" class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                        <input name="industry5" class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
                         <label class="form-check-label" for="flexCheckDefault">
                             商社
                         </label>
                     </div>
                     <div class="form-check w-25">
-                        <input name="" class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                        <input name="industry6" class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
                         <label class="form-check-label" for="flexCheckDefault">
                             ベンチャー
                         </label>
                     </div>
                     <div class="form-check w-25">
-                        <input name="" class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                        <input name="industry7" class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
                         <label class="form-check-label" for="flexCheckDefault">
                             サービス
                         </label>
                     </div>
                     <div class="form-check w-25">
-                        <input name="" class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                        <input name="industry8" class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
                         <label class="form-check-label" for="flexCheckDefault">
                             インフラ
                         </label>
@@ -125,13 +137,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <div class="mt-5 ms-5 me-5 p-3 search">
                     <div class="search-title p-1 text-center">文理</div>
                     <div class="form-check w-25">
-                        <input name="" class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                        <input name="major1" class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
                         <label class="form-check-label" for="flexCheckDefault">
                             文系
                         </label>
                     </div>
                     <div class="form-check w-25">
-                        <input name="" class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                        <input name="major2" class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
                         <label class="form-check-label" for="flexCheckDefault">
                             理系
                         </label>
@@ -140,31 +152,31 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <div class="mt-5 ms-5 me-5 p-3 search">
                     <div class="search-title p-1 text-center">特徴</div>
                     <div class="form-check w-25">
-                        <input name="" class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                        <input name="feature1" class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
                         <label class="form-check-label" for="flexCheckDefault">
                             ES添削あり
                         </label>
                     </div>
                     <div class="form-check w-25">
-                        <input name="" class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                        <input name="feature2" class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
                         <label class="form-check-label" for="flexCheckDefault">
                             面接対策あり
                         </label>
                     </div>
                     <div class="form-check w-25">
-                        <input name="" class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                        <input name="feature3" class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
                         <label class="form-check-label" for="flexCheckDefault">
                             即日連絡
                         </label>
                     </div>
                     <div class="form-check w-25">
-                        <input name="" class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                        <input name="feature4" class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
                         <label class="form-check-label" for="flexCheckDefault">
                             オンライン可能
                         </label>
                     </div>
                     <div class="form-check w-25">
-                        <input name="" class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                        <input name="feature5" class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
                         <label class="form-check-label" for="flexCheckDefault">
                             担当者変更可能
                         </label>

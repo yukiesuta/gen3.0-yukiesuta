@@ -89,94 +89,19 @@ CREATE TABLE agency_information (
   detail VARCHAR(255) NOT NULL,
   mail_address VARCHAR(255) NOT NULL,
   phone_number VARCHAR(255) NOT NULL,
-  img 
-  
-  
-  BLOB NOT NULL,
+  img BLOB NOT NULL,
   achievements VARCHAR(255) NOT NULL,
   contract_numbers VARCHAR(255) NOT NULL,
   bases_numbers VARCHAR(255) NOT NULL,
   support VARCHAR(255) NOT NULL,
   place VARCHAR(255) NOT NULL,
-  industry_id INT NOT NULL,
-  major_id INT NOT NULL,
-  feature_id INT NOT NULL,
+  industry_id VARCHAR(255),
+  major_id VARCHAR(255),
+  feature_id VARCHAR(255),
   created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
   updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
 
--- INSERT INTO
--- agency_information(agency_name,catch_copy,detail,mail_address,phone_number,img,achievements,contract_numbers,bases_numbers,support,place,industry_id,major_id,feature_id) VALUES
--- (
---   'わーー',
---   '楽しい会社',
---   '楽しい会社',
---   'sumple@gmail.com',
---   '0120102030',
---   'posselogo.img',
---   '100万',
---   '2万',
---   '50',
---   'ES添削',
---   '神奈川',
---   1,
---   2,
---   3
--- );
--- INSERT INTO
--- agency_information(agency_name,catch_copy,mail_address,phone_number,img,achievements,contract_numbers,bases_numbers,support,place,industry_id,major_id,feature_id) VALUES
--- (
---   'POSEE',
---   '風通しの良い会社',
---   '風通しの良い会社',
---   'sumple@gmail.com',
---   '0120102030',
---   'posselogo.img',
---   '100万',
---   '2万',
---   '50',
---   'ES添削',
---   '神奈川',
---   1,
---   2,
---   3
--- );
--- INSERT INTO
--- agency_information(agency_name,catch_copy,mail_address,phone_number,img,achievements,contract_numbers,bases_numbers,support,place,industry_id,major_id,feature_id) VALUES
--- (
---   'アマゾン',
---   '風通しの悪い会社',
---   '風通しの悪い会社',
---   'aaaa@gmail.com',
---   '0120104030',
---   'posselogo.img',
---   '100万',
---   '2万',
---   '50',
---   'ES添削',
---   '神奈川',
---   1,
---   2,
---   3
--- );
--- INSERT INTO
--- agency_information(agency_name,catch_copy,mail_address,phone_number,img,achievements,contract_numbers,bases_numbers,support,place,industry_id,major_id,feature_id) VALUES
--- (
---   'まーーー',
---   '普通の会社',
---   '普通の会社',
---   'sumple@gmail.com',
---   '0120102030',
---   'posselogo.img',
---   '100万',
---   '2万',
---   '50',
---   'ES添削',
---   '神奈川',
---   1,
---   2,
---   3
--- );
 
 DROP TABLE IF EXISTS inquiry;
 
