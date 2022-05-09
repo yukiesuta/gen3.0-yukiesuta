@@ -11,6 +11,14 @@ $industry_conditions = get_industry_conditions($pdo);
 $major_conditions = get_major_conditions($pdo);
 $feature_conditions = get_feature_conditions($pdo);
 
+if(isset($_POST["sort_change"])) {
+    // セレクトボックスで選択された値を受け取る
+    $sort_change = $_POST["sort_change"];
+    // 受け取った値を画面に出力
+    echo $sort_change;
+    
+  }
+
 ?>
 
 <!DOCTYPE html>
@@ -101,11 +109,15 @@ $feature_conditions = get_feature_conditions($pdo);
             <div class="main-center-content col-md-6">
                 <div class="mt-3 text-center drop-down p-1">
                     <div>並び替え</div>
-                    <select name="change">
-                        <option value="recommend">おすすめ</option>
-                        <option value="name">五十音</option>
-                        <option value="number">実績数</option>
-                    </select>
+                        <form action="toppage.php" method = "POST">
+                        <select name="sort_change">
+                            <option value="name">五十音</option>
+                            <option value="bases_numbers">拠点数</option>
+                            <option value="achievements">実績数</option>
+                            <option value="contract_numbers">契約数</option>
+                        </select>
+                        <input type="submit"name="submit"value="並べ替える"/>
+                    </form>
                 </div>
                 <?php foreach ($agency_informations as $agency_information) : ?>
                     <div class="mt-4 ms-5 me-5 mb-5 p-3 company-content-wrapper">
