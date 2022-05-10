@@ -138,15 +138,15 @@ if(isset($_POST["sort_change"])) {
                         </div>
                         <div class="d-flex justify-content-end">
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault<?= h($agency_information->id);?>">
+                                <input class="form-check-input" type="checkbox" value="" name='looked' id="flexCheckDefault<?= h($agency_information->id);?>">
                             </div>
                         </div>
                     </div>
                 <?php endforeach; ?>
             </div>
-            <div class="main-right-content col-md-3">
+            <div class="main-right-content col-md-3" name='rightContents'>
             <?php foreach ($agency_informations as $agency_information) : ?>
-                <a href="./company.html" class="text-decoration-none">
+                <a href="./company.html" class="text-decoration-none display-none" id="rightContent<?= h($agency_information->id);?>">
                     <div class="d-flex checked-content m-5 p-3">
                         <div class="me-2">
                         <img src="../uploaded_img/agency<?= h($agency_information->id); ?>.png" alt="">

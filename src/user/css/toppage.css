@@ -79,3 +79,6 @@ main{
     text-decoration: none;
     color: #626262;
 }
+.display-none{
+    display: none;
+}
