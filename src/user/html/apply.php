@@ -14,8 +14,7 @@ require_once(__DIR__  . '/../app/config.php');
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/normalize.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="../css/apply.css">
     <title>申し込みページ</title>
 </head>
@@ -71,9 +70,12 @@ require_once(__DIR__  . '/../app/config.php');
                 <tbody>
                     <tr>
                         <td>
-                            <button type="button" class="btn btn-outline-success btn-sm"">
-                                削除
-                            </button>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
+                                <label class="form-check-label" for="flexCheckChecked">
+                                    申し込む
+                                </label>
+                            </div>
                         </td>
                         <th scope=" row">
                             <a href="./company.html">
@@ -88,9 +90,12 @@ require_once(__DIR__  . '/../app/config.php');
                     </tr>
                     <tr>
                         <td>
-                            <button type="button" class="btn btn-outline-success btn-sm"">
-                                削除
-                            </button>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
+                                <label class="form-check-label" for="flexCheckChecked">
+                                    申し込む
+                                </label>
+                            </div>
                         </td>
                         <th scope=" row">
                             <a href="./company.html">
@@ -105,9 +110,12 @@ require_once(__DIR__  . '/../app/config.php');
                     </tr>
                     <tr>
                         <td>
-                            <button type="button" class="btn btn-outline-success btn-sm">
-                                削除
-                            </button>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
+                                <label class="form-check-label" for="flexCheckChecked">
+                                    申し込む
+                                </label>
+                            </div>
                         </td>
                         <th scope="row">
                             <a href="./company.html">
@@ -122,9 +130,12 @@ require_once(__DIR__  . '/../app/config.php');
                     </tr>
                     <tr>
                         <td>
-                            <button type="button" class="btn btn-outline-success btn-sm"">
-                                削除
-                            </button>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
+                                <label class="form-check-label" for="flexCheckChecked">
+                                    申し込む
+                                </label>
+                            </div>
                         </td>
                         <th scope=" row">
                             <a href="./company.html">
@@ -139,9 +150,12 @@ require_once(__DIR__  . '/../app/config.php');
                     </tr>
                     <tr>
                         <td>
-                            <button type="button" class="btn btn-outline-success btn-sm">
-                                削除
-                            </button>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
+                                <label class="form-check-label" for="flexCheckChecked">
+                                    申し込む
+                                </label>
+                            </div>
                         </td>
                         <th scope="row">
                             <a href="./company.html">
@@ -214,9 +228,7 @@ require_once(__DIR__  . '/../app/config.php');
             </form>
         </div>
     </main>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <script src="../js/apply.js"></script>
 </body>
 
