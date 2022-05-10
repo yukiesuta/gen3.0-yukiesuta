@@ -82,3 +82,13 @@ main{
 .display-none{
     display: none;
 }
+.center-img{
+    height: 200px;
+    width: 200px;
+    object-fit: contain;
+}
+.right-img{
+    height: 100px;
+    width: 100px;
+    object-fit: contain;
+}
