@@ -37,6 +37,9 @@ main{
     color: #626262;
     border-radius: 10px;
 }
+.main-container{
+    display: flex;
+}
 .company-content-wrapper{
     background-color: white;
     align-items: center;
@@ -91,4 +94,21 @@ main{
     height: 100px;
     width: 100px;
     object-fit: contain;
+}
+.mobile-top-content{
+    display: none;
+}
+.button{
+    display: none;
+}
+@media screen and (max-width:480px){
+    .main-left-content{
+        display: none;
+    }
+    .mobile-top-content{
+        display: block;
+    }
+    .button{
+        display: block;
+    }
 }
