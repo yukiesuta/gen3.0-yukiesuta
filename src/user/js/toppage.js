@@ -1,6 +1,6 @@
 'use strict';
 
-for (let i = 0; i < 100; i++) {
+for (let i = 1; i < 100; i++) {
     if (document.getElementById('flexCheckDefault' + i)) {
         let checkbox = document.getElementById('flexCheckDefault' + i)
         let rightContent = document.getElementById('rightContent' + i)
