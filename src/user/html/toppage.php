@@ -124,7 +124,7 @@ if(isset($_POST["sort_change"])) {
                         <div class="d-flex company-content">
                             <a href="">
                                 <div class="logo-container p-1">
-                                    <img src="../uploaded_img/agency<?= h($agency_information->id); ?>.png" alt="">
+                                    <img src="../uploaded_img/agency<?= h($agency_information->id); ?>.png" alt="" class="center-img">
                                 </div>
                             </a>
                             <div>
@@ -149,7 +149,7 @@ if(isset($_POST["sort_change"])) {
                 <a href="./company.html" class="text-decoration-none display-none" id="rightContent<?= h($agency_information->id);?>">
                     <div class="d-flex checked-content m-5 p-3">
                         <div class="me-2">
-                        <img src="../uploaded_img/agency<?= h($agency_information->id); ?>.png" alt="">
+                        <img src="../uploaded_img/agency<?= h($agency_information->id); ?>.png" alt="" class="right-img">
                         </div>
                         <div class="checked-paragraph">
                             <?= h($agency_information->agency_name); ?>
