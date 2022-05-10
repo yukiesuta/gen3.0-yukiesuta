@@ -158,7 +158,7 @@ require_once(__DIR__  . '/../app/config.php');
             </table>
         </div>
         <div class="text-center">
-            <a href="./toppage.html">
+            <a href="./toppage.php">
                 <button type="button" class="btn btn-success mt-5">トップページに戻る</button>
             </a>
         </div>
