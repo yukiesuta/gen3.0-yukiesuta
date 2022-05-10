@@ -152,7 +152,7 @@ if(isset($_POST["sort_change"])) {
                         <img src="../uploaded_img/agency<?= h($agency_information->id); ?>.png" alt="" class="right-img">
                         </div>
                         <div class="checked-paragraph">
-                            <?= h($agency_information->agency_name); ?>
+                            <?= h($agency_information->agency_name);?>
                         </div>
                     </div>
                 </a>
@@ -188,13 +188,32 @@ if(isset($_POST["sort_change"])) {
         </div>
         <div class="text-center">
             <a href="">
-                <button type="button" class="btn btn-success m-5">比較する</button>
+                <a href="apply.php">
+                <button type="button" class="btn btn-success m-5" onclick="checked_check()">
+                    比較する
+                </button>
+            </a>
             </a>
         </div>
     </main>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <script src="../js/toppage.js"></script>
+    <script>
+    function checked_check(){
+
+        arr = new Array()
+
+        <?php foreach ($agency_informations as $agency_information) : ?>
+            if(document.getElementById("flexCheckDefault<?= h($agency_information->id); ?>").checked){
+                arr.push('<?= h($agency_information->id); ?>');
+            }
+        <?php endforeach; ?>
+        console.log(arr);
+        let json = JSON.stringify(arr);
+        localStorage.setItem('keyname', arr);
+    }
+    </script>
 </body>
 
 </html>
