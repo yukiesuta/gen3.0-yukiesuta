@@ -11,13 +11,12 @@ $industry_conditions = get_industry_conditions($pdo);
 $major_conditions = get_major_conditions($pdo);
 $feature_conditions = get_feature_conditions($pdo);
 
-if(isset($_POST["sort_change"])) {
+if (isset($_POST["sort_change"])) {
     // セレクトボックスで選択された値を受け取る
     $sort_change = $_POST["sort_change"];
     // 受け取った値を画面に出力
     echo $sort_change;
-    
-  }
+}
 
 ?>
 
@@ -40,6 +39,7 @@ if(isset($_POST["sort_change"])) {
         <div class="headerTitle text-center fs-2">
             Craft
         </div>
+
         <div class="navigations mt-4">
             <ul class="d-flex justify-content-center mb-0">
                 <a href="" class="navigation me-5">
@@ -70,7 +70,66 @@ if(isset($_POST["sort_change"])) {
         <div class="first-view">
             <img src="../img/firstview.jpg" alt="first-view" class="first-view-img">
         </div>
-        <div class="main-container d-flex raw">
+        <div class="text-center button">
+            <button type="button" class="btn btn-success mt-2" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                絞り込み
+            </button>
+        </div>
+        <!-- Modal -->
+        <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div id="modal-content">
+                        <div class="modal-body row">
+                            <div class="mobile-top-content">
+                                <div class="mt-4 search ms-2 p-2">
+                                    <div class="search-title text-center">業種</div>
+                                    <?php foreach ($industry_conditions as $industry_condition) : ?>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                            <label class="form-check-label" for="flexCheckDefault">
+                                                <?= h($industry_condition->industry); ?>
+                                            </label>
+                                        </div>
+                                    <?php endforeach; ?>
+                                </div>
+                                <div class="mt-4 search ms-1 p-2">
+                                    <div class="search-title text-center">文理</div>
+                                    <?php foreach ($major_conditions as $major_condition) : ?>
+                                        <div class="form-check mt-1">
+                                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                            <label class="form-check-label" for="flexCheckDefault">
+                                                <?= h($major_condition->major); ?>
+                                            </label>
+                                        </div>
+                                    <?php endforeach; ?>
+                                </div>
+                                <div class="mt-4 search ms-1 me-2 p-2">
+                                    <div class="search-title text-center">特徴</div>
+                                    <?php foreach ($feature_conditions as $feature_condition) : ?>
+                                        <div class="form-check mt-1">
+                                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                            <label class="form-check-label" for="flexCheckDefault">
+                                                <?= h($feature_condition->feature); ?>
+                                            </label>
+                                        </div>
+                                    <?php endforeach; ?>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col"></div>
+                            <button type="button" class="btn btn-success col-8 justify-content-center mt-2 mb-3" id="submitButton">絞り込み</button>
+                            <div class="col"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="main-container raw">
             <div class="main-left-content col-md-3">
                 <div class="mt-5 ms-5 me-5 p-3 search">
                     <div class="search-title p-1 text-center">業種</div>
@@ -106,7 +165,7 @@ if(isset($_POST["sort_change"])) {
                     <?php endforeach; ?>
                 </div>
             </div>
-            <div class="main-center-content col-md-6">
+            <div class="main-center-content col-md-6 col-sm-9">
                 <!-- <div class="mt-3 text-center drop-down p-1">
                     <div>並び替え</div>
                         <form action="toppage.php" method = "POST">
@@ -138,25 +197,25 @@ if(isset($_POST["sort_change"])) {
                         </div>
                         <div class="d-flex justify-content-end">
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" name='looked' id="flexCheckDefault<?= h($agency_information->id);?>">
+                                <input class="form-check-input" type="checkbox" value="" name='looked' id="flexCheckDefault<?= h($agency_information->id); ?>">
                             </div>
                         </div>
                     </div>
                 <?php endforeach; ?>
             </div>
-            <div class="main-right-content col-md-3" name='rightContents'>
-            <?php foreach ($agency_informations as $agency_information) : ?>
-                <a href="./company.html" class="text-decoration-none display-none" id="rightContent<?= h($agency_information->id);?>">
-                    <div class="d-flex checked-content m-5 p-3">
-                        <div class="me-2">
-                        <img src="../uploaded_img/agency<?= h($agency_information->id); ?>.png" alt="" class="right-img">
+            <div class="main-right-content col-md-3 col-sm-3" name='rightContents'>
+                <?php foreach ($agency_informations as $agency_information) : ?>
+                    <a href="./company.html" class="text-decoration-none display-none" id="rightContent<?= h($agency_information->id); ?>">
+                        <div class="d-flex checked-content m-5 p-3">
+                            <div class="me-2">
+                                <img src="../uploaded_img/agency<?= h($agency_information->id); ?>.png" alt="" class="right-img">
+                            </div>
+                            <div class="checked-paragraph">
+                                <?= h($agency_information->agency_name); ?>
+                            </div>
                         </div>
-                        <div class="checked-paragraph">
-                            <?= h($agency_information->agency_name); ?>
-                        </div>
-                    </div>
-                </a>
-            <?php endforeach; ?>
+                    </a>
+                <?php endforeach; ?>
             </div>
         </div>
         <div class="d-flex justify-content-center icons">
