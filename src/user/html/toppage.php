@@ -107,7 +107,7 @@ if(isset($_POST["sort_change"])) {
                 </div>
             </div>
             <div class="main-center-content col-md-6">
-                <div class="mt-3 text-center drop-down p-1">
+                <!-- <div class="mt-3 text-center drop-down p-1">
                     <div>並び替え</div>
                         <form action="toppage.php" method = "POST">
                         <select name="sort_change">
@@ -118,7 +118,7 @@ if(isset($_POST["sort_change"])) {
                         </select>
                         <input type="submit"name="submit"value="並べ替える"/>
                     </form>
-                </div>
+                </div> -->
                 <?php foreach ($agency_informations as $agency_information) : ?>
                     <div class="mt-4 ms-5 me-5 mb-5 p-3 company-content-wrapper">
                         <div class="d-flex company-content">
