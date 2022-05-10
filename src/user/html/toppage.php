@@ -181,13 +181,13 @@ if (isset($_POST["sort_change"])) {
                 <?php foreach ($agency_informations as $agency_information) : ?>
                     <div class="mt-4 ms-5 me-5 mb-5 p-3 company-content-wrapper">
                         <div class="d-flex company-content">
-                            <a href="">
+                            <a href="company.php?id=<?= h($agency_information->id); ?>">
                                 <div class="logo-container p-1">
                                     <img src="../uploaded_img/agency<?= h($agency_information->id); ?>.png" alt="" class="center-img">
                                 </div>
                             </a>
                             <div>
-                                <a href="" class="text-decoration-none">
+                                <a href="company.php?id=<?= h($agency_information->id); ?>" class="text-decoration-none">
                                     <div class="company-content-title p-1"><?= h($agency_information->agency_name); ?></div>
                                 </a>
                                 <div class="p-3 company-content-paragraph">
@@ -246,7 +246,7 @@ if (isset($_POST["sort_change"])) {
             </a>
         </div>
         <div class="text-center">
-            <a href="">
+            <a href="./apply.php">
                 <button type="button" class="btn btn-success m-5">比較する</button>
             </a>
         </div>
