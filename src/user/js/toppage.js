@@ -1,8 +1,8 @@
 'use strict';
 
 for (let i = 1; i < 100; i++) {
-    if (document.getElementById('flexCheckDefault' + i)) {
-        let checkbox = document.getElementById('flexCheckDefault' + i)
+    if (document.getElementById('agency_flexCheckDefault' + i)) {
+        let checkbox = document.getElementById('agency_flexCheckDefault' + i)
         let rightContent = document.getElementById('rightContent' + i)
         checkbox.addEventListener('change', function() {
             if (checkbox.checked == true) {
@@ -20,7 +20,8 @@ for (let i = 1; i < 100; i++) {
 }
 
 
-let targets = document.querySelectorAll('.agency_checkbox');
+let targets = document.querySelectorAll('.form-check-input');
+
 
 window.addEventListener('DOMContentLoaded', () => {
     for (const i of targets) {
