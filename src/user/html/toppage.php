@@ -197,7 +197,7 @@ if (isset($_POST["sort_change"])) {
                         </div>
                         <div class="d-flex justify-content-end">
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" name='looked' id="flexCheckDefault<?= h($agency_information->id); ?>">
+                                <input class="form-check-input agency_checkbox" type="checkbox" value="" name='looked' id="flexCheckDefault<?= h($agency_information->id); ?>">
                             </div>
                         </div>
                     </div>

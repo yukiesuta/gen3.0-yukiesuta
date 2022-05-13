@@ -18,3 +18,23 @@ for (let i = 1; i < 100; i++) {
         }, false)
     }
 }
+
+
+let targets = document.querySelectorAll('.agency_checkbox');
+
+window.addEventListener('DOMContentLoaded', () => {
+    for (const i of targets) {
+        let checked_context = localStorage.getItem(i.id);
+        // なぜかchecked_contextがfalseでもtrueになってしまうからわざわざこう書いた
+        if (checked_context === "true") {
+            document.getElementById(i.id).click();
+        }
+    }
+});
+
+window.addEventListener('beforeunload', () => {
+    for (const i of targets) {
+        let checked_context = i.checked;
+        localStorage.setItem(i.id, checked_context);
+    }
+})
