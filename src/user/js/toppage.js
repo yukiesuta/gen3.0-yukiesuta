@@ -25,7 +25,6 @@ let targets = document.querySelectorAll('.agency_checkbox');
 window.addEventListener('DOMContentLoaded', () => {
     for (const i of targets) {
         let checked_context = localStorage.getItem(i.id);
-        // なぜかchecked_contextがfalseでもtrueになってしまうからわざわざこう書いた
         if (checked_context === "true") {
             document.getElementById(i.id).click();
         }
