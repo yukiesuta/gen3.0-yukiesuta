@@ -89,7 +89,7 @@ if (isset($_POST["sort_change"])) {
                                     <div class="search-title text-center">業種</div>
                                     <?php foreach ($industry_conditions as $industry_condition) : ?>
                                         <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                            <input class="form-check-input" type="checkbox" value="" id="ph_industry_flexCheckDefault<?= h($industry_condition->id); ?>">
                                             <label class="form-check-label" for="flexCheckDefault">
                                                 <?= h($industry_condition->industry); ?>
                                             </label>
@@ -100,7 +100,7 @@ if (isset($_POST["sort_change"])) {
                                     <div class="search-title text-center">文理</div>
                                     <?php foreach ($major_conditions as $major_condition) : ?>
                                         <div class="form-check mt-1">
-                                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                            <input class="form-check-input" type="checkbox" value="" id="ph_major_flexCheckDefault <?= h($major_condition->id); ?>">
                                             <label class="form-check-label" for="flexCheckDefault">
                                                 <?= h($major_condition->major); ?>
                                             </label>
@@ -111,7 +111,7 @@ if (isset($_POST["sort_change"])) {
                                     <div class="search-title text-center">特徴</div>
                                     <?php foreach ($feature_conditions as $feature_condition) : ?>
                                         <div class="form-check mt-1">
-                                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                            <input class="form-check-input" type="checkbox" value="" id="ph_feature_flexCheckDefault<?= h($feature_condition->id); ?>">
                                             <label class="form-check-label" for="flexCheckDefault">
                                                 <?= h($feature_condition->feature); ?>
                                             </label>
@@ -135,7 +135,7 @@ if (isset($_POST["sort_change"])) {
                     <div class="search-title p-1 text-center">業種</div>
                     <?php foreach ($industry_conditions as $industry_condition) : ?>
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                            <input class="form-check-input" type="checkbox" value="" id="pc_industry_flexCheckDefault<?= h($industry_condition->id); ?>">
                             <label class="form-check-label" for="flexCheckDefault">
                                 <?= h($industry_condition->industry); ?>
                             </label>
@@ -146,7 +146,7 @@ if (isset($_POST["sort_change"])) {
                     <div class="search-title p-1 text-center">文理</div>
                     <?php foreach ($major_conditions as $major_condition) : ?>
                         <div class="form-check mt-1">
-                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                            <input class="form-check-input" type="checkbox" value="" id="pc_major_flexCheckDefault<?= h($major_condition->id); ?>">
                             <label class="form-check-label" for="flexCheckDefault">
                                 <?= h($major_condition->major); ?>
                             </label>
@@ -157,7 +157,7 @@ if (isset($_POST["sort_change"])) {
                     <div class="search-title p-1 text-center">特徴</div>
                     <?php foreach ($feature_conditions as $feature_condition) : ?>
                         <div class="form-check mt-1">
-                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                            <input class="form-check-input" type="checkbox" value="" id="pc_feature_flexCheckDefault<?= h($feature_condition->id); ?>">
                             <label class="form-check-label" for="flexCheckDefault">
                                 <?= h($feature_condition->feature); ?>
                             </label>
@@ -197,7 +197,7 @@ if (isset($_POST["sort_change"])) {
                         </div>
                         <div class="d-flex justify-content-end">
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" name='looked' id="flexCheckDefault<?= h($agency_information->id); ?>">
+                                <input class="form-check-input" type="checkbox" value="" name='looked' id="agency_flexCheckDefault<?= h($agency_information->id); ?>">
                             </div>
                         </div>
                     </div>
@@ -246,14 +246,33 @@ if (isset($_POST["sort_change"])) {
             </a>
         </div>
         <div class="text-center">
-            <a href="./apply.php">
-                <button type="button" class="btn btn-success m-5">比較する</button>
+            <a href="">
+                <a href="apply.php">
+                <button type="button" class="btn btn-success m-5" onclick="checked_check()">
+                    比較する
+                </button>
+            </a>
             </a>
         </div>
     </main>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <script src="../js/toppage.js"></script>
+    <script>
+    function checked_check(){
+
+        arr = new Array()
+
+        <?php foreach ($agency_informations as $agency_information) : ?>
+            if(document.getElementById("flexCheckDefault<?= h($agency_information->id); ?>").checked){
+                arr.push('<?= h($agency_information->id); ?>');
+            }
+        <?php endforeach; ?>
+        console.log(arr);
+        let json = JSON.stringify(arr);
+        localStorage.setItem('keyname', arr);
+    }
+    </script>
 </body>
 
 </html>
