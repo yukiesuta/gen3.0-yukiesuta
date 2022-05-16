@@ -30,6 +30,7 @@ if (isset($_POST["sort_change"])) {
     <link rel="stylesheet" href="../css/normalize.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="../css/toppage.css">
+    <link rel="stylesheet" href="../css/apply.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <title>Craft</title>
 </head>
@@ -248,46 +249,113 @@ if (isset($_POST["sort_change"])) {
                         </div>
                     </a>
                 <?php endforeach; ?>
+                <div class="d-flex m-5 p-3">
+                    <a href="#applySection">
+                        <button type="button" class="btn btn-success mt-5">次へ</button>
+                    </a>
+                </div>
             </div>
         </div>
-        <div class="d-flex justify-content-center icons">
-            <a href="">
-                <span class="material-icons">
-                    navigate_before
-                </span>
-            </a>
-            <a href="" class="m-1">
-                <div>
-                    1
-                </div>
-            </a>
-            <a href="" class="m-1">
-                <div>
-                    2
-                </div>
-            </a>
-            <a href="" class="m-1">
-                <div>
-                    3
-                </div>
-            </a>
-            <a href="">
-                <span class="material-icons">
-                    navigate_next
-                </span>
-            </a>
+    </main>
+    <main class="w-100">
+        <div class="text-center p-5 ms-5 me-5 compare" id="applySection">
+            <div class="mt-3 mb-5 ms-5 me-5 title ">
+                比較リスト
+            </div>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th scope="col"></th>
+                        <th scope="col"></th>
+                        <th scope="col">エージェンシー</th>
+                        <th scope="col">得意業界</th>
+                        <th scope="col">ES添削</th>
+                        <th scope="col">面接対策</th>
+                        <th scope="col">即日連絡</th>
+                        <th scope="col">担当者変更</th>
+                    </tr>
+                </thead>
+                <tbody>
+                <?php foreach ($agency_informations as $agency_information) : ?>
+                    <tr id="comparison_agency<?= h($agency_information->id); ?>" class="display-none">
+                        <td>
+                            <button type="button" class="btn btn-success m-5" id="comparisonDelete<?= h($agency_information->id); ?>">削除</button>
+                        </td>
+                        <!-- <td>
+                            <img id="comparisonDelete<?= h($agency_information->id); ?>" src="../img/checked.png" alt="">
+                        </td> -->
+                        <td>
+                            <?= h($agency_information->agency_name); ?>
+                        </td>
+                        <th scope=" row">
+                            <a href="./company.html">
+                                <img src="../uploaded_img/agency<?= h($agency_information->id); ?>.png" alt="" class="center-img">
+                            </a>
+                        </th>
+                        <td><?= h($agency_information->catch_copy); ?></td>
+                        <td>○</td>
+                        <td>✕</td>
+                        <td>◯</td>
+                        <td>✕</td>
+                    </tr>
+                    <a href="./company.html" class="text-decoration-none display-none" id="rightContent<?= h($agency_information->id); ?>">
+                        <div class="d-flex checked-content m-5 p-3">
+                            <div class="me-2">
+                                <img src="../uploaded_img/agency<?= h($agency_information->id); ?>.png" alt="" class="right-img">
+                            </div>
+                            <div class="checked-paragraph">
+                                <?= h($agency_information->agency_name); ?>
+                            </div>
+                        </div>
+                    </a>
+                <?php endforeach; ?>
+                </tbody>
+            </table>
         </div>
         <div class="text-center">
-            <a href="">
-                <a href="apply.php">
-                <button type="button" class="btn btn-success m-5" onclick="checked_check()">
-                    比較する
-                </button>
-            </a>
+            <a href="#navbarNavDropdown">
+                <button type="button" class="btn btn-success mt-5">上に戻る</button>
             </a>
         </div>
+        <div>
+            <form class="text-center p-5 ms-5 me-5 compare" action="check.php" method="post" id="inquiry">
+                <div class=" mb-3 ms-5 me-5 text-center title">
+                    申し込みフォーム
+                </div>
+                <div>
+                    <div class="form-group w-50 mt-3">
+                        <label>お名前</label>
+                        <input class="form-control" id="name" name="name" placeholder="お名前をご入力ください">
+                    </div>
+                    <div class="form-group w-50 mt-3">
+                        <label>生年月日</label>
+                        <input class="form-control" id="birthday" name="birthday" placeholder="お名前をご入力ください">
+                    </div>
+                    <div class="form-group w-50 mt-3">
+                        <label>大学名</label>
+                        <input class="form-control" id="university" name="university" placeholder="大学名をご入力ください">
+                    </div>
+                    <div class="form-group w-50 mt-3">
+                        <label>電話番号</label>
+                        <input class="form-control" id="phone-number" name="phone" placeholder="電話番号をご入力ください">
+                    </div>
+                    <div class="form-group w-50 mt-3">
+                        <label>住所</label>
+                        <input class="form-control" id="address" placeholder="住所をご入力ください" name="address">
+                    </div>
+                    <div class="form-group w-50 mt-3">
+                        <label for="exampleInputEmail1">メールアドレス</label>
+                        <input type="text" name="email" size="30" id="email" class="text2" placeholder="例）xxx@example.com">
+                    </div>
+                </div>
+                <div class="submit">
+                    <input type="submit" value="確認画面へ">
+                </div>
+            </form>
+        </div>
     </main>
-
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script src="../js/apply.js"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
