@@ -30,7 +30,6 @@ if (isset($_POST["sort_change"])) {
     <link rel="stylesheet" href="../css/normalize.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="../css/toppage.css">
-    <link rel="stylesheet" href="../css/apply.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <title>Craft</title>
 </head>
@@ -72,32 +71,6 @@ if (isset($_POST["sort_change"])) {
                 </ul>
             </div>
         </nav>
-        
-        <!-- <div class="navigations mt-4">
-            <ul class="d-flex justify-content-center mb-0">
-                <a href="" class="navigation me-5">
-                    <li>就活サイト</li>
-                </a>
-                <a href="" class="navigation me-5">
-                    <li>就活支援サービス</li>
-                </a>
-                <a href="" class="navigation me-5">
-                    <li>自己分析診断ツール</li>
-                </a>
-                <a href="" class="navigation me-5">
-                    <li>ES添削サービス</li>
-                </a>
-                <a href="" class="navigation me-5">
-                    <li>就活エージェント</li>
-                </a>
-                <a href="" class="navigation me-5">
-                    <li>就職の教科書とは</li>
-                </a>
-                <a href="" class="navigation me-5">
-                    <li>お問い合わせ</li>
-                </a>
-            </ul>
-        </div> -->
     </header>
     <main>
         <div class="first-view">
@@ -198,7 +171,7 @@ if (isset($_POST["sort_change"])) {
                     <?php endforeach; ?>
                 </div>
             </div>
-            <div class="main-center-content col-md-6 col-sm-9">
+            <div class="main-center-content col-md-6 col-12">
                 <!-- <div class="mt-3 text-center drop-down p-1">
                     <div>並び替え</div>
                         <form action="toppage.php" method = "POST">
@@ -259,58 +232,60 @@ if (isset($_POST["sort_change"])) {
     </main>
     <main class="w-100">
         <div class="text-center p-5 ms-5 me-5 compare" id="applySection">
-            <div class="mt-3 mb-5 ms-5 me-5 title ">
+            <div class="mt-3 mb-5 ms-5 me-5 compare-title ">
                 比較リスト
             </div>
-            <table class="table table-bordered">
-                <thead>
-                    <tr>
-                        <th scope="col"></th>
-                        <th scope="col"></th>
-                        <th scope="col">エージェンシー</th>
-                        <th scope="col">得意業界</th>
-                        <th scope="col">ES添削</th>
-                        <th scope="col">面接対策</th>
-                        <th scope="col">即日連絡</th>
-                        <th scope="col">担当者変更</th>
-                    </tr>
-                </thead>
-                <tbody>
-                <?php foreach ($agency_informations as $agency_information) : ?>
-                    <tr id="comparison_agency<?= h($agency_information->id); ?>" class="display-none">
-                        <td>
-                            <button type="button" class="btn btn-success m-5" id="comparisonDelete<?= h($agency_information->id); ?>">削除</button>
-                        </td>
-                        <!-- <td>
-                            <img id="comparisonDelete<?= h($agency_information->id); ?>" src="../img/checked.png" alt="">
-                        </td> -->
-                        <td>
-                            <?= h($agency_information->agency_name); ?>
-                        </td>
-                        <th scope=" row">
-                            <a href="./company.html">
-                                <img src="../uploaded_img/agency<?= h($agency_information->id); ?>.png" alt="" class="center-img">
-                            </a>
-                        </th>
-                        <td><?= h($agency_information->catch_copy); ?></td>
-                        <td>○</td>
-                        <td>✕</td>
-                        <td>◯</td>
-                        <td>✕</td>
-                    </tr>
-                    <a href="./company.html" class="text-decoration-none display-none" id="rightContent<?= h($agency_information->id); ?>">
-                        <div class="d-flex checked-content m-5 p-3">
-                            <div class="me-2">
-                                <img src="../uploaded_img/agency<?= h($agency_information->id); ?>.png" alt="" class="right-img">
-                            </div>
-                            <div class="checked-paragraph">
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th scope="col"></th>
+                            <th scope="col"></th>
+                            <th scope="col">エージェンシー</th>
+                            <th scope="col">得意業界</th>
+                            <th scope="col">ES添削</th>
+                            <th scope="col">面接対策</th>
+                            <th scope="col">即日連絡</th>
+                            <th scope="col">担当者変更</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    <?php foreach ($agency_informations as $agency_information) : ?>
+                        <tr id="comparison_agency<?= h($agency_information->id); ?>" class="display-none">
+                            <td>
+                                <button type="button" class="btn btn-success" id="comparisonDelete<?= h($agency_information->id); ?>">削除</button>
+                            </td>
+                            <!-- <td>
+                                <img id="comparisonDelete<?= h($agency_information->id); ?>" src="../img/checked.png" alt="">
+                            </td> -->
+                            <td>
                                 <?= h($agency_information->agency_name); ?>
+                            </td>
+                            <th scope="row">
+                                <a href="./company.html">
+                                    <img src="../uploaded_img/agency<?= h($agency_information->id); ?>.png" alt="" class="center-img">
+                                </a>
+                            </th>
+                            <td><?= h($agency_information->catch_copy); ?></td>
+                            <td>○</td>
+                            <td>✕</td>
+                            <td>◯</td>
+                            <td>✕</td>
+                        </tr>
+                        <a href="./company.html" class="text-decoration-none display-none" id="rightContent<?= h($agency_information->id); ?>">
+                            <div class="d-flex checked-content m-5 p-3">
+                                <div class="me-2">
+                                    <img src="../uploaded_img/agency<?= h($agency_information->id); ?>.png" alt="" class="right-img">
+                                </div>
+                                <div class="checked-paragraph">
+                                    <?= h($agency_information->agency_name); ?>
+                                </div>
                             </div>
-                        </div>
-                    </a>
-                <?php endforeach; ?>
-                </tbody>
-            </table>
+                        </a>
+                    <?php endforeach; ?>
+                    </tbody>
+                </table>
+            </div>
         </div>
         <div class="text-center">
             <a href="#navbarNavDropdown">
