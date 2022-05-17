@@ -134,6 +134,9 @@ main{
 .compare{
     margin: auto;
 }
+.unclick{
+    pointer-events: none;
+}
 @media screen and (max-width:480px){
     header{
         height: 50px;
