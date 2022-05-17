@@ -106,8 +106,7 @@ function add_agency_information($pdo)
         $features[] = 5;
     }
 
-    $feature_id = implode("-", $features);
-    echo $feature_id;
+ 
 
 
 
@@ -125,10 +124,7 @@ function add_agency_information($pdo)
         contract_numbers,
         bases_numbers,
         support,
-        place,
-        industry_id,
-        major_id,
-        feature_id
+        place
         ) VALUES(
         :agency_name,
         :catch_copy,
@@ -140,10 +136,7 @@ function add_agency_information($pdo)
         :contract_numbers,
         :bases_numbers,
         :support,
-        :place,
-        :industry_id,
-        :major_id,
-        :feature_id
+        :place
     )');
 
     $stmt->bindValue(':agency_name', $agency_name);
@@ -157,13 +150,64 @@ function add_agency_information($pdo)
     $stmt->bindValue(':bases_numbers', $bases_numbers);
     $stmt->bindValue(':support', $support);
     $stmt->bindValue(':place', $place);
-    $stmt->bindValue(':industry_id', $industry_id);
-    $stmt->bindValue(':major_id', $major_id);
-    $stmt->bindValue(':feature_id', $feature_id);
+
 
     // echo $stmt;
 
     $stmt->execute();
+
+
+
+    $id = $pdo -> lastInsertId();
+    // printf($id);
+    
+    foreach($industrys as $industry){
+        $stmt = $pdo->prepare('INSERT INTO agency_industry(
+            agency_id,
+            industry_id
+            ) VALUES(
+            :id,
+            :industry_id
+    
+        )');
+        $stmt->bindValue(':id', $id);
+        $stmt->bindValue(':industry_id', $industry);
+        $stmt->execute();
+        
+
+    }
+    foreach($majors as $major){
+        $stmt = $pdo->prepare('INSERT INTO agency_major(
+            agency_id,
+            major_id
+            ) VALUES(
+            :id,
+            :major_id
+    
+        )');
+        $stmt->bindValue(':id', $id);
+        $stmt->bindValue(':major_id', $major);
+        $stmt->execute();
+
+    }   
+        
+    foreach($features as $feature){
+        $stmt = $pdo->prepare('INSERT INTO agency_feature(
+            agency_id,
+            feature_id
+            ) VALUES(
+            :id,
+            :feature_id
+    
+        )');
+        $stmt->bindValue(':id', $id);
+        $stmt->bindValue(':feature_id', $feature);
+        $stmt->execute();
+        
+
+    }
+
+
 
     $stmt = $pdo->query("SELECT MAX(id) FROM agency_information");
     $now_id = $stmt->fetch(PDO::FETCH_ASSOC);

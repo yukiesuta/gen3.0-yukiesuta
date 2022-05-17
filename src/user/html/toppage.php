@@ -11,12 +11,25 @@ $industry_conditions = get_industry_conditions($pdo);
 $major_conditions = get_major_conditions($pdo);
 $feature_conditions = get_feature_conditions($pdo);
 
-if (isset($_POST["sort_change"])) {
-    // セレクトボックスで選択された値を受け取る
-    $sort_change = $_POST["sort_change"];
-    // 受け取った値を画面に出力
-    echo $sort_change;
-}
+// if (isset($_POST["sort_change"])) {
+//     // セレクトボックスで選択された値を受け取る
+//     $sort_change = $_POST["sort_change"];
+//     // 受け取った値を画面に出力
+//     echo $sort_change;
+// }
+
+
+$stmt = $pdo->query("SELECT * FROM agency_information 
+JOIN agency_industry AS itt ON  agency_information.id = itt.agency_id
+JOIN industry_condition ON itt.industry_id = industry_condition.id
+JOIN agency_major AS ittt ON  agency_information.id = ittt.agency_id
+JOIN major_condition ON ittt.major_id = major_condition.id
+JOIN agency_feature AS itti ON  agency_information.id = itti.agency_id
+JOIN feature_condition ON itti.feature_id = feature_condition.id
+WHERE industry_condition.id IN (2)  AND major_condition.id IN (1) AND feature_condition.id IN (1) 
+GROUP BY agency_information.id");
+
+$agency_informations = $stmt->fetchAll();
 
 ?>
 
