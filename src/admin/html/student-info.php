@@ -10,7 +10,7 @@ $student_informations = get_student_informations($pdo);
 
 $stmt = $db->query("SELECT * FROM agency_information WHERE agency_id = $agency_id" );
 $result = $stmt->fetch();
-// エージェンシいidが一致するもののみ回収
+// エージェンシいidが一致するもののみ回収したいけどテーブルがわからないから放置
 print_r($result);
 
 ?>
