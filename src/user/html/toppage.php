@@ -232,7 +232,7 @@ if (isset($_POST["sort_change"])) {
     </main>
     <main class="w-100">
         <div class="text-center p-5 ms-5 me-5 compare" id="applySection">
-            <div class="mt-3 mb-5 ms-5 me-5 compare-title ">
+            <div class="mt-3 mb-5 ms-5 me-5 title ">
                 比較リスト
             </div>
             <div class="table-responsive">
@@ -324,9 +324,9 @@ if (isset($_POST["sort_change"])) {
                     </div>
                 </div>
                 <div class="submit">
-                    <button type="button" class="btn btn-success mt-5">
-                        <input type="submit" value="確認画面へ">
-                    </button>
+                        <button type="submit" value="確認画面へ" class="btn btn-success mt-5">
+                            申し込み
+                        </button>
                 </div>
             </form>
         </div>
