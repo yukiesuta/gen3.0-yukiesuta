@@ -95,11 +95,42 @@ CREATE TABLE agency_information (
   bases_numbers VARCHAR(255) NOT NULL,
   support VARCHAR(255) NOT NULL,
   place VARCHAR(255) NOT NULL,
-  industry_id VARCHAR(255),
-  major_id VARCHAR(255),
-  feature_id VARCHAR(255),
   created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
   updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+
+
+DROP TABLE IF EXISTS agency_industry;
+
+CREATE TABLE agency_industry (
+
+agency_id INT NOT NULL,
+industry_id INT NOT NULL
+
+);
+
+
+
+
+DROP TABLE IF EXISTS agency_major;
+
+CREATE TABLE agency_major (
+
+agency_id INT NOT NULL,
+major_id INT NOT NULL
+
+);
+
+
+
+
+DROP TABLE IF EXISTS agency_feature;
+
+CREATE TABLE agency_feature (
+
+agency_id INT NOT NULL,
+feature_id INT NOT NULL
+
 );
 
 
