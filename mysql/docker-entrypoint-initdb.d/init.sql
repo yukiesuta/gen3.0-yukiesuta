@@ -37,7 +37,14 @@ SET
   agency_id = 1,
   email = 'agency1@posse-ap.com',
   password = sha1('pass');
+INSERT INTO
+  agency_users
+SET
+  agency_id = 2,
+  email = 'agency2@posse-ap.com',
+  password = sha1('pas');
 
+  
 DROP TABLE IF EXISTS events;
 
 CREATE TABLE events (

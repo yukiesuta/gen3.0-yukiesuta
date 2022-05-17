@@ -279,7 +279,7 @@ function get_agency_informations($pdo)
 
 function get_student_informations($pdo)
 {
-    $stmt = $pdo->query("SELECT * FROM agency_information");
+    $stmt = $pdo->query("SELECT * FROM ？？？？？？？？？？");
     $agency_informations = $stmt->fetchAll();
     return $agency_informations;
 }
