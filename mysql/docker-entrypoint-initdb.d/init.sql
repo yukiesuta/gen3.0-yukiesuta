@@ -20,6 +20,24 @@ SET
   email = 'test@posse-ap.com',
   password = sha1('password');
 
+DROP TABLE IF EXISTS agency_users;
+
+CREATE TABLE agency_users (
+  id INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
+  agency_id INT NOT NULL,
+  email VARCHAR(255) UNIQUE NOT NULL,
+  password VARCHAR(255) NOT NULL,
+  created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+  updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+
+INSERT INTO
+  agency_users
+SET
+  agency_id = 1,
+  email = 'agency1@posse-ap.com',
+  password = sha1('pass');
+
 DROP TABLE IF EXISTS events;
 
 CREATE TABLE events (

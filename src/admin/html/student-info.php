@@ -1,3 +1,19 @@
+<?php
+require_once(__DIR__  . '/../../dbconnect.php');
+require_once(__DIR__  . '/../app/config.php');
+
+$pdo = getPdoInstance();
+$agency_id = $_GET["agency_id"];
+
+echo $agency_id;
+$student_informations = get_student_informations($pdo);
+
+$stmt = $db->query("SELECT * FROM agency_information WHERE agency_id = $agency_id" );
+$result = $stmt->fetch();
+// エージェンシいidが一致するもののみ回収
+print_r($result);
+
+?>
 <!DOCTYPE html>
 <html lang="ja">
 
@@ -78,11 +94,6 @@
                                 echo '<td>' . $rec['address'] . '</td>';
                                 echo '</tr>';
                             }
-                            // echo '</table>' . "\n";
-                            // echo '<ul>' . "\n";
-                            // echo '<li><a href="menu.html">メニューに戻る</a></li>' . "\n";
-                            // echo '</ul>' . "\n";
-
                             $db = null;
                             ?>
                         </tbody>

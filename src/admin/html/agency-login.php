@@ -3,7 +3,7 @@ session_start();
 require('../app/dbconnect.php');
 
 if (!empty($_POST)) {
-  $login = $db->prepare('SELECT * FROM users WHERE email=? AND password=?');
+  $login = $db->prepare('SELECT * FROM agency_users WHERE email=? AND password=?');
   $login->execute(array(
     $_POST['email'],
     sha1($_POST['password'])
@@ -14,12 +14,14 @@ if (!empty($_POST)) {
     $_SESSION = array();
     $_SESSION['user_id'] = $user['id'];
     $_SESSION['time'] = time();
-    header('Location: http://' . $_SERVER['HTTP_HOST'] . '/admin/html/boozer-agency.php');
+    header('Location: http://' . $_SERVER['HTTP_HOST'] . '/admin/html/student-info.php?agency_id=' . $user['agency_id'] . '');
     exit();
   } else {
     $error = 'fail';
   }
 }
+
+
 ?>
 <!DOCTYPE html>
 <html lang="ja">
@@ -48,7 +50,7 @@ if (!empty($_POST)) {
          echo "メールアドレスまたはパスワードが正しくありません。";
         }
       } ?>
-      <form action="/admin/html/login.php" method="POST">
+      <form action="/admin/html/agency-login.php" method="POST">
         <div class="form-group">
           <label for="exampleInputEmail1">User name</label>
           <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter User name" name="email" required>
