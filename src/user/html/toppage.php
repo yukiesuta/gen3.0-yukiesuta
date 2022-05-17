@@ -293,8 +293,8 @@ if (isset($_POST["sort_change"])) {
             </a>
         </div>
         <div>
-            <form class="text-center p-5 ms-5 me-5 compare" action="check.php" method="post" id="inquiry">
-                <div class=" mb-3 ms-5 me-5 text-center title">
+            <form class="text-center compare" action="check.php" method="post" id="inquiry">
+                <div class=" mb-3 ms-5 me-5 mt-5 text-center title">
                     申し込みフォーム
                 </div>
                 <div>
@@ -320,11 +320,13 @@ if (isset($_POST["sort_change"])) {
                     </div>
                     <div class="form-group w-50 mt-3">
                         <label for="exampleInputEmail1">メールアドレス</label>
-                        <input type="text" name="email" size="30" id="email" class="text2" placeholder="例）xxx@example.com">
+                        <input type="text" name="email" id="email" class="text2 form-control" placeholder="xxx@example.com">
                     </div>
                 </div>
                 <div class="submit">
-                    <input type="submit" value="確認画面へ">
+                    <button type="button" class="btn btn-success mt-5">
+                        <input type="submit" value="確認画面へ">
+                    </button>
                 </div>
             </form>
         </div>
