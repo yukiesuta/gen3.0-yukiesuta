@@ -55,121 +55,123 @@ require_once(__DIR__  . '/../app/config.php');
             <div class="mt-3 mb-5 ms-5 me-5 title ">
                 比較リスト
             </div>
-            <table class="table table-bordered">
-                <thead>
-                    <tr>
-                        <th scope="col"></th>
-                        <th scope="col">エージェンシー</th>
-                        <th scope="col">得意業界</th>
-                        <th scope="col">ES添削</th>
-                        <th scope="col">面接対策</th>
-                        <th scope="col">即日連絡</th>
-                        <th scope="col">担当者変更</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
-                                <label class="form-check-label" for="flexCheckChecked">
-                                    申し込む
-                                </label>
-                            </div>
-                        </td>
-                        <th scope=" row">
-                            <a href="./company.html">
-                                <img src="../img/posseLogo.png" alt="">
-                            </a>
-                        </th>
-                        <td>コンサル</td>
-                        <td>◯</td>
-                        <td>✕</td>
-                        <td>◯</td>
-                        <td>✕</td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
-                                <label class="form-check-label" for="flexCheckChecked">
-                                    申し込む
-                                </label>
-                            </div>
-                        </td>
-                        <th scope=" row">
-                            <a href="./company.html">
-                                <img src="../img/posseLogo.png" alt="">
-                            </a>
-                        </th>
-                        <td>商社</td>
-                        <td>✕</td>
-                        <td>◯</td>
-                        <td>✕</td>
-                        <td>◯</td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
-                                <label class="form-check-label" for="flexCheckChecked">
-                                    申し込む
-                                </label>
-                            </div>
-                        </td>
-                        <th scope="row">
-                            <a href="./company.html">
-                                <img src="../img/posseLogo.png" alt="">
-                            </a>
-                        </th>
-                        <td>サービス</td>
-                        <td>◯</td>
-                        <td>✕</td>
-                        <td>✕</td>
-                        <td>◯</td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
-                                <label class="form-check-label" for="flexCheckChecked">
-                                    申し込む
-                                </label>
-                            </div>
-                        </td>
-                        <th scope=" row">
-                            <a href="./company.html">
-                                <img src="../img/posseLogo.png" alt="">
-                            </a>
-                        </th>
-                        <td>インフラ</td>
-                        <td>✕</td>
-                        <td>✕</td>
-                        <td>◯</td>
-                        <td>◯</td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
-                                <label class="form-check-label" for="flexCheckChecked">
-                                    申し込む
-                                </label>
-                            </div>
-                        </td>
-                        <th scope="row">
-                            <a href="./company.html">
-                                <img src="../img/posseLogo.png" alt="">
-                            </a>
-                        </th>
-                        <td>IT</td>
-                        <td>◯</td>
-                        <td>✕</td>
-                        <td>✕</td>
-                        <td>◯</td>
-                    </tr>
-                </tbody>
-            </table>
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th scope="col"></th>
+                            <th scope="col">エージェンシー</th>
+                            <th scope="col">得意業界</th>
+                            <th scope="col">ES添削</th>
+                            <th scope="col">面接対策</th>
+                            <th scope="col">即日連絡</th>
+                            <th scope="col">担当者変更</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
+                                    <label class="form-check-label" for="flexCheckChecked">
+                                        申し込む
+                                    </label>
+                                </div>
+                            </td>
+                            <th scope=" row">
+                                <a href="./company.html">
+                                    <img src="../img/posseLogo.png" alt="">
+                                </a>
+                            </th>
+                            <td>コンサル</td>
+                            <td>◯</td>
+                            <td>✕</td>
+                            <td>◯</td>
+                            <td>✕</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
+                                    <label class="form-check-label" for="flexCheckChecked">
+                                        申し込む
+                                    </label>
+                                </div>
+                            </td>
+                            <th scope=" row">
+                                <a href="./company.html">
+                                    <img src="../img/posseLogo.png" alt="">
+                                </a>
+                            </th>
+                            <td>商社</td>
+                            <td>✕</td>
+                            <td>◯</td>
+                            <td>✕</td>
+                            <td>◯</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
+                                    <label class="form-check-label" for="flexCheckChecked">
+                                        申し込む
+                                    </label>
+                                </div>
+                            </td>
+                            <th scope="row">
+                                <a href="./company.html">
+                                    <img src="../img/posseLogo.png" alt="">
+                                </a>
+                            </th>
+                            <td>サービス</td>
+                            <td>◯</td>
+                            <td>✕</td>
+                            <td>✕</td>
+                            <td>◯</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
+                                    <label class="form-check-label" for="flexCheckChecked">
+                                        申し込む
+                                    </label>
+                                </div>
+                            </td>
+                            <th scope=" row">
+                                <a href="./company.html">
+                                    <img src="../img/posseLogo.png" alt="">
+                                </a>
+                            </th>
+                            <td>インフラ</td>
+                            <td>✕</td>
+                            <td>✕</td>
+                            <td>◯</td>
+                            <td>◯</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
+                                    <label class="form-check-label" for="flexCheckChecked">
+                                        申し込む
+                                    </label>
+                                </div>
+                            </td>
+                            <th scope="row">
+                                <a href="./company.html">
+                                    <img src="../img/posseLogo.png" alt="">
+                                </a>
+                            </th>
+                            <td>IT</td>
+                            <td>◯</td>
+                            <td>✕</td>
+                            <td>✕</td>
+                            <td>◯</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
         <div class="text-center">
             <a href="./toppage.php">

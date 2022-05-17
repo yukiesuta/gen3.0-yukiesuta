@@ -96,6 +96,44 @@ main{
 .button{
     display: none;
 }
+.title{
+    font-size: 1.5rem;
+    /* border: 1px solid #80cbc4; */
+    background-color: #80cbc4;
+    color: white;
+}
+.table img{
+    width: 150px;
+    height: 150px;
+    object-fit: contain;
+}
+
+.table th{
+    color: #626262;
+}
+.table td{
+    color: #626262;
+    vertical-align: middle;
+}
+.form-group{
+    margin: auto;
+}
+.form-check{
+    margin: auto;
+}
+.privacy-policy{
+    text-decoration: none;
+}
+.table{
+    margin: auto;
+}
+.submit-button{
+    border: none;
+    color: white;
+}
+.compare{
+    margin: auto;
+}
 @media screen and (max-width:480px){
     header{
         height: 50px;
@@ -117,5 +155,22 @@ main{
     }
     .navbar-brand{
         display: block;
+    }
+    .center-img{
+        width: 100px;
+        height: 100px;
+    }
+    .main-right-content{
+        display: none;
+    }
+    .compare-title{
+        font-size: 1rem;
+    }
+    .table{
+        width: 700px;
+    }
+    .table img{
+        width: 100px;
+        height: 100px;
     }
 }
