@@ -323,8 +323,8 @@ if (isset($_POST["sort_change"])) {
                         <input type="text" name="email" id="email" class="text2 form-control" placeholder="xxx@example.com">
                     </div>
                 </div>
-                <div class="submit">
-                        <button type="submit" value="確認画面へ" class="btn btn-success mt-5">
+                <div class="submit" id="submit-button">
+                        <button type="submit" value="確認画面へ" id="form-button" class="btn btn-success mt-5 unclick">
                             申し込み
                         </button>
                 </div>
