@@ -80,47 +80,75 @@ INSERT INTO feature_condition SET feature = 'わーー';
 INSERT INTO feature_condition SET feature = 'ウーー';
 
 
+DROP TABLE IF EXISTS features;
+
+CREATE TABLE features (
+  id INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
+  feature VARCHAR(255) NOT NULL
+);
+
+INSERT INTO features SET feature = 'コンサル';
+INSERT INTO features SET feature = 'エンジニア';
+INSERT INTO features SET feature = 'メーカー';
+INSERT INTO features SET feature = '金融';
+INSERT INTO features SET feature = '商社';
+INSERT INTO features SET feature = 'ベンチャー';
+INSERT INTO features SET feature = 'サービス';
+INSERT INTO features SET feature = 'インフラ';
+INSERT INTO features SET feature = '理系';
+INSERT INTO features SET feature = '文系';
+INSERT INTO features SET feature = 'ES添削あり';
+INSERT INTO features SET feature = '面接対策あり';
+INSERT INTO features SET feature = '即日連絡';
+INSERT INTO features SET feature = 'オンライン可能';
+INSERT INTO features SET feature = '担当者変更可能';
+INSERT INTO features SET feature = 'ウェイよー';
+INSERT INTO features SET feature = 'わーー';
+INSERT INTO features SET feature = 'ウーー';
+
+
+
+
 DROP TABLE IF EXISTS agency_information;
 
 CREATE TABLE agency_information (
-  id INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
-  agency_name VARCHAR(255) NOT NULL,
-  catch_copy VARCHAR(255) NOT NULL,
-  detail VARCHAR(255) NOT NULL,
-  mail_address VARCHAR(255) NOT NULL,
-  phone_number VARCHAR(255) NOT NULL,
-  img BLOB NOT NULL,
-  achievements VARCHAR(255) NOT NULL,
-  contract_numbers VARCHAR(255) NOT NULL,
-  bases_numbers VARCHAR(255) NOT NULL,
-  support VARCHAR(255) NOT NULL,
-  place VARCHAR(255) NOT NULL,
-  created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
-  updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+id INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
+agency_name VARCHAR(255) NOT NULL,
+catch_copy VARCHAR(255) NOT NULL,
+detail VARCHAR(255) NOT NULL,
+mail_address VARCHAR(255) NOT NULL,
+phone_number VARCHAR(255) NOT NULL,
+img BLOB NOT NULL,
+achievements VARCHAR(255) NOT NULL,
+contract_numbers VARCHAR(255) NOT NULL,
+bases_numbers VARCHAR(255) NOT NULL,
+support VARCHAR(255) NOT NULL,
+place VARCHAR(255) NOT NULL,
+created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
 
 
-DROP TABLE IF EXISTS agency_industry;
+-- DROP TABLE IF EXISTS agency_industry;
 
-CREATE TABLE agency_industry (
+-- CREATE TABLE agency_industry (
 
-agency_id INT NOT NULL,
-industry_id INT NOT NULL
+-- agency_id INT NOT NULL,
+-- industry_id INT NOT NULL
 
-);
-
-
+-- );
 
 
-DROP TABLE IF EXISTS agency_major;
 
-CREATE TABLE agency_major (
 
-agency_id INT NOT NULL,
-major_id INT NOT NULL
+-- DROP TABLE IF EXISTS agency_major;
 
-);
+-- CREATE TABLE agency_major (
 
+-- agency_id INT NOT NULL,
+-- major_id INT NOT NULL
+
+-- );
 
 
 
@@ -132,6 +160,10 @@ agency_id INT NOT NULL,
 feature_id INT NOT NULL
 
 );
+
+
+
+
 
 
 DROP TABLE IF EXISTS inquiry;
