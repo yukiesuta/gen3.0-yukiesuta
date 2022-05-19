@@ -14,7 +14,7 @@ if (!empty($_POST)) {
     $_SESSION = array();
     $_SESSION['user_id'] = $user['id'];
     $_SESSION['time'] = time();
-    header('Location: http://' . $_SERVER['HTTP_HOST'] . '/admin/html/student-info.php?agency_id=' . $user['agency_id'] . '');
+    header('Location: http://' . $_SERVER['HTTP_HOST'] . '/admin/html/agency.php?agency_id=' . $user['agency_id'] . '');
     exit();
   } else {
     $error = 'fail';
@@ -32,7 +32,7 @@ if (!empty($_POST)) {
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="../css/normalize.css">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-  <link rel="stylesheet" href="../css/login.css">
+  <link rel="stylesheet" href="../css/agency-login.css">
   <title>ログイン</title>
 </head>
 
@@ -47,7 +47,7 @@ if (!empty($_POST)) {
       <? if (!empty($_POST)) {
         
         if (!$user) {
-        echo "メールアドレスまたはパスワードが正しくありません。";
+         echo "メールアドレスまたはパスワードが正しくありません。";
         }
       } ?>
       <form action="/admin/html/agency-login.php" method="POST">
