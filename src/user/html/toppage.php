@@ -1,6 +1,6 @@
 <?php
 
-// echo 'わーーーひらけたーー';
+
 
 require_once(__DIR__  . '/../app/config.php');
 
@@ -11,24 +11,55 @@ $industry_conditions = get_industry_conditions($pdo);
 $major_conditions = get_major_conditions($pdo);
 $feature_conditions = get_feature_conditions($pdo);
 
-// if (isset($_POST["sort_change"])) {
-//     // セレクトボックスで選択された値を受け取る
-//     $sort_change = $_POST["sort_change"];
-//     // 受け取った値を画面に出力
-//     echo $sort_change;
-// }
-// print_r($agency_informations);
-// $stmt = $pdo->query("SELECT * FROM agency_information 
+
+
+print_r($agency_informations);
+$ids = [1,2];
+// $ids1 = [1];
+// $ids2 = [1];
+
+// IN 句に入る値を作成
+$inClause = substr(str_repeat(',?', count($ids)), 1);
+// $inClause1 = substr(str_repeat(',?', count($ids1)), 1);
+// $inClause2= substr(str_repeat(',?', count($ids2)), 1);
+
+
+// $stmt = $pdo->prepare("SELECT * FROM agency_information 
 // JOIN agency_industry AS itt ON  agency_information.id = itt.agency_id
 // JOIN industry_condition ON itt.industry_id = industry_condition.id
 // JOIN agency_major AS ittt ON  agency_information.id = ittt.agency_id
 // JOIN major_condition ON ittt.major_id = major_condition.id
 // JOIN agency_feature AS itti ON  agency_information.id = itti.agency_id
 // JOIN feature_condition ON itti.feature_id = feature_condition.id
-// WHERE industry_condition.id IN (2)  AND major_condition.id IN (1) AND feature_condition.id IN (1) 
-// GROUP BY agency_information.id");
+// WHERE industry_condition.id IN ({$inClause})  AND major_condition.id IN (1) AND feature_condition.id IN (1) 
+// -- GROUP BY agency_information.id
+// ");
+$stmt = $pdo->prepare("SELECT * FROM agency_information 
+JOIN agency_feature AS itt ON  agency_information.id = itt.agency_id
+JOIN features ON itt.feature_id = features.id
+WHERE features.id IN ({$inClause})
+-- GROUP BY agency_information.agency_name
+");
 
-// $agency_informations = $stmt->fetchAll();
+$stmt->execute($ids);
+
+$agency_informations = $stmt->fetchAll();
+// print_r($agency_informations);
+
+
+$tmp = [];
+$uniqueStations = [];
+
+foreach ($agency_informations as $station){
+    if (!in_array($station ->agency_name, $tmp)) {
+        $tmp[] = $station ->agency_name;
+        $uniqueStations[] = $station;
+    }
+}
+
+print_r($uniqueStations);
+
+
 
 ?>
 
@@ -196,7 +227,7 @@ $feature_conditions = get_feature_conditions($pdo);
                         <input type="submit"name="submit"value="並べ替える"/>
                     </form>
                 </div> -->
-                <?php foreach ($agency_informations as $agency_information) : ?>
+                <?php foreach ( $uniqueStations as $agency_information) : ?>
                     <div class="mt-4 ms-5 me-5 mb-5 p-3 company-content-wrapper">
                         <div class="d-flex company-content">
                             <a href="company.php?id=<?= h($agency_information->id); ?>">

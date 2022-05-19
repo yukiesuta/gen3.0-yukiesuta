@@ -71,39 +71,33 @@ function add_agency_information($pdo)
         $industrys[] = 7;
         print_r($industrys);
     }
-    $industry_id = implode("-", $industrys);
 
-    echo $industry_id;
 
 
 
 
     if (isset($_POST['major1'])) {
-        $majors[] = 1;
+        $industrys[] = 8;
     }
     if (isset($_POST['major2'])) {
-        $majors[] = 2;
+        $industrys[] = 9;
     }
-    $major_id = implode("-", $majors);
-
-    echo $major_id;
-
 
 
     if (isset($_POST['feature1'])) {
-        $features[] = 1;
+        $industrys[] = 10;
     }
     if (isset($_POST['feature2'])) {
-        $features[] = 2;
+        $industrys[] = 11;
     }
     if (isset($_POST['feature3'])) {
-        $features[] = 3;
+        $industrys[] = 12;
     }
     if (isset($_POST['feature4'])) {
-        $features[] = 4;
+        $features[] = 13;
     }
     if (isset($_POST['feature5'])) {
-        $features[] = 5;
+        $industrys[] = 14;
     }
 
  
@@ -162,36 +156,6 @@ function add_agency_information($pdo)
     // printf($id);
     
     foreach($industrys as $industry){
-        $stmt = $pdo->prepare('INSERT INTO agency_industry(
-            agency_id,
-            industry_id
-            ) VALUES(
-            :id,
-            :industry_id
-    
-        )');
-        $stmt->bindValue(':id', $id);
-        $stmt->bindValue(':industry_id', $industry);
-        $stmt->execute();
-        
-
-    }
-    foreach($majors as $major){
-        $stmt = $pdo->prepare('INSERT INTO agency_major(
-            agency_id,
-            major_id
-            ) VALUES(
-            :id,
-            :major_id
-    
-        )');
-        $stmt->bindValue(':id', $id);
-        $stmt->bindValue(':major_id', $major);
-        $stmt->execute();
-
-    }   
-        
-    foreach($features as $feature){
         $stmt = $pdo->prepare('INSERT INTO agency_feature(
             agency_id,
             feature_id
@@ -201,11 +165,41 @@ function add_agency_information($pdo)
     
         )');
         $stmt->bindValue(':id', $id);
-        $stmt->bindValue(':feature_id', $feature);
+        $stmt->bindValue(':feature_id', $industry);
         $stmt->execute();
         
 
     }
+    // foreach($majors as $major){
+    //     $stmt = $pdo->prepare('INSERT INTO agency_major(
+    //         agency_id,
+    //         major_id
+    //         ) VALUES(
+    //         :id,
+    //         :major_id
+    
+    //     )');
+    //     $stmt->bindValue(':id', $id);
+    //     $stmt->bindValue(':major_id', $major);
+    //     $stmt->execute();
+
+    // }   
+        
+    // foreach($features as $feature){
+    //     $stmt = $pdo->prepare('INSERT INTO agency_feature(
+    //         agency_id,
+    //         feature_id
+    //         ) VALUES(
+    //         :id,
+    //         :feature_id
+    
+    //     )');
+    //     $stmt->bindValue(':id', $id);
+    //     $stmt->bindValue(':feature_id', $feature);
+    //     $stmt->execute();
+        
+
+    // }
 
 
 
