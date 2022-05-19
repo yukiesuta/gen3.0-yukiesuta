@@ -33,6 +33,19 @@ $birthday = $_POST['birthday'];
 $university = $_POST['university'];
 
 
+$agencys = array();
+
+for($i = 1; $i < 100; $i++){
+	if (isset($_POST['agency' .$i.''])) {
+		// phoneになってる
+		$sql = 'INSERT INTO inquiry_agency(phone,agency_id)VALUES("'.$phone.'","'.$i.'")';
+		$stmt = $db -> prepare($sql);
+		$stmt -> execute();
+	}
+  }
+
+
+
 $name = htmlspecialchars($name);
 $email = htmlspecialchars($email);
 $birthday = htmlspecialchars($birthday);

@@ -20,6 +20,31 @@ SET
   email = 'test@posse-ap.com',
   password = sha1('password');
 
+DROP TABLE IF EXISTS agency_users;
+
+CREATE TABLE agency_users (
+  id INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
+  agency_id INT NOT NULL,
+  email VARCHAR(255) UNIQUE NOT NULL,
+  password VARCHAR(255) NOT NULL,
+  created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+  updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+
+INSERT INTO
+  agency_users
+SET
+  agency_id = 1,
+  email = 'agency1@posse-ap.com',
+  password = sha1('pass');
+INSERT INTO
+  agency_users
+SET
+  agency_id = 2,
+  email = 'agency2@posse-ap.com',
+  password = sha1('pas');
+
+
 DROP TABLE IF EXISTS events;
 
 CREATE TABLE events (
@@ -169,10 +194,19 @@ feature_id INT NOT NULL
 DROP TABLE IF EXISTS inquiry;
 
 CREATE TABLE inquiry (
+  id INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
   name VARCHAR(255)  NOT NULL,
   birthday INT  NOT NULL,
   university VARCHAR(255)  NOT NULL,
-  phone INT  NOT NULL,
+  phone VARCHAR(255)  NOT NULL,
   address VARCHAR(255)  NOT NULL,
   email VARCHAR(255)  NOT NULL
+);
+
+
+DROP TABLE IF EXISTS inquiry_agency;
+
+CREATE TABLE inquiry_agency (
+  phone VARCHAR(255)  NOT NULL,
+  agency_id INT  NOT NULL
 );
