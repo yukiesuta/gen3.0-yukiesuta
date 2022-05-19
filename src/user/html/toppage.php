@@ -11,22 +11,11 @@ $industry_conditions = get_industry_conditions($pdo);
 $major_conditions = get_major_conditions($pdo);
 $feature_conditions = get_feature_conditions($pdo);
 
-
-
-
-
-
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $shibori=agency_information($pdo);
-    // print_r($a);
 
 }
-// include("../app/user-functions.php");
-
-// print_r($result);
-
 $ids = [$shibori];
-// print_r(($ids));
 
 
 // IN 句に入る値を作成
@@ -42,8 +31,6 @@ $stmt->execute($ids);
 
 $agency_informations = $stmt->fetchAll();
 
-
-
 $tmp = [];
 $uniqueStations = [];
 
@@ -53,11 +40,6 @@ foreach ($agency_informations as $station){
         $uniqueStations[] = $station;
     }
 }
-
-// print_r($uniqueStations);
-
-
-
 ?>
 
 <!DOCTYPE html>
