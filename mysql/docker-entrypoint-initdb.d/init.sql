@@ -85,8 +85,8 @@ CREATE TABLE major_condition(
   id INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
   major VARCHAR(255) NOT NULL
 );
-INSERT INTO major_condition SET major = '理系';
 INSERT INTO major_condition SET major = '文系';
+INSERT INTO major_condition SET major = '理系';
 
 
   DROP TABLE IF EXISTS feature_condition;

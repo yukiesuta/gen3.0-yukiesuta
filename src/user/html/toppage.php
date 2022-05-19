@@ -13,38 +13,35 @@ $feature_conditions = get_feature_conditions($pdo);
 
 
 
-print_r($agency_informations);
-$ids = [1,2];
-// $ids1 = [1];
-// $ids2 = [1];
+
+
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $shibori=agency_information($pdo);
+    // print_r($a);
+
+}
+// include("../app/user-functions.php");
+
+// print_r($result);
+
+$ids = [$shibori];
+// print_r(($ids));
+
 
 // IN 句に入る値を作成
 $inClause = substr(str_repeat(',?', count($ids)), 1);
-// $inClause1 = substr(str_repeat(',?', count($ids1)), 1);
-// $inClause2= substr(str_repeat(',?', count($ids2)), 1);
 
-
-// $stmt = $pdo->prepare("SELECT * FROM agency_information 
-// JOIN agency_industry AS itt ON  agency_information.id = itt.agency_id
-// JOIN industry_condition ON itt.industry_id = industry_condition.id
-// JOIN agency_major AS ittt ON  agency_information.id = ittt.agency_id
-// JOIN major_condition ON ittt.major_id = major_condition.id
-// JOIN agency_feature AS itti ON  agency_information.id = itti.agency_id
-// JOIN feature_condition ON itti.feature_id = feature_condition.id
-// WHERE industry_condition.id IN ({$inClause})  AND major_condition.id IN (1) AND feature_condition.id IN (1) 
-// -- GROUP BY agency_information.id
-// ");
 $stmt = $pdo->prepare("SELECT * FROM agency_information 
 JOIN agency_feature AS itt ON  agency_information.id = itt.agency_id
 JOIN features ON itt.feature_id = features.id
 WHERE features.id IN ({$inClause})
--- GROUP BY agency_information.agency_name
 ");
 
 $stmt->execute($ids);
 
 $agency_informations = $stmt->fetchAll();
-// print_r($agency_informations);
+
 
 
 $tmp = [];
@@ -57,7 +54,7 @@ foreach ($agency_informations as $station){
     }
 }
 
-print_r($uniqueStations);
+// print_r($uniqueStations);
 
 
 
@@ -131,14 +128,14 @@ print_r($uniqueStations);
                     <div class="modal-header">
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
-                    <div id="modal-content">
+                    <from id="modal-content" method="post" >
                         <div class="modal-body row">
                             <div class="mobile-top-content">
                                 <div class="mt-4 search ms-2 p-2">
                                     <div class="search-title text-center">業種</div>
                                     <?php foreach ($industry_conditions as $industry_condition) : ?>
                                         <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value="" id="ph_industry_flexCheckDefault<?= h($industry_condition->id); ?>">
+                                            <input class="form-check-input" type="checkbox" name="industry<?= h($industry_condition->id); ?>" value="" id="ph_industry_flexCheckDefault<?= h($industry_condition->id); ?>">
                                             <label class="form-check-label" for="flexCheckDefault">
                                                 <?= h($industry_condition->industry); ?>
                                             </label>
@@ -149,7 +146,7 @@ print_r($uniqueStations);
                                     <div class="search-title text-center">文理</div>
                                     <?php foreach ($major_conditions as $major_condition) : ?>
                                         <div class="form-check mt-1">
-                                            <input class="form-check-input" type="checkbox" value="" id="ph_major_flexCheckDefault <?= h($major_condition->id); ?>">
+                                            <input class="form-check-input" type="checkbox" name="major<?= h($major_condition->id); ?>" value="" id="ph_major_flexCheckDefault <?= h($major_condition->id); ?>">
                                             <label class="form-check-label" for="flexCheckDefault">
                                                 <?= h($major_condition->major); ?>
                                             </label>
@@ -160,7 +157,7 @@ print_r($uniqueStations);
                                     <div class="search-title text-center">特徴</div>
                                     <?php foreach ($feature_conditions as $feature_condition) : ?>
                                         <div class="form-check mt-1">
-                                            <input class="form-check-input" type="checkbox" value="" id="ph_feature_flexCheckDefault<?= h($feature_condition->id); ?>">
+                                            <input class="form-check-input" type="checkbox" name="feature<?= h($feature_condition->id); ?>"   value="" id="ph_feature_flexCheckDefault<?= h($feature_condition->id); ?>">
                                             <label class="form-check-label" for="flexCheckDefault">
                                                 <?= h($feature_condition->feature); ?>
                                             </label>
@@ -174,17 +171,17 @@ print_r($uniqueStations);
                             <button type="button" class="btn btn-success col-8 justify-content-center mt-2 mb-3" id="submitButton">絞り込み</button>
                             <div class="col"></div>
                         </div>
-                    </div>
+                    </form>
                 </div>
             </div>
         </div>
         <div class="main-container raw">
-            <div class="main-left-content col-md-3">
+            <form class="main-left-content col-md-3" method="post" >
                 <div class="mt-5 ms-5 me-5 p-3 search">
                     <div class="search-title p-1 text-center">業種</div>
                     <?php foreach ($industry_conditions as $industry_condition) : ?>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="pc_industry_flexCheckDefault<?= h($industry_condition->id); ?>">
+                        <div class="form-check"> 
+                            <input class="form-check-input" type="checkbox" value=""  name="industry<?= h($industry_condition->id); ?>" id="pc_industry_flexCheckDefault<?= h($industry_condition->id); ?>">
                             <label class="form-check-label" for="flexCheckDefault">
                                 <?= h($industry_condition->industry); ?>
                             </label>
@@ -195,7 +192,7 @@ print_r($uniqueStations);
                     <div class="search-title p-1 text-center">文理</div>
                     <?php foreach ($major_conditions as $major_condition) : ?>
                         <div class="form-check mt-1">
-                            <input class="form-check-input" type="checkbox" value="" id="pc_major_flexCheckDefault<?= h($major_condition->id); ?>">
+                            <input class="form-check-input" type="checkbox" value=""  name="major<?= h($major_condition->id); ?>"  id="pc_major_flexCheckDefault<?= h($major_condition->id); ?>">
                             <label class="form-check-label" for="flexCheckDefault">
                                 <?= h($major_condition->major); ?>
                             </label>
@@ -206,27 +203,16 @@ print_r($uniqueStations);
                     <div class="search-title p-1 text-center">特徴</div>
                     <?php foreach ($feature_conditions as $feature_condition) : ?>
                         <div class="form-check mt-1">
-                            <input class="form-check-input" type="checkbox" value="" id="pc_feature_flexCheckDefault<?= h($feature_condition->id); ?>">
+                            <input class="form-check-input" type="checkbox" value="" name="feature<?= h($feature_condition->id); ?>" id="pc_feature_flexCheckDefault<?= h($feature_condition->id); ?>">
                             <label class="form-check-label" for="flexCheckDefault">
                                 <?= h($feature_condition->feature); ?>
                             </label>
                         </div>
                     <?php endforeach; ?>
                 </div>
-            </div>
+                <button type="submit" class="btn btn-primary mt-5" >絞り込む</button>
+            </form>
             <div class="main-center-content col-md-6 col-12">
-                <!-- <div class="mt-3 text-center drop-down p-1">
-                    <div>並び替え</div>
-                        <form action="toppage.php" method = "POST">
-                        <select name="sort_change">
-                            <option value="name">五十音</option>
-                            <option value="bases_numbers">拠点数</option>
-                            <option value="achievements">実績数</option>
-                            <option value="contract_numbers">契約数</option>
-                        </select>
-                        <input type="submit"name="submit"value="並べ替える"/>
-                    </form>
-                </div> -->
                 <?php foreach ( $uniqueStations as $agency_information) : ?>
                     <div class="mt-4 ms-5 me-5 mb-5 p-3 company-content-wrapper">
                         <div class="d-flex company-content">
