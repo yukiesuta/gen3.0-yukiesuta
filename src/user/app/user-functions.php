@@ -57,6 +57,7 @@ function get_feature_conditions($pdo)
 
 function agency_information($pdo)
 {
+    
     if (isset($_POST['industry1'])) {
         $industrys[] = 1;
        
