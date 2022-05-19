@@ -44,7 +44,7 @@ SET
   email = 'agency2@posse-ap.com',
   password = sha1('pas');
 
-  
+
 DROP TABLE IF EXISTS events;
 
 CREATE TABLE events (
@@ -162,10 +162,19 @@ feature_id INT NOT NULL
 DROP TABLE IF EXISTS inquiry;
 
 CREATE TABLE inquiry (
+  id INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
   name VARCHAR(255)  NOT NULL,
   birthday INT  NOT NULL,
   university VARCHAR(255)  NOT NULL,
   phone INT  NOT NULL,
   address VARCHAR(255)  NOT NULL,
   email VARCHAR(255)  NOT NULL
+);
+
+
+DROP TABLE IF EXISTS inquiry_agency;
+
+CREATE TABLE inquiry_agency (
+  inquiry_id INT  NOT NULL,
+  agency_id INT  NOT NULL
 );

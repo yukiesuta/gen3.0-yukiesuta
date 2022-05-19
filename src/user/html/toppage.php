@@ -17,19 +17,18 @@ $feature_conditions = get_feature_conditions($pdo);
 //     // 受け取った値を画面に出力
 //     echo $sort_change;
 // }
+// print_r($agency_informations);
+// $stmt = $pdo->query("SELECT * FROM agency_information 
+// JOIN agency_industry AS itt ON  agency_information.id = itt.agency_id
+// JOIN industry_condition ON itt.industry_id = industry_condition.id
+// JOIN agency_major AS ittt ON  agency_information.id = ittt.agency_id
+// JOIN major_condition ON ittt.major_id = major_condition.id
+// JOIN agency_feature AS itti ON  agency_information.id = itti.agency_id
+// JOIN feature_condition ON itti.feature_id = feature_condition.id
+// WHERE industry_condition.id IN (2)  AND major_condition.id IN (1) AND feature_condition.id IN (1) 
+// GROUP BY agency_information.id");
 
-
-$stmt = $pdo->query("SELECT * FROM agency_information 
-JOIN agency_industry AS itt ON  agency_information.id = itt.agency_id
-JOIN industry_condition ON itt.industry_id = industry_condition.id
-JOIN agency_major AS ittt ON  agency_information.id = ittt.agency_id
-JOIN major_condition ON ittt.major_id = major_condition.id
-JOIN agency_feature AS itti ON  agency_information.id = itti.agency_id
-JOIN feature_condition ON itti.feature_id = feature_condition.id
-WHERE industry_condition.id IN (2)  AND major_condition.id IN (1) AND feature_condition.id IN (1) 
-GROUP BY agency_information.id");
-
-$agency_informations = $stmt->fetchAll();
+// $agency_informations = $stmt->fetchAll();
 
 ?>
 
@@ -336,6 +335,9 @@ $agency_informations = $stmt->fetchAll();
                         <input type="text" name="email" id="email" class="text2 form-control" placeholder="xxx@example.com">
                     </div>
                 </div>
+                <?php foreach ($agency_informations as $agency_information) : ?>
+                    <input class="form-check-input" type="checkbox" value="" name="agency<?= h($agency_information->id); ?>" id="hidden_checkbox<?= h($agency_information->id); ?>">
+                <?php endforeach; ?>
                 <div class="submit" id="submit-button">
                         <button type="submit" value="確認画面へ" id="form-button" class="btn btn-success mt-5 unclick">
                             申し込み
