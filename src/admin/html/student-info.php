@@ -3,16 +3,9 @@ require_once(__DIR__  . '/../../dbconnect.php');
 require_once(__DIR__  . '/../app/config.php');
 
 $pdo = getPdoInstance();
-$agency_id = $_GET["agency_id"];
 
-echo $agency_id;
-$student_informations = get_student_informations($pdo);
-
-// $stmt = $db->query("SELECT * FROM inquiry WHERE agency_id = $agency_id" );
-// $result = $stmt->fetch();
-// エージェンシいidが一致するもののみ回収したいけどテーブルがわからないから放置
-// admin-function.phpにも？？？がある
-// print_r($result);
+$stmt = $pdo->query("SELECT * FROM inquiry");
+$inquirys = $stmt->fetchAll();
 
 ?>
 <!DOCTYPE html>
@@ -66,38 +59,19 @@ $student_informations = get_student_informations($pdo);
                                 <th scope="col">申込先エージェント</th>
                             </tr>
                         </thead>
-                        <tbody class="text-center">
-                            <?php
-                            $dsn = 'mysql:dbname=shukatsu;host=db';
-                            $user = 'root';
-                            $password = 'password';
-                            $db = new PDO($dsn, $user, $password);
-                            $db->query('SET NAMES utf8');
-
-                            $sql = 'SELECT * FROM inquiry';
-                            $stmt = $db->prepare($sql);
-                            $stmt->execute();
-                            // print_r($stmt) ;
-
-
-                            while (1) {
-                                $rec = $stmt->fetch(PDO::FETCH_ASSOC);
-                                if ($rec == false) {
-                                    break;
-                                }
-                                echo '<tr>';
-                                // echo '<th>'.$rec['code'].'</th>';
-                                echo '<td>' . $rec['name'] . '</td>';
-                                echo '<td>' . $rec['university'] . '</td>';
-                                echo '<td>' . $rec['email'] . '</td>';
-                                echo '<td>' . $rec['phone'] . '</td>';
-                                echo '<td>' . $rec['birthday'] . '</td>';
-                                echo '<td>' . $rec['address'] . '</td>';
-                                echo '</tr>';
-                            }
-                            $db = null;
-                            ?>
-                        </tbody>
+                        <?php foreach ($inquirys as $inquiry) : ?>
+                            <tbody class="text-center">
+                                <tr>
+                                    <th scope="row"><?= $inquiry->name; ?></th>
+                                    <td><?= $inquiry->university; ?></td>
+                                    <td><?= $inquiry->email; ?></td>
+                                    <td><?= $inquiry->phone; ?></td>
+                                    <td>（決め打ち）</td>
+                                    <td>（決め打ち）</td>
+                                    <td><button type="button" class="btn btn-primary btn-sm">削除</button></td>
+                                </tr>
+                            </tbody>
+                            <?php endforeach; ?>
                     </table>
                 </div>
             </div>
