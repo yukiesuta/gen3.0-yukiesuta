@@ -1,3 +1,13 @@
+<?php
+require_once(__DIR__  . '/../../dbconnect.php');
+require_once(__DIR__  . '/../app/config.php');
+
+$pdo = getPdoInstance();
+
+$stmt = $pdo->query("SELECT * FROM agency_information");
+$agencys = $stmt->fetchAll();
+
+?>
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -49,103 +59,17 @@
                             </tr>
                         </thead>
                         <tbody>
+                            <?php foreach ($agencys as $agency) : ?>
                             <tr>
-                                <th scope="row">株式会社マイナベ</th>
-                                <td>毎鍋次郎</td>
-                                <td>info@mainabe.co.jp</td>
-                                <td>100</td>
-                                <td>200</td>
+                                <th scope="row"><?= $agency->agency_name; ?></th>
+                                <td>（決め打ち）</td>
+                                <td><?= $agency->mail_address; ?></td>
+                                <td>（決め打ち）</td>
+                                <td>（決め打ち）</td>
                                 <td><button type="button" class="btn btn-primary btn-sm">編集・削除</button></td>
+                                
                             </tr>
-                            <tr>
-                                <th scope="row">株式会社マイナベ</th>
-                                <td>毎鍋次郎</td>
-                                <td>info@mainabe.co.jp</td>
-                                <td>100</td>
-                                <td>200</td>
-                                <td><button type="button" class="btn btn-primary btn-sm">編集・削除</button></td>
-                            </tr>
-                            <tr>
-                                <th scope="row">株式会社マイナベ</th>
-                                <td>毎鍋次郎</td>
-                                <td>info@mainabe.co.jp</td>
-                                <td>100</td>
-                                <td>200</td>
-                                <td><button type="button" class="btn btn-primary btn-sm">編集・削除</button></td>
-                            </tr>
-                            <tr>
-                                <th scope="row">株式会社マイナベ</th>
-                                <td>毎鍋次郎</td>
-                                <td>info@mainabe.co.jp</td>
-                                <td>100</td>
-                                <td>200</td>
-                                <td><button type="button" class="btn btn-primary btn-sm">編集・削除</button></td>
-                            </tr>
-                            <tr>
-                                <th scope="row">株式会社マイナベ</th>
-                                <td>毎鍋次郎</td>
-                                <td>info@mainabe.co.jp</td>
-                                <td>100</td>
-                                <td>200</td>
-                                <td><button type="button" class="btn btn-primary btn-sm">編集・削除</button></td>
-                            </tr>
-                            <tr>
-                                <th scope="row">株式会社マイナベ</th>
-                                <td>毎鍋次郎</td>
-                                <td>info@mainabe.co.jp</td>
-                                <td>100</td>
-                                <td>200</td>
-                                <td><button type="button" class="btn btn-primary btn-sm">編集・削除</button></td>
-                            </tr>
-                            <tr>
-                                <th scope="row">株式会社マイナベ</th>
-                                <td>毎鍋次郎</td>
-                                <td>info@mainabe.co.jp</td>
-                                <td>100</td>
-                                <td>200</td>
-                                <td><button type="button" class="btn btn-primary btn-sm">編集・削除</button></td>
-                            </tr>
-                            <tr>
-                                <th scope="row">株式会社マイナベ</th>
-                                <td>毎鍋次郎</td>
-                                <td>info@mainabe.co.jp</td>
-                                <td>100</td>
-                                <td>200</td>
-                                <td><button type="button" class="btn btn-primary btn-sm">編集・削除</button></td>
-                            </tr>
-                            <tr>
-                                <th scope="row">株式会社マイナベ</th>
-                                <td>毎鍋次郎</td>
-                                <td>info@mainabe.co.jp</td>
-                                <td>100</td>
-                                <td>200</td>
-                                <td><button type="button" class="btn btn-primary btn-sm">編集・削除</button></td>
-                            </tr>
-                            <tr>
-                                <th scope="row">株式会社マイナベ</th>
-                                <td>毎鍋次郎</td>
-                                <td>info@mainabe.co.jp</td>
-                                <td>100</td>
-                                <td>200</td>
-                                <td><button type="button" class="btn btn-primary btn-sm">編集・削除</button></td>
-                            </tr>
-                            <tr>
-                                <th scope="row">株式会社マイナベ</th>
-                                <td>毎鍋次郎</td>
-                                <td>info@mainabe.co.jp</td>
-                                <td>100</td>
-                                <td>200</td>
-                                <td><button type="button" class="btn btn-primary btn-sm">編集・削除</button></td>
-                            </tr>
-                            <tr>
-                                <th scope="row">株式会社マイナベ</th>
-                                <td>毎鍋次郎</td>
-                                <td>info@mainabe.co.jp</td>
-                                <td>100</td>
-                                <td>200</td>
-                                <td><button type="button" class="btn btn-primary btn-sm">編集・削除</button></td>
-                            </tr>
-                            
+                            <?php endforeach; ?>
                         </tbody>
                     </table>
                 </div>

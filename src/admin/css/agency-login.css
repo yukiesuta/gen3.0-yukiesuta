@@ -1,0 +1,16 @@
+header {
+    background-color: #9392D8;
+    height: 100px;
+    width: 100%;
+    max-width: 100%;
+    color: white;
+}
+
+.logo {
+    width: 300px;
+    height: auto;
+}
+
+.form {
+    margin: auto;
+}

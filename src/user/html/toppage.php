@@ -11,21 +11,11 @@ $industry_conditions = get_industry_conditions($pdo);
 $major_conditions = get_major_conditions($pdo);
 $feature_conditions = get_feature_conditions($pdo);
 
-
-
-
-
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $shibori=agency_information($pdo);
-    // print_r($a);
 
 }
-// include("../app/user-functions.php");
-
-// print_r($result);
-
 $ids = [$shibori];
-// print_r(($ids));
 
 
 // IN 句に入る値を作成
@@ -41,8 +31,6 @@ $stmt->execute($ids);
 
 $agency_informations = $stmt->fetchAll();
 
-
-
 $tmp = [];
 $uniqueStations = [];
 
@@ -52,11 +40,6 @@ foreach ($agency_informations as $station){
         $uniqueStations[] = $station;
     }
 }
-
-// print_r($uniqueStations);
-
-
-
 ?>
 
 <!DOCTYPE html>
@@ -215,13 +198,13 @@ foreach ($agency_informations as $station){
                 <?php foreach ( $uniqueStations as $agency_information) : ?>
                     <div class="mt-4 ms-5 me-5 mb-5 p-3 company-content-wrapper">
                         <div class="d-flex company-content">
-                            <a href="company.php?id=<?= h($agency_information->id); ?>">
+                            <a href="company.php?id=<?= h($agency_information->agency_id); ?>">
                                 <div class="logo-container p-1">
-                                    <img src="../uploaded_img/agency<?= h($agency_information->id); ?>.png" alt="" class="center-img">
+                                    <img src="../uploaded_img/agency<?= h($agency_information->agency_id); ?>.png" alt="" class="center-img">
                                 </div>
                             </a>
                             <div>
-                                <a href="company.php?id=<?= h($agency_information->id); ?>" class="text-decoration-none">
+                                <a href="company.php?id=<?= h($agency_information->agency_id); ?>" class="text-decoration-none">
                                     <div class="company-content-title p-1"><?= h($agency_information->agency_name); ?></div>
                                 </a>
                                 <div class="p-3 company-content-paragraph">
@@ -231,7 +214,7 @@ foreach ($agency_informations as $station){
                         </div>
                         <div class="d-flex justify-content-end">
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" name='looked' id="agency_flexCheckDefault<?= h($agency_information->id); ?>">
+                                <input class="form-check-input" type="checkbox" value="" name='looked' id="agency_flexCheckDefault<?= h($agency_information->agency_id); ?>">
                             </div>
                         </div>
                     </div>
@@ -239,10 +222,10 @@ foreach ($agency_informations as $station){
             </div>
             <div class="main-right-content col-md-3 col-sm-3" name='rightContents'>
                 <?php foreach ($agency_informations as $agency_information) : ?>
-                    <a href="./company.html" class="text-decoration-none display-none" id="rightContent<?= h($agency_information->id); ?>">
+                    <a href="./company.html" class="text-decoration-none display-none" id="rightContent<?= h($agency_information->agency_id); ?>">
                         <div class="d-flex checked-content m-5 p-3">
                             <div class="me-2">
-                                <img src="../uploaded_img/agency<?= h($agency_information->id); ?>.png" alt="" class="right-img">
+                                <img src="../uploaded_img/agency<?= h($agency_information->agency_id); ?>.png" alt="" class="right-img">
                             </div>
                             <div class="checked-paragraph">
                                 <?= h($agency_information->agency_name); ?>
@@ -279,19 +262,19 @@ foreach ($agency_informations as $station){
                     </thead>
                     <tbody>
                     <?php foreach ($agency_informations as $agency_information) : ?>
-                        <tr id="comparison_agency<?= h($agency_information->id); ?>" class="display-none">
+                        <tr id="comparison_agency<?= h($agency_information->agency_id); ?>" class="display-none">
                             <td>
-                                <button type="button" class="btn btn-success" id="comparisonDelete<?= h($agency_information->id); ?>">削除</button>
+                                <button type="button" class="btn btn-success" id="comparisonDelete<?= h($agency_information->agency_id); ?>">削除</button>
                             </td>
                             <!-- <td>
-                                <img id="comparisonDelete<?= h($agency_information->id); ?>" src="../img/checked.png" alt="">
+                                <img id="comparisonDelete<?= h($agency_information->agency_id); ?>" src="../img/checked.png" alt="">
                             </td> -->
                             <td>
                                 <?= h($agency_information->agency_name); ?>
                             </td>
                             <th scope="row">
                                 <a href="./company.html">
-                                    <img src="../uploaded_img/agency<?= h($agency_information->id); ?>.png" alt="" class="center-img">
+                                    <img src="../uploaded_img/agency<?= h($agency_information->agency_id); ?>.png" alt="" class="center-img">
                                 </a>
                             </th>
                             <td><?= h($agency_information->catch_copy); ?></td>
@@ -300,10 +283,10 @@ foreach ($agency_informations as $station){
                             <td>◯</td>
                             <td>✕</td>
                         </tr>
-                        <a href="./company.html" class="text-decoration-none display-none" id="rightContent<?= h($agency_information->id); ?>">
+                        <a href="./company.html" class="text-decoration-none display-none" id="rightContent<?= h($agency_information->agency_id); ?>">
                             <div class="d-flex checked-content m-5 p-3">
                                 <div class="me-2">
-                                    <img src="../uploaded_img/agency<?= h($agency_information->id); ?>.png" alt="" class="right-img">
+                                    <img src="../uploaded_img/agency<?= h($agency_information->agency_id); ?>.png" alt="" class="right-img">
                                 </div>
                                 <div class="checked-paragraph">
                                     <?= h($agency_information->agency_name); ?>
@@ -351,6 +334,9 @@ foreach ($agency_informations as $station){
                         <input type="text" name="email" id="email" class="text2 form-control" placeholder="xxx@example.com">
                     </div>
                 </div>
+                <?php foreach ($agency_informations as $agency_information) : ?>
+                    <input class="form-check-input" type="checkbox" value="" name="agency<?= h($agency_information->agency_id); ?>" id="hidden_checkbox<?= h($agency_information->agency_id); ?>">
+                <?php endforeach; ?>
                 <div class="submit" id="submit-button">
                         <button type="submit" value="確認画面へ" id="form-button" class="btn btn-success mt-5 unclick">
                             申し込み
