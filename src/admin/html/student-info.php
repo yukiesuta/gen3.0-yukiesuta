@@ -57,6 +57,7 @@ $inquirys = $stmt->fetchAll();
                                 <th scope="col">電話番号</th>
                                 <th scope="col">申し込み日時</th>
                                 <th scope="col">申込先エージェント</th>
+                                <th></th>
                             </tr>
                         </thead>
                         <?php foreach ($inquirys as $inquiry) : ?>
