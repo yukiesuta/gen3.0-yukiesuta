@@ -1,3 +1,36 @@
+<?php
+require_once(__DIR__  . '/../../dbconnect.php');
+require_once(__DIR__  . '/../app/config.php');
+
+$pdo = getPdoInstance();
+$agency_id = $_GET["agency_id"];
+
+echo $agency_id;
+
+// $student_informations = get_student_informations($pdo);
+// $inquiry_agency_informations = get_inquiry_agency_informations($pdo);
+
+$inquiry_agency_stmt = $pdo->query("SELECT phone FROM inquiry_agency WHERE agency_id = $agency_id");
+$inquiry_agency_result = $inquiry_agency_stmt->fetchAll();
+print_r($inquiry_agency_result);
+
+$inquiry_stmt = $pdo->query("SELECT * FROM inquiry");
+$inquiry_results = $inquiry_stmt->fetchAll();
+
+
+// $stmt = $pdo->query("SELECT * FROM inquiry WHERE ");
+// $student_informations = $stmt->fetchAll();
+
+// $stmt = $db->query("SELECT phone FROM inquiry_agency WHERE agency_id = $agency_id" );
+// $result = $stmt->fetch();
+// エージェンシいidが一致するもののみ回収したいけどテーブルがわからないから放置
+// admin-function.phpにも？？？がある
+// print_r($inquiry_agency_informations);
+
+// $stmt = $db->query("SELECT * FROM inquiry_agency WHERE phone = $result" );
+// $result = $stmt->fetch();
+
+?>
 <!DOCTYPE html>
 <html lang="ja">
 
@@ -44,141 +77,15 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <th scope="row">田中太郎</th>
-                        <td>スズキ次郎</td>
-                        <td>tanaka@gmail.com</td>
-                        <td>080-111-222</td>
-                        <td>2022/04/01</td>
-                        <td>特になし</td>
-                        <td>連絡済み</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">田中太郎</th>
-                        <td>スズキ次郎</td>
-                        <td>tanaka@gmail.com</td>
-                        <td>080-111-222</td>
-                        <td>2022/04/01</td>
-                        <td>特になし</td>
-                        <td>連絡済み</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">田中太郎</th>
-                        <td>スズキ次郎</td>
-                        <td>tanaka@gmail.com</td>
-                        <td>080-111-222</td>
-                        <td>2022/04/01</td>
-                        <td>特になし</td>
-                        <td>連絡済み</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">田中太郎</th>
-                        <td>スズキ次郎</td>
-                        <td>tanaka@gmail.com</td>
-                        <td>080-111-222</td>
-                        <td>2022/04/01</td>
-                        <td>特になし</td>
-                        <td>連絡済み</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">田中太郎</th>
-                        <td>スズキ次郎</td>
-                        <td>tanaka@gmail.com</td>
-                        <td>080-111-222</td>
-                        <td>2022/04/01</td>
-                        <td>特になし</td>
-                        <td>連絡済み</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">田中太郎</th>
-                        <td>スズキ次郎</td>
-                        <td>tanaka@gmail.com</td>
-                        <td>080-111-222</td>
-                        <td>2022/04/01</td>
-                        <td>特になし</td>
-                        <td>連絡済み</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">田中太郎</th>
-                        <td>スズキ次郎</td>
-                        <td>tanaka@gmail.com</td>
-                        <td>080-111-222</td>
-                        <td>2022/04/01</td>
-                        <td>特になし</td>
-                        <td>連絡済み</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">田中太郎</th>
-                        <td>スズキ次郎</td>
-                        <td>tanaka@gmail.com</td>
-                        <td>080-111-222</td>
-                        <td>2022/04/01</td>
-                        <td>特になし</td>
-                        <td>連絡済み</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">田中太郎</th>
-                        <td>スズキ次郎</td>
-                        <td>tanaka@gmail.com</td>
-                        <td>080-111-222</td>
-                        <td>2022/04/01</td>
-                        <td>特になし</td>
-                        <td>連絡済み</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">田中太郎</th>
-                        <td>スズキ次郎</td>
-                        <td>tanaka@gmail.com</td>
-                        <td>080-111-222</td>
-                        <td>2022/04/01</td>
-                        <td>特になし</td>
-                        <td>連絡済み</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">田中太郎</th>
-                        <td>スズキ次郎</td>
-                        <td>tanaka@gmail.com</td>
-                        <td>080-111-222</td>
-                        <td>2022/04/01</td>
-                        <td>特になし</td>
-                        <td>連絡済み</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">田中太郎</th>
-                        <td>スズキ次郎</td>
-                        <td>tanaka@gmail.com</td>
-                        <td>080-111-222</td>
-                        <td>2022/04/01</td>
-                        <td>特になし</td>
-                        <td>連絡済み</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">田中太郎</th>
-                        <td>スズキ次郎</td>
-                        <td>tanaka@gmail.com</td>
-                        <td>080-111-222</td>
-                        <td>2022/04/01</td>
-                        <td>特になし</td>
-                        <td>連絡済み</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">田中太郎</th>
-                        <td>スズキ次郎</td>
-                        <td>tanaka@gmail.com</td>
-                        <td>080-111-222</td>
-                        <td>2022/04/01</td>
-                        <td>特になし</td>
-                        <td>連絡済み</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">田中太郎</th>
-                        <td>スズキ次郎</td>
-                        <td>tanaka@gmail.com</td>
-                        <td>080-111-222</td>
-                        <td>2022/04/01</td>
-                        <td>特になし</td>
-                        <td>連絡済み</td>
-                    </tr>
+                <?php foreach ($inquiry_results as $inquiry_result) : ?>
+                    <th scope="row"><?=$inquiry_result->name; ?></th>
+                    <td><?= $inquiry_result->university; ?></td>
+                    <td><?= $inquiry_result->email; ?></td>
+                    <td><?= $inquiry_result->phone; ?></td>
+                    <td><?= $inquiry_result->birthday; ?></td>
+                    <td><?= $inquiry_result->address; ?></td>
+                    <td>只今未実装です</td>
+                <?php endforeach; ?>
                 </tbody>
             </table>
         </div>

@@ -47,7 +47,7 @@ if (!empty($_POST)) {
       <? if (!empty($_POST)) {
         
         if (!$user) {
-         echo "メールアドレスまたはパスワードが正しくありません。";
+        echo "メールアドレスまたはパスワードが正しくありません。";
         }
       } ?>
       <form action="/admin/html/agency-login.php" method="POST">

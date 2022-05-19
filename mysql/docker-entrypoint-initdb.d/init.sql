@@ -198,7 +198,7 @@ CREATE TABLE inquiry (
   name VARCHAR(255)  NOT NULL,
   birthday INT  NOT NULL,
   university VARCHAR(255)  NOT NULL,
-  phone INT  NOT NULL,
+  phone VARCHAR(255)  NOT NULL,
   address VARCHAR(255)  NOT NULL,
   email VARCHAR(255)  NOT NULL
 );
@@ -207,6 +207,6 @@ CREATE TABLE inquiry (
 DROP TABLE IF EXISTS inquiry_agency;
 
 CREATE TABLE inquiry_agency (
-  inquiry_id INT  NOT NULL,
+  phone VARCHAR(255)  NOT NULL,
   agency_id INT  NOT NULL
 );

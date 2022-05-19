@@ -38,13 +38,11 @@ $agencys = array();
 for($i = 1; $i < 100; $i++){
 	if (isset($_POST['agency' .$i.''])) {
 		// phoneになってる
-		$sql = 'INSERT INTO inquiry_agency(inquiry_id,agency_id)VALUES("'.$phone.'","'.$i.'")';
+		$sql = 'INSERT INTO inquiry_agency(phone,agency_id)VALUES("'.$phone.'","'.$i.'")';
 		$stmt = $db -> prepare($sql);
 		$stmt -> execute();
 	}
   }
-
-  print_r($agencys);
 
 
 

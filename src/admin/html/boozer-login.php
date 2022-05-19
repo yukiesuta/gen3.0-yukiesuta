@@ -45,10 +45,10 @@ if (!empty($_POST)) {
       <? if (!empty($_POST)) {
         
         if (!$user) {
-         echo "メールアドレスまたはパスワードが正しくありません。";
+        echo "メールアドレスまたはパスワードが正しくありません。";
         }
       } ?>
-      <form action="/admin/html/login.php" method="POST">
+      <form action="/admin/html/boozer-login.php" method="POST">
         <div class="form-group">
           <label for="exampleInputEmail1">User name</label>
           <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter User name" name="email" required>

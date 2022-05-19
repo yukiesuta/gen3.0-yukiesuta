@@ -271,9 +271,16 @@ function get_agency_informations($pdo)
     return $agency_informations;
 }
 
+// 使わないかも
 function get_student_informations($pdo)
 {
-    $stmt = $pdo->query("SELECT * FROM ？？？？？？？？？？");
+    $stmt = $pdo->query("SELECT * FROM inquiry");
+    $agency_informations = $stmt->fetchAll();
+    return $agency_informations;
+}
+function get_inquiry_agency_informations($pdo)
+{
+    $stmt = $pdo->query("SELECT * FROM inquiry_agency");
     $agency_informations = $stmt->fetchAll();
     return $agency_informations;
 }
