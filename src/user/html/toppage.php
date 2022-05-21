@@ -128,7 +128,7 @@ foreach ($agency_informations as $station){
                                     <div class="search-title text-center">文理</div>
                                     <?php foreach ($major_conditions as $major_condition) : ?>
                                         <div class="form-check mt-1">
-                                            <input class="form-check-input" type="checkbox" name="major<?= h($major_condition->id); ?>" value="" id="ph_major_flexCheckDefault <?= h($major_condition->id); ?>">
+                                            <input class="form-check-input" type="checkbox" name="major<?= h($major_condition->id); ?>" value="" id="ph_major_flexCheckDefault<?=h($major_condition->id); ?>">
                                             <label class="form-check-label" for="flexCheckDefault">
                                                 <?= h($major_condition->major); ?>
                                             </label>
