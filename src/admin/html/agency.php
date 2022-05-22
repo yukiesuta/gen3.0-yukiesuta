@@ -9,24 +9,11 @@ $agency_id = $_GET["agency_id"];
 // $student_informations = get_student_informations($pdo);
 // $inquiry_agency_informations = get_inquiry_agency_informations($pdo);
 
-$inquiry_agency_stmt = $pdo->query("SELECT phone FROM inquiry_agency WHERE agency_id = $agency_id");
-$inquiry_agency_result = $inquiry_agency_stmt->fetchAll();
+$inquiry_agency_stmt = $pdo->query("SELECT * FROM inquiry_agency WHERE agency_id = $agency_id");
+$inquiry_agency_results = $inquiry_agency_stmt->fetchAll();
 
 $inquiry_stmt = $pdo->query("SELECT * FROM inquiry");
 $inquiry_results = $inquiry_stmt->fetchAll();
-
-
-// $stmt = $pdo->query("SELECT * FROM inquiry WHERE ");
-// $student_informations = $stmt->fetchAll();
-
-// $stmt = $db->query("SELECT phone FROM inquiry_agency WHERE agency_id = $agency_id" );
-// $result = $stmt->fetch();
-// エージェンシいidが一致するもののみ回収したいけどテーブルがわからないから放置
-// admin-function.phpにも？？？がある
-// print_r($inquiry_agency_informations);
-
-// $stmt = $db->query("SELECT * FROM inquiry_agency WHERE phone = $result" );
-// $result = $stmt->fetch();
 
 ?>
 <!DOCTYPE html>
@@ -75,18 +62,29 @@ $inquiry_results = $inquiry_stmt->fetchAll();
                     </tr>
                 </thead>
                 <?php foreach ($inquiry_results as $inquiry_result) : ?>
-                    <tbody>
-                        <tr>
-                            <th scope="row"><?=$inquiry_result->name; ?></th>
-                            <td><?= $inquiry_result->university; ?></td>
-                            <td><?= $inquiry_result->email; ?></td>
-                            <td><?= $inquiry_result->phone; ?></td>
-                            <td><?= $inquiry_result->birthday; ?></td>
-                            <td><?= $inquiry_result->address; ?></td>
-                            <td>只今未実装です</td>
-                        </tr>
-                    </tbody>
-                    <?php endforeach; ?>
+                    <? 
+                    $count = $inquiry_result->id -1;
+
+                    // Bに応募したエージェンシー　AB B　少なくなっちゃう
+                    if($count<count($inquiry_agency_results)){
+                        $sorted_phone = $inquiry_agency_results[$count]->phone;
+                    }else{
+                        break;
+                    }
+
+                    $inquiry_stmt2 = $pdo->query("SELECT * FROM inquiry WHERE phone = '$sorted_phone'");
+                    $inquiry_results2 = $inquiry_stmt2->fetch();
+                    ?>
+                    <tr>
+                        <th scope="row"><?=$inquiry_results2->name; ?></th>
+                        <td><?= $inquiry_results2->name; ?></td>
+                        <td><?= $inquiry_results2->email; ?></td>
+                        <td><?= $inquiry_results2->phone; ?></td>
+                        <td><?= $inquiry_results2->university; ?></td>
+                        <td><?= $inquiry_results2->birthday; ?></td>
+                        <td>只今未実装です</td>
+                    </tr>
+                <?php endforeach;?>
             </table>
         </div>
     </main>
