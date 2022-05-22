@@ -12,8 +12,7 @@ $major_conditions = get_major_conditions($pdo);
 $feature_conditions = get_feature_conditions($pdo);
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $shibori=agency_information($pdo);
-
+    $shibori = agency_information($pdo);
 }
 $ids = [$shibori];
 
@@ -34,9 +33,9 @@ $agency_informations = $stmt->fetchAll();
 $tmp = [];
 $uniqueStations = [];
 
-foreach ($agency_informations as $station){
-    if (!in_array($station ->agency_name, $tmp)) {
-        $tmp[] = $station ->agency_name;
+foreach ($agency_informations as $station) {
+    if (!in_array($station->agency_name, $tmp)) {
+        $tmp[] = $station->agency_name;
         $uniqueStations[] = $station;
     }
 }
@@ -89,7 +88,7 @@ foreach ($agency_informations as $station){
                     <li class="nav-item me-5">
                         <a class="nav-link" href="#">お問い合わせ</a>
                     </li>
-                    
+
                 </ul>
             </div>
         </nav>
@@ -110,14 +109,14 @@ foreach ($agency_informations as $station){
                     <div class="modal-header">
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
-                    <from id="modal-content" method="post" >
+                    <from id="modal-content" method="post">
                         <div class="modal-body row">
                             <div class="mobile-top-content">
                                 <div class="mt-4 search ms-2 p-2">
                                     <div class="search-title text-center">業種</div>
                                     <?php foreach ($industry_conditions as $industry_condition) : ?>
                                         <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" name="industry<?= h($industry_condition->id); ?>" value="" id="ph_industry_flexCheckDefault<?= h($industry_condition->id); ?>">
+                                            <input class="form-check-input form-check-input-not-click" type="checkbox" name="industry<?= h($industry_condition->id); ?>" value="" id="ph_industry_flexCheckDefault<?= h($industry_condition->id); ?>">
                                             <label class="form-check-label" for="flexCheckDefault">
                                                 <?= h($industry_condition->industry); ?>
                                             </label>
@@ -128,7 +127,7 @@ foreach ($agency_informations as $station){
                                     <div class="search-title text-center">文理</div>
                                     <?php foreach ($major_conditions as $major_condition) : ?>
                                         <div class="form-check mt-1">
-                                            <input class="form-check-input" type="checkbox" name="major<?= h($major_condition->id); ?>" value="" id="ph_major_flexCheckDefault <?= h($major_condition->id); ?>">
+                                            <input class="form-check-input form-check-input-not-click" type="checkbox" name="major<?= h($major_condition->id); ?>" value="" id="ph_major_flexCheckDefault<?= h($major_condition->id); ?>">
                                             <label class="form-check-label" for="flexCheckDefault">
                                                 <?= h($major_condition->major); ?>
                                             </label>
@@ -139,7 +138,7 @@ foreach ($agency_informations as $station){
                                     <div class="search-title text-center">特徴</div>
                                     <?php foreach ($feature_conditions as $feature_condition) : ?>
                                         <div class="form-check mt-1">
-                                            <input class="form-check-input" type="checkbox" name="feature<?= h($feature_condition->id); ?>"   value="" id="ph_feature_flexCheckDefault<?= h($feature_condition->id); ?>">
+                                            <input class="form-check-input form-check-input-not-click" type="checkbox" name="feature<?= h($feature_condition->id); ?>" value="" id="ph_feature_flexCheckDefault<?= h($feature_condition->id); ?>">
                                             <label class="form-check-label" for="flexCheckDefault">
                                                 <?= h($feature_condition->feature); ?>
                                             </label>
@@ -153,17 +152,17 @@ foreach ($agency_informations as $station){
                             <button type="button" class="btn btn-success col-8 justify-content-center mt-2 mb-3" id="submitButton">絞り込み</button>
                             <div class="col"></div>
                         </div>
-                    </form>
+                        </form>
                 </div>
             </div>
         </div>
         <div class="main-container raw">
-            <form class="main-left-content col-md-3" method="post" >
+            <form class="main-left-content col-md-3" method="post">
                 <div class="mt-5 ms-5 me-5 p-3 search">
                     <div class="search-title p-1 text-center">業種</div>
                     <?php foreach ($industry_conditions as $industry_condition) : ?>
-                        <div class="form-check"> 
-                            <input class="form-check-input" type="checkbox" value=""  name="industry<?= h($industry_condition->id); ?>" id="pc_industry_flexCheckDefault<?= h($industry_condition->id); ?>">
+                        <div class="form-check">
+                            <input class="form-check-input form-check-input-click" type="checkbox" value="" name="industry<?= h($industry_condition->id); ?>" id="pc_industry_flexCheckDefault<?= h($industry_condition->id); ?>">
                             <label class="form-check-label" for="flexCheckDefault">
                                 <?= h($industry_condition->industry); ?>
                             </label>
@@ -174,7 +173,7 @@ foreach ($agency_informations as $station){
                     <div class="search-title p-1 text-center">文理</div>
                     <?php foreach ($major_conditions as $major_condition) : ?>
                         <div class="form-check mt-1">
-                            <input class="form-check-input" type="checkbox" value=""  name="major<?= h($major_condition->id); ?>"  id="pc_major_flexCheckDefault<?= h($major_condition->id); ?>">
+                            <input class="form-check-input form-check-input-click" type="checkbox" value="" name="major<?= h($major_condition->id); ?>" id="pc_major_flexCheckDefault<?= h($major_condition->id); ?>">
                             <label class="form-check-label" for="flexCheckDefault">
                                 <?= h($major_condition->major); ?>
                             </label>
@@ -185,17 +184,17 @@ foreach ($agency_informations as $station){
                     <div class="search-title p-1 text-center">特徴</div>
                     <?php foreach ($feature_conditions as $feature_condition) : ?>
                         <div class="form-check mt-1">
-                            <input class="form-check-input" type="checkbox" value="" name="feature<?= h($feature_condition->id); ?>" id="pc_feature_flexCheckDefault<?= h($feature_condition->id); ?>">
+                            <input class="form-check-input form-check-input-click" type="checkbox" value="" name="feature<?= h($feature_condition->id); ?>" id="pc_feature_flexCheckDefault<?= h($feature_condition->id); ?>">
                             <label class="form-check-label" for="flexCheckDefault">
                                 <?= h($feature_condition->feature); ?>
                             </label>
                         </div>
                     <?php endforeach; ?>
                 </div>
-                <button type="submit" class="btn btn-primary mt-5" >絞り込む</button>
+                <button type="submit" class="btn btn-primary mt-5">絞り込む</button>
             </form>
             <div class="main-center-content col-md-6 col-12">
-                <?php foreach ( $uniqueStations as $agency_information) : ?>
+                <?php foreach ($uniqueStations as $agency_information) : ?>
                     <div class="mt-4 ms-5 me-5 mb-5 p-3 company-content-wrapper">
                         <div class="d-flex company-content">
                             <a href="company.php?id=<?= h($agency_information->agency_id); ?>">
@@ -214,7 +213,7 @@ foreach ($agency_informations as $station){
                         </div>
                         <div class="d-flex justify-content-end">
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" name='looked' id="agency_flexCheckDefault<?= h($agency_information->agency_id); ?>">
+                                <input class="form-check-input form-check-input-click" type="checkbox" value="" name='looked' id="agency_flexCheckDefault<?= h($agency_information->agency_id); ?>">
                             </div>
                         </div>
                     </div>
@@ -261,39 +260,39 @@ foreach ($agency_informations as $station){
                         </tr>
                     </thead>
                     <tbody>
-                    <?php foreach ($agency_informations as $agency_information) : ?>
-                        <tr id="comparison_agency<?= h($agency_information->agency_id); ?>" class="display-none">
-                            <td>
-                                <button type="button" class="btn btn-success" id="comparisonDelete<?= h($agency_information->agency_id); ?>">削除</button>
-                            </td>
-                            <!-- <td>
+                        <?php foreach ($agency_informations as $agency_information) : ?>
+                            <tr id="comparison_agency<?= h($agency_information->agency_id); ?>" class="display-none">
+                                <td>
+                                    <button type="button" class="btn btn-success" id="comparisonDelete<?= h($agency_information->agency_id); ?>">削除</button>
+                                </td>
+                                <!-- <td>
                                 <img id="comparisonDelete<?= h($agency_information->agency_id); ?>" src="../img/checked.png" alt="">
                             </td> -->
-                            <td>
-                                <?= h($agency_information->agency_name); ?>
-                            </td>
-                            <th scope="row">
-                                <a href="./company.html">
-                                    <img src="../uploaded_img/agency<?= h($agency_information->agency_id); ?>.png" alt="" class="center-img">
-                                </a>
-                            </th>
-                            <td><?= h($agency_information->catch_copy); ?></td>
-                            <td>○</td>
-                            <td>✕</td>
-                            <td>◯</td>
-                            <td>✕</td>
-                        </tr>
-                        <a href="./company.html" class="text-decoration-none display-none" id="rightContent<?= h($agency_information->agency_id); ?>">
-                            <div class="d-flex checked-content m-5 p-3">
-                                <div class="me-2">
-                                    <img src="../uploaded_img/agency<?= h($agency_information->agency_id); ?>.png" alt="" class="right-img">
-                                </div>
-                                <div class="checked-paragraph">
+                                <td>
                                     <?= h($agency_information->agency_name); ?>
+                                </td>
+                                <th scope="row">
+                                    <a href="./company.html">
+                                        <img src="../uploaded_img/agency<?= h($agency_information->agency_id); ?>.png" alt="" class="center-img">
+                                    </a>
+                                </th>
+                                <td><?= h($agency_information->catch_copy); ?></td>
+                                <td>○</td>
+                                <td>✕</td>
+                                <td>◯</td>
+                                <td>✕</td>
+                            </tr>
+                            <a href="./company.html" class="text-decoration-none display-none" id="rightContent<?= h($agency_information->agency_id); ?>">
+                                <div class="d-flex checked-content m-5 p-3">
+                                    <div class="me-2">
+                                        <img src="../uploaded_img/agency<?= h($agency_information->agency_id); ?>.png" alt="" class="right-img">
+                                    </div>
+                                    <div class="checked-paragraph">
+                                        <?= h($agency_information->agency_name); ?>
+                                    </div>
                                 </div>
-                            </div>
-                        </a>
-                    <?php endforeach; ?>
+                            </a>
+                        <?php endforeach; ?>
                     </tbody>
                 </table>
             </div>
@@ -335,12 +334,12 @@ foreach ($agency_informations as $station){
                     </div>
                 </div>
                 <?php foreach ($agency_informations as $agency_information) : ?>
-                    <input class="form-check-input" type="checkbox" value=""  name="agency<?= h($agency_information->agency_id); ?>" id="hidden_checkbox<?= h($agency_information->agency_id); ?>">
+                    <input class="form-check-input" type="checkbox" value="" name="agency<?= h($agency_information->agency_id); ?>" id="hidden_checkbox<?= h($agency_information->agency_id); ?>">
                 <?php endforeach; ?>
                 <div class="submit" id="submit-button">
-                        <button type="submit" value="確認画面へ" id="form-button" class="btn btn-success mt-5 unclick">
-                            申し込み
-                        </button>
+                    <button type="submit" value="確認画面へ" id="form-button" class="btn btn-success mt-5 unclick">
+                        申し込み
+                    </button>
                 </div>
             </form>
         </div>
