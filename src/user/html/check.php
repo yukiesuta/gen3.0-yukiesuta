@@ -37,22 +37,6 @@
 		$phone = $_POST['phone'];
 		$birthday = $_POST['birthday'];
 		$university = $_POST['university'];
-
-
-		// $agencys = array();
-
-		// for($i = 1; $i < 100; $i++){
-		// 	if (isset($_POST['agency' .$i.''])) {
-		// 		// phoneになってる
-		// 		$sql = 'INSERT INTO inquiry_agency(phone,agency_id)VALUES("'.$phone.'","'.$i.'")';
-		// 		$stmt = $db -> prepare($sql);
-		// 		$stmt -> execute();
-		// 		echo $i;
-		// 	}
-		//   }
-
-
-
 		$name = htmlspecialchars($name);
 		$email = htmlspecialchars($email);
 		$birthday = htmlspecialchars($birthday);
@@ -164,10 +148,10 @@
 			}
 		}
 
-		echo $name . '様<br>' . "\n";
-		echo 'お問い合わせ、ありがとうございました。<br>' . "\n";
-		echo 'お問い合わせ内容『' . $university . '』を<br>' . "\n";
-		echo $email . 'にメールで送りましたのでご確認ください。' . "\n";
+		// echo $name . '様<br>' . "\n";
+		// echo 'お問い合わせ、ありがとうございました。<br>' . "\n";
+		// echo 'お問い合わせ内容『' . $university . '』を<br>' . "\n";
+		// echo $email . 'にメールで送りましたのでご確認ください。' . "\n";
 
 		$mail_sub = 'お問い合わせを受け付けました。';
 		$mail_body = $name . '様、ご協力ありがとうございました。';

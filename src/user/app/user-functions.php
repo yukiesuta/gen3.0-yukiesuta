@@ -121,4 +121,9 @@ function agency_information($pdo)
     
 
 
-}
+};
+
+function send_mail($pdo){
+
+};
+
