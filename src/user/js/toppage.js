@@ -53,16 +53,29 @@ for (let i = 1; i < 6; i++) {
         });
 }
 
-let targets = document.querySelectorAll(".form-check-input");
+let click_targets = document.querySelectorAll(".form-check-input-click");
 
 window.addEventListener("DOMContentLoaded", () => {
-    for (const i of targets) {
+    for (const i of click_targets) {
         let checked_context = localStorage.getItem(i.id);
         if (checked_context === "true") {
             document.getElementById(i.id).click();
         }
     }
 });
+
+let not_click_targets = document.querySelectorAll(".form-check-input-not-click");
+
+window.addEventListener("DOMContentLoaded", () => {
+    for (const i of not_click_targets) {
+        let checked_context = localStorage.getItem(i.id);
+        if (checked_context === "true") {
+            document.getElementById(i.id).checked = "true";
+        }
+    }
+});
+
+let targets = document.querySelectorAll(".form-check-input");
 
 window.addEventListener("beforeunload", () => {
     for (const i of targets) {
