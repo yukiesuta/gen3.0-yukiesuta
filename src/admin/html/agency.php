@@ -51,10 +51,10 @@ $inquiry_results = $inquiry_stmt->fetchAll();
                 <div class="m-2">エージェンジー名</div>
             </div>
             <div class="d-flex">
-                <a href="" class="m-2 header-right text-decoration-none">
+                <a href="https://forms.gle/jJJArbBQXUxwnzQd8" class="m-2 header-right text-decoration-none">
                     <div>クラフトへのお問い合わせ</div>
                 </a>
-                <a href="" class="m-2 header-right text-decoration-none">
+                <a href="https://forms.gle/UGw3MZt6JKsmLQmWA" class="m-2 header-right text-decoration-none">
                     <div>編集依頼フォーム</div>
                 </a>
             </div>
