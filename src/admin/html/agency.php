@@ -9,22 +9,32 @@ $agency_id = $_GET["agency_id"];
 // $student_informations = get_student_informations($pdo);
 // $inquiry_agency_informations = get_inquiry_agency_informations($pdo);
 
-$inquiry_agency_stmt = $pdo->query("SELECT phone FROM inquiry_agency WHERE agency_id = $agency_id");
+$inquiry_agency_stmt = $pdo->query("SELECT * FROM inquiry_agency WHERE agency_id = $agency_id");
 $inquiry_agency_results = $inquiry_agency_stmt->fetchAll();
+
+$inquiry_stmt = $pdo->query("SELECT * FROM inquiry");
+$inquiry_results = $inquiry_stmt->fetchAll();
+print_r($inquiry_results);
+
+
 
 
 
 // print_r($inquiry_agency_result[0]);
+// $sorted_phones = array();
 
-foreach($inquiry_agency_results as $inquiry_agency_result){
-    $sorted_phone = $inquiry_agency_result->phone;
+// foreach($inquiry_agency_results as $inquiry_agency_result){
+//     $sorted_phone = $inquiry_agency_result->phone;
+//     $sorted_phones[] = $sorted_phone;
+// }
 
-    echo $sorted_phone .'        '.'        '.'        '.'        ';
+// print_r($inquiry_agency_results);
 
-    // $inquiry_stmt = $pdo->query("SELECT * FROM inquiry where phone = $sorted_phone");
-    // $inquiry_results = $inquiry_stmt->fetchAll();
+// echo count($sorted_phones);
 
-}
+// $inquiry_stmt = $pdo->query("SELECT * FROM inquiry where phone = ");
+// $inquiry_results = $inquiry_stmt->fetchAll();
+// print_r($inquiry_results);
 
 
 
@@ -35,9 +45,6 @@ foreach($inquiry_agency_results as $inquiry_agency_result){
 
 
 
-$inquiry_stmt = $pdo->query("SELECT * FROM inquiry");
-$inquiry_results = $inquiry_stmt->fetchAll();
-// print_r($inquiry_results);
 
 
 // $stmt = $pdo->query("SELECT * FROM inquiry WHERE ");
@@ -99,18 +106,49 @@ $inquiry_results = $inquiry_stmt->fetchAll();
                     </tr>
                 </thead>
                 <?php foreach ($inquiry_results as $inquiry_result) : ?>
-                    <tbody>
-                        <tr>
-                            <th scope="row"><?=$inquiry_result->name; ?></th>
-                            <td><?= $inquiry_result->university; ?></td>
-                            <td><?= $inquiry_result->email; ?></td>
-                            <td><?= $inquiry_result->phone; ?></td>
-                            <td><?= $inquiry_result->birthday; ?></td>
-                            <td><?= $inquiry_result->address; ?></td>
-                            <td>只今未実装です</td>
-                        </tr>
-                    </tbody>
-                    <?php endforeach; ?>
+                    <? 
+                    $count = $inquiry_result->id -1;
+
+                    // Bに応募したエージェンシー
+                    // print_r($inquiry_agency_results[$inquiry_result->id -1]->phone);
+
+                    // Bに応募したエージェンシー　AB B　少なくなっちゃう
+                    if($count<count($inquiry_agency_results)){
+                        echo "-----";
+                        $sorted_phone = $inquiry_agency_results[$count]->phone;
+                        echo $sorted_phone;
+                    }else{
+                        echo "-----";
+                        $sorted_phone = "入ってないよ";
+                        echo $sorted_phone;
+                        break;
+                    }
+
+                    $inquiry_stmt2 = $pdo->query("SELECT * FROM inquiry WHERE phone = '$sorted_phone'");
+                    $inquiry_results2 = $inquiry_stmt2->fetch();
+                    print_r($inquiry_results2->name);
+                    ?>
+
+                    <!-- // 全てのエージェンシー
+                    // $comp_phone = $inquiry_result->phone;
+                    // echo $comp_phone;
+
+                    // 全てのエージェンシー
+                    // $sorted_phone = $inquiry_results[$inquiry_agency_result->id]->phone;
+                    // print_r($sorted_phone[0]->name);
+                    // $inquiry_agency_stmt = $pdo->query("SELECT * FROM inquiry WHERE phone = '$sorted_phone'");
+                    // $inquiry_agency_results = $inquiry_agency_stmt->fetchAll();
+                    // print_r($inquiry_agency_results)[0]['id'];?> -->
+                    <tr>
+                        <th scope="row"><?=$inquiry_results2->name; ?></th>
+                        <td><?= $inquiry_results2->name; ?></td>
+                        <td><?= $inquiry_results2->email; ?></td>
+                        <td><?= $inquiry_results2->phone; ?></td>
+                        <td><?= $inquiry_results2->university; ?></td>
+                        <td><?= $inquiry_results2->birthday; ?></td>
+                        <td>只今未実装です</td>
+                    </tr>
+                <?php endforeach;?>
             </table>
         </div>
     </main>
