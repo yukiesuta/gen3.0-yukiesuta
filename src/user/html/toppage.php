@@ -117,7 +117,7 @@ foreach ($agency_informations as $station){
                                     <div class="search-title text-center">業種</div>
                                     <?php foreach ($industry_conditions as $industry_condition) : ?>
                                         <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" name="industry<?= h($industry_condition->id); ?>" value="" id="ph_industry_flexCheckDefault<?= h($industry_condition->id); ?>">
+                                            <input class="form-check-input form-check-input-not-click" type="checkbox" name="industry<?= h($industry_condition->id); ?>" value="" id="ph_industry_flexCheckDefault<?= h($industry_condition->id); ?>">
                                             <label class="form-check-label" for="flexCheckDefault">
                                                 <?= h($industry_condition->industry); ?>
                                             </label>
@@ -128,7 +128,7 @@ foreach ($agency_informations as $station){
                                     <div class="search-title text-center">文理</div>
                                     <?php foreach ($major_conditions as $major_condition) : ?>
                                         <div class="form-check mt-1">
-                                            <input class="form-check-input" type="checkbox" name="major<?= h($major_condition->id); ?>" value="" id="ph_major_flexCheckDefault <?= h($major_condition->id); ?>">
+                                            <input class="form-check-input form-check-input-not-click" type="checkbox" name="major<?= h($major_condition->id); ?>" value="" id="ph_major_flexCheckDefault<?=h($major_condition->id); ?>">
                                             <label class="form-check-label" for="flexCheckDefault">
                                                 <?= h($major_condition->major); ?>
                                             </label>
@@ -139,7 +139,7 @@ foreach ($agency_informations as $station){
                                     <div class="search-title text-center">特徴</div>
                                     <?php foreach ($feature_conditions as $feature_condition) : ?>
                                         <div class="form-check mt-1">
-                                            <input class="form-check-input" type="checkbox" name="feature<?= h($feature_condition->id); ?>"   value="" id="ph_feature_flexCheckDefault<?= h($feature_condition->id); ?>">
+                                            <input class="form-check-input form-check-input-not-click" type="checkbox" name="feature<?= h($feature_condition->id); ?>"   value="" id="ph_feature_flexCheckDefault<?= h($feature_condition->id); ?>">
                                             <label class="form-check-label" for="flexCheckDefault">
                                                 <?= h($feature_condition->feature); ?>
                                             </label>
@@ -163,7 +163,7 @@ foreach ($agency_informations as $station){
                     <div class="search-title p-1 text-center">業種</div>
                     <?php foreach ($industry_conditions as $industry_condition) : ?>
                         <div class="form-check"> 
-                            <input class="form-check-input" type="checkbox" value=""  name="industry<?= h($industry_condition->id); ?>" id="pc_industry_flexCheckDefault<?= h($industry_condition->id); ?>">
+                            <input class="form-check-input form-check-input-click" type="checkbox" value=""  name="industry<?= h($industry_condition->id); ?>" id="pc_industry_flexCheckDefault<?= h($industry_condition->id); ?>">
                             <label class="form-check-label" for="flexCheckDefault">
                                 <?= h($industry_condition->industry); ?>
                             </label>
@@ -174,7 +174,7 @@ foreach ($agency_informations as $station){
                     <div class="search-title p-1 text-center">文理</div>
                     <?php foreach ($major_conditions as $major_condition) : ?>
                         <div class="form-check mt-1">
-                            <input class="form-check-input" type="checkbox" value=""  name="major<?= h($major_condition->id); ?>"  id="pc_major_flexCheckDefault<?= h($major_condition->id); ?>">
+                            <input class="form-check-input form-check-input-click" type="checkbox" value=""  name="major<?= h($major_condition->id); ?>"  id="pc_major_flexCheckDefault<?= h($major_condition->id); ?>">
                             <label class="form-check-label" for="flexCheckDefault">
                                 <?= h($major_condition->major); ?>
                             </label>
@@ -185,7 +185,7 @@ foreach ($agency_informations as $station){
                     <div class="search-title p-1 text-center">特徴</div>
                     <?php foreach ($feature_conditions as $feature_condition) : ?>
                         <div class="form-check mt-1">
-                            <input class="form-check-input" type="checkbox" value="" name="feature<?= h($feature_condition->id); ?>" id="pc_feature_flexCheckDefault<?= h($feature_condition->id); ?>">
+                            <input class="form-check-input form-check-input-click" type="checkbox" value="" name="feature<?= h($feature_condition->id); ?>" id="pc_feature_flexCheckDefault<?= h($feature_condition->id); ?>">
                             <label class="form-check-label" for="flexCheckDefault">
                                 <?= h($feature_condition->feature); ?>
                             </label>
@@ -214,7 +214,7 @@ foreach ($agency_informations as $station){
                         </div>
                         <div class="d-flex justify-content-end">
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" name='looked' id="agency_flexCheckDefault<?= h($agency_information->agency_id); ?>">
+                                <input class="form-check-input form-check-input-click" type="checkbox" value="" name='looked' id="agency_flexCheckDefault<?= h($agency_information->agency_id); ?>">
                             </div>
                         </div>
                     </div>
@@ -335,7 +335,7 @@ foreach ($agency_informations as $station){
                     </div>
                 </div>
                 <?php foreach ($agency_informations as $agency_information) : ?>
-                    <input class="form-check-input" type="hidden" value=""  name="agency<?= h($agency_information->agency_id); ?>" id="hidden_checkbox<?= h($agency_information->agency_id); ?>">
+                    <input class="form-check-input form-check-input-click" type="hidden" value=""  name="agency<?= h($agency_information->agency_id); ?>" id="hidden_checkbox<?= h($agency_information->agency_id); ?>">
                 <?php endforeach; ?>
                 <div class="submit" id="submit-button">
                         <button type="submit" value="確認画面へ" id="form-button" class="btn btn-success mt-5 unclick">
