@@ -41,6 +41,7 @@ for($i = 1; $i < 100; $i++){
 		$sql = 'INSERT INTO inquiry_agency(phone,agency_id)VALUES("'.$phone.'","'.$i.'")';
 		$stmt = $db -> prepare($sql);
 		$stmt -> execute();
+		echo $i;
 	}
   }
 
