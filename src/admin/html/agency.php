@@ -10,10 +10,34 @@ $agency_id = $_GET["agency_id"];
 // $inquiry_agency_informations = get_inquiry_agency_informations($pdo);
 
 $inquiry_agency_stmt = $pdo->query("SELECT phone FROM inquiry_agency WHERE agency_id = $agency_id");
-$inquiry_agency_result = $inquiry_agency_stmt->fetchAll();
+$inquiry_agency_results = $inquiry_agency_stmt->fetchAll();
+
+
+
+// print_r($inquiry_agency_result[0]);
+
+foreach($inquiry_agency_results as $inquiry_agency_result){
+    $sorted_phone = $inquiry_agency_result->phone;
+
+    echo $sorted_phone .'        '.'        '.'        '.'        ';
+
+    // $inquiry_stmt = $pdo->query("SELECT * FROM inquiry where phone = $sorted_phone");
+    // $inquiry_results = $inquiry_stmt->fetchAll();
+
+}
+
+
+
+// $text = '-------------------------------------------------------------';
+
+// echo $text;
+
+
+
 
 $inquiry_stmt = $pdo->query("SELECT * FROM inquiry");
 $inquiry_results = $inquiry_stmt->fetchAll();
+// print_r($inquiry_results);
 
 
 // $stmt = $pdo->query("SELECT * FROM inquiry WHERE ");

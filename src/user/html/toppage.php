@@ -335,7 +335,7 @@ foreach ($agency_informations as $station){
                     </div>
                 </div>
                 <?php foreach ($agency_informations as $agency_information) : ?>
-                    <input class="form-check-input" type="hidden" value=""  name="agency<?= h($agency_information->agency_id); ?>" id="hidden_checkbox<?= h($agency_information->agency_id); ?>">
+                    <input class="form-check-input" type="checkbox" value=""  name="agency<?= h($agency_information->agency_id); ?>" id="hidden_checkbox<?= h($agency_information->agency_id); ?>">
                 <?php endforeach; ?>
                 <div class="submit" id="submit-button">
                         <button type="submit" value="確認画面へ" id="form-button" class="btn btn-success mt-5 unclick">
