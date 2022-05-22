@@ -14,50 +14,6 @@ $inquiry_agency_results = $inquiry_agency_stmt->fetchAll();
 
 $inquiry_stmt = $pdo->query("SELECT * FROM inquiry");
 $inquiry_results = $inquiry_stmt->fetchAll();
-print_r($inquiry_results);
-
-
-
-
-
-// print_r($inquiry_agency_result[0]);
-// $sorted_phones = array();
-
-// foreach($inquiry_agency_results as $inquiry_agency_result){
-//     $sorted_phone = $inquiry_agency_result->phone;
-//     $sorted_phones[] = $sorted_phone;
-// }
-
-// print_r($inquiry_agency_results);
-
-// echo count($sorted_phones);
-
-// $inquiry_stmt = $pdo->query("SELECT * FROM inquiry where phone = ");
-// $inquiry_results = $inquiry_stmt->fetchAll();
-// print_r($inquiry_results);
-
-
-
-// $text = '-------------------------------------------------------------';
-
-// echo $text;
-
-
-
-
-
-
-// $stmt = $pdo->query("SELECT * FROM inquiry WHERE ");
-// $student_informations = $stmt->fetchAll();
-
-// $stmt = $db->query("SELECT phone FROM inquiry_agency WHERE agency_id = $agency_id" );
-// $result = $stmt->fetch();
-// エージェンシいidが一致するもののみ回収したいけどテーブルがわからないから放置
-// admin-function.phpにも？？？がある
-// print_r($inquiry_agency_informations);
-
-// $stmt = $db->query("SELECT * FROM inquiry_agency WHERE phone = $result" );
-// $result = $stmt->fetch();
 
 ?>
 <!DOCTYPE html>
@@ -109,36 +65,16 @@ print_r($inquiry_results);
                     <? 
                     $count = $inquiry_result->id -1;
 
-                    // Bに応募したエージェンシー
-                    // print_r($inquiry_agency_results[$inquiry_result->id -1]->phone);
-
                     // Bに応募したエージェンシー　AB B　少なくなっちゃう
                     if($count<count($inquiry_agency_results)){
-                        echo "-----";
                         $sorted_phone = $inquiry_agency_results[$count]->phone;
-                        echo $sorted_phone;
                     }else{
-                        echo "-----";
-                        $sorted_phone = "入ってないよ";
-                        echo $sorted_phone;
                         break;
                     }
 
                     $inquiry_stmt2 = $pdo->query("SELECT * FROM inquiry WHERE phone = '$sorted_phone'");
                     $inquiry_results2 = $inquiry_stmt2->fetch();
-                    print_r($inquiry_results2->name);
                     ?>
-
-                    <!-- // 全てのエージェンシー
-                    // $comp_phone = $inquiry_result->phone;
-                    // echo $comp_phone;
-
-                    // 全てのエージェンシー
-                    // $sorted_phone = $inquiry_results[$inquiry_agency_result->id]->phone;
-                    // print_r($sorted_phone[0]->name);
-                    // $inquiry_agency_stmt = $pdo->query("SELECT * FROM inquiry WHERE phone = '$sorted_phone'");
-                    // $inquiry_agency_results = $inquiry_agency_stmt->fetchAll();
-                    // print_r($inquiry_agency_results)[0]['id'];?> -->
                     <tr>
                         <th scope="row"><?=$inquiry_results2->name; ?></th>
                         <td><?= $inquiry_results2->name; ?></td>
