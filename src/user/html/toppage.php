@@ -221,7 +221,7 @@ foreach ($agency_informations as $station) {
             </div>
             <div class="main-right-content col-md-3 col-sm-3" name='rightContents'>
                 <?php foreach ($agency_informations as $agency_information) : ?>
-                    <a href="./company.html" class="text-decoration-none display-none" id="rightContent<?= h($agency_information->agency_id); ?>">
+                    <a href="company.php?id=<?= h($agency_information->agency_id); ?>" class="text-decoration-none display-none" id="rightContent<?= h($agency_information->agency_id); ?>">
                         <div class="d-flex checked-content m-5 p-3">
                             <div class="me-2">
                                 <img src="../uploaded_img/agency<?= h($agency_information->agency_id); ?>.png" alt="" class="right-img">
@@ -272,7 +272,7 @@ foreach ($agency_informations as $station) {
                                     <?= h($agency_information->agency_name); ?>
                                 </td>
                                 <th scope="row">
-                                    <a href="./company.html">
+                                    <a href="company.php?id=<?= h($agency_information->agency_id); ?>">
                                         <img src="../uploaded_img/agency<?= h($agency_information->agency_id); ?>.png" alt="" class="center-img">
                                     </a>
                                 </th>
@@ -282,7 +282,7 @@ foreach ($agency_informations as $station) {
                                 <td>◯</td>
                                 <td>✕</td>
                             </tr>
-                            <a href="./company.html" class="text-decoration-none display-none" id="rightContent<?= h($agency_information->agency_id); ?>">
+                            <a href="company.php?id=<?= h($agency_information->agency_id); ?>" class="text-decoration-none display-none" id="rightContent<?= h($agency_information->agency_id); ?>">
                                 <div class="d-flex checked-content m-5 p-3">
                                     <div class="me-2">
                                         <img src="../uploaded_img/agency<?= h($agency_information->agency_id); ?>.png" alt="" class="right-img">

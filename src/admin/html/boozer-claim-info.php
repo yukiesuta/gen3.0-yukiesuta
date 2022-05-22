@@ -22,17 +22,17 @@
         <div class="row">
             <div class="main-left col-2">
                 <div class="text-center mt-5">
-                    <a href="../html/boozer-agency.html" class="text-decoration-none text-white">
+                    <a href="boozer-agency.php" class="text-decoration-none text-white">
                         エージェンシー情報
                     </a>
                 </div>
                 <div class="text-center mt-3">
-                    <a href="../html/student-info.html" class="text-decoration-none text-white">
+                    <a href="boozer-student-info.php" class="text-decoration-none text-white">
                         学生情報
                     </a>
                 </div>
                 <div class="text-center mt-3">
-                    <a href="" class="text-decoration-none text-white">
+                    <a href="boozer-claim-info.php" class="text-decoration-none text-white">
                         請求情報管理
                     </a>
                 </div>
