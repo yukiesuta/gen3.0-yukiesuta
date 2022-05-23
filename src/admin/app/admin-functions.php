@@ -116,7 +116,8 @@ function add_agency_information($pdo)
         contract_numbers,
         bases_numbers,
         support,
-        place
+        place,
+        claim_status
         ) VALUES(
         :agency_name,
         :catch_copy,
@@ -128,7 +129,8 @@ function add_agency_information($pdo)
         :contract_numbers,
         :bases_numbers,
         :support,
-        :place
+        :place,
+        :claim_status
     )');
 
     $stmt->bindValue(':agency_name', $agency_name);
@@ -142,6 +144,7 @@ function add_agency_information($pdo)
     $stmt->bindValue(':bases_numbers', $bases_numbers);
     $stmt->bindValue(':support', $support);
     $stmt->bindValue(':place', $place);
+    $stmt->bindValue(':claim_status', 0);
 
 
     // echo $stmt;
@@ -252,4 +255,34 @@ function get_inquiry_agency_informations($pdo)
     $stmt = $pdo->query("SELECT * FROM inquiry_agency");
     $agency_informations = $stmt->fetchAll();
     return $agency_informations;
+}
+
+
+
+function edit_agency_claim_status($pdo)
+{
+    $claim_status_arr = [
+        '未請求',
+        '請求済み',
+        '入金済み',
+        '入金遅滞',
+        '請求不能'
+    ];
+    $claim_status = $_POST["claim_status"];
+    $id = $_POST["id"];
+    $agency_name = $_POST["agency_name"];
+    
+    $stmt = $pdo->prepare('UPDATE agency_information SET
+        claim_status = :claim_status
+        WHERE id = :id');
+
+    $stmt->execute(array(
+        ':claim_status' => $claim_status,
+        ':id' => $id
+    ));
+
+    echo $agency_name;
+    echo 'の請求ステータスを';
+    echo $claim_status_arr[$claim_status];
+    echo 'に更新しました';
 }
