@@ -101,7 +101,7 @@ print_r($result)
                     </tbody>
                 </table>
             </div>
-            <a href="./toppage.html">
+            <a href="toppage.php">
                 <button type="button" class="btn btn-success mt-5">トップページに戻る</button>
             </a>
         </div>

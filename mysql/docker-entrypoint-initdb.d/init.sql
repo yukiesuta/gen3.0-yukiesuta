@@ -207,6 +207,7 @@ CREATE TABLE inquiry (
 DROP TABLE IF EXISTS inquiry_agency;
 
 CREATE TABLE inquiry_agency (
+  id INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
   phone VARCHAR(255)  NOT NULL,
   agency_id INT  NOT NULL
 );
