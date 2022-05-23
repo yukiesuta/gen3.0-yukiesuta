@@ -21,6 +21,8 @@ $result = $stmt->fetch();
 
 
 
+
+
 ?>
 <!DOCTYPE html>
 <html lang="ja">
@@ -185,12 +187,14 @@ $result = $stmt->fetch();
             </div>
             <div class="d-flex justify-content-around">
                 <div>
-                    <a href="boozer-agency.php">
-                        <button type="button" class="btn btn-primary mt-5">＜前のページに戻る</button>
+                    <a href="boozer-delete.php?id=<?= $id;?>">
+                        <button type="button" class="btn btn-primary mt-5 btn-danger">削除</button>
                     </a>
                 </div>
                 <div>
-                    <button type="submit" class="btn btn-primary mt-5" >この情報で登録する＞</button>
+                <a href="boozer-edit-complete.php?id=<?= $id;?>">
+                    <button type="submit" class="btn btn-primary mt-5" >編集完了</button>
+                </a>
                 </div>
             </div>
         </form>

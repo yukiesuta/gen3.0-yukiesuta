@@ -191,7 +191,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     </a>
                 </div>
                 <div>
-                    <button type="submit" class="btn btn-primary mt-5" >この情報で登録する＞</button>
+                    <a href="boozer-agency.php">
+                        <button type="submit" class="btn btn-primary mt-5" >この情報で登録する＞</button>
+                    </a>
                 </div>
             </div>
         </form>

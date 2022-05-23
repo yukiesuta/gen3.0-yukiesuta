@@ -258,6 +258,14 @@ function get_inquiry_agency_informations($pdo)
 }
 
 
+// 編集画面 エージェンシー情報削除
+function agency_delete($pdo){
+    $id = $_GET["id"];
+    $stmt = $pdo->prepare("DELETE FROM agency_information WHERE id = :id" );
+    $stmt->bindValue(':id', $id);
+    $res = $stmt->execute();
+}
+
 
 function edit_agency_claim_status($pdo)
 {

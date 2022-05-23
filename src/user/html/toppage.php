@@ -11,9 +11,13 @@ $industry_conditions = get_industry_conditions($pdo);
 $major_conditions = get_major_conditions($pdo);
 $feature_conditions = get_feature_conditions($pdo);
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $shibori = agency_information($pdo);
-}
+// if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+// }
+$shibori=agency_information($pdo);
+
+// if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+//     $shibori = agency_information($pdo);
+// }
 $ids = [$shibori];
 
 
@@ -149,7 +153,8 @@ foreach ($agency_informations as $station) {
                         </div>
                         <div class="row">
                             <div class="col"></div>
-                            <button type="button" class="btn btn-success col-8 justify-content-center mt-2 mb-3" id="submitButton">絞り込み</button>
+                            <button type="submit" class="btn btn-success col-8 justify-content-center mt-2 mb-3" id="submitButton">絞り込み</button>
+                            <!-- <button type="submit" class="btn btn-primary mt-5" >絞り込む</button> -->
                             <div class="col"></div>
                         </div>
                         </form>
