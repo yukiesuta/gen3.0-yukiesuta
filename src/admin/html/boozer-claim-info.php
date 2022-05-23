@@ -1,3 +1,12 @@
+<?php
+    require_once(__DIR__  . '/../../dbconnect.php');
+    require_once(__DIR__  . '/../app/config.php');
+
+    $pdo = getPdoInstance();
+
+    $stmt = $pdo->query("SELECT * FROM agency_information");
+    $agencys = $stmt->fetchAll();
+?>
 <!DOCTYPE html>
 <html lang="ja">
 
@@ -38,23 +47,6 @@
                 </div>
             </div>
             <div class="main-right col-10">
-                <div class="d-flex justify-content-center mt-5">
-                    <div>
-                        <button class="navigate-button">
-                            <span class="material-icons">
-                                navigate_before
-                            </span>
-                        </button>
-                    </div>
-                    <div>3月</div>
-                    <div>
-                        <button class="navigate-button">
-                            <span class="material-icons">
-                                navigate_next
-                            </span>
-                        </button>
-                    </div>
-                </div>
                 <div class="table">
                     <table class="table table-striped w-75 mt-5">
                         <thead class="text-center">
@@ -62,13 +54,14 @@
                                 <th scope="col">エージェンシー名</th>
                                 <th scope="col">請求ステータス</th>
                                 <th scope="col">申し込み人数</th>
-                                <th scope="col">金額</th>
+                                <th scope="col">金額(単価×申込み人数)</th>
                                 <th scope="col">電話番号</th>
                             </tr>
                         </thead>
                         <tbody class="text-center">
+                        <?php foreach ($agencys as $agency) : ?>
                             <tr>
-                                <th scope="row">マイナベ株式会社</th>
+                                <th scope="row"><?= $agency->agency_name; ?></th>
                                 <td>
                                     <select name="change">
                                         <option value="recommend">未請求</option>
@@ -78,160 +71,21 @@
                                         <option value="number">請求不能</option>
                                     </select>
                                 </td>
-                                <td>30</td>
-                                <td>600,000</td>
-                                <td>080-555-231</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">マイナベ株式会社</th>
                                 <td>
-                                    <select name="change">
-                                        <option value="recommend">未請求</option>
-                                        <option value="name">請求済み</option>
-                                        <option value="number">入金済み</option>
-                                        <option value="number">入金遅滞</option>
-                                        <option value="number">請求不能</option>
-                                    </select>
+                                    <?php
+                                        $agency_stmt = $pdo->query("SELECT * FROM inquiry_agency WHERE agency_id = $agency->id");
+                                        $agency_result = $agency_stmt->fetchAll();
+                                        echo count($agency_result);
+                                    ?>
                                 </td>
-                                <td>30</td>
-                                <td>600,000</td>
-                                <td>080-555-231</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">マイナベ株式会社</th>
                                 <td>
-                                    <select name="change">
-                                        <option value="recommend">未請求</option>
-                                        <option value="name">請求済み</option>
-                                        <option value="number">入金済み</option>
-                                        <option value="number">入金遅滞</option>
-                                        <option value="number">請求不能</option>
-                                    </select>
+                                    <?php
+                                        echo 3000 * count($agency_result);
+                                    ?>
                                 </td>
-                                <td>30</td>
-                                <td>600,000</td>
-                                <td>080-555-231</td>
+                                <td><?= $agency->phone_number; ?></td>
                             </tr>
-                            <tr>
-                                <th scope="row">マイナベ株式会社</th>
-                                <td>
-                                    <select name="change">
-                                        <option value="recommend">未請求</option>
-                                        <option value="name">請求済み</option>
-                                        <option value="number">入金済み</option>
-                                        <option value="number">入金遅滞</option>
-                                        <option value="number">請求不能</option>
-                                    </select>
-                                </td>
-                                <td>30</td>
-                                <td>600,000</td>
-                                <td>080-555-231</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">マイナベ株式会社</th>
-                                <td>
-                                    <select name="change">
-                                        <option value="recommend">未請求</option>
-                                        <option value="name">請求済み</option>
-                                        <option value="number">入金済み</option>
-                                        <option value="number">入金遅滞</option>
-                                        <option value="number">請求不能</option>
-                                    </select>
-                                </td>
-                                <td>30</td>
-                                <td>600,000</td>
-                                <td>080-555-231</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">マイナベ株式会社</th>
-                                <td>
-                                    <select name="change">
-                                        <option value="recommend">未請求</option>
-                                        <option value="name">請求済み</option>
-                                        <option value="number">入金済み</option>
-                                        <option value="number">入金遅滞</option>
-                                        <option value="number">請求不能</option>
-                                    </select>
-                                </td>
-                                <td>30</td>
-                                <td>600,000</td>
-                                <td>080-555-231</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">マイナベ株式会社</th>
-                                <td>
-                                    <select name="change">
-                                        <option value="recommend">未請求</option>
-                                        <option value="name">請求済み</option>
-                                        <option value="number">入金済み</option>
-                                        <option value="number">入金遅滞</option>
-                                        <option value="number">請求不能</option>
-                                    </select>
-                                </td>
-                                <td>30</td>
-                                <td>600,000</td>
-                                <td>080-555-231</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">マイナベ株式会社</th>
-                                <td>
-                                    <select name="change">
-                                        <option value="recommend">未請求</option>
-                                        <option value="name">請求済み</option>
-                                        <option value="number">入金済み</option>
-                                        <option value="number">入金遅滞</option>
-                                        <option value="number">請求不能</option>
-                                    </select>
-                                </td>
-                                <td>30</td>
-                                <td>600,000</td>
-                                <td>080-555-231</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">マイナベ株式会社</th>
-                                <td>
-                                    <select name="change">
-                                        <option value="recommend">未請求</option>
-                                        <option value="name">請求済み</option>
-                                        <option value="number">入金済み</option>
-                                        <option value="number">入金遅滞</option>
-                                        <option value="number">請求不能</option>
-                                    </select>
-                                </td>
-                                <td>30</td>
-                                <td>600,000</td>
-                                <td>080-555-231</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">マイナベ株式会社</th>
-                                <td>
-                                    <select name="change">
-                                        <option value="recommend">未請求</option>
-                                        <option value="name">請求済み</option>
-                                        <option value="number">入金済み</option>
-                                        <option value="number">入金遅滞</option>
-                                        <option value="number">請求不能</option>
-                                    </select>
-                                </td>
-                                <td>30</td>
-                                <td>600,000</td>
-                                <td>080-555-231</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">マイナベ株式会社</th>
-                                <td>
-                                    <select name="change">
-                                        <option value="recommend">未請求</option>
-                                        <option value="name">請求済み</option>
-                                        <option value="number">入金済み</option>
-                                        <option value="number">入金遅滞</option>
-                                        <option value="number">請求不能</option>
-                                    </select>
-                                </td>
-                                <td>30</td>
-                                <td>600,000</td>
-                                <td>080-555-231</td>
-                            </tr>
+                            <?php endforeach; ?>
                         </tbody>
                     </table>
                 </div>
