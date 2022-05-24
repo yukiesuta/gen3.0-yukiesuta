@@ -149,31 +149,32 @@ contract_numbers VARCHAR(255) NOT NULL,
 bases_numbers VARCHAR(255) NOT NULL,
 support VARCHAR(255) NOT NULL,
 place VARCHAR(255) NOT NULL,
+claim_status INT NOT NULL,
 created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
 updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
 
 
--- DROP TABLE IF EXISTS agency_industry;
+DROP TABLE IF EXISTS agency_industry;
 
--- CREATE TABLE agency_industry (
+CREATE TABLE agency_industry (
 
--- agency_id INT NOT NULL,
--- industry_id INT NOT NULL
+agency_id INT NOT NULL,
+industry_id INT NOT NULL
 
--- );
-
-
+);
 
 
--- DROP TABLE IF EXISTS agency_major;
 
--- CREATE TABLE agency_major (
 
--- agency_id INT NOT NULL,
--- major_id INT NOT NULL
+DROP TABLE IF EXISTS agency_major;
 
--- );
+CREATE TABLE agency_major (
+
+agency_id INT NOT NULL,
+major_id INT NOT NULL
+
+);
 
 
 
@@ -209,5 +210,6 @@ DROP TABLE IF EXISTS inquiry_agency;
 CREATE TABLE inquiry_agency (
   id INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
   phone VARCHAR(255)  NOT NULL,
-  agency_id INT  NOT NULL
+  agency_id INT  NOT NULL,
+  progress INT NOT NULL
 );

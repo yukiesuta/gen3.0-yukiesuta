@@ -57,38 +57,33 @@ function get_feature_conditions($pdo)
 
 function agency_information($pdo)
 {
+
     if (isset($_POST['industry1'])) {
         $industrys[] = 1;
-       
     }
     if (isset($_POST['industry2'])) {
         $industrys[] = 2;
-       
     }
     if (isset($_POST['industry3'])) {
         $industrys[] = 3;
-        
     }
     if (isset($_POST['industry4'])) {
         $industrys[] = 4;
-        
     }
     if (isset($_POST['industry5'])) {
         $industrys[] = 5;
-        
     }
     if (isset($_POST['industry6'])) {
         $industrys[] = 6;
-      
     }
     if (isset($_POST['industry7'])) {
         $industrys[] = 7;
-        
     }
 
 
     if (isset($_POST['major1'])) {
         $industrys[] = 8;
+        // $industrys[] = 0;
     }
     if (isset($_POST['major2'])) {
         $industrys[] = 9;
@@ -114,7 +109,5 @@ function agency_information($pdo)
     $result = implode(',', $industrys);
     // print_r($result);
     return $result;
-    
+};
 
-
-}

@@ -116,7 +116,8 @@ function add_agency_information($pdo)
         contract_numbers,
         bases_numbers,
         support,
-        place
+        place,
+        claim_status
         ) VALUES(
         :agency_name,
         :catch_copy,
@@ -128,7 +129,8 @@ function add_agency_information($pdo)
         :contract_numbers,
         :bases_numbers,
         :support,
-        :place
+        :place,
+        :claim_status
     )');
 
     $stmt->bindValue(':agency_name', $agency_name);
@@ -142,6 +144,7 @@ function add_agency_information($pdo)
     $stmt->bindValue(':bases_numbers', $bases_numbers);
     $stmt->bindValue(':support', $support);
     $stmt->bindValue(':place', $place);
+    $stmt->bindValue(':claim_status', 0);
 
 
     // echo $stmt;
@@ -252,4 +255,72 @@ function get_inquiry_agency_informations($pdo)
     $stmt = $pdo->query("SELECT * FROM inquiry_agency");
     $agency_informations = $stmt->fetchAll();
     return $agency_informations;
+}
+
+
+// 編集画面 エージェンシー情報削除
+function agency_delete($pdo){
+    $id = $_GET["id"];
+    $stmt = $pdo->prepare("DELETE FROM agency_information WHERE id = :id" );
+    $stmt->bindValue(':id', $id);
+    $res = $stmt->execute();
+}
+
+
+function edit_agency_claim_status($pdo)
+{
+    $claim_status_arr = [
+        '未請求',
+        '請求済み',
+        '入金済み',
+        '入金遅滞',
+        '請求不能'
+    ];
+    $claim_status = $_POST["claim_status"];
+    $id = $_POST["id"];
+    $agency_name = $_POST["agency_name"];
+    
+    $stmt = $pdo->prepare('UPDATE agency_information SET
+        claim_status = :claim_status
+        WHERE id = :id');
+
+    $stmt->execute(array(
+        ':claim_status' => $claim_status,
+        ':id' => $id
+    ));
+
+    echo $agency_name;
+    echo 'の請求ステータスを';
+    echo $claim_status_arr[$claim_status];
+    echo 'に更新しました';
+}
+
+
+function edit_progress($pdo)
+{
+    $claim_status_arr = [
+        '状況１',
+        '状況２',
+        '状況3',
+        '状況4',
+        '状況5'
+    ];
+    $progress = $_POST["progress"];
+    $agency_id = $_POST["agency_id"];
+    $phone = $_POST["phone"];
+    $name = $_POST["name"];
+    
+    $stmt = $pdo->prepare('UPDATE inquiry_agency SET
+        progress = :progress
+        WHERE agency_id = :agency_id && phone = :phone');
+
+    $stmt->execute(array(
+        ':progress' => $progress,
+        ':agency_id' => $agency_id,
+        ':phone'=>$phone
+    ));
+    echo $name;
+    echo 'の進行状況を';
+    echo $progress;
+    echo 'へ更新しました';
 }

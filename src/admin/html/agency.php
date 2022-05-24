@@ -2,6 +2,8 @@
 require_once(__DIR__  . '/../../dbconnect.php');
 require_once(__DIR__  . '/../app/config.php');
 
+
+
 $pdo = getPdoInstance();
 $agency_id = $_GET["agency_id"];
 
@@ -14,6 +16,10 @@ $inquiry_agency_results = $inquiry_agency_stmt->fetchAll();
 
 $inquiry_stmt = $pdo->query("SELECT * FROM inquiry");
 $inquiry_results = $inquiry_stmt->fetchAll();
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    edit_progress($pdo);
+}
 
 ?>
 <!DOCTYPE html>
@@ -74,6 +80,8 @@ $inquiry_results = $inquiry_stmt->fetchAll();
 
                     $inquiry_stmt2 = $pdo->query("SELECT * FROM inquiry WHERE phone = '$sorted_phone'");
                     $inquiry_results2 = $inquiry_stmt2->fetch();
+
+
                     ?>
                     <tr>
                         <th scope="row"><?=$inquiry_results2->name; ?></th>
@@ -82,7 +90,23 @@ $inquiry_results = $inquiry_stmt->fetchAll();
                         <td><?= $inquiry_results2->phone; ?></td>
                         <td><?= $inquiry_results2->university; ?></td>
                         <td><?= $inquiry_results2->birthday; ?></td>
-                        <td>只今未実装です</td>
+
+                        <!-- <?=$inquiry_agency_results[$count]->progress;?> -->
+                        <td>
+                            <form method='POST' action='agency.php?agency_id=<?=$agency_id?>'>
+                                <select name="progress">
+                                    <option value="0" <?php if($inquiry_agency_results[$count]->progress===0){echo "selected";} ?>>状況0</option>
+                                    <option value="1" <?php if($inquiry_agency_results[$count]->progress===1){echo "selected";} ?>>状況1</option>
+                                    <option value="2" <?php if($inquiry_agency_results[$count]->progress===2){echo "selected";} ?>>状況2</option>
+                                    <option value="3" <?php if($inquiry_agency_results[$count]->progress===3){echo "selected";} ?>>状況3</option>
+                                    <option value="4" <?php if($inquiry_agency_results[$count]->progress===4){echo "selected";} ?>>状況4</option>
+                                </select>
+                                <input type="hidden" value="<?=$agency_id?>" name="agency_id">
+                                <input type="hidden" value="<?=$inquiry_results2->name; ?>" name="name">
+                                <input type="hidden" value="<?= $inquiry_results2->phone; ?>" name="phone">
+                                    <button class="btn-secondary btn" type='submit' > 更新</button>
+                            </form>
+                        </td>
                     </tr>
                 <?php endforeach;?>
             </table>

@@ -28,17 +28,17 @@ $agencys = $stmt->fetchAll();
         <div class="row">
             <div class="main-left col-2">
                 <div class="text-center mt-5">
-                    <a href="" class="text-decoration-none text-white">
+                    <a href="boozer-agency.php" class="text-decoration-none text-white">
                         エージェンシー情報
                     </a>
                 </div>
                 <div class="text-center mt-3">
-                    <a href="../html/student-info.html" class="text-decoration-none text-white">
+                    <a href="boozer-student-info.php" class="text-decoration-none text-white">
                         学生情報
                     </a>
                 </div>
                 <div class="text-center mt-3">
-                    <a href="../html/claim-info.html" class="text-decoration-none text-white">
+                    <a href="boozer-claim-info.php" class="text-decoration-none text-white">
                         請求情報管理
                     </a>
                 </div>
@@ -66,15 +66,18 @@ $agencys = $stmt->fetchAll();
                                 <td><?= $agency->mail_address; ?></td>
                                 <td>（決め打ち）</td>
                                 <td>（決め打ち）</td>
-                                <td><button type="button" class="btn btn-primary btn-sm">編集・削除</button></td>
-                                
+                                <td>
+                                    <a href="boozer-edit-creation.php?id=<?= $agency->id;?>">
+                                        <button type="button" class="btn btn-primary btn-sm">編集・削除</button>
+                                    </a>
+                                </td>
                             </tr>
                             <?php endforeach; ?>
                         </tbody>
                     </table>
                 </div>
                 <div class="text-center btn-lg">
-                    <a href="../html/new-creation.html">
+                    <a href="boozer-new-creation.php">
                         <button type="button" class="btn btn-primary mt-5">新規作成</button>
                     </a>
                 </div>
