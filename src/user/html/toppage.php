@@ -13,7 +13,7 @@ $feature_conditions = get_feature_conditions($pdo);
 
 // if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 // }
-$shibori=agency_information($pdo);
+$shibori = agency_information($pdo);
 
 // if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 //     $shibori = agency_information($pdo);
@@ -27,6 +27,7 @@ $inClause = substr(str_repeat(',?', count($ids)), 1);
 $stmt = $pdo->prepare("SELECT * FROM agency_information 
 JOIN agency_feature AS itt ON  agency_information.id = itt.agency_id
 JOIN features ON itt.feature_id = features.id
+JOIN industry_condition AS ittt ON  itt.feature_id = ittt.id
 WHERE features.id IN ({$inClause})
 ");
 
@@ -43,6 +44,19 @@ foreach ($agency_informations as $station) {
         $uniqueStations[] = $station;
     }
 }
+
+$stmt = $pdo->prepare("SELECT * FROM agency_information 
+JOIN agency_feature AS itt ON  agency_information.id = itt.agency_id
+JOIN features ON itt.feature_id = features.id
+JOIN industry_condition AS ittt ON  itt.feature_id = ittt.id
+");
+$stmt->execute();
+
+$agency_information_comparison = $stmt->fetchAll();
+
+
+
+
 ?>
 
 <!DOCTYPE html>
@@ -265,7 +279,7 @@ foreach ($agency_informations as $station) {
                         </tr>
                     </thead>
                     <tbody>
-                        <?php foreach ($agency_informations as $agency_information) : ?>
+                        <?php foreach ($agency_information_comparison as $agency_information) : ?>
                             <tr id="comparison_agency<?= h($agency_information->agency_id); ?>" class="display-none">
                                 <td>
                                     <button type="button" class="btn btn-success" id="comparisonDelete<?= h($agency_information->agency_id); ?>">削除</button>
@@ -281,7 +295,17 @@ foreach ($agency_informations as $station) {
                                         <img src="../uploaded_img/agency<?= h($agency_information->agency_id); ?>.png" alt="" class="center-img">
                                     </a>
                                 </th>
-                                <td><?= h($agency_information->catch_copy); ?></td>
+                                <td>
+                                    <?php
+
+                                    if ($data = $agency_information->agency_id) {
+                                        foreach ($agency_information_comparison as $val) {
+                                            if ($val->agency_id === $data) {
+                                                echo  $val->industry;
+                                            }
+                                        };
+                                    } ?>
+                                </td>
                                 <td>○</td>
                                 <td>✕</td>
                                 <td>◯</td>

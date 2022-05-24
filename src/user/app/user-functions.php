@@ -107,7 +107,7 @@ function agency_information($pdo)
 
     if(isset($industrys)){
         $result = implode(',', $industrys);
-        print_r($result);
+        // print_r($result);
         return $result;
     }
 };

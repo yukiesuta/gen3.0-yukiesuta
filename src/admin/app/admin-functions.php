@@ -45,30 +45,37 @@ function add_agency_information($pdo)
 
     if (isset($_POST['industry1'])) {
         $industrys[] = 1;
+        $industry_comparison[] = 1;
        
     }
     if (isset($_POST['industry2'])) {
         $industrys[] = 2;
+        $industry_comparison[] = 2;
        
     }
     if (isset($_POST['industry3'])) {
         $industrys[] = 3;
-        
+        $industry_comparison[] = 3;
+                
     }
     if (isset($_POST['industry4'])) {
         $industrys[] = 4;
+        $industry_comparison[] = 4;
         
     }
     if (isset($_POST['industry5'])) {
         $industrys[] = 5;
+        $industry_comparison[] = 5;
         
     }
     if (isset($_POST['industry6'])) {
         $industrys[] = 6;
+        $industry_comparison[] = 6;
       
     }
     if (isset($_POST['industry7'])) {
         $industrys[] = 7;
+        $industry_comparison[] = 7;
         
     }
 
@@ -168,8 +175,20 @@ function add_agency_information($pdo)
         $stmt->bindValue(':id', $id);
         $stmt->bindValue(':feature_id', $industry);
         $stmt->execute();
-        
+    }
 
+    foreach($industry_comparison as $industry){
+        $stmt = $pdo->prepare('INSERT INTO agency_industry(
+            agency_id,
+            industry_id
+            ) VALUES(
+            :id,
+            :industry_id
+    
+        )');
+        $stmt->bindValue(':id', $id);
+        $stmt->bindValue(':industry_id', $industry);
+        $stmt->execute();
     }
  
 
@@ -183,18 +202,10 @@ function add_agency_information($pdo)
     $upload_dir = __DIR__ . '/../../user/uploaded_img/agency' . $now_id['MAX(id)'] . '.png';
 
     $allow_ext = array('jpg', 'jpeg', 'png');
-    // $file_ext = pathinfo($uploading_img,PATHINFO_EXTENSION);
-
-    // if(!in_array(strtolower($file_ext),$allow_ext)){
-    // echo '画像ファイルを送ってください';
-    // }elseif($filesize > 100000000){
-    // echo 'データがデカすぎる';
-    // }else{
+ 
     $temp_path = $uploading_img['tmp_name'];
     move_uploaded_file($temp_path, $upload_dir);
-    // echo '成功';
-    // echo $file_err;
-    // }
+  
 }
 function edit_agency_information($pdo)
 {
