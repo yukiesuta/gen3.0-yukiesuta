@@ -8,7 +8,7 @@ for (let i = 1; i < 100; i++) {
         let comparisonDelete = document.getElementById("comparisonDelete" + i);
         checkbox.addEventListener(
             "change",
-            function() {
+            function () {
                 console.log(document.getElementById("hidden_checkbox" + i));
                 document.getElementById("hidden_checkbox" + i).click();
                 if (checkbox.checked == true) {
@@ -23,7 +23,7 @@ for (let i = 1; i < 100; i++) {
         );
         comparisonDelete.addEventListener(
             "click",
-            function() {
+            function () {
                 checkbox.click();
             },
             false
@@ -93,7 +93,7 @@ let phone = document.getElementById("phone-number");
 let address = document.getElementById("address");
 let email = document.getElementById("email");
 
-let check = function() {
+let check = function () {
     // if (typeof(name.value) == "string" && typeof(birthday.value) == "string" && typeof(university.value) == "string" && typeof(phone.value) == "string" && typeof(address.value) == "string" && typeof(email.value) == "string") {
     //     // alert("未入力の内容があります");
     //     console.log('確認')
@@ -113,6 +113,16 @@ let check = function() {
     }
 };
 
+for (let i = 1; i < 100; i++) {
+    let toCompare = document.getElementById("toCompare")
+    let agency_flexCheckDefault = document.getElementById("agency_flexCheckDefault" + i)
+    checkbox.addEventListener("load", function () {
+        if (agency_flexCheckDefault == false) {
+            toCompare.classList.add("display-none")
+        }
+    }, false
+    )
+}
 name.addEventListener("keyup", check, false);
 birthday.addEventListener("keyup", check, false);
 university.addEventListener("keyup", check, false);
