@@ -90,6 +90,7 @@ function add_agency_information($pdo)
 
     if (isset($_POST['feature1'])) {
         $industrys[] = 10;
+
     }
     if (isset($_POST['feature2'])) {
         $industrys[] = 11;
@@ -98,7 +99,7 @@ function add_agency_information($pdo)
         $industrys[] = 12;
     }
     if (isset($_POST['feature4'])) {
-        $features[] = 13;
+        $industrys[] = 13;
     }
     if (isset($_POST['feature5'])) {
         $industrys[] = 14;
