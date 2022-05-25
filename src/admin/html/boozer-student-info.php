@@ -7,6 +7,18 @@ $pdo = getPdoInstance();
 $stmt = $pdo->query("SELECT * FROM inquiry");
 $inquirys = $stmt->fetchAll();
 
+$stmt = $pdo->query("SELECT * FROM inquiry_agency");
+$inquiry_agencys = $stmt->fetchAll();
+
+$stmt = $pdo->query("SELECT * FROM agency_information");
+$agency_informations = $stmt->fetchAll();
+
+
+
+
+
+
+
 ?>
 <!DOCTYPE html>
 <html lang="ja">
@@ -56,19 +68,51 @@ $inquirys = $stmt->fetchAll();
                                 <th scope="col">メールアドレス</th>
                                 <th scope="col">電話番号</th>
                                 <th scope="col">申し込み日時</th>
-                                <th scope="col">申込先エージェント</th>
+                                <th scope="col">申込先</th>
+                                <!-- <th scope="col">申込先電話番号</th> -->
                                 <th></th>
                             </tr>
                         </thead>
                         <?php foreach ($inquirys as $inquiry) : ?>
+                        <?
+                            $stmt = $pdo->query("SELECT * FROM inquiry_agency WHERE phone = '$inquiry->phone'");
+                            $inquiry_agencys = $stmt->fetchAll();
+                        ?>
                             <tbody class="text-center">
                                 <tr>
                                     <th scope="row"><?= $inquiry->name; ?></th>
                                     <td><?= $inquiry->university; ?></td>
                                     <td><?= $inquiry->email; ?></td>
                                     <td><?= $inquiry->phone; ?></td>
-                                    <td>（決め打ち）</td>
-                                    <td>（決め打ち）</td>
+                                    <td><?= $inquiry->created_at; ?></td>
+                                    <td>
+                                            <?php foreach ($inquiry_agencys as $inquiry_agency) : ?>
+                                                <?
+                                                    $count =  $inquiry_agency->agency_id -1;
+                                                    $inquiry_agency_name = $agency_informations[$count]->agency_name;
+                                                    $inquiry_phone_number = $agency_informations[$count]->phone_number;
+                                                ?>
+                                                <!-- <option disabled> -->
+                                                    <?=$inquiry_agency_name?>
+                                                    <br>
+                                                    <!-- <?=$inquiry_phone_number?> -->
+                                                <!-- </option> -->
+                                                <?php endforeach; ?>
+                                    </td>
+                                    <!-- <td> -->
+                                            <!-- <?php foreach ($inquiry_agencys as $inquiry_agency) : ?>
+                                                <?
+                                                    $count =  $inquiry_agency->agency_id -1;
+                                                    $inquiry_agency_name = $agency_informations[$count]->agency_name;
+                                                    $inquiry_phone_number = $agency_informations[$count]->phone_number;
+                                                ?> -->
+                                                <!-- <option disabled> -->
+                                                    <!-- <?=$inquiry_agency_name?> -->
+                                                    <!-- <?=$inquiry_phone_number?>
+                                                    <br> -->
+                                                <!-- </option> -->
+                                                <!-- <?php endforeach; ?> -->
+                                    <!-- </td> -->
                                     <td><button type="button" class="btn btn-primary btn-sm">削除</button></td>
                                 </tr>
                             </tbody>
