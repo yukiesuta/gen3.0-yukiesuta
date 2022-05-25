@@ -59,11 +59,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <thead>
                     <tr>
                         <th scope="col">学生名</th>
-                        <th scope="col">担当者</th>
+                        <th scope="col">生年月日</th>
                         <th scope="col">メールアドレス</th>
                         <th scope="col">電話番号</th>
+                        <th scope="col">大学</th>
                         <th scope="col">申込日</th>
-                        <th scope="col">備考</th>
                         <th scope="col">進行状況</th>
                     </tr>
                 </thead>
@@ -85,11 +85,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     ?>
                     <tr>
                         <th scope="row"><?=$inquiry_results2->name; ?></th>
-                        <td><?= $inquiry_results2->name; ?></td>
+                        <td><?= $inquiry_results2->birthday; ?></td>
                         <td><?= $inquiry_results2->email; ?></td>
                         <td><?= $inquiry_results2->phone; ?></td>
                         <td><?= $inquiry_results2->university; ?></td>
-                        <td><?= $inquiry_results2->birthday; ?></td>
+                        <td><?= date($inquiry_results2->created_at); ?></td>
 
                         <!-- <?=$inquiry_agency_results[$count]->progress;?> -->
                         <td>
