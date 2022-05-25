@@ -68,7 +68,8 @@ $agency_informations = $stmt->fetchAll();
                                 <th scope="col">メールアドレス</th>
                                 <th scope="col">電話番号</th>
                                 <th scope="col">申し込み日時</th>
-                                <th scope="col">申込先エージェント</th>
+                                <th scope="col">申込先</th>
+                                <!-- <th scope="col">申込先電話番号</th> -->
                                 <th></th>
                             </tr>
                         </thead>
@@ -85,23 +86,33 @@ $agency_informations = $stmt->fetchAll();
                                     <td><?= $inquiry->phone; ?></td>
                                     <td><?= $inquiry->created_at; ?></td>
                                     <td>
-                                        <select>
-                                            <option>
-                                                ここをクリックして確認
-                                            </option>
                                             <?php foreach ($inquiry_agencys as $inquiry_agency) : ?>
                                                 <?
-                                                        $count =  $inquiry_agency->agency_id -1;
-                                                        $inquiry_agency_name = $agency_informations[$count]->agency_name;
-                                                        ?>
-
-                                                <option disabled>
+                                                    $count =  $inquiry_agency->agency_id -1;
+                                                    $inquiry_agency_name = $agency_informations[$count]->agency_name;
+                                                    $inquiry_phone_number = $agency_informations[$count]->phone_number;
+                                                ?>
+                                                <!-- <option disabled> -->
                                                     <?=$inquiry_agency_name?>
-                                                </option>
-                    
+                                                    <br>
+                                                    <!-- <?=$inquiry_phone_number?> -->
+                                                <!-- </option> -->
                                                 <?php endforeach; ?>
-                                        </select>
                                     </td>
+                                    <!-- <td> -->
+                                            <!-- <?php foreach ($inquiry_agencys as $inquiry_agency) : ?>
+                                                <?
+                                                    $count =  $inquiry_agency->agency_id -1;
+                                                    $inquiry_agency_name = $agency_informations[$count]->agency_name;
+                                                    $inquiry_phone_number = $agency_informations[$count]->phone_number;
+                                                ?> -->
+                                                <!-- <option disabled> -->
+                                                    <!-- <?=$inquiry_agency_name?> -->
+                                                    <!-- <?=$inquiry_phone_number?>
+                                                    <br> -->
+                                                <!-- </option> -->
+                                                <!-- <?php endforeach; ?> -->
+                                    <!-- </td> -->
                                     <td><button type="button" class="btn btn-primary btn-sm">削除</button></td>
                                 </tr>
                             </tbody>
