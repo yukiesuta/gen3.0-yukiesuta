@@ -62,7 +62,7 @@ JOIN features ON feature_comparison.feature_id = features.id
 $stmt->execute();
 
 $agency_feature_comparison = $stmt->fetchAll();
-print_r($agency_feature_comparison);
+// print_r($agency_feature_comparison);
 
 
 
@@ -311,7 +311,7 @@ print_r($agency_feature_comparison);
                                     if ($data = $agency_information->agency_id) {
                                         foreach ($agency_industry_comparison as $val) {
                                             if ($val->agency_id === $data) {
-                                                echo  $val->industry;
+                                                echo "<p>$val->industry</p>";
                                             }
                                         };
                                     } ?>
@@ -322,16 +322,16 @@ print_r($agency_feature_comparison);
                                             foreach ($agency_feature_comparison as $val) {
                                                 if ($val->agency_id === $data) {
                                                     if($val->feature_id >10){
-                                                        echo $val->feature;
+                                                        echo "<p>$val->feature</p>";
                                                     }
                                                 }
                                             };
                                         } ?>
                                 </td>
-                                <td><?= h($agency_information->contract_numbers); ?></td>
                                 <td><?= h($agency_information->achievements); ?></td>
-                                <td><?= h($agency_information->place); ?></td>
                                 <td><?= h($agency_information->bases_numbers); ?></td>
+                                <td><?= h($agency_information->contract_numbers); ?></td>
+                                <td><?= h($agency_information->catch_copy); ?></td>
                             </tr>
                             <a href="company.php?id=<?= h($agency_information->agency_id); ?>" class="text-decoration-none display-none" id="rightContent<?= h($agency_information->agency_id); ?>">
                                 <div class="d-flex checked-content m-5 p-3">
