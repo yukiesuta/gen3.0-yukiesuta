@@ -51,10 +51,9 @@ $agencys = $stmt->fetchAll();
                         <thead>
                             <tr>
                                 <th scope="col">エージェント名</th>
-                                <th scope="col">担当者名</th>
                                 <th scope="col">メールアドレス</th>
-                                <th scope="col">今月の申込件数</th>
-                                <th scope="col">総申込み件数</th>
+                                <th scope="col">電話番号</th>
+                                <th scope="col">総申込件数</th>
                                 <th scope="col"></th>
                             </tr>
                         </thead>
@@ -62,10 +61,14 @@ $agencys = $stmt->fetchAll();
                             <?php foreach ($agencys as $agency) : ?>
                             <tr>
                                 <th scope="row"><?= $agency->agency_name; ?></th>
-                                <td>（決め打ち）</td>
                                 <td><?= $agency->mail_address; ?></td>
-                                <td>（決め打ち）</td>
-                                <td>（決め打ち）</td>
+                                <td><?= $agency->phone_number; ?></td>
+                                <td>
+                                    <?php
+                                        $agency_stmt = $pdo->query("SELECT * FROM inquiry_agency WHERE agency_id = $agency->id");
+                                        $agency_result = $agency_stmt->fetchAll();
+                                        echo count($agency_result);
+                                    ?>
                                 <td>
                                     <a href="boozer-edit-creation.php?id=<?= $agency->id;?>">
                                         <button type="button" class="btn btn-primary btn-sm">編集・削除</button>
