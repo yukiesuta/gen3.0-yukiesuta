@@ -39,8 +39,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <input type="text"  name="agency_name" class="form-control" id="form-name" placeholder="エージェンシー名をご入力ください">
                 </div>
                 <div class="form-group w-50 mt-3">
-                    <label>キャッチフレーズ</label>
-                    <input type="text" name="catch_copy" class="form-control" id="form-name" placeholder="住所をご入力ください">
+                    <!-- <label>キャッチフレーズ</label> -->
+                    <label>特徴</label>
+                    <input type="text" name="catch_copy" class="form-control" id="form-name" placeholder="特徴をご入力してください">
                 </div>
                 <div class="form-group w-50 mt-3">
                     <label for="exampleFormControlTextarea1">詳細説明</label>
@@ -49,11 +50,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 </div>
                 <div class="form-group w-50 mt-3">
                     <label>メールアドレス</label>
-                    <input type="text" name="mail_address" class="form-control" id="form-name" placeholder="お名前をご入力ください">
+                    <input type="text" name="mail_address" class="form-control" id="form-name" placeholder="メールアドレスをご入力ください">
                 </div>
                 <div class="form-group w-50 mt-3">
                     <label>電話番号</label>
-                    <input type="text" name="phone_number" class="form-control" id="form-name" placeholder="大学名をご入力ください">
+                    <input type="text" name="phone_number" class="form-control" id="form-name" placeholder="電話番号をご入力ください">
                 </div>
                 <div class="form-group w-50 mt-3">
                     <div>
@@ -62,24 +63,27 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <input type="file" name="img" class="form-control-file mt-2" id="exampleFormControlFile1">
                 </div>
                 <div class="form-group w-50 mt-3">
+                    <!-- <label>実績数</label> -->
+                    <label>求人エリア</label>
+                    <input type="text" name="achievements" class="form-control" id="form-name" placeholder="求人エリアをご入力ください">
+                </div>
+                <div class="form-group w-50 mt-3">
+                    <!-- <label>拠点数</label> -->
+                    <label>面談場所</label>
+                    <input type="text" name="bases_numbers" class="form-control" id="form-name" placeholder="面談場所を誤入力きださい">
+                </div>
+                <div class="form-group w-50 mt-3">
+                    <!-- <label>サポート</label> -->
+                    <label>契約企業数</label>
+                    <input type="text" name="support" class="form-control" id="form-name" placeholder="契約企業数をご入力ください">
+                </div>
+                <div class="form-group w-50 mt-3">
                     <label>実績数</label>
-                    <input type="text" name="achievements" class="form-control" id="form-name" placeholder="電話番号をご入力ください">
+                    <input type="text" name="contract_numbers" class="form-control" id="form-name" placeholder="実績数をご入力ください（例：２０００件以上）">
                 </div>
                 <div class="form-group w-50 mt-3">
-                    <label>拠点数</label>
-                    <input type="text" name="bases_numbers" class="form-control" id="form-name" placeholder="住所をご入力ください">
-                </div>
-                <div class="form-group w-50 mt-3">
-                    <label>サポート</label>
-                    <input type="text" name="support" class="form-control" id="form-name" placeholder="住所をご入力ください">
-                </div>
-                <div class="form-group w-50 mt-3">
-                    <label>契約数</label>
-                    <input type="text" name="contract_numbers" class="form-control" id="form-name" placeholder="住所をご入力ください">
-                </div>
-                <div class="form-group w-50 mt-3">
-                    <label>場所</label>
-                    <input type="text" name="place" class="form-control" id="form-name" placeholder="住所をご入力ください">
+                    <label>担当者</label>
+                    <input type="text" name="place" class="form-control" id="form-name" placeholder="担当者をご入力ください">
                 </div>
             </div>
             <div>
@@ -150,7 +154,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     </div>
                 </div>
                 <div class="mt-5 ms-5 me-5 p-3 search">
-                    <div class="search-title p-1 text-center">特徴</div>
+                    <div class="search-title p-1 text-center">サポート</div>
                     <div class="form-check w-25">
                         <input name="feature1" class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
                         <label class="form-check-label" for="flexCheckDefault">

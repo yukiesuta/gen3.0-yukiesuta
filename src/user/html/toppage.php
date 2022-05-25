@@ -13,7 +13,7 @@ $feature_conditions = get_feature_conditions($pdo);
 
 // if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 // }
-$shibori=agency_information($pdo);
+$shibori = agency_information($pdo);
 
 // if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 //     $shibori = agency_information($pdo);
@@ -27,12 +27,14 @@ $inClause = substr(str_repeat(',?', count($ids)), 1);
 $stmt = $pdo->prepare("SELECT * FROM agency_information 
 JOIN agency_feature AS itt ON  agency_information.id = itt.agency_id
 JOIN features ON itt.feature_id = features.id
+-- JOIN industry_condition AS ittt ON  itt.feature_id = ittt.id
 WHERE features.id IN ({$inClause})
 ");
 
 $stmt->execute($ids);
 
 $agency_informations = $stmt->fetchAll();
+// print_r($agency_informations);
 
 $tmp = [];
 $uniqueStations = [];
@@ -43,6 +45,27 @@ foreach ($agency_informations as $station) {
         $uniqueStations[] = $station;
     }
 }
+
+$stmt = $pdo->prepare("SELECT * FROM agency_information 
+JOIN agency_feature AS itt ON  agency_information.id = itt.agency_id
+JOIN features ON itt.feature_id = features.id
+JOIN industry_condition AS ittt ON  itt.feature_id = ittt.id
+");
+$stmt->execute();
+
+$agency_industry_comparison = $stmt->fetchAll();
+
+$stmt = $pdo->prepare("SELECT * FROM agency_information 
+JOIN agency_feature AS feature_comparison ON  agency_information.id = feature_comparison.agency_id
+JOIN features ON feature_comparison.feature_id = features.id
+");
+$stmt->execute();
+
+$agency_feature_comparison = $stmt->fetchAll();
+// print_r($agency_feature_comparison);
+
+
+
 ?>
 
 <!DOCTYPE html>
@@ -256,24 +279,73 @@ foreach ($agency_informations as $station) {
                 </div>
             </div>
         </div>
-        <div class="w-100 apply">
-            <div class="text-center p-3 ms-5 me-5 compare" id="applySection">
-                <div class="mt-5 title ">
-                    比較リスト
-                </div>
-                <div class="table-responsive">
-                    <table class="table table-bordered">
-                        <thead>
-                            <tr>
-                                <th scope="col"></th>
-                                <th scope="col"></th>
-                                <th scope="col">エージェンシー</th>
-                                <th scope="col">得意業界</th>
-                                <th scope="col">ES添削</th>
-                                <th scope="col">面接対策</th>
-                                <th scope="col">即日連絡</th>
-                                <th scope="col">担当者変更</th>
+    </main>
+    <main class="w-100">
+        <div class="text-center p-5 ms-5 me-5 compare" id="applySection">
+            <div class="mt-3 mb-5 ms-5 me-5 title ">
+                比較リスト
+            </div>
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th scope="col"></th>
+                            <th scope="col"></th>
+                            <th scope="col">エージェンシー</th>
+                            <th scope="col">得意業界</th>
+                            <th scope="col">サポート</th>
+                            <th scope="col">求人エリア</th>
+                            <th scope="col">面談場所</th>
+                            <th scope="col">契約企業数</th>
+                            <th scope="col">特徴</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php foreach ($agency_informations as $agency_information) : ?>
+                            <tr id="comparison_agency<?= h($agency_information->agency_id); ?>" class="display-none">
+                                <td>
+                                    <button type="button" class="btn btn-success" id="comparisonDelete<?= h($agency_information->agency_id); ?>">削除</button>
+                                </td>
+                                <!-- <td>
+                                <img id="comparisonDelete<?= h($agency_information->agency_id); ?>" src="../img/checked.png" alt="">
+                            </td> -->
+                                <td>
+                                    <?= h($agency_information->agency_name); ?>
+                                </td>
+                                <th scope="row">
+                                    <a href="company.php?id=<?= h($agency_information->agency_id); ?>">
+                                        <img src="../uploaded_img/agency<?= h($agency_information->agency_id); ?>.png" alt="" class="center-img">
+                                    </a>
+                                </th>
+                                <td>
+                                    <?php
+
+                                    if ($data = $agency_information->agency_id) {
+                                        foreach ($agency_industry_comparison as $val) {
+                                            if ($val->agency_id === $data) {
+                                                echo "<p>$val->industry</p>";
+                                            }
+                                        };
+                                    } ?>
+                                </td>
+                                <td> <?php
+
+                                        if ($data = $agency_information->agency_id) {
+                                            foreach ($agency_feature_comparison as $val) {
+                                                if ($val->agency_id === $data) {
+                                                    if($val->feature_id >10){
+                                                        echo "<p>$val->feature</p>";
+                                                    }
+                                                }
+                                            };
+                                        } ?>
+                                </td>
+                                <td><?= h($agency_information->achievements); ?></td>
+                                <td><?= h($agency_information->bases_numbers); ?></td>
+                                <td><?= h($agency_information->contract_numbers); ?></td>
+                                <td><?= h($agency_information->catch_copy); ?></td>
                             </tr>
+                            <?php endforeach; ?>
                         </thead>
                         <tbody>
                             <?php foreach ($agency_informations as $agency_information) : ?>
