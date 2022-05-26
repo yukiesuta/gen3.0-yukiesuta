@@ -45,14 +45,14 @@
                     </a>
                 </div>
                 <div class="text-center mt-3">
-                    <a href="boozer-claim-info.php" class="text-decoration-none text-white">
+                    <a href="boozer-claim-info.php" class="text-decoration-none text-secondary">
                         請求情報管理
                     </a>
                 </div>
             </div>
             <div class="main-right col-10">
                 <div class="table">
-                    <table class="table table-striped w-75 mt-5">
+                    <table class="table table-striped w-100 mt-5">
                         <thead class="text-center">
                             <tr>
                                 <th scope="col">エージェンシー名</th>
