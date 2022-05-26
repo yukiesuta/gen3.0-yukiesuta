@@ -28,7 +28,7 @@ $agencys = $stmt->fetchAll();
         <div class="row">
             <div class="main-left col-2">
                 <div class="text-center mt-5">
-                    <a href="boozer-agency.php" class="text-decoration-none text-white">
+                    <a href="boozer-agency.php" class="text-decoration-none text-secondary">
                         エージェンシー情報
                     </a>
                 </div>
