@@ -410,7 +410,7 @@ $agency_feature_comparison = $stmt->fetchAll();
                         </div>
                         <div class="form-group w-50 mt-3">
                             <label>電話番号</label>
-                            <input type="number" class="form-control" id="phone-number" name="phone" placeholder="例)080-xxx-xxxx" required>
+                            <input type="tel" pattern="[\d\-]*" class="form-control" id="phone-number" name="phone" placeholder="例)080-xxx-xxxx" required>
                         </div>
                         <div class="form-group w-50 mt-3">
                             <label>都道府県</label>
