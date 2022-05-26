@@ -50,7 +50,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 </div>
                 <div class="form-group w-50 mt-3">
                     <label>メールアドレス</label>
-                    <input type="text" name="mail_address" class="form-control" id="form-name" placeholder="例)example@mail.com" required>
+                    <input type="email" name="mail_address" class="form-control" id="form-name" placeholder="例)example@mail.com" required>
                 </div>
                 <div class="form-group w-50 mt-3">
                     <label>電話番号（ハイフン不要）</label>
