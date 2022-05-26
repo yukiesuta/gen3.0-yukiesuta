@@ -128,8 +128,8 @@
 					$mail_header = "From: {$from}\nReply-To: {$from}\nContent-Type: text/plain;";
 
 
-					mb_language('Japanese');
-					mb_internal_encoding("UTF-8");
+					// mb_language('Japanese');
+					// mb_internal_encoding("UTF-8");
 
 					if (mb_send_mail($mail_address, $mail_sub, $mail_body, $mail_header, "-f test@test.com")) {
 						echo "メールを送信しました";
@@ -151,12 +151,12 @@
 		$from = 'test@test.com';
 		// $mail_header .= "MIME-Version: 1.0\n";
 		// $mail_header .= "Content-Transfer-Encoding: BASE64\n";
-		// $mail_header .= "Content-Type: text/plain; charset=UTF-8\n";
+		// $mail_header .= "charset=UTF-8\n";
 		$mail_header = "From: {$from}\nReply-To: {$from}\nContent-Type: text/plain;";
 
 
-		mb_language('Japanese');
-		mb_internal_encoding("UTF-8");
+		// mb_language('Japanese');
+		// mb_internal_encoding("UTF-8");
 
 		if (mb_send_mail($email, $mail_sub, $mail_body, $mail_header, "-f test@test.com")) {
 			echo "メールを送信しました";
