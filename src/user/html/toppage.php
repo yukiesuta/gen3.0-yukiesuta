@@ -398,28 +398,33 @@ $agency_feature_comparison = $stmt->fetchAll();
                     <div>
                         <div class="form-group w-50 mt-3">
                             <label>お名前</label>
-                            <input class="form-control" id="name" name="name" placeholder="お名前" required>
+                            <input class="form-control" id="name" name="name" placeholder="例)クラフト太郎" required>
                         </div>
                         <div class="form-group w-50 mt-3">
                             <label>生年月日</label>
-                            <input type="date" class="form-control" id="birthday" name="birthday" placeholder="XXXX/XX/XX" required>
+                            <input type="date" value="2001-01-01" class="form-control" id="birthday" name="birthday" required>
                         </div>
                         <div class="form-group w-50 mt-3">
                             <label>大学名</label>
-                            <input class="form-control" id="university" name="university" placeholder="大学名" required>
+                            <input class="form-control" id="university" name="university" placeholder="例)クラフト大学" required>
                         </div>
                         <div class="form-group w-50 mt-3">
                             <label>電話番号</label>
-                            <input class="form-control" id="phone-number" name="phone" placeholder="電話番号" required>
+                            <input type="number" class="form-control" id="phone-number" name="phone" placeholder="例)080-xxx-xxxx" required>
                         </div>
                         <div class="form-group w-50 mt-3">
-                            <label>住所</label>
-                            <input class="form-control" id="address" placeholder="住所" name="address" required>
+                            <label>都道府県</label>
+                            <input class="form-control" id="address" placeholder="例)東京都" name="address" required>
                         </div>
                         <div class="form-group w-50 mt-3">
                             <label for="exampleInputEmail1">メールアドレス</label>
-                            <input type="text" name="email" id="email" class="text2 form-control" placeholder="xxx@example.com" required>
+                            <input type="email" name="email" id="email" class="text2 form-control" placeholder="例)xxx@example.com" required>
                         </div>
+                        <div class="form-group w-50 mt-3">
+                            <input type="checkbox" required>
+                            <label for="exampleInputEmail1">入力内容を確認しました</label>
+                        </div>
+                        
                     </div>
                     <?php foreach ($agency_informations as $agency_information) : ?>
                         <input class="form-check-input" type="hidden" value="" name="agency<?= h($agency_information->agency_id); ?>" id="hidden_checkbox<?= h($agency_information->agency_id); ?>">
