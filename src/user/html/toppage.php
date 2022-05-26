@@ -292,7 +292,7 @@ $agency_feature_comparison = $stmt->fetchAll();
                             <th scope="col"></th>
                             <th scope="col"></th>
                             <th scope="col">エージェンシー</th>
-                            <th scope="col">得意業界</th>
+                            <th scope="col">対応業種</th>
                             <th scope="col">サポート</th>
                             <th scope="col">求人エリア</th>
                             <th scope="col">面談場所</th>
@@ -425,7 +425,7 @@ $agency_feature_comparison = $stmt->fetchAll();
                         <input class="form-check-input" type="checkbox" value="" name="agency<?= h($agency_information->agency_id); ?>" id="hidden_checkbox<?= h($agency_information->agency_id); ?>">
                     <?php endforeach; ?>
                     <div class="submit" id="submit-button">
-                        <button type="submit" value="確認画面へ" id="form-button" class="btn btn-success mt-5 mb-5 unclick">
+                        <button type="submit" value="確認画面へ" id="form-button" class="btn btn-success mt-5 mb-5 click">
                             申し込み
                         </button>
                     </div>
