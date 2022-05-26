@@ -1,0 +1,13 @@
+header{
+    background-color: #5663D3;
+    height: 100px;
+    width: 100%;
+    max-width: 100%;
+    color: white;
+    font-size: 3rem;
+}
+
+.icon{
+    font-size: 5rem;
+    color: green;
+}
