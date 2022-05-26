@@ -46,7 +46,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <div class="form-group w-50 mt-3">
                     <label for="exampleFormControlTextarea1">詳細説明</label>
                     <!-- <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea> -->
-                    <input type="text" name="detail" class="form-control" id="exampleFormControlTextarea1" placeholder="詳細説明をご入力ください">
+                    <input name="detail" class="form-control wide" id="exampleFormControlTextarea1" placeholder="詳細説明をご入力ください">
                 </div>
                 <div class="form-group w-50 mt-3">
                     <label>メールアドレス</label>

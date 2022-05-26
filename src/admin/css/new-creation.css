@@ -1,4 +1,4 @@
-header{
+header {
     background-color: #5663D3;
     height: 100px;
     width: 100%;
@@ -6,15 +6,23 @@ header{
     color: white;
     font-size: 3rem;
 }
-.form-group{
+
+.form-group {
     margin: auto;
 }
-.form-check{
+
+.form-check {
     margin: auto;
 }
-.title{
+
+.title {
     font-size: 2rem;
 }
-.form{
+
+.form {
     background-color: #F3EAEA;
+}
+
+.wide {
+    height: 150px;
 }
