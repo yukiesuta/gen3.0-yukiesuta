@@ -53,6 +53,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <input type="text" name="mail_address" class="form-control" id="form-name" placeholder="メールアドレスをご入力ください">
                 </div>
                 <div class="form-group w-50 mt-3">
+                    <label>担当責任者</label>
+                    <input type="text" name="manager" class="form-control" id="form-name" placeholder="担当責任者をご入力ください">
+                </div>
+                <div class="form-group w-50 mt-3">
                     <label>電話番号</label>
                     <input type="text" name="phone_number" class="form-control" id="form-name" placeholder="電話番号をご入力ください">
                 </div>
@@ -81,10 +85,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <label>実績数</label>
                     <input type="text" name="contract_numbers" class="form-control" id="form-name" placeholder="実績数をご入力ください（例：２０００件以上）">
                 </div>
-                <div class="form-group w-50 mt-3">
+                <!-- <div class="form-group w-50 mt-3">
                     <label>担当者</label>
                     <input type="text" name="place" class="form-control" id="form-name" placeholder="担当者をご入力ください">
-                </div>
+                </div> -->
             </div>
             <div>
                 <div class="mt-5 ms-5 me-5 p-3 search">
