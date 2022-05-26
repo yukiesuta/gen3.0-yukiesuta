@@ -45,9 +45,9 @@ if (!empty($_POST)) {
     </div>
     <div class="w-25 text-center form">
       <? if (!empty($_POST)) {
-        
+
         if (!$user) {
-         echo "メールアドレスまたはパスワードが正しくありません。";
+          echo "メールアドレスまたはパスワードが正しくありません。";
         }
       } ?>
       <form action="/admin/html/agency-login.php" method="POST">

@@ -47,7 +47,7 @@ $agencys = $stmt->fetchAll();
             </div>
             <div class="main-right col-10">
                 <div class="table">
-                    <table class="table table-striped w-75 mt-5">
+                    <table class="table table-striped w-100 mt-5">
                         <thead>
                             <tr>
                                 <th scope="col">エージェント名</th>
