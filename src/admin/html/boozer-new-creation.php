@@ -55,7 +55,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <div class="form-group w-50 mt-3">
 
                     <label>担当責任者</label>
-                    <input type="text" name="manager" class="form-control" id="form-name" placeholder="担当責任者をご入力ください" required>
+                    <input type="text" name="manager" class="form-control" id="form-name" placeholder="例)佐藤" required>
                 </div>
                 <div class="form-group w-50 mt-3">
                     <label>電話番号（ハイフン不要）</label>
@@ -80,7 +80,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <div class="form-group w-50 mt-3">
                     <!-- <label>拠点数</label> -->
                     <label>単価（半角数字）</label>
-                    <input type="text" pattern="^[1-9][0-9]*$" name="unit_price" class="form-control" id="form-name" placeholder="学生１人あたりの値段">
+                    <input type="text" pattern="^[1-9][0-9]*$" name="unit_price" class="form-control" id="form-name" placeholder="例)10000">
                 </div>
                 <div class="form-group w-50 mt-3">
                     <!-- <label>サポート</label> -->

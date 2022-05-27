@@ -50,28 +50,28 @@ $result = $stmt->fetch();
             <div>
                 <div class="form-group w-50 mt-3">
                     <label>エージェンシー名</label>
-                    <input type="text"  name="agency_name" class="form-control" id="form-name" placeholder="エージェンシー名をご入力ください" value="<?= $result['agency_name']?>">
+                    <input type="text"  name="agency_name" class="form-control" id="form-name" placeholder="例)株式会社クラフト" value="<?= $result['agency_name']?>" required>
                 </div>
                 <div class="form-group w-50 mt-3">
-                    <label>キャッチフレーズ</label>
-                    <input type="text" name="catch_copy" class="form-control" id="form-name" placeholder="住所をご入力ください" value="<?= $result['catch_copy']?>">
+                    <label>特徴</label>
+                    <input type="text" name="catch_copy" class="form-control" id="form-name" placeholder="例)自慢の即日対応" value="<?= $result['catch_copy']?>" required>
                 </div>
                 <div class="form-group w-50 mt-3">
                     <label for="exampleFormControlTextarea1">詳細説明</label>
                     <!-- <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea> -->
-                    <input type="text" name="detail" class="form-control" id="exampleFormControlTextarea1" placeholder="詳細説明をご入力ください" value="<?= $result['detail']?>">
+                    <textarea  name="detail" class="form-control" id="exampleFormControlTextarea1" placeholder="例)性別問わずキャリアに強いヘッドハンターも多数在席しております。若手向けのチャレンジポジションから管理層ポジションまで直接スカウトが届きます。" value="<?= $result['detail']?>" required>
                 </div>
                 <div class="form-group w-50 mt-3">
                     <label>メールアドレス</label>
-                    <input type="text" name="mail_address" class="form-control" id="form-name" placeholder="メールアドレスをご入力ください" value="<?= $result['mail_address']?>">
+                    <input type="email" name="mail_address" class="form-control" id="form-name" placeholder="例)example@mail.com" value="<?= $result['mail_address']?>" required>
                 </div>
                 <div class="form-group w-50 mt-3">
                     <label>担当責任者</label>
-                    <input type="text" name="manager" class="form-control" id="form-name" placeholder="担当責任者をご入力ください" value="<?= $result['manager']?>">
+                    <input type="text" name="manager" class="form-control" id="form-name" placeholder="例)佐藤" value="<?= $result['manager']?>" required>
                 </div>
                 <div class="form-group w-50 mt-3">
                     <label>電話番号</label>
-                    <input type="text" name="phone_number" class="form-control" id="form-name" placeholder="電話番号をご入力ください" value="<?= $result['phone_number']?>">
+                    <input type="tel" pattern="[\d\-]*" name="phone_number" class="form-control" id="form-name" placeholder="例)08012345678" value="<?= $result['phone_number']?>" required>
                 </div>
                 <div class="form-group w-50 mt-3">
                     <div>
@@ -80,16 +80,16 @@ $result = $stmt->fetch();
                 </div>
                 <div class="form-group w-50 mt-3">
                     <!-- <label>拠点数</label> -->
-                    <label>単価</label>
-                    <input type="text" name="unit_price" class="form-control" id="form-name" placeholder="学生１人あたりの値段">
+                    <label>単価（半角数字）</label>
+                    <input type="text" pattern="^[1-9][0-9]*$" name="unit_price" class="form-control" id="form-name" placeholder="例)10000" required>
                 </div>
                 <div class="form-group w-50 mt-3">
                     <label>実績数</label>
-                    <input type="text" name="achievements" class="form-control" id="form-name" placeholder="実績数をご入力ください" value="<?= $result['achievements']?>">
+                    <input type="text" name="achievements" class="form-control" id="form-name" placeholder="例)150社" value="<?= $result['achievements']?>" required>
                 </div>
                 <div class="form-group w-50 mt-3">
                     <label>契約数</label>
-                    <input type="text" name="contract_numbers" class="form-control" id="form-name" placeholder="契約数をご入力ください" value="<?= $result['contract_numbers']?>">
+                    <input type="text" name="contract_numbers" class="form-control" id="form-name" placeholder="例)2500件" value="<?= $result['contract_numbers']?>" required>
                 </div>
             </div>
             <div class="d-flex justify-content-around">
