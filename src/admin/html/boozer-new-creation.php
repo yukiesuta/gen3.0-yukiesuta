@@ -77,6 +77,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <input type="text" name="bases_numbers" class="form-control" id="form-name" placeholder="面談場所を誤入力きださい">
                 </div>
                 <div class="form-group w-50 mt-3">
+                    <!-- <label>拠点数</label> -->
+                    <label>単価</label>
+                    <input type="text" name="unit_price" class="form-control" id="form-name" placeholder="学生１人あたりの値段">
+                </div>
+                <div class="form-group w-50 mt-3">
                     <!-- <label>サポート</label> -->
                     <label>契約企業数</label>
                     <input type="text" name="support" class="form-control" id="form-name" placeholder="契約企業数をご入力ください">

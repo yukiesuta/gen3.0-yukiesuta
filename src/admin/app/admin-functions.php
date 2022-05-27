@@ -37,6 +37,7 @@ function add_agency_information($pdo)
 
     $filename = basename($uploading_img["name"]);
 
+    $unit_price = $_POST["unit_price"];
     $achievements = $_POST["achievements"];
     $contract_numbers = $_POST["contract_numbers"];
     $bases_numbers = $_POST["bases_numbers"];
@@ -122,6 +123,7 @@ function add_agency_information($pdo)
         manager,
         phone_number,
         img,
+        unit_price,
         achievements,
         contract_numbers,
         bases_numbers,
@@ -136,6 +138,7 @@ function add_agency_information($pdo)
         :manager,
         :phone_number,
         :img,
+        :unit_price,
         :achievements,
         :contract_numbers,
         :bases_numbers,
@@ -151,6 +154,7 @@ function add_agency_information($pdo)
     $stmt->bindValue(':manager', $manager);
     $stmt->bindValue(':phone_number', $phone_number);
     $stmt->bindValue(':img', $filename);
+    $stmt->bindValue(':unit_price', $unit_price);
     $stmt->bindValue(':achievements', $achievements);
     $stmt->bindValue(':contract_numbers', $contract_numbers);
     $stmt->bindValue(':bases_numbers', $bases_numbers);
@@ -222,6 +226,7 @@ function edit_agency_information($pdo)
     $phone_number = $_POST["phone_number"];
 
 
+    $unit_price = $_POST["unit_price"];
     $achievements = $_POST["achievements"];
     $contract_numbers = $_POST["contract_numbers"];
 
@@ -244,6 +249,7 @@ function edit_agency_information($pdo)
         ':mail_address' => $_POST['mail_address'],
         ':manager' => $_POST['manager'],
         ':phone_number' => $_POST['phone_number'],
+        ':unit_price' => $_POST['unit_price'],
         ':achievements' => $_POST['achievements'],
         ':contract_numbers' => $_POST['contract_numbers'],
         ':id' => $_GET["id"]

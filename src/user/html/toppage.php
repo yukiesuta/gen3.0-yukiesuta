@@ -29,6 +29,7 @@ JOIN agency_feature AS itt ON  agency_information.id = itt.agency_id
 JOIN features ON itt.feature_id = features.id
 -- JOIN industry_condition AS ittt ON  itt.feature_id = ittt.id
 WHERE features.id IN ({$inClause})
+ORDER BY unit_price DESC;
 ");
 
 $stmt->execute($ids);
@@ -223,9 +224,9 @@ $agency_feature_comparison = $stmt->fetchAll();
                     <button type="submit" class="btn btn-success mt-3">絞り込む</button>
                 </div>
             </form>
-            <div class="main-center-content col-md-6 col-12">
+            <div class="main-center-content col-md-6 col-12 ">
                 <?php foreach ($uniqueStations as $agency_information) : ?>
-                    <div class="mt-4 ms-5 me-5 mb-5 p-3 company-content-wrapper">
+                    <div class="mt-4 ms-5 me-5 mb-5 p-3 company-content-wrapper ">
                         <div class="d-flex company-content">
                             <a href="company.php?id=<?= h($agency_information->agency_id); ?>">
                                 <div class="logo-container p-1">
@@ -245,7 +246,7 @@ $agency_feature_comparison = $stmt->fetchAll();
                                         if ($data = $agency_information->agency_id) {
                                             foreach ($agency_industry_comparison as $val) {
                                                 if ($val->agency_id === $data) {
-                                                    echo '<div class="label-industry">'.$val->industry.'</div>';
+                                                    echo '<div class="label-industry">#'.$val->industry.'</div>';
                                                 }
                                             };
                                         } ?>
@@ -257,7 +258,7 @@ $agency_feature_comparison = $stmt->fetchAll();
                                             foreach ($agency_feature_comparison as $val) {
                                                 if ($val->agency_id === $data) {
                                                     if ($val->feature_id > 10) {
-                                                        echo '<div class="label-industry">'.$val->feature.'</div>';
+                                                        echo '<div class="label-industry">#'.$val->feature.'</div>';
                                                     }
                                                 }
                                             };
@@ -306,7 +307,7 @@ $agency_feature_comparison = $stmt->fetchAll();
         </div>
     </main>
     <main class="w-100">
-        <div class="text-center p-5 ms-5 me-5 compare" id="applySection">
+        <div class="text-center p-5 ms-5 me-5 compare " id="applySection">
             <div class="mt-3 mb-5 ms-5 me-5 title ">
                 比較リスト
             </div>
@@ -315,14 +316,14 @@ $agency_feature_comparison = $stmt->fetchAll();
                     <thead>
                         <tr>
                             <th scope="col"></th>
-                            <th scope="col"></th>
+                            <!-- <th scope="col"></th> -->
                             <th scope="col">エージェンシー</th>
                             <th scope="col">対応業種</th>
                             <th scope="col">サポート</th>
                             <th scope="col">求人エリア</th>
                             <th scope="col">面談場所</th>
                             <th scope="col">契約企業数</th>
-                            <th scope="col">特徴</th>
+                            <!-- <th scope="col">実績数</th> -->
                         </tr>
                     </thead>
                     <tbody>
@@ -334,9 +335,9 @@ $agency_feature_comparison = $stmt->fetchAll();
                                 <!-- <td>
                                 <img id="comparisonDelete<?= h($agency_information->agency_id); ?>" src="../img/checked.png" alt="">
                             </td> -->
-                                <td>
+                                <!-- <td>
                                     <?= h($agency_information->agency_name); ?>
-                                </td>
+                                </td> -->
                                 <th scope="row">
                                     <a href="company.php?id=<?= h($agency_information->agency_id); ?>">
                                         <img src="../uploaded_img/agency<?= h($agency_information->agency_id); ?>.png" alt="" class="center-img">
@@ -348,7 +349,7 @@ $agency_feature_comparison = $stmt->fetchAll();
                                     if ($data = $agency_information->agency_id) {
                                         foreach ($agency_industry_comparison as $val) {
                                             if ($val->agency_id === $data) {
-                                                echo "<div>$val->industry</div>";
+                                                echo '<div class="label-industry-comparison">#'.$val->industry.'</div>';
                                             }
                                         };
                                     } ?>
@@ -359,7 +360,7 @@ $agency_feature_comparison = $stmt->fetchAll();
                                             foreach ($agency_feature_comparison as $val) {
                                                 if ($val->agency_id === $data) {
                                                     if ($val->feature_id > 10) {
-                                                        echo "<div>$val->feature</div>";
+                                                        echo '<div class="label-industry-comparison">#'.$val->feature.'</div>';
                                                     }
                                                 }
                                             };
@@ -368,7 +369,7 @@ $agency_feature_comparison = $stmt->fetchAll();
                                 <td><?= h($agency_information->achievements); ?></td>
                                 <td><?= h($agency_information->bases_numbers); ?></td>
                                 <td><?= h($agency_information->contract_numbers); ?></td>
-                                <td><?= h($agency_information->catch_copy); ?></td>
+                                <!-- <td><?= h($agency_information->support); ?></td> -->
                             </tr>
                         <?php endforeach; ?>
                         </thead>

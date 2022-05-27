@@ -8,7 +8,7 @@ require_once(__DIR__  . '/../app/config.php');
 $pdo = getPdoInstance();
 $id = $_GET["id"];
 
-echo $id;
+// echo $id;
 $agency_informations = get_agency_informations($pdo);
 
 $stmt = $db->query("SELECT * FROM agency_information WHERE id = $id" );
@@ -49,6 +49,7 @@ $agency_feature_comparison = $stmt->fetchAll();
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="../css/company.css">
+     <!-- <link rel="stylesheet" href="../css/toppage.css"> -->
     <title>企業ページ</title>
 </head>
 
@@ -84,12 +85,14 @@ $agency_feature_comparison = $stmt->fetchAll();
         </div>
     </header>
     <main>
-        <div class="text-center mt-5">
-            <div class="company-title w-50">
+        <div class=" mt-5">
+            <div class=" text-center company-title w-50">
                 <?= $result['agency_name']?>
             </div>
             <!-- <img src="../img/posseLogo.png" alt="" class="mt-3"> -->
-            <img src="../uploaded_img/agency<?php  echo $id ?>.png" alt="" class="center-img">
+            <div class="text-center">
+                <img src="../uploaded_img/agency<?php  echo $id ?>.png" alt="" class="center-img">
+            </div>
             <div>
                 <table class="table w-50 mt-5">
                     <thead>
@@ -101,7 +104,7 @@ $agency_feature_comparison = $stmt->fetchAll();
                     <tbody>
                         <tr>
                             <th scope="row">特徴</th>
-                            <td><?= $result['catch_copy']?></td>
+                            <td class="t"><?= $result['catch_copy']?></td>
                         </tr>
                         <tr>
                             <th scope="row">詳細</th>
@@ -111,7 +114,7 @@ $agency_feature_comparison = $stmt->fetchAll();
                             <th scope="row">対応業種</th>
                             <td><?php    foreach ($agency_industry_comparison as $val) 
                             {
-                            echo "<div>$val->industry</div>"
+                                echo '<div class="label-industry-comparison">#'.$val->industry.'</div>';
                             ;};?>
                             </td>
                         </tr>
@@ -119,7 +122,7 @@ $agency_feature_comparison = $stmt->fetchAll();
                             <th scope="row">サポート</th>
                             <td><?php    foreach ($agency_feature_comparison as $val) 
                             { if($val->feature_id >10){
-                                echo "<div>$val->feature</div>";
+                                echo '<div class="label-industry-comparison">#'.$val->feature.'</div>';
                             }
                             ;};?>
                             </td>
@@ -131,9 +134,11 @@ $agency_feature_comparison = $stmt->fetchAll();
                     </tbody>
                 </table>
             </div>
-            <a href="toppage.php">
-                <button type="button" class="btn btn-success mt-5">トップページに戻る</button>
-            </a>
+            <div class="text-center">
+                <a href="toppage.php" >
+                    <button type="button" class="btn btn-success mt-5 ">トップページに戻る</button>
+                </a>
+            </div>
         </div>
     </main>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"

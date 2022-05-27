@@ -79,6 +79,11 @@ $result = $stmt->fetch();
                     </div>
                 </div>
                 <div class="form-group w-50 mt-3">
+                    <!-- <label>拠点数</label> -->
+                    <label>単価</label>
+                    <input type="text" name="unit_price" class="form-control" id="form-name" placeholder="学生１人あたりの値段">
+                </div>
+                <div class="form-group w-50 mt-3">
                     <label>実績数</label>
                     <input type="text" name="achievements" class="form-control" id="form-name" placeholder="実績数をご入力ください" value="<?= $result['achievements']?>">
                 </div>
