@@ -52,6 +52,7 @@ $agencys = $stmt->fetchAll();
                             <tr>
                                 <th scope="col">エージェント名</th>
                                 <th scope="col">メールアドレス</th>
+                                <th scope="col">担当責任者</th>
                                 <th scope="col">電話番号</th>
                                 <th scope="col">総申込件数</th>
                                 <th scope="col"></th>
@@ -62,6 +63,7 @@ $agencys = $stmt->fetchAll();
                             <tr>
                                 <th scope="row"><?= $agency->agency_name; ?></th>
                                 <td><?= $agency->mail_address; ?></td>
+                                <td><?= $agency->manager; ?></td>
                                 <td><?= $agency->phone_number; ?></td>
                                 <td>
                                     <?php

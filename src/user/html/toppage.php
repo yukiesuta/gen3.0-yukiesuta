@@ -29,6 +29,7 @@ JOIN agency_feature AS itt ON  agency_information.id = itt.agency_id
 JOIN features ON itt.feature_id = features.id
 -- JOIN industry_condition AS ittt ON  itt.feature_id = ittt.id
 WHERE features.id IN ({$inClause})
+ORDER BY unit_price DESC;
 ");
 
 $stmt->execute($ids);
@@ -223,9 +224,9 @@ $agency_feature_comparison = $stmt->fetchAll();
                     <button type="submit" class="btn btn-success mt-3">絞り込む</button>
                 </div>
             </form>
-            <div class="main-center-content col-md-6 col-12">
+            <div class="main-center-content col-md-6 col-12 ">
                 <?php foreach ($uniqueStations as $agency_information) : ?>
-                    <div class="mt-4 ms-5 me-5 mb-5 p-3 company-content-wrapper">
+                    <div class="mt-4 ms-5 me-5 mb-5 p-3 company-content-wrapper ">
                         <div class="d-flex company-content">
                             <a href="company.php?id=<?= h($agency_information->agency_id); ?>">
                                 <div class="logo-container p-1">
@@ -239,11 +240,36 @@ $agency_feature_comparison = $stmt->fetchAll();
                                 <div class="p-3 company-content-paragraph">
                                     <?= h($agency_information->catch_copy); ?>
                                 </div>
+                                <div class="text-right"> 
+                                    <div>
+                                        <?php
+                                        if ($data = $agency_information->agency_id) {
+                                            foreach ($agency_industry_comparison as $val) {
+                                                if ($val->agency_id === $data) {
+                                                    echo '<div class="label-industry">#'.$val->industry.'</div>';
+                                                }
+                                            };
+                                        } ?>
+                                    </div>
+                                    <div>
+                                        <?php
+    
+                                        if ($data = $agency_information->agency_id) {
+                                            foreach ($agency_feature_comparison as $val) {
+                                                if ($val->agency_id === $data) {
+                                                    if ($val->feature_id > 10) {
+                                                        echo '<div class="label-industry">#'.$val->feature.'</div>';
+                                                    }
+                                                }
+                                            };
+                                        } ?>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         <div class="d-flex justify-content-end">
                             <div class="form-check">
-                                <input class="form-check-input form-check-input-click" type="checkbox" value="" name='looked' id="agency_flexCheckDefault<?= h($agency_information->agency_id); ?>">
+                                <input class="form-check-input form-check-input-click " type="checkbox" value="" name='looked' id="agency_flexCheckDefault<?= h($agency_information->agency_id); ?>">
                             </div>
                         </div>
                     </div>
@@ -281,7 +307,7 @@ $agency_feature_comparison = $stmt->fetchAll();
         </div>
     </main>
     <main class="w-100">
-        <div class="text-center p-5 ms-5 me-5 compare" id="applySection">
+        <div class="text-center p-5 ms-5 me-5 compare " id="applySection">
             <div class="mt-3 mb-5 ms-5 me-5 title ">
                 比較リスト
             </div>
@@ -290,14 +316,14 @@ $agency_feature_comparison = $stmt->fetchAll();
                     <thead>
                         <tr>
                             <th scope="col"></th>
-                            <th scope="col"></th>
+                            <!-- <th scope="col"></th> -->
                             <th scope="col">エージェンシー</th>
-                            <th scope="col">得意業界</th>
+                            <th scope="col">対応業種</th>
                             <th scope="col">サポート</th>
                             <th scope="col">求人エリア</th>
                             <th scope="col">面談場所</th>
                             <th scope="col">契約企業数</th>
-                            <th scope="col">特徴</th>
+                            <!-- <th scope="col">実績数</th> -->
                         </tr>
                     </thead>
                     <tbody>
@@ -309,9 +335,9 @@ $agency_feature_comparison = $stmt->fetchAll();
                                 <!-- <td>
                                 <img id="comparisonDelete<?= h($agency_information->agency_id); ?>" src="../img/checked.png" alt="">
                             </td> -->
-                                <td>
+                                <!-- <td>
                                     <?= h($agency_information->agency_name); ?>
-                                </td>
+                                </td> -->
                                 <th scope="row">
                                     <a href="company.php?id=<?= h($agency_information->agency_id); ?>">
                                         <img src="../uploaded_img/agency<?= h($agency_information->agency_id); ?>.png" alt="" class="center-img">
@@ -323,7 +349,7 @@ $agency_feature_comparison = $stmt->fetchAll();
                                     if ($data = $agency_information->agency_id) {
                                         foreach ($agency_industry_comparison as $val) {
                                             if ($val->agency_id === $data) {
-                                                echo "<p>$val->industry</p>";
+                                                echo '<div class="label-industry-comparison">#'.$val->industry.'</div>';
                                             }
                                         };
                                     } ?>
@@ -333,8 +359,8 @@ $agency_feature_comparison = $stmt->fetchAll();
                                         if ($data = $agency_information->agency_id) {
                                             foreach ($agency_feature_comparison as $val) {
                                                 if ($val->agency_id === $data) {
-                                                    if($val->feature_id >10){
-                                                        echo "<p>$val->feature</p>";
+                                                    if ($val->feature_id > 10) {
+                                                        echo '<div class="label-industry-comparison">#'.$val->feature.'</div>';
                                                     }
                                                 }
                                             };
@@ -343,94 +369,94 @@ $agency_feature_comparison = $stmt->fetchAll();
                                 <td><?= h($agency_information->achievements); ?></td>
                                 <td><?= h($agency_information->bases_numbers); ?></td>
                                 <td><?= h($agency_information->contract_numbers); ?></td>
-                                <td><?= h($agency_information->catch_copy); ?></td>
+                                <!-- <td><?= h($agency_information->support); ?></td> -->
                             </tr>
-                            <?php endforeach; ?>
+                        <?php endforeach; ?>
                         </thead>
-                        <tbody>
-                            <?php foreach ($agency_informations as $agency_information) : ?>
-                                <tr id="comparison_agency<?= h($agency_information->agency_id); ?>" class="display-none">
-                                    <td>
-                                        <button type="button" class="btn btn-success" id="comparisonDelete<?= h($agency_information->agency_id); ?>">削除</button>
-                                    </td>
-                                    <!-- <td>
+                    <tbody>
+                        <?php foreach ($agency_informations as $agency_information) : ?>
+                            <tr id="comparison_agency<?= h($agency_information->agency_id); ?>" class="display-none">
+                                <td>
+                                    <button type="button" class="btn btn-success" id="comparisonDelete<?= h($agency_information->agency_id); ?>">削除</button>
+                                </td>
+                                <!-- <td>
                                     <img id="comparisonDelete<?= h($agency_information->agency_id); ?>" src="../img/checked.png" alt="">
                                 </td> -->
-                                    <td>
-                                        <?= h($agency_information->agency_name); ?>
-                                    </td>
-                                    <th scope="row">
-                                        <a href="./company.html">
-                                            <img src="../uploaded_img/agency<?= h($agency_information->agency_id); ?>.png" alt="" class="center-img">
-                                        </a>
-                                    </th>
-                                    <td><?= h($agency_information->catch_copy); ?></td>
-                                    <td>○</td>
-                                    <td>✕</td>
-                                    <td>◯</td>
-                                    <td>✕</td>
-                                </tr>
-                                <a href="./company.html" class="text-decoration-none display-none" id="rightContent<?= h($agency_information->agency_id); ?>">
-                                    <div class="d-flex checked-content m-5 p-3">
-                                        <div class="me-2">
-                                            <img src="../uploaded_img/agency<?= h($agency_information->agency_id); ?>.png" alt="" class="right-img">
-                                        </div>
-                                        <div class="checked-paragraph">
-                                            <?= h($agency_information->agency_name); ?>
-                                        </div>
+                                <td>
+                                    <?= h($agency_information->agency_name); ?>
+                                </td>
+                                <th scope="row">
+                                    <a href="./company.html">
+                                        <img src="../uploaded_img/agency<?= h($agency_information->agency_id); ?>.png" alt="" class="center-img">
+                                    </a>
+                                </th>
+                                <td><?= h($agency_information->catch_copy); ?></td>
+                                <td>○</td>
+                                <td>✕</td>
+                                <td>◯</td>
+                                <td>✕</td>
+                            </tr>
+                            <a href="./company.html" class="text-decoration-none display-none" id="rightContent<?= h($agency_information->agency_id); ?>">
+                                <div class="d-flex checked-content m-5 p-3">
+                                    <div class="me-2">
+                                        <img src="../uploaded_img/agency<?= h($agency_information->agency_id); ?>.png" alt="" class="right-img">
                                     </div>
-                                </a>
-                            <?php endforeach; ?>
-                        </tbody>
-                    </table>
+                                    <div class="checked-paragraph">
+                                        <?= h($agency_information->agency_name); ?>
+                                    </div>
+                                </div>
+                            </a>
+                        <?php endforeach; ?>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="text-center">
+            <a href="#navbarNavDropdown">
+                <button type="button" class="btn btn-success mt-5">上に戻る</button>
+            </a>
+        </div>
+        <div>
+            <form class="text-center compare" action="check.php" method="post" id="inquiry">
+                <div class=" m-auto mt-5 w-75 text-center title">
+                    申し込みフォーム
                 </div>
-            </div>
-            <div class="text-center">
-                <a href="#navbarNavDropdown">
-                    <button type="button" class="btn btn-success mt-5">上に戻る</button>
-                </a>
-            </div>
-            <div>
-                <form class="text-center compare" action="check.php" method="post" id="inquiry">
-                    <div class=" m-auto mt-5 w-75 text-center title">
-                        申し込みフォーム
+                <div>
+                    <div class="form-group w-50 mt-3">
+                        <label>お名前</label>
+                        <input class="form-control" id="name" name="name" placeholder="お名前">
                     </div>
-                    <div>
-                        <div class="form-group w-50 mt-3">
-                            <label>お名前</label>
-                            <input class="form-control" id="name" name="name" placeholder="お名前">
-                        </div>
-                        <div class="form-group w-50 mt-3">
-                            <label>生年月日</label>
-                            <input class="form-control" id="birthday" name="birthday" placeholder="XXXX/XX/XX">
-                        </div>
-                        <div class="form-group w-50 mt-3">
-                            <label>大学名</label>
-                            <input class="form-control" id="university" name="university" placeholder="大学名">
-                        </div>
-                        <div class="form-group w-50 mt-3">
-                            <label>電話番号</label>
-                            <input class="form-control" id="phone-number" name="phone" placeholder="電話番号">
-                        </div>
-                        <div class="form-group w-50 mt-3">
-                            <label>住所</label>
-                            <input class="form-control" id="address" placeholder="住所" name="address">
-                        </div>
-                        <div class="form-group w-50 mt-3">
-                            <label for="exampleInputEmail1">メールアドレス</label>
-                            <input type="text" name="email" id="email" class="text2 form-control" placeholder="xxx@example.com">
-                        </div>
+                    <div class="form-group w-50 mt-3">
+                        <label>生年月日</label>
+                        <input class="form-control" id="birthday" name="birthday" placeholder="XXXX/XX/XX">
                     </div>
-                    <?php foreach ($agency_informations as $agency_information) : ?>
-                        <input class="form-check-input" type="checkbox" value="" name="agency<?= h($agency_information->agency_id); ?>" id="hidden_checkbox<?= h($agency_information->agency_id); ?>">
-                    <?php endforeach; ?>
-                    <div class="submit" id="submit-button">
-                        <button type="submit" value="確認画面へ" id="form-button" class="btn btn-success mt-5 mb-5 unclick">
-                            申し込み
-                        </button>
+                    <div class="form-group w-50 mt-3">
+                        <label>大学名</label>
+                        <input class="form-control" id="university" name="university" placeholder="大学名">
                     </div>
-                </form>
-            </div>
+                    <div class="form-group w-50 mt-3">
+                        <label>電話番号</label>
+                        <input class="form-control" id="phone-number" name="phone" placeholder="電話番号">
+                    </div>
+                    <div class="form-group w-50 mt-3">
+                        <label>住所</label>
+                        <input class="form-control" id="address" placeholder="住所" name="address">
+                    </div>
+                    <div class="form-group w-50 mt-3">
+                        <label for="exampleInputEmail1">メールアドレス</label>
+                        <input type="text" name="email" id="email" class="text2 form-control" placeholder="xxx@example.com">
+                    </div>
+                </div>
+                <?php foreach ($agency_informations as $agency_information) : ?>
+                    <input class="form-check-input" type="checkbox" value="" name="agency<?= h($agency_information->agency_id); ?>" id="hidden_checkbox<?= h($agency_information->agency_id); ?>">
+                <?php endforeach; ?>
+                <div class="submit" id="submit-button">
+                    <button type="submit" value="確認画面へ" id="form-button" class="btn btn-success mt-5 mb-5 click">
+                        申し込み
+                    </button>
+                </div>
+            </form>
+        </div>
         </div>
     </main>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>

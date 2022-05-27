@@ -109,14 +109,14 @@
 
 				foreach ($inquiry_agency as $agency) {
 					$mail_address = $agency->mail_address;
-					print_r($mail_address);
+					// print_r($mail_address);
 
 
 
-					echo $name . '様<br>' . "\n";
-					echo 'お問い合わせ、ありがとうございました。<br>' . "\n";
-					echo 'お問い合わせ内容『' . $university . '』を<br>' . "\n";
-					echo $email . 'にメールで送りましたのでご確認ください。' . "\n";
+					// echo $name . '様<br>' . "\n";
+					// echo 'お問い合わせ、ありがとうございました。<br>' . "\n";
+					// echo 'お問い合わせ内容『' . $university . '』を<br>' . "\n";
+					// echo $email . 'にメールで送りましたのでご確認ください。' . "\n";
 
 					$mail_sub = 'お問い合わせを受け付けました。';
 					$mail_body = $name . '様、ご協力ありがとうございました。';
@@ -128,13 +128,13 @@
 					$mail_header = "From: {$from}\nReply-To: {$from}\nContent-Type: text/plain;";
 
 
-					mb_language('Japanese');
-					mb_internal_encoding("UTF-8");
+					// mb_language('Japanese');
+					// mb_internal_encoding("UTF-8");
 
 					if (mb_send_mail($mail_address, $mail_sub, $mail_body, $mail_header, "-f test@test.com")) {
-						echo "メールを送信しました";
+						// echo "メールを送信しました";
 					} else {
-						echo "メールの送信に失敗しました";
+						// echo "メールの送信に失敗しました";
 					};
 				};
 			}
@@ -151,17 +151,17 @@
 		$from = 'test@test.com';
 		// $mail_header .= "MIME-Version: 1.0\n";
 		// $mail_header .= "Content-Transfer-Encoding: BASE64\n";
-		// $mail_header .= "Content-Type: text/plain; charset=UTF-8\n";
+		// $mail_header .= "charset=UTF-8\n";
 		$mail_header = "From: {$from}\nReply-To: {$from}\nContent-Type: text/plain;";
 
 
-		mb_language('Japanese');
-		mb_internal_encoding("UTF-8");
+		// mb_language('Japanese');
+		// mb_internal_encoding("UTF-8");
 
 		if (mb_send_mail($email, $mail_sub, $mail_body, $mail_header, "-f test@test.com")) {
-			echo "メールを送信しました";
+			// echo "メールを送信しました";
 		} else {
-			echo "メールの送信に失敗しました";
+			// echo "メールの送信に失敗しました";
 		};
 
 

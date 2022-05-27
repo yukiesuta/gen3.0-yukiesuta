@@ -28,6 +28,7 @@ function add_agency_information($pdo)
     $catch_copy = $_POST["catch_copy"];
     $detail = $_POST["detail"];
     $mail_address = $_POST["mail_address"];
+    $manager = $_POST["manager"];
     $phone_number = $_POST["phone_number"];
 
 
@@ -36,11 +37,12 @@ function add_agency_information($pdo)
 
     $filename = basename($uploading_img["name"]);
 
+    $unit_price = $_POST["unit_price"];
     $achievements = $_POST["achievements"];
     $contract_numbers = $_POST["contract_numbers"];
     $bases_numbers = $_POST["bases_numbers"];
     $support = $_POST["support"];
-    $place = $_POST["place"];
+    // $place = $_POST["place"];
 
 
     if (isset($_POST['industry1'])) {
@@ -118,26 +120,30 @@ function add_agency_information($pdo)
         catch_copy,
         detail,
         mail_address,
+        manager,
         phone_number,
         img,
+        unit_price,
         achievements,
         contract_numbers,
         bases_numbers,
         support,
-        place,
+        -- place,
         claim_status
         ) VALUES(
         :agency_name,
         :catch_copy,
         :detail,
         :mail_address,
+        :manager,
         :phone_number,
         :img,
+        :unit_price,
         :achievements,
         :contract_numbers,
         :bases_numbers,
         :support,
-        :place,
+        -- :place,
         :claim_status
     )');
 
@@ -145,13 +151,15 @@ function add_agency_information($pdo)
     $stmt->bindValue(':catch_copy', $catch_copy);
     $stmt->bindValue(':detail', $detail);
     $stmt->bindValue(':mail_address', $mail_address);
+    $stmt->bindValue(':manager', $manager);
     $stmt->bindValue(':phone_number', $phone_number);
     $stmt->bindValue(':img', $filename);
+    $stmt->bindValue(':unit_price', $unit_price);
     $stmt->bindValue(':achievements', $achievements);
     $stmt->bindValue(':contract_numbers', $contract_numbers);
     $stmt->bindValue(':bases_numbers', $bases_numbers);
     $stmt->bindValue(':support', $support);
-    $stmt->bindValue(':place', $place);
+    // $stmt->bindValue(':place', $place);
     $stmt->bindValue(':claim_status', 0);
 
 
@@ -214,9 +222,11 @@ function edit_agency_information($pdo)
     $catch_copy = $_POST["catch_copy"];
     $detail = $_POST["detail"];
     $mail_address = $_POST["mail_address"];
+    $manager = $_POST["manager"];
     $phone_number = $_POST["phone_number"];
 
 
+    $unit_price = $_POST["unit_price"];
     $achievements = $_POST["achievements"];
     $contract_numbers = $_POST["contract_numbers"];
 
@@ -225,6 +235,7 @@ function edit_agency_information($pdo)
         catch_copy = :catch_copy,
         detail = :detail,
         mail_address = :mail_address,
+        manager = :manager,
         phone_number = :phone_number,
         achievements = :achievements,
         contract_numbers = :contract_numbers 
@@ -236,7 +247,9 @@ function edit_agency_information($pdo)
         ':catch_copy' => $_POST['catch_copy'],
         ':detail' => $_POST['detail'],
         ':mail_address' => $_POST['mail_address'],
+        ':manager' => $_POST['manager'],
         ':phone_number' => $_POST['phone_number'],
+        ':unit_price' => $_POST['unit_price'],
         ':achievements' => $_POST['achievements'],
         ':contract_numbers' => $_POST['contract_numbers'],
         ':id' => $_GET["id"]
