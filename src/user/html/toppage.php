@@ -422,10 +422,6 @@ $agency_feature_comparison = $stmt->fetchAll();
                     申し込みフォーム
                 </div>
                 <div>
-                    <div class="form-group w-50 mt-3">
-                        <label>お名前</label>
-                        <input class="form-control" id="name" name="name" placeholder="お名前">
-                    </div>
                     <div>
                         <div class="form-group w-50 mt-3">
                             <label>お名前</label>
@@ -514,27 +510,6 @@ $agency_feature_comparison = $stmt->fetchAll();
                             申し込み
                         </button>
                     </div>
-                    <div class="form-group w-50 mt-3">
-                        <label>電話番号</label>
-                        <input class="form-control" id="phone-number" name="phone" placeholder="電話番号">
-                    </div>
-                    <div class="form-group w-50 mt-3">
-                        <label>住所</label>
-                        <input class="form-control" id="address" placeholder="住所" name="address">
-                    </div>
-                    <div class="form-group w-50 mt-3">
-                        <label for="exampleInputEmail1">メールアドレス</label>
-                        <input type="text" name="email" id="email" class="text2 form-control" placeholder="xxx@example.com">
-                    </div>
-                </div>
-                <?php foreach ($agency_informations as $agency_information) : ?>
-                    <input class="form-check-input" type="checkbox" value="" name="agency<?= h($agency_information->agency_id); ?>" id="hidden_checkbox<?= h($agency_information->agency_id); ?>">
-                <?php endforeach; ?>
-                <div class="submit" id="submit-button">
-                    <button type="submit" value="確認画面へ" id="form-button" class="btn btn-success mt-5 mb-5 click">
-                        申し込み
-                    </button>
-                </div>
             </form>
         </div>
         </div>

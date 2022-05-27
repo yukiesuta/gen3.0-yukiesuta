@@ -55,11 +55,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <div class="form-group w-50 mt-3">
 
                     <label>担当責任者</label>
-                    <input type="text" name="manager" class="form-control" id="form-name" placeholder="担当責任者をご入力ください">
+                    <input type="text" name="manager" class="form-control" id="form-name" placeholder="担当責任者をご入力ください" required>
                 </div>
                 <div class="form-group w-50 mt-3">
                     <label>電話番号（ハイフン不要）</label>
-                    <input type="tel" pattern="[\d\-]*" name="phone_number" class="form-control" id="form-name" placeholder="例)08012345678">
+                    <input type="tel" pattern="[\d\-]*" name="phone_number" class="form-control" id="form-name" placeholder="例)08012345678" required>
                 </div>
                 <div class="form-group w-50 mt-3">
                     <div>
@@ -79,8 +79,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 </div>
                 <div class="form-group w-50 mt-3">
                     <!-- <label>拠点数</label> -->
-                    <label>単価</label>
-                    <input type="text" name="unit_price" class="form-control" id="form-name" placeholder="学生１人あたりの値段">
+                    <label>単価（半角数字）</label>
+                    <input type="text" pattern="^[1-9][0-9]*$" name="unit_price" class="form-control" id="form-name" placeholder="学生１人あたりの値段">
                 </div>
                 <div class="form-group w-50 mt-3">
                     <!-- <label>サポート</label> -->
@@ -191,7 +191,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                             担当者変更可能
                         </label>
                     </div>
-
                 </div>
             </div>
             <div class="d-flex justify-content-around">
