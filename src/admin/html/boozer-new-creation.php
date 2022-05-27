@@ -45,8 +45,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 </div>
                 <div class="form-group w-50 mt-3">
                     <label for="exampleFormControlTextarea1">詳細説明</label>
-                    <!-- <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea> -->
-                    <textarea name="detail" class="form-control wide" id="exampleFormControlTextarea1" placeholder="例)性別問わずキャリアに強いヘッドハンターも多数在席しております。若手向けのチャレンジポジションから管理層ポジションまで直接スカウトが届きます。" required></textarea>
+                    <textarea name="detail" class="form-control" id="exampleFormControlTextarea1" placeholder="例)性別問わずキャリアに強いヘッドハンターも多数在席しております。若手向けのチャレンジポジションから管理層ポジションまで直接スカウトが届きます。" required></textarea>
                 </div>
                 <div class="form-group w-50 mt-3">
                     <label>メールアドレス</label>

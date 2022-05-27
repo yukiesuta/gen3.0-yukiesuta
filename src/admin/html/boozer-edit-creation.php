@@ -59,7 +59,7 @@ $result = $stmt->fetch();
                 <div class="form-group w-50 mt-3">
                     <label for="exampleFormControlTextarea1">詳細説明</label>
                     <!-- <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea> -->
-                    <textarea  name="detail" class="form-control" id="exampleFormControlTextarea1" placeholder="例)性別問わずキャリアに強いヘッドハンターも多数在席しております。若手向けのチャレンジポジションから管理層ポジションまで直接スカウトが届きます。" value="<?= $result['detail']?>" required>
+                    <textarea name="detail" class="form-control wide" id="exampleFormControlTextarea1" placeholder="例)性別問わずキャリアに強いヘッドハンターも多数在席しております。若手向けのチャレンジポジションから管理層ポジションまで直接スカウトが届きます。" required><?= $result['detail']?></textarea>
                 </div>
                 <div class="form-group w-50 mt-3">
                     <label>メールアドレス</label>
@@ -81,7 +81,7 @@ $result = $stmt->fetch();
                 <div class="form-group w-50 mt-3">
                     <!-- <label>拠点数</label> -->
                     <label>単価（半角数字）</label>
-                    <input type="text" pattern="^[1-9][0-9]*$" name="unit_price" class="form-control" id="form-name" placeholder="例)10000" required>
+                    <input type="text" pattern="^[1-9][0-9]*$" name="unit_price" class="form-control" id="form-name" placeholder="例)10000" value="<?= $result['unit_price']?>" required>
                 </div>
                 <div class="form-group w-50 mt-3">
                     <label>実績数</label>
