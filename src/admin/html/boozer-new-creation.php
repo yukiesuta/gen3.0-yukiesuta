@@ -53,8 +53,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <input type="email" name="mail_address" class="form-control" id="form-name" placeholder="例)example@mail.com" required>
                 </div>
                 <div class="form-group w-50 mt-3">
+
+                    <label>担当責任者</label>
+                    <input type="text" name="manager" class="form-control" id="form-name" placeholder="担当責任者をご入力ください">
+                </div>
+                <div class="form-group w-50 mt-3">
                     <label>電話番号（ハイフン不要）</label>
-                    <input type="text" name="phone_number" class="form-control" id="form-name" placeholder="例)08012345678" required>
+                    <input type="tel" pattern="[\d\-]*" name="phone_number" class="form-control" id="form-name" placeholder="例)08012345678">
                 </div>
                 <div class="form-group w-50 mt-3">
                     <div>
@@ -73,6 +78,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <input type="text" name="bases_numbers" class="form-control" id="form-name" placeholder="例)渋谷・自由が丘" required>
                 </div>
                 <div class="form-group w-50 mt-3">
+                    <!-- <label>拠点数</label> -->
+                    <label>単価</label>
+                    <input type="text" name="unit_price" class="form-control" id="form-name" placeholder="学生１人あたりの値段">
+                </div>
+                <div class="form-group w-50 mt-3">
                     <!-- <label>サポート</label> -->
                     <label>契約企業数</label>
                     <input type="text" name="support" class="form-control" id="form-name" placeholder="例)150社" required>
@@ -80,10 +90,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <div class="form-group w-50 mt-3">
                     <label>実績数</label>
                     <input type="text" name="contract_numbers" class="form-control" id="form-name" placeholder="例)2500件" required>
-                </div>
-                <div class="form-group w-50 mt-3">
-                    <label>担当者</label>
-                    <input type="text" name="place" class="form-control" id="form-name" placeholder="例)山田太郎" required>
                 </div>
             </div>
             <div>

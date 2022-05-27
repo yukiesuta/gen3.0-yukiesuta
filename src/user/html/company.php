@@ -8,12 +8,32 @@ require_once(__DIR__  . '/../app/config.php');
 $pdo = getPdoInstance();
 $id = $_GET["id"];
 
-echo $id;
+// echo $id;
 $agency_informations = get_agency_informations($pdo);
 
 $stmt = $db->query("SELECT * FROM agency_information WHERE id = $id" );
 $result = $stmt->fetch();
-print_r($result)
+// print_r($result)
+
+$stmt = $pdo->prepare("SELECT * FROM agency_information 
+JOIN agency_feature AS itt ON  agency_information.id = itt.agency_id
+JOIN features ON itt.feature_id = features.id
+JOIN industry_condition AS ittt ON  itt.feature_id = ittt.id
+WHERE agency_id = $id
+");
+$stmt->execute();
+
+$agency_industry_comparison = $stmt->fetchAll();
+
+$stmt = $pdo->prepare("SELECT * FROM agency_information 
+JOIN agency_feature AS feature_comparison ON  agency_information.id = feature_comparison.agency_id
+JOIN features ON feature_comparison.feature_id = features.id
+WHERE agency_id = $id
+");
+$stmt->execute();
+
+$agency_feature_comparison = $stmt->fetchAll();
+// print_r($agency_feature_comparison);
 
 
 ?>
@@ -29,6 +49,7 @@ print_r($result)
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="../css/company.css">
+     <!-- <link rel="stylesheet" href="../css/toppage.css"> -->
     <title>企業ページ</title>
 </head>
 
@@ -64,46 +85,60 @@ print_r($result)
         </div>
     </header>
     <main>
-        <div class="text-center mt-5">
-            <div class="company-title w-50">
+        <div class=" mt-5">
+            <div class=" text-center company-title w-50">
                 <?= $result['agency_name']?>
             </div>
-            <img src="../img/posseLogo.png" alt="" class="mt-3">
+            <!-- <img src="../img/posseLogo.png" alt="" class="mt-3"> -->
+            <div class="text-center">
+                <img src="../uploaded_img/agency<?php  echo $id ?>.png" alt="" class="center-img">
+            </div>
             <div>
                 <table class="table w-50 mt-5">
                     <thead>
-                        <tr colspan="2">
+                        <!-- <tr colspan="2">
                             <th scope="col">項目</th>
                             <th scope="col">特徴</th>
-                        </tr>
+                        </tr> -->
                     </thead>
                     <tbody>
                         <tr>
-                            <th scope="row">得意業界</th>
-                            <td><?= $result['agency_name']?></td>
+                            <th scope="row">特徴</th>
+                            <td class="t"><?= $result['catch_copy']?></td>
                         </tr>
                         <tr>
-                            <th scope="row">ES添削</th>
-                            <td><?= $result['catch_copy']?></td>
-                        </tr>
-                        <tr>
-                            <th scope="row">面接対策</th>
+                            <th scope="row">詳細</th>
                             <td><?= $result['detail']?></td>
                         </tr>
                         <tr>
-                            <th scope="row">即日連絡</th>
-                            <td><?= $result['agency_name']?></td>
+                            <th scope="row">対応業種</th>
+                            <td><?php    foreach ($agency_industry_comparison as $val) 
+                            {
+                                echo '<div class="label-industry-comparison">#'.$val->industry.'</div>';
+                            ;};?>
+                            </td>
                         </tr>
                         <tr>
-                            <th scope="row">担当者変更</th>
+                            <th scope="row">サポート</th>
+                            <td><?php    foreach ($agency_feature_comparison as $val) 
+                            { if($val->feature_id >10){
+                                echo '<div class="label-industry-comparison">#'.$val->feature.'</div>';
+                            }
+                            ;};?>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row"></th>
                             <td><?= $result['agency_name']?></td>
                         </tr>
                     </tbody>
                 </table>
             </div>
-            <a href="toppage.php">
-                <button type="button" class="btn btn-success mt-5">トップページに戻る</button>
-            </a>
+            <div class="text-center">
+                <a href="toppage.php" >
+                    <button type="button" class="btn btn-success mt-5 ">トップページに戻る</button>
+                </a>
+            </div>
         </div>
     </main>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"

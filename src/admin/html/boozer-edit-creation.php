@@ -66,6 +66,10 @@ $result = $stmt->fetch();
                     <input type="text" name="mail_address" class="form-control" id="form-name" placeholder="メールアドレスをご入力ください" value="<?= $result['mail_address']?>">
                 </div>
                 <div class="form-group w-50 mt-3">
+                    <label>担当責任者</label>
+                    <input type="text" name="manager" class="form-control" id="form-name" placeholder="担当責任者をご入力ください" value="<?= $result['manager']?>">
+                </div>
+                <div class="form-group w-50 mt-3">
                     <label>電話番号</label>
                     <input type="text" name="phone_number" class="form-control" id="form-name" placeholder="電話番号をご入力ください" value="<?= $result['phone_number']?>">
                 </div>
@@ -73,6 +77,11 @@ $result = $stmt->fetch();
                     <div>
                         <label>会社ロゴ（会社ロゴの変更は新規作成画面からやり直してください。）</label>
                     </div>
+                </div>
+                <div class="form-group w-50 mt-3">
+                    <!-- <label>拠点数</label> -->
+                    <label>単価</label>
+                    <input type="text" name="unit_price" class="form-control" id="form-name" placeholder="学生１人あたりの値段">
                 </div>
                 <div class="form-group w-50 mt-3">
                     <label>実績数</label>
