@@ -45,7 +45,7 @@
                     </a>
                 </div>
                 <div class="text-center mt-3">
-                    <a href="boozer-claim-info.php" class="text-decoration-none text-secondary">
+                    <a href="boozer-claim-info.php" class="text-decoration-none ">
                         請求情報管理
                     </a>
                 </div>

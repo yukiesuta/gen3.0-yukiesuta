@@ -80,7 +80,10 @@ $agency_feature_comparison = $stmt->fetchAll();
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="../css/toppage.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <title>Craft</title>
+    <!-- <link rel="stylesheet" type="text/css" href="https://coco-factory.jp/ugokuweb/wp-content/themes/ugokuweb/data/reset.css">
+<link rel="stylesheet" type="text/css" href="https://coco-factory.jp/ugokuweb/wp-content/themes/ugokuweb/data/9-2-1/css/9-2-1.css"> -->
+</head>
+<title>Craft</title>
 </head>
 
 <body>
@@ -123,7 +126,53 @@ $agency_feature_comparison = $stmt->fetchAll();
     </header>
     <main>
         <div class="first-view">
-            <img src="../img/firstview.jpg" alt="first-view" class="first-view-img">
+            <!-- <img src="../img/firstview.jpg" alt="first-view" class="first-view-img"> -->
+            <!-- <div class="first-view-left">
+
+
+            </div>
+            <div class="first-view-right">
+
+            </div> -->
+            <!-- <div class="accordion" id="accordionExample">
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingOne">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                            Accordion Item #1
+                        </button>
+                    </h2>
+                    <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                            <strong>This is the first item's accordion body.</strong> It is shown by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+                        </div>
+                    </div>
+                </div> -->
+                <!-- <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingTwo">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                            Accordion Item #2
+                        </button>
+                    </h2>
+                    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                            <strong>This is the second item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingThree">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                            Accordion Item #3
+                        </button>
+                    </h2>
+                    <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                            <strong>This is the third item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+                        </div>
+                    </div>
+                </div> -->
+            <!-- </div> -->
+
         </div>
         <div class="text-center button">
             <button type="button" class="btn btn-success mt-2" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
@@ -198,7 +247,7 @@ $agency_feature_comparison = $stmt->fetchAll();
                         </div>
                     <?php endforeach; ?>
                 </div>
-                <div class="mt-4 ms-5 me-5 p-3 search">
+                <div class="ms-5 me-5 p-3 search-middle">
                     <div class="search-title p-1 text-center">文理</div>
                     <?php foreach ($major_conditions as $major_condition) : ?>
                         <div class="form-check mt-1">
@@ -209,7 +258,7 @@ $agency_feature_comparison = $stmt->fetchAll();
                         </div>
                     <?php endforeach; ?>
                 </div>
-                <div class="mt-4 ms-5 me-5 p-3 search">
+                <div class=" ms-5 me-5 p-3 search-bottom">
                     <div class="search-title p-1 text-center">特徴</div>
                     <?php foreach ($feature_conditions as $feature_condition) : ?>
                         <div class="form-check mt-1">
@@ -224,41 +273,41 @@ $agency_feature_comparison = $stmt->fetchAll();
                     <button type="submit" class="btn btn-success mt-3">絞り込む</button>
                 </div>
             </form>
-            <div class="main-center-content col-md-6 col-12 ">
+            <div class="main-center-content col-md-6 col-12  ">
                 <?php foreach ($uniqueStations as $agency_information) : ?>
-                    <div class="mt-4 ms-5 me-5 mb-5 p-3 company-content-wrapper ">
-                        <div class="d-flex company-content">
-                            <a href="company.php?id=<?= h($agency_information->agency_id); ?>">
+                    <div class="mt-4 ms-5 me-5 mb-5 p-3 company-content-wrapper accordion-item" id="accordionExample">
+                        <div class="d-flex company-content ">
+                            <a href="#">
                                 <div class="logo-container p-1">
                                     <img src="../uploaded_img/agency<?= h($agency_information->agency_id); ?>.png" alt="" class="center-img">
                                 </div>
                             </a>
                             <div>
-                                <a href="company.php?id=<?= h($agency_information->agency_id); ?>" class="text-decoration-none">
+                                <a href="#" class="text-decoration-none">
                                     <div class="company-content-title p-1"><?= h($agency_information->agency_name); ?></div>
                                 </a>
                                 <div class="p-3 company-content-paragraph">
                                     <?= h($agency_information->catch_copy); ?>
                                 </div>
-                                <div class="text-right"> 
+                                <div class="text-right">
                                     <div>
                                         <?php
                                         if ($data = $agency_information->agency_id) {
                                             foreach ($agency_industry_comparison as $val) {
                                                 if ($val->agency_id === $data) {
-                                                    echo '<div class="label-industry">#'.$val->industry.'</div>';
+                                                    echo '<div class="label-industry">#' . $val->industry . '</div>';
                                                 }
                                             };
                                         } ?>
                                     </div>
                                     <div>
                                         <?php
-    
+
                                         if ($data = $agency_information->agency_id) {
                                             foreach ($agency_feature_comparison as $val) {
                                                 if ($val->agency_id === $data) {
                                                     if ($val->feature_id > 10) {
-                                                        echo '<div class="label-industry">#'.$val->feature.'</div>';
+                                                        echo '<div class="label-industry">#' . $val->feature . '</div>';
                                                     }
                                                 }
                                             };
@@ -272,6 +321,16 @@ $agency_feature_comparison = $stmt->fetchAll();
                                 <input class="form-check-input form-check-input-click " type="checkbox" value="" name='looked' id="agency_flexCheckDefault<?= h($agency_information->agency_id); ?>">
                             </div>
                         </div>
+                        <h2 class="accordion-header" id="heading<?= h($agency_information->agency_id); ?>">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse<?= h($agency_information->agency_id); ?>" aria-expanded="true" aria-controls="collapse<?= h($agency_information->agency_id); ?>">
+                            詳細説明
+                        </button>
+                    </h2>
+                    <div id="collapse<?= h($agency_information->agency_id); ?>" class="accordion-collapse collapse " aria-labelledby="heading<?= h($agency_information->agency_id); ?>" data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                        <?= h($agency_information->detail); ?>
+                        </div>
+                    </div>
                     </div>
                 <?php endforeach; ?>
                 <!-- <div class="d-flex p-3 justify-content-center">
@@ -287,14 +346,14 @@ $agency_feature_comparison = $stmt->fetchAll();
                     </div>
                 </div>
                 <?php foreach ($agency_informations as $agency_information) : ?>
-                    <a href="company.php?id=<?= h($agency_information->agency_id); ?>" class="text-decoration-none display-none" id="rightContent<?= h($agency_information->agency_id); ?>">
+                    <a href="#" class="text-decoration-none display-none" id="rightContent<?= h($agency_information->agency_id); ?>">
                         <div class="d-flex checked-content m-5 p-3">
                             <div class="me-2">
                                 <img src="../uploaded_img/agency<?= h($agency_information->agency_id); ?>.png" alt="" class="right-img">
                             </div>
-                            <div class="checked-paragraph">
+                            <!-- <div class="checked-paragraph">
                                 <?= h($agency_information->agency_name); ?>
-                            </div>
+                            </div> -->
                         </div>
                     </a>
                 <?php endforeach; ?>
@@ -349,7 +408,7 @@ $agency_feature_comparison = $stmt->fetchAll();
                                     if ($data = $agency_information->agency_id) {
                                         foreach ($agency_industry_comparison as $val) {
                                             if ($val->agency_id === $data) {
-                                                echo '<div class="label-industry-comparison">#'.$val->industry.'</div>';
+                                                echo '<div class="label-industry-comparison">#' . $val->industry . '</div>';
                                             }
                                         };
                                     } ?>
@@ -360,7 +419,7 @@ $agency_feature_comparison = $stmt->fetchAll();
                                             foreach ($agency_feature_comparison as $val) {
                                                 if ($val->agency_id === $data) {
                                                     if ($val->feature_id > 10) {
-                                                        echo '<div class="label-industry-comparison">#'.$val->feature.'</div>';
+                                                        echo '<div class="label-industry-comparison">#' . $val->feature . '</div>';
                                                     }
                                                 }
                                             };
@@ -429,7 +488,7 @@ $agency_feature_comparison = $stmt->fetchAll();
                         </div>
                         <div class="form-group w-50 mt-3">
                             <label>生年月日</label>
-                            <input type="date"  class="form-control" id="birthday" name="birthday" required>
+                            <input type="date" class="form-control" id="birthday" name="birthday" required>
                         </div>
                         <div class="form-group w-50 mt-3">
                             <label>大学名</label>
@@ -501,9 +560,9 @@ $agency_feature_comparison = $stmt->fetchAll();
                             <label for="exampleInputEmail1">入力内容を確認しました</label>
                         </div>
                         <div class="form-group w-50 mt-3">
-                            <input type="text" name="cryptography" class="text2 form-control d-none" value="<?=md5(uniqid())?>">
+                            <input type="text" name="cryptography" class="text2 form-control d-none" value="<?= md5(uniqid()) ?>">
                         </div>
-                        
+
                     </div>
                     <?php foreach ($agency_informations as $agency_information) : ?>
                         <input class="form-check-input d-none" type="checkbox" value="" name="agency<?= h($agency_information->agency_id); ?>" id="hidden_checkbox<?= h($agency_information->agency_id); ?>">
@@ -520,7 +579,8 @@ $agency_feature_comparison = $stmt->fetchAll();
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <script src="../js/apply.js"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script> -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <script src="../js/toppage.js"></script>
 </body>

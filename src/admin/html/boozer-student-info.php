@@ -46,7 +46,7 @@ $agency_informations = $stmt->fetchAll();
                     </a>
                 </div>
                 <div class="text-center mt-3">
-                    <a href="boozer-student-info.php" class="text-decoration-none text-secondary">
+                    <a href="boozer-student-info.php" class="text-decoration-none ">
                         学生情報
                     </a>
                 </div>
