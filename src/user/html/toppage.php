@@ -226,8 +226,7 @@ $agency_feature_comparison = $stmt->fetchAll();
                         </div>
                         <div class="row">
                             <div class="col"></div>
-                            <button type="submit" class="btn btn-success col-8 justify-content-center mt-2 mb-3" id="submitButton">絞り込み</button>
-                            <!-- <button type="submit" class="btn btn-primary mt-5" >絞り込む</button> -->
+                            <button type="submit" class="btn btn-success col-8 justify-content-center mt-2 mb-3" id="submitButton" onclick="sorting()">絞り込み</button>
                             <div class="col"></div>
                         </div>
                         </form>
@@ -270,7 +269,7 @@ $agency_feature_comparison = $stmt->fetchAll();
                     <?php endforeach; ?>
                 </div>
                 <div class="text-center">
-                    <button type="submit" class="btn btn-success mt-3">絞り込む</button>
+                    <button type="submit" class="btn btn-success mt-3" id="sorting">絞り込む</button>
                 </div>
             </form>
             <div class="main-center-content col-md-6 col-12  ">
