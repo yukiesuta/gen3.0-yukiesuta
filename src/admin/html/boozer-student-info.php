@@ -75,7 +75,7 @@ $agency_informations = $stmt->fetchAll();
                         </thead>
                         <?php foreach ($inquirys as $inquiry) : ?>
                         <?
-                            $stmt = $pdo->query("SELECT * FROM inquiry_agency WHERE phone = '$inquiry->phone'");
+                            $stmt = $pdo->query("SELECT * FROM inquiry_agency WHERE cryptography = '$inquiry->cryptography'");
                             $inquiry_agencys = $stmt->fetchAll();
                         ?>
                             <tbody class="text-center">

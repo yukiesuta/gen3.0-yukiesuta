@@ -330,17 +330,17 @@ function edit_progress($pdo)
     ];
     $progress = $_POST["progress"];
     $agency_id = $_POST["agency_id"];
-    $phone = $_POST["phone"];
+    $cryptography = $_POST["cryptography"];
     $name = $_POST["name"];
     
     $stmt = $pdo->prepare('UPDATE inquiry_agency SET
         progress = :progress
-        WHERE agency_id = :agency_id && phone = :phone');
+        WHERE agency_id = :agency_id && cryptography = :cryptography');
 
     $stmt->execute(array(
         ':progress' => $progress,
         ':agency_id' => $agency_id,
-        ':phone'=>$phone
+        ':cryptography'=>$cryptography
     ));
     echo $name;
     echo 'の進行状況を';

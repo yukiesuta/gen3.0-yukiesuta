@@ -100,7 +100,7 @@
 
 		for ($i = 1; $i < 100; $i++) {
 			if (isset($_POST['agency' . $i . ''])) {
-				$sql = 'INSERT INTO inquiry_agency(phone,agency_id,progress)VALUES("' . $phone . '","' . $i . '","0")';
+				$sql = 'INSERT INTO inquiry_agency(cryptography,agency_id,progress)VALUES("' . $cryptography . '","' . $i . '","0")';
 				$stmt = $db->prepare($sql);
 				$stmt->execute();
 
