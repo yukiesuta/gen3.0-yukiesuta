@@ -298,6 +298,8 @@ function student_delete($pdo){
     $stmt = $pdo->prepare("DELETE FROM inquiry_agency WHERE cryptography = :cryptography" );
     $stmt->bindValue(':cryptography', $cryptography);
     $stmt->execute();
+
+    echo '削除しました。もう一度再更新すると反映されます。';
 }
 
 
