@@ -20,6 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <link rel="stylesheet" href="../css/normalize.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <link rel="stylesheet" href="../css/new-creation.css">
     <title>新規作成画面</title>
 </head>
@@ -62,9 +63,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 </div>
                 <div class="form-group w-50 mt-3">
                     <div>
-                        <label>会社ロゴ</label>
+                        <label>会社ロゴ（1MB以内）</label>
                     </div>
-                    <input type="file" name="img" class="form-control-file mt-2" id="exampleFormControlFile1" required>
+                    <input type="file" name="img" class="form-control-file mt-2" id="exampleFormControlFile1" accept="image/png, image/jpeg,image/png" required>
                 </div>
                 <div class="form-group w-50 mt-3">
                     <!-- <label>実績数</label> -->
