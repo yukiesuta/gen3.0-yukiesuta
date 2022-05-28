@@ -36,64 +36,60 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <div>
                 <div class="form-group w-50 mt-3">
                     <label>エージェンシー名</label>
-                    <input type="text"  name="agency_name" class="form-control" id="form-name" placeholder="エージェンシー名をご入力ください">
+                    <input type="text"  name="agency_name" class="form-control" id="form-name" placeholder="例)株式会社クラフト" required>
                 </div>
                 <div class="form-group w-50 mt-3">
                     <!-- <label>キャッチフレーズ</label> -->
                     <label>特徴</label>
-                    <input type="text" name="catch_copy" class="form-control" id="form-name" placeholder="特徴をご入力してください">
+                    <input type="text" name="catch_copy" class="form-control" id="form-name" placeholder="例)自慢の即日対応" required>
                 </div>
                 <div class="form-group w-50 mt-3">
                     <label for="exampleFormControlTextarea1">詳細説明</label>
-                    <!-- <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea> -->
-                    <input type="text" name="detail" class="form-control" id="exampleFormControlTextarea1" placeholder="詳細説明をご入力ください">
+                    <textarea name="detail" class="form-control" id="exampleFormControlTextarea1" placeholder="例)性別問わずキャリアに強いヘッドハンターも多数在席しております。若手向けのチャレンジポジションから管理層ポジションまで直接スカウトが届きます。" required></textarea>
                 </div>
                 <div class="form-group w-50 mt-3">
                     <label>メールアドレス</label>
-                    <input type="text" name="mail_address" class="form-control" id="form-name" placeholder="メールアドレスをご入力ください">
+                    <input type="email" name="mail_address" class="form-control" id="form-name" placeholder="例)example@mail.com" required>
                 </div>
                 <div class="form-group w-50 mt-3">
+
                     <label>担当責任者</label>
-                    <input type="text" name="manager" class="form-control" id="form-name" placeholder="担当責任者をご入力ください">
+                    <input type="text" name="manager" class="form-control" id="form-name" placeholder="例)佐藤" required>
                 </div>
                 <div class="form-group w-50 mt-3">
-                    <label>電話番号</label>
-                    <input type="text" name="phone_number" class="form-control" id="form-name" placeholder="電話番号をご入力ください">
+                    <label>電話番号（ハイフン不要）</label>
+                    <input type="tel" pattern="[\d\-]*" name="phone_number" class="form-control" id="form-name" placeholder="例)08012345678" required>
                 </div>
                 <div class="form-group w-50 mt-3">
                     <div>
                         <label>会社ロゴ</label>
                     </div>
-                    <input type="file" name="img" class="form-control-file mt-2" id="exampleFormControlFile1">
+                    <input type="file" name="img" class="form-control-file mt-2" id="exampleFormControlFile1" required>
                 </div>
                 <div class="form-group w-50 mt-3">
                     <!-- <label>実績数</label> -->
                     <label>求人エリア</label>
-                    <input type="text" name="achievements" class="form-control" id="form-name" placeholder="求人エリアをご入力ください">
+                    <input type="text" name="achievements" class="form-control" id="form-name" placeholder="例)渋谷・自由が丘" required>
                 </div>
                 <div class="form-group w-50 mt-3">
                     <!-- <label>拠点数</label> -->
                     <label>面談場所</label>
-                    <input type="text" name="bases_numbers" class="form-control" id="form-name" placeholder="面談場所を誤入力きださい">
+                    <input type="text" name="bases_numbers" class="form-control" id="form-name" placeholder="例)渋谷・自由が丘" required>
                 </div>
                 <div class="form-group w-50 mt-3">
                     <!-- <label>拠点数</label> -->
-                    <label>単価</label>
-                    <input type="text" name="unit_price" class="form-control" id="form-name" placeholder="学生１人あたりの値段">
+                    <label>単価（半角数字）</label>
+                    <input type="text" pattern="^[1-9][0-9]*$" name="unit_price" class="form-control" id="form-name" placeholder="例)10000">
                 </div>
                 <div class="form-group w-50 mt-3">
                     <!-- <label>サポート</label> -->
                     <label>契約企業数</label>
-                    <input type="text" name="support" class="form-control" id="form-name" placeholder="契約企業数をご入力ください">
+                    <input type="text" name="support" class="form-control" id="form-name" placeholder="例)150社" required>
                 </div>
                 <div class="form-group w-50 mt-3">
                     <label>実績数</label>
-                    <input type="text" name="contract_numbers" class="form-control" id="form-name" placeholder="実績数をご入力ください（例：２０００件以上）">
+                    <input type="text" name="contract_numbers" class="form-control" id="form-name" placeholder="例)2500件" required>
                 </div>
-                <!-- <div class="form-group w-50 mt-3">
-                    <label>担当者</label>
-                    <input type="text" name="place" class="form-control" id="form-name" placeholder="担当者をご入力ください">
-                </div> -->
             </div>
             <div>
                 <div class="mt-5 ms-5 me-5 p-3 search">
@@ -194,7 +190,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                             担当者変更可能
                         </label>
                     </div>
-
                 </div>
             </div>
             <div class="d-flex justify-content-around">

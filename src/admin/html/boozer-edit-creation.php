@@ -50,28 +50,28 @@ $result = $stmt->fetch();
             <div>
                 <div class="form-group w-50 mt-3">
                     <label>エージェンシー名</label>
-                    <input type="text"  name="agency_name" class="form-control" id="form-name" placeholder="エージェンシー名をご入力ください" value="<?= $result['agency_name']?>">
+                    <input type="text"  name="agency_name" class="form-control" id="form-name" placeholder="例)株式会社クラフト" value="<?= $result['agency_name']?>" required>
                 </div>
                 <div class="form-group w-50 mt-3">
-                    <label>キャッチフレーズ</label>
-                    <input type="text" name="catch_copy" class="form-control" id="form-name" placeholder="住所をご入力ください" value="<?= $result['catch_copy']?>">
+                    <label>特徴</label>
+                    <input type="text" name="catch_copy" class="form-control" id="form-name" placeholder="例)自慢の即日対応" value="<?= $result['catch_copy']?>" required>
                 </div>
                 <div class="form-group w-50 mt-3">
                     <label for="exampleFormControlTextarea1">詳細説明</label>
                     <!-- <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea> -->
-                    <input type="text" name="detail" class="form-control" id="exampleFormControlTextarea1" placeholder="詳細説明をご入力ください" value="<?= $result['detail']?>">
+                    <textarea name="detail" class="form-control wide" id="exampleFormControlTextarea1" placeholder="例)性別問わずキャリアに強いヘッドハンターも多数在席しております。若手向けのチャレンジポジションから管理層ポジションまで直接スカウトが届きます。" required><?= $result['detail']?></textarea>
                 </div>
                 <div class="form-group w-50 mt-3">
                     <label>メールアドレス</label>
-                    <input type="text" name="mail_address" class="form-control" id="form-name" placeholder="メールアドレスをご入力ください" value="<?= $result['mail_address']?>">
+                    <input type="email" name="mail_address" class="form-control" id="form-name" placeholder="例)example@mail.com" value="<?= $result['mail_address']?>" required>
                 </div>
                 <div class="form-group w-50 mt-3">
                     <label>担当責任者</label>
-                    <input type="text" name="manager" class="form-control" id="form-name" placeholder="担当責任者をご入力ください" value="<?= $result['manager']?>">
+                    <input type="text" name="manager" class="form-control" id="form-name" placeholder="例)佐藤" value="<?= $result['manager']?>" required>
                 </div>
                 <div class="form-group w-50 mt-3">
                     <label>電話番号</label>
-                    <input type="text" name="phone_number" class="form-control" id="form-name" placeholder="電話番号をご入力ください" value="<?= $result['phone_number']?>">
+                    <input type="tel" pattern="[\d\-]*" name="phone_number" class="form-control" id="form-name" placeholder="例)08012345678" value="<?= $result['phone_number']?>" required>
                 </div>
                 <div class="form-group w-50 mt-3">
                     <div>
@@ -80,118 +80,16 @@ $result = $stmt->fetch();
                 </div>
                 <div class="form-group w-50 mt-3">
                     <!-- <label>拠点数</label> -->
-                    <label>単価</label>
-                    <input type="text" name="unit_price" class="form-control" id="form-name" placeholder="学生１人あたりの値段">
+                    <label>単価（半角数字）</label>
+                    <input type="text" pattern="^[1-9][0-9]*$" name="unit_price" class="form-control" id="form-name" placeholder="例)10000" value="<?= $result['unit_price']?>" required>
                 </div>
                 <div class="form-group w-50 mt-3">
                     <label>実績数</label>
-                    <input type="text" name="achievements" class="form-control" id="form-name" placeholder="実績数をご入力ください" value="<?= $result['achievements']?>">
+                    <input type="text" name="achievements" class="form-control" id="form-name" placeholder="例)150社" value="<?= $result['achievements']?>" required>
                 </div>
                 <div class="form-group w-50 mt-3">
                     <label>契約数</label>
-                    <input type="text" name="contract_numbers" class="form-control" id="form-name" placeholder="契約数をご入力ください" value="<?= $result['contract_numbers']?>">
-                </div>
-            </div>
-            <div>
-                <div class="mt-5 ms-5 me-5 p-3 search">
-                    <div class="search-title p-1 text-center">得意業種</div>
-                    <div class="form-check w-25">
-                        <input name="" class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                        <label class="form-check-label" for="flexCheckDefault">
-                            コンサル
-                        </label>
-                    </div>
-                    <div class="form-check w-25">
-                        <input name="" class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                        <label class="form-check-label" for="flexCheckDefault">
-                            エンジニア
-                        </label>
-                    </div>
-                    <div class="form-check w-25">
-                        <input name="" class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                        <label class="form-check-label" for="flexCheckDefault">
-                            メーカー
-                        </label>
-                    </div>
-                    <div class="form-check w-25">
-                        <input name="" class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                        <label class="form-check-label" for="flexCheckDefault">
-                            金融
-                        </label>
-                    </div>
-                    <div class="form-check w-25">
-                        <input name="" class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                        <label class="form-check-label" for="flexCheckDefault">
-                            商社
-                        </label>
-                    </div>
-                    <div class="form-check w-25">
-                        <input name="" class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                        <label class="form-check-label" for="flexCheckDefault">
-                            ベンチャー
-                        </label>
-                    </div>
-                    <div class="form-check w-25">
-                        <input name="" class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                        <label class="form-check-label" for="flexCheckDefault">
-                            サービス
-                        </label>
-                    </div>
-                    <div class="form-check w-25">
-                        <input name="" class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                        <label class="form-check-label" for="flexCheckDefault">
-                            インフラ
-                        </label>
-                    </div>
-                </div>
-                <div class="mt-5 ms-5 me-5 p-3 search">
-                    <div class="search-title p-1 text-center">文理</div>
-                    <div class="form-check w-25">
-                        <input name="" class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                        <label class="form-check-label" for="flexCheckDefault">
-                            文系
-                        </label>
-                    </div>
-                    <div class="form-check w-25">
-                        <input name="" class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                        <label class="form-check-label" for="flexCheckDefault">
-                            理系
-                        </label>
-                    </div>
-                </div>
-                <div class="mt-5 ms-5 me-5 p-3 search">
-                    <div class="search-title p-1 text-center">特徴</div>
-                    <div class="form-check w-25">
-                        <input name="" class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                        <label class="form-check-label" for="flexCheckDefault">
-                            ES添削あり
-                        </label>
-                    </div>
-                    <div class="form-check w-25">
-                        <input name="" class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                        <label class="form-check-label" for="flexCheckDefault">
-                            面接対策あり
-                        </label>
-                    </div>
-                    <div class="form-check w-25">
-                        <input name="" class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                        <label class="form-check-label" for="flexCheckDefault">
-                            即日連絡
-                        </label>
-                    </div>
-                    <div class="form-check w-25">
-                        <input name="" class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                        <label class="form-check-label" for="flexCheckDefault">
-                            オンライン可能
-                        </label>
-                    </div>
-                    <div class="form-check w-25">
-                        <input name="" class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                        <label class="form-check-label" for="flexCheckDefault">
-                            担当者変更可能
-                        </label>
-                    </div>
-
+                    <input type="text" name="contract_numbers" class="form-control" id="form-name" placeholder="例)2500件" value="<?= $result['contract_numbers']?>" required>
                 </div>
             </div>
             <div class="d-flex justify-content-around">

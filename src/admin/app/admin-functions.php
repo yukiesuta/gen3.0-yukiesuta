@@ -237,6 +237,7 @@ function edit_agency_information($pdo)
         mail_address = :mail_address,
         manager = :manager,
         phone_number = :phone_number,
+        unit_price = :unit_price,
         achievements = :achievements,
         contract_numbers = :contract_numbers 
         WHERE id = :id');
@@ -254,9 +255,6 @@ function edit_agency_information($pdo)
         ':contract_numbers' => $_POST['contract_numbers'],
         ':id' => $_GET["id"]
     ));
-
-    echo $agency_name;
-
     echo '情報を更新しました';
 }
 

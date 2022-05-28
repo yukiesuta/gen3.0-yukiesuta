@@ -57,7 +57,8 @@
                             <tr>
                                 <th scope="col">エージェンシー名</th>
                                 <th scope="col">申し込み人数</th>
-                                <th scope="col">金額(単価×申込み人数)</th>
+                                <th scope="col">単価</th>
+                                <th scope="col">請求金額</th>
                                 <th scope="col">電話番号</th>
                                 <th scope="col">請求ステータス</th>
                             </tr>
@@ -75,9 +76,12 @@
                                     ?>
                                 </td>
                                 <td>
-                                    <?php
-                                        echo 3000 * count($agency_result);
+                                    <?=
+                                        $agency->unit_price;
                                     ?>
+                                </td>
+                                <td>
+                                    <?= $agency->unit_price * count($agency_result);?>
                                 </td>
                                 <td><?= $agency->phone_number; ?></td>
                                 <td>
