@@ -56,9 +56,9 @@
                         <thead class="text-center">
                             <tr>
                                 <th scope="col">エージェンシー名</th>
-                                <th scope="col">申し込み人数</th>
-                                <th scope="col">単価</th>
-                                <th scope="col">請求金額</th>
+                                <th scope="col">申し込み人数(人)</th>
+                                <th scope="col">単価(円/人)</th>
+                                <th scope="col">請求金額(円)</th>
                                 <th scope="col">電話番号</th>
                                 <th scope="col">請求ステータス</th>
                             </tr>
@@ -75,13 +75,13 @@
                                         echo count($agency_result);
                                     ?>
                                 </td>
-                                <td>
+                                <td class="bill">
                                     <?=
-                                        $agency->unit_price;
+                                        number_format($agency->unit_price);
                                     ?>
                                 </td>
-                                <td>
-                                    <?= $agency->unit_price * count($agency_result);?>
+                                <td class="bill">
+                                    <?= number_format($agency->unit_price * count($agency_result));?>
                                 </td>
                                 <td><?= $agency->phone_number; ?></td>
                                 <td>
