@@ -73,12 +73,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
                     // Bに応募したエージェンシー　AB B　少なくなっちゃう
                     if($count<count($inquiry_agency_results)){
-                        $sorted_phone = $inquiry_agency_results[$count]->phone;
+                        $sorted_cryptography = $inquiry_agency_results[$count]->cryptography;
                     }else{
                         break;
                     }
 
-                    $inquiry_stmt2 = $pdo->query("SELECT * FROM inquiry WHERE phone = '$sorted_phone'");
+                    $inquiry_stmt2 = $pdo->query("SELECT * FROM inquiry WHERE cryptography = '$sorted_cryptography'");
                     $inquiry_results2 = $inquiry_stmt2->fetch();
 
 
@@ -103,7 +103,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                 </select>
                                 <input type="hidden" value="<?=$agency_id?>" name="agency_id">
                                 <input type="hidden" value="<?=$inquiry_results2->name; ?>" name="name">
-                                <input type="hidden" value="<?= $inquiry_results2->phone; ?>" name="phone">
+                                <input type="hidden" value="<?= $inquiry_results2->cryptography; ?>" name="cryptography">
                                     <button class="btn-secondary btn" type='submit' > 更新</button>
                             </form>
                         </td>

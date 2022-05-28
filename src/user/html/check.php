@@ -37,6 +37,7 @@
 		$phone = $_POST['phone'];
 		$birthday = $_POST['birthday'];
 		$university = $_POST['university'];
+		$cryptography = $_POST['cryptography'];
 		$name = htmlspecialchars($name);
 		$email = htmlspecialchars($email);
 		$birthday = htmlspecialchars($birthday);
@@ -89,7 +90,7 @@
 		echo '</li>' . "\n";
 		echo '</ul>' . "\n";
 
-		$sql = 'INSERT INTO inquiry(name,birthday,university,phone,address,email)VALUES("' . $name . '","' . $birthday . '","' . $university . '","' . $phone . '","' . $address . '","' . $email . '")';
+		$sql = 'INSERT INTO inquiry(name,birthday,university,phone,address,email,cryptography)VALUES("' . $name . '","' . $birthday . '","' . $university . '","' . $phone . '","' . $address . '","' . $email . '","' . $cryptography . '")';
 		$stmt = $db->prepare($sql);
 		$stmt->execute();
 
@@ -99,7 +100,7 @@
 
 		for ($i = 1; $i < 100; $i++) {
 			if (isset($_POST['agency' . $i . ''])) {
-				$sql = 'INSERT INTO inquiry_agency(phone,agency_id,progress)VALUES("' . $phone . '","' . $i . '","0")';
+				$sql = 'INSERT INTO inquiry_agency(cryptography,agency_id,progress)VALUES("' . $cryptography . '","' . $i . '","0")';
 				$stmt = $db->prepare($sql);
 				$stmt->execute();
 

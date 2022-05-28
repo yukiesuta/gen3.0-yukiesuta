@@ -198,6 +198,7 @@ CREATE TABLE inquiry (
   phone VARCHAR(255)  NOT NULL,
   address VARCHAR(255)  NOT NULL,
   email VARCHAR(255)  NOT NULL,
+  cryptography VARCHAR(255)  NOT NULL,
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   dt DATETIME DEFAULT CURRENT_TIMESTAMP
 );
@@ -207,7 +208,7 @@ DROP TABLE IF EXISTS inquiry_agency;
 
 CREATE TABLE inquiry_agency (
   id INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
-  phone VARCHAR(255)  NOT NULL,
+  cryptography VARCHAR(255)  NOT NULL,
   agency_id INT  NOT NULL,
   progress INT NOT NULL
 );
