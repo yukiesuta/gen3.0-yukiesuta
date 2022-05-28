@@ -65,7 +65,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <div>
                         <label>会社ロゴ（1MB以内）</label>
                     </div>
-                    <input type="file" name="img" class="form-control-file mt-2" id="exampleFormControlFile1" accept="image/png, image/jpeg,image/png" required>
+                    <input type="file" name="img" class="form-control-file mt-2" id="exampleFormControlFile1" accept="image/png, image/jpeg,image/png" onchange="previewImage(this);" required>
+                    <p>
+                        Preview:<br>
+                        <img id="preview" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" style="max-width:200px;">
+                    </p>
                 </div>
                 <div class="form-group w-50 mt-3">
                     <!-- <label>実績数</label> -->

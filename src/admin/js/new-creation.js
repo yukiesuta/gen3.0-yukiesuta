@@ -48,7 +48,9 @@ for (const i of supports) {
         }
     };
 }
-const maxFileSize = 1048576
+
+
+const maxFileSize = 1048576;
 $("input[type=file]").change(function() {
     $(".error_msg").remove()
     let uploaded_file = $(this).prop('files')[0];
@@ -57,3 +59,11 @@ $("input[type=file]").change(function() {
         $(this).after("<p class='error_msg'>アップロードできる画像の最大サイズは1MBです</p>")
     }
 })
+
+function previewImage(obj) {
+    var fileReader = new FileReader();
+    fileReader.onload = (function() {
+        document.getElementById('preview').src = fileReader.result;
+    });
+    fileReader.readAsDataURL(obj.files[0]);
+}
