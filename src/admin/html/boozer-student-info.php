@@ -15,7 +15,9 @@ $agency_informations = $stmt->fetchAll();
 
 
 
-
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    student_delete($pdo);
+}
 
 
 
@@ -113,7 +115,13 @@ $agency_informations = $stmt->fetchAll();
                                                 <!-- </option> -->
                                                 <!-- <?php endforeach; ?> -->
                                     <!-- </td> -->
-                                    <td><button type="button" class="btn btn-primary btn-sm">削除</button></td>
+                                    <form method='POST' action="">
+                                        
+                                        <td>
+                                        <input type="text" value="<?=$inquiry->cryptography?>" name="cryptography" class="d-none">
+                                            <button type="submit" class="btn btn-primary btn-sm" onclick="delete_check()">削除</button>
+                                        </td>
+                                    </form>
                                 </tr>
                             </tbody>
                             <?php endforeach; ?>
@@ -123,5 +131,4 @@ $agency_informations = $stmt->fetchAll();
         </div>
     </main>
 </body>
-
 </html>
