@@ -502,7 +502,7 @@ $agency_feature_comparison = $stmt->fetchAll();
                         </div>
                         <div class="form-group w-50 mt-3">
                             <label for="exampleInputEmail1">暗号</label>
-                            <input type="text" name="cryptography" class="text2 form-control" value="<?=md5(uniqid())?>">
+                            <input type="text" name="cryptography" class="text2 form-control d-none" value="<?=md5(uniqid())?>">
                         </div>
                         
                     </div>
