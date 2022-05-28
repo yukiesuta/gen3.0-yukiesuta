@@ -37,6 +37,7 @@
 		$phone = $_POST['phone'];
 		$birthday = $_POST['birthday'];
 		$university = $_POST['university'];
+		$cryptography = $_POST['cryptography'];
 		$name = htmlspecialchars($name);
 		$email = htmlspecialchars($email);
 		$birthday = htmlspecialchars($birthday);
@@ -89,7 +90,7 @@
 		echo '</li>' . "\n";
 		echo '</ul>' . "\n";
 
-		$sql = 'INSERT INTO inquiry(name,birthday,university,phone,address,email)VALUES("' . $name . '","' . $birthday . '","' . $university . '","' . $phone . '","' . $address . '","' . $email . '")';
+		$sql = 'INSERT INTO inquiry(name,birthday,university,phone,address,email,cryptography)VALUES("' . $name . '","' . $birthday . '","' . $university . '","' . $phone . '","' . $address . '","' . $email . '","' . $cryptography . '")';
 		$stmt = $db->prepare($sql);
 		$stmt->execute();
 

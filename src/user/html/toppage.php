@@ -500,6 +500,10 @@ $agency_feature_comparison = $stmt->fetchAll();
                             <input type="checkbox" required>
                             <label for="exampleInputEmail1">入力内容を確認しました</label>
                         </div>
+                        <div class="form-group w-50 mt-3">
+                            <label for="exampleInputEmail1">暗号</label>
+                            <input type="text" name="cryptography" class="text2 form-control" value="<?=md5(uniqid())?>">
+                        </div>
                         
                     </div>
                     <?php foreach ($agency_informations as $agency_information) : ?>
