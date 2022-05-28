@@ -45,7 +45,7 @@
                     </a>
                 </div>
                 <div class="text-center mt-3">
-                    <a href="boozer-claim-info.php" class="text-decoration-none text-secondary">
+                    <a href="boozer-claim-info.php" class="text-decoration-none ">
                         請求情報管理
                     </a>
                 </div>
@@ -56,8 +56,9 @@
                         <thead class="text-center">
                             <tr>
                                 <th scope="col">エージェンシー名</th>
-                                <th scope="col">申し込み人数</th>
-                                <th scope="col">金額(単価×申込み人数)</th>
+                                <th scope="col">申し込み人数(人)</th>
+                                <th scope="col">単価(円/人)</th>
+                                <th scope="col">請求金額(円)</th>
                                 <th scope="col">電話番号</th>
                                 <th scope="col">請求ステータス</th>
                             </tr>
@@ -74,10 +75,13 @@
                                         echo count($agency_result);
                                     ?>
                                 </td>
-                                <td>
-                                    <?php
-                                        echo 3000 * count($agency_result);
+                                <td class="bill">
+                                    <?=
+                                        number_format($agency->unit_price);
                                     ?>
+                                </td>
+                                <td class="bill">
+                                    <?= number_format($agency->unit_price * count($agency_result));?>
                                 </td>
                                 <td><?= $agency->phone_number; ?></td>
                                 <td>

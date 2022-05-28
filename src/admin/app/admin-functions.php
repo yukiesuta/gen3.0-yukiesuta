@@ -237,6 +237,7 @@ function edit_agency_information($pdo)
         mail_address = :mail_address,
         manager = :manager,
         phone_number = :phone_number,
+        unit_price = :unit_price,
         achievements = :achievements,
         contract_numbers = :contract_numbers 
         WHERE id = :id');
@@ -254,9 +255,6 @@ function edit_agency_information($pdo)
         ':contract_numbers' => $_POST['contract_numbers'],
         ':id' => $_GET["id"]
     ));
-
-    echo $agency_name;
-
     echo '情報を更新しました';
 }
 
@@ -332,17 +330,17 @@ function edit_progress($pdo)
     ];
     $progress = $_POST["progress"];
     $agency_id = $_POST["agency_id"];
-    $phone = $_POST["phone"];
+    $cryptography = $_POST["cryptography"];
     $name = $_POST["name"];
     
     $stmt = $pdo->prepare('UPDATE inquiry_agency SET
         progress = :progress
-        WHERE agency_id = :agency_id && phone = :phone');
+        WHERE agency_id = :agency_id && cryptography = :cryptography');
 
     $stmt->execute(array(
         ':progress' => $progress,
         ':agency_id' => $agency_id,
-        ':phone'=>$phone
+        ':cryptography'=>$cryptography
     ));
     echo $name;
     echo 'の進行状況を';

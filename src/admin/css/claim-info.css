@@ -1,4 +1,4 @@
-header{
+header {
     background-color: #5663D3;
     height: 100px;
     width: 100%;
@@ -6,14 +6,21 @@ header{
     color: white;
     font-size: 3rem;
 }
-.main-left{
+
+.main-left {
     background-color: #7CA4E1;
     height: 800px;
 }
-.table{
+
+.table {
     margin: auto;
 }
-.navigate-button{
+
+.navigate-button {
     border: none;
     background-color: white;
+}
+
+.bill {
+    text-align: right;
 }

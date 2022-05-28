@@ -100,9 +100,6 @@ INSERT INTO feature_condition SET feature = '面接対策あり';
 INSERT INTO feature_condition SET feature = '即日連絡';
 INSERT INTO feature_condition SET feature = 'オンライン可能';
 INSERT INTO feature_condition SET feature = '担当者変更可能';
-INSERT INTO feature_condition SET feature = 'ウェイよー';
-INSERT INTO feature_condition SET feature = 'わーー';
-INSERT INTO feature_condition SET feature = 'ウーー';
 
 
 DROP TABLE IF EXISTS features;
@@ -127,9 +124,6 @@ INSERT INTO features SET feature = '面接対策あり';
 INSERT INTO features SET feature = '即日連絡';
 INSERT INTO features SET feature = 'オンライン可能';
 INSERT INTO features SET feature = '担当者変更可能';
-INSERT INTO features SET feature = 'ウェイよー';
-INSERT INTO features SET feature = 'わーー';
-INSERT INTO features SET feature = 'ウーー';
 
 
 
@@ -199,11 +193,12 @@ DROP TABLE IF EXISTS inquiry;
 CREATE TABLE inquiry (
   id INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
   name VARCHAR(255)  NOT NULL,
-  birthday INT  NOT NULL,
+  birthday VARCHAR(255) NOT NULL,
   university VARCHAR(255)  NOT NULL,
   phone VARCHAR(255)  NOT NULL,
   address VARCHAR(255)  NOT NULL,
   email VARCHAR(255)  NOT NULL,
+  cryptography VARCHAR(255)  NOT NULL,
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   dt DATETIME DEFAULT CURRENT_TIMESTAMP
 );
@@ -213,7 +208,7 @@ DROP TABLE IF EXISTS inquiry_agency;
 
 CREATE TABLE inquiry_agency (
   id INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
-  phone VARCHAR(255)  NOT NULL,
+  cryptography VARCHAR(255)  NOT NULL,
   agency_id INT  NOT NULL,
   progress INT NOT NULL
 );
