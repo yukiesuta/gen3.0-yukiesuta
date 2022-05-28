@@ -100,9 +100,6 @@ INSERT INTO feature_condition SET feature = '面接対策あり';
 INSERT INTO feature_condition SET feature = '即日連絡';
 INSERT INTO feature_condition SET feature = 'オンライン可能';
 INSERT INTO feature_condition SET feature = '担当者変更可能';
-INSERT INTO feature_condition SET feature = 'ウェイよー';
-INSERT INTO feature_condition SET feature = 'わーー';
-INSERT INTO feature_condition SET feature = 'ウーー';
 
 
 DROP TABLE IF EXISTS features;
@@ -127,9 +124,6 @@ INSERT INTO features SET feature = '面接対策あり';
 INSERT INTO features SET feature = '即日連絡';
 INSERT INTO features SET feature = 'オンライン可能';
 INSERT INTO features SET feature = '担当者変更可能';
-INSERT INTO features SET feature = 'ウェイよー';
-INSERT INTO features SET feature = 'わーー';
-INSERT INTO features SET feature = 'ウーー';
 
 
 
