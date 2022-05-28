@@ -1,21 +1,25 @@
-header{
-    background-color: #9392D8;
-    height: 100px;
-    width: 100%;
-    max-width: 100%;
-    color: white;
-}
-
-.header-left{
-    font-size: 1.5rem;
-}
-
-.header-right{
-    font-size: 1rem;
-    text-decoration: none;
-    color: white;
-}
-
-.table{
-    margin: auto;
-}
+    header {
+        background-color: #9392D8;
+        height: 100px;
+        width: 100%;
+        max-width: 100%;
+        color: white;
+    }
+    
+    .header-left {
+        font-size: 1.5rem;
+    }
+    
+    .header-right {
+        font-size: 1rem;
+        text-decoration: none;
+        color: white;
+    }
+    
+    .table {
+        margin: auto;
+    }
+    
+    .w-90 {
+        width: 90%;
+    }
