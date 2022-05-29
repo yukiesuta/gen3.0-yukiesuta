@@ -56,7 +56,7 @@ function get_feature_conditions($pdo)
 
 
 function agency_information($pdo)
-{ 
+{
 
     if (isset($_POST['industry1'])) {
         $industrys[] = 1;
@@ -105,10 +105,9 @@ function agency_information($pdo)
         $industrys[] = 14;
     }
 
-    if(isset($industrys)){
+    if (isset($industrys)) {
         $result = implode(',', $industrys);
         // print_r($result);
         return $result;
     }
 };
-

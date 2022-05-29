@@ -64,7 +64,9 @@ window.addEventListener("DOMContentLoaded", () => {
     }
 });
 
-let not_click_targets = document.querySelectorAll(".form-check-input-not-click");
+let not_click_targets = document.querySelectorAll(
+    ".form-check-input-not-click"
+);
 
 window.addEventListener("DOMContentLoaded", () => {
     for (const i of not_click_targets) {
@@ -83,17 +85,6 @@ window.addEventListener("beforeunload", () => {
         localStorage.setItem(i.id, checked_context);
     }
 });
-
-
-for (let i = 1; i < 100; i++) {
-    let toCompare = document.getElementById("toCompare")
-    let agency_flexCheckDefault = document.getElementById("agency_flexCheckDefault" + i)
-    checkbox.addEventListener("load", function() {
-        if (agency_flexCheckDefault == false) {
-            toCompare.classList.add("display-none")
-        }
-    }, false)
-}
 
 function sorting() {
     document.getElementById("sorting").click();

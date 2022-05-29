@@ -1,22 +1,15 @@
 <?php
+require_once(__DIR__  . '/../../dbconnect.php');
 require_once(__DIR__  . '/../app/config.php');
-require_once(__DIR__  . '/../app/admin-functions.php');
-require_once(__DIR__  . '/../app/dbconnect.php');
 
 $pdo = getPdoInstance();
-
-$agency_informations = get_agency_informations($pdo);
+$agency_id = $_GET["agency_id"];
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    edit_agency_information($pdo);
+    edit_progress($pdo);
 }
-$id = $_GET["id"];
-$stmt = $pdo->prepare("DELETE FROM agency_information WHERE id = :id");
-$stmt->bindValue(':id', $id);
-$res = $stmt->execute();
 
 ?>
-
 <!DOCTYPE html>
 <html>
 
@@ -24,10 +17,10 @@ $res = $stmt->execute();
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>削除完了</title>
+    <title>新規作成完了</title>
     <link rel="stylesheet" href="../css/normalize.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link rel="stylesheet" href="../css/delete-complete.css">
+    <link rel="stylesheet" href="../css/agency.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
 </head>
 
@@ -38,8 +31,8 @@ $res = $stmt->execute();
         </header>
         <div class="text-center mt-5">
             <i class="bi bi-check-circle-fill icon"></i>
-            <div class="fs-3 mt-5">削除が完了しました</div>
-            <a href="boozer-agency.php">
+            <div class="fs-3 mt-5">進行状況の更新が完了しました</div>
+            <a href="agency.php?agency_id=<?= $agency_id ?>">
                 <button type="button" class="btn btn-success mt-5">トップページに戻る</button>
             </a>
         </div>

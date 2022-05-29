@@ -18,8 +18,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/normalize.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <link rel="stylesheet" href="../css/new-creation.css">
     <title>新規作成画面</title>
@@ -30,7 +29,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         Craft
     </header>
     <main>
-        <form class=" p-5 ms-5 me-5 form"  method="post" id="inquiry" enctype="multipart/form-data">
+        <form class=" p-5 ms-5 me-5 form" method="post" id="inquiry" enctype="multipart/form-data" action="new-creation-complete.php">
             <div class=" mb-3 ms-5 me-5 text-center title">
                 新規作成フォーム
             </div>
@@ -71,22 +70,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     </p>
                 </div>
                 <div class="form-group w-50 mt-3">
-                    <!-- <label>実績数</label> -->
                     <label>求人エリア</label>
                     <input type="text" name="achievements" class="form-control" id="form-name" placeholder="例)渋谷・自由が丘" required>
                 </div>
                 <div class="form-group w-50 mt-3">
-                    <!-- <label>拠点数</label> -->
                     <label>面談場所</label>
                     <input type="text" name="bases_numbers" class="form-control" id="form-name" placeholder="例)渋谷・自由が丘" required>
                 </div>
                 <div class="form-group w-50 mt-3">
-                    <!-- <label>拠点数</label> -->
                     <label>単価（半角数字）</label>
                     <input type="text" pattern="^[1-9][0-9]*$" name="unit_price" class="form-control" id="form-name" placeholder="例)10000">
                 </div>
                 <div class="form-group w-50 mt-3">
-                    <!-- <label>サポート</label> -->
                     <label>契約企業数</label>
                     <input type="text" name="support" class="form-control" id="form-name" placeholder="例)150社" required>
                 </div>
@@ -214,7 +209,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 </div>
                 <div>
                     <a href="boozer-agency.php">
-                        <button type="submit" class="btn btn-primary mt-5" >この情報で登録する＞</button>
+                        <button type="submit" class="btn btn-primary mt-5">この情報で登録する＞</button>
                     </a>
                 </div>
             </div>

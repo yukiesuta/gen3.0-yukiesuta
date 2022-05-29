@@ -43,9 +43,8 @@ if (!empty($_POST)) {
     </div>
     <div class="w-25 text-center form">
       <? if (!empty($_POST)) {
-        
         if (!$user) {
-        echo "メールアドレスまたはパスワードが正しくありません。";
+          echo "メールアドレスまたはパスワードが正しくありません。";
         }
       } ?>
       <form action="/admin/html/boozer-login.php" method="POST">
@@ -58,7 +57,6 @@ if (!empty($_POST)) {
           <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" required name="password">
           <small id="emailHelp" class="form-text text-muted">ご不明の場合はBoozer担当者までお問い合わせください</small>
         </div>
-
         <button type="submit" value="ログイン" class="btn btn-primary mt-5">ログイン</button>
       </form>
     </div>

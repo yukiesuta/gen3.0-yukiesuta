@@ -1,45 +1,42 @@
-header{
+header {
     background-color: #52A49A;
     height: 100px;
     width: 100%;
     max-width: 100%;
     color: white;
 }
-.navigations{
+
+.navigations {
     margin-bottom: 0;
 }
-.navigation{
+
+.navigation {
     color: white;
     text-decoration: none;
     list-style: none;
 }
 
-main{
+main {
     margin: auto;
-    /* background-color: azure; */
 }
 
-.company-title{
+.company-title {
     margin: auto;
     font-size: 1.5rem;
     color: white;
     background-color: #80cbc4;
 }
-.table{
+
+.table {
     margin: auto;
 }
 
-.label-industry-comparison{
-    /* position: relative; */
-  display: inline-block;
-  padding:  0.5em;
-  margin-right:1rem ;
-  font-size: 0.8rem;
-  text-decoration: none;
-  border:0.5px solid #626262;
-  /* background: #f7f5f3;背景色 */
-  /* border-bottom: solid 2px #d27d00;少し濃い目の色に */
-  border-radius: 4px;/*角の丸み*/
-  /* box-shadow: inset 0 2px 0 rgba(255,255,255,0.2), 0 2px 2px rgba(0, 0, 0, 0.19); */
-  /* font-weight: bold; */
+.label-industry-comparison {
+    display: inline-block;
+    padding: 0.5em;
+    margin-right: 1rem;
+    font-size: 0.8rem;
+    text-decoration: none;
+    border: 0.5px solid #626262;
+    border-radius: 4px;
 }

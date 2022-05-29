@@ -1,7 +1,5 @@
 <?php
 
-
-
 require_once(__DIR__  . '/../app/config.php');
 
 $pdo = getPdoInstance();
@@ -11,23 +9,13 @@ $industry_conditions = get_industry_conditions($pdo);
 $major_conditions = get_major_conditions($pdo);
 $feature_conditions = get_feature_conditions($pdo);
 $shibori = agency_information($pdo);
-
-// if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-// }
-
-// if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-//     $shibori = agency_information($pdo);
-// }
 $ids = [$shibori];
 
-
-// IN 句に入る値を作成
 $inClause = substr(str_repeat(',?', count($ids)), 1);
 
 $stmt = $pdo->prepare("SELECT * FROM agency_information 
 JOIN agency_feature AS itt ON  agency_information.id = itt.agency_id
 JOIN features ON itt.feature_id = features.id
--- JOIN industry_condition AS ittt ON  itt.feature_id = ittt.id
 WHERE features.id IN ({$inClause})
 ORDER BY unit_price DESC;
 ");
@@ -63,9 +51,6 @@ JOIN features ON feature_comparison.feature_id = features.id
 $stmt->execute();
 
 $agency_feature_comparison = $stmt->fetchAll();
-// print_r($agency_feature_comparison);
-
-
 
 ?>
 
@@ -133,7 +118,6 @@ $agency_feature_comparison = $stmt->fetchAll();
                 絞り込み
             </button>
         </div>
-        <!-- Modal -->
         <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
             <div class="modal-dialog modal-lg">
                 <div class="modal-content">
@@ -289,11 +273,6 @@ $agency_feature_comparison = $stmt->fetchAll();
                         </div>
                     </div>
                 <?php endforeach; ?>
-                <!-- <div class="d-flex p-3 justify-content-center">
-                    <a href="#applySection">
-                        <button type="button" class="btn btn-success mt-5 position-fixed">比較に進む</button>
-                    </a>
-                </div> -->
             </div>
             <div class="main-right-content col-md-3 col-sm-3" name='rightContents'>
                 <div class="mt-5">
@@ -328,14 +307,12 @@ $agency_feature_comparison = $stmt->fetchAll();
                     <thead>
                         <tr>
                             <th scope="col"></th>
-                            <!-- <th scope="col"></th> -->
                             <th scope="col">エージェンシー</th>
                             <th scope="col">対応業種</th>
                             <th scope="col">サポート</th>
                             <th scope="col">求人エリア</th>
                             <th scope="col">面談場所</th>
                             <th scope="col">契約企業数</th>
-                            <!-- <th scope="col">実績数</th> -->
                         </tr>
                     </thead>
                     <tbody>
@@ -344,12 +321,6 @@ $agency_feature_comparison = $stmt->fetchAll();
                                 <td>
                                     <button type="button" class="btn btn-success" id="comparisonDelete<?= h($agency_information->agency_id); ?>">削除</button>
                                 </td>
-                                <!-- <td>
-                                <img id="comparisonDelete<?= h($agency_information->agency_id); ?>" src="../img/checked.png" alt="">
-                            </td> -->
-                                <!-- <td>
-                                    <?= h($agency_information->agency_name); ?>
-                                </td> -->
                                 <th scope="row">
                                     <div href="company.php?id=<?= h($agency_information->agency_id); ?>">
                                         <img src="../uploaded_img/agency<?= h($agency_information->agency_id); ?>.png" alt="" class="center-img">
@@ -357,7 +328,6 @@ $agency_feature_comparison = $stmt->fetchAll();
                                 </th>
                                 <td>
                                     <?php
-
                                     if ($data = $agency_information->agency_id) {
                                         foreach ($agency_industry_comparison as $val) {
                                             if ($val->agency_id === $data) {
@@ -367,7 +337,6 @@ $agency_feature_comparison = $stmt->fetchAll();
                                     } ?>
                                 </td>
                                 <td> <?php
-
                                         if ($data = $agency_information->agency_id) {
                                             foreach ($agency_feature_comparison as $val) {
                                                 if ($val->agency_id === $data) {
@@ -381,7 +350,6 @@ $agency_feature_comparison = $stmt->fetchAll();
                                 <td><?= h($agency_information->achievements); ?></td>
                                 <td><?= h($agency_information->bases_numbers); ?></td>
                                 <td><?= h($agency_information->contract_numbers); ?></td>
-                                <!-- <td><?= h($agency_information->support); ?></td> -->
                             </tr>
                         <?php endforeach; ?>
                         </thead>
@@ -391,9 +359,6 @@ $agency_feature_comparison = $stmt->fetchAll();
                                 <td>
                                     <button type="button" class="btn btn-success" id="comparisonDelete<?= h($agency_information->agency_id); ?>">削除</button>
                                 </td>
-                                <!-- <td>
-                                    <img id="comparisonDelete<?= h($agency_information->agency_id); ?>" src="../img/checked.png" alt="">
-                                </td> -->
                                 <td>
                                     <?= h($agency_information->agency_name); ?>
                                 </td>
@@ -539,7 +504,6 @@ $agency_feature_comparison = $stmt->fetchAll();
     <script src="../js/apply.js"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
-    <!-- <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script> -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <script src="../js/toppage.js"></script>
 </body>

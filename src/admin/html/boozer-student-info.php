@@ -13,13 +13,9 @@ $inquiry_agencys = $stmt->fetchAll();
 $stmt = $pdo->query("SELECT * FROM agency_information");
 $agency_informations = $stmt->fetchAll();
 
-
-
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     student_delete($pdo);
 }
-
-
 
 ?>
 <!DOCTYPE html>
@@ -68,32 +64,30 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                 <th scope="col">メールアドレス</th>
                                 <th scope="col">電話番号</th>
                                 <th scope="col">申し込み日時</th>
-                                <!-- <th scope="col">申込先</th> -->
-                                <!-- <th scope="col">申込先電話番号</th> -->
                                 <th></th>
                             </tr>
                         </thead>
                         <tbody class="text-center">
-                        <?php foreach ($inquirys as $inquiry) : ?>
-                            <?
-                            $stmt = $pdo->query("SELECT * FROM inquiry_agency WHERE cryptography = '$inquiry->cryptography'");
-                            $inquiry_agencys = $stmt->fetchAll();
-                            ?>
+                            <?php foreach ($inquirys as $inquiry) : ?>
+                                <?
+                                $stmt = $pdo->query("SELECT * FROM inquiry_agency WHERE cryptography = '$inquiry->cryptography'");
+                                $inquiry_agencys = $stmt->fetchAll();
+                                ?>
                                 <tr>
                                     <th scope="row"><?= $inquiry->name; ?></th>
                                     <td><?= $inquiry->university; ?></td>
                                     <td><?= $inquiry->email; ?></td>
                                     <td><?= $inquiry->phone; ?></td>
                                     <td><?= $inquiry->created_at; ?></td>
-                                    <form method='POST' action="">
+                                    <form method='POST' action="boozer-student-delete-complete.php">
                                         <td>
                                             <input type="text" value="<?= $inquiry->cryptography ?>" name="cryptography" class="d-none">
                                             <button type="submit" class="btn btn-primary btn-sm" onclick="delete_check()">削除</button>
                                         </td>
                                     </form>
                                 </tr>
-                                <?php endforeach; ?>
-                            </tbody>
+                            <?php endforeach; ?>
+                        </tbody>
                     </table>
                 </div>
             </div>
