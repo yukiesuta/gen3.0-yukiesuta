@@ -64,7 +64,9 @@ window.addEventListener("DOMContentLoaded", () => {
     }
 });
 
-let not_click_targets = document.querySelectorAll(".form-check-input-not-click");
+let not_click_targets = document.querySelectorAll(
+    ".form-check-input-not-click"
+);
 
 window.addEventListener("DOMContentLoaded", () => {
     for (const i of not_click_targets) {
@@ -83,8 +85,6 @@ window.addEventListener("beforeunload", () => {
         localStorage.setItem(i.id, checked_context);
     }
 });
-
-
 
 function sorting() {
     document.getElementById("sorting").click();

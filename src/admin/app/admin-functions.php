@@ -20,7 +20,6 @@ function getPdoInstance()
     }
 }
 
-// ーーーエージェンシーstartーーー
 
 function add_agency_information($pdo)
 {
@@ -42,43 +41,35 @@ function add_agency_information($pdo)
     $contract_numbers = $_POST["contract_numbers"];
     $bases_numbers = $_POST["bases_numbers"];
     $support = $_POST["support"];
-    // $place = $_POST["place"];
 
 
     if (isset($_POST['industry1'])) {
         $industrys[] = 1;
         $industry_comparison[] = 1;
-       
     }
     if (isset($_POST['industry2'])) {
         $industrys[] = 2;
         $industry_comparison[] = 2;
-       
     }
     if (isset($_POST['industry3'])) {
         $industrys[] = 3;
         $industry_comparison[] = 3;
-                
     }
     if (isset($_POST['industry4'])) {
         $industrys[] = 4;
         $industry_comparison[] = 4;
-        
     }
     if (isset($_POST['industry5'])) {
         $industrys[] = 5;
         $industry_comparison[] = 5;
-        
     }
     if (isset($_POST['industry6'])) {
         $industrys[] = 6;
         $industry_comparison[] = 6;
-      
     }
     if (isset($_POST['industry7'])) {
         $industrys[] = 7;
         $industry_comparison[] = 7;
-        
     }
 
 
@@ -92,7 +83,6 @@ function add_agency_information($pdo)
 
     if (isset($_POST['feature1'])) {
         $industrys[] = 10;
-
     }
     if (isset($_POST['feature2'])) {
         $industrys[] = 11;
@@ -107,8 +97,7 @@ function add_agency_information($pdo)
         $industrys[] = 14;
     }
 
-// print_r($industrys);
-    
+
 
 
 
@@ -128,7 +117,6 @@ function add_agency_information($pdo)
         contract_numbers,
         bases_numbers,
         support,
-        -- place,
         claim_status
         ) VALUES(
         :agency_name,
@@ -143,7 +131,6 @@ function add_agency_information($pdo)
         :contract_numbers,
         :bases_numbers,
         :support,
-        -- :place,
         :claim_status
     )');
 
@@ -159,20 +146,18 @@ function add_agency_information($pdo)
     $stmt->bindValue(':contract_numbers', $contract_numbers);
     $stmt->bindValue(':bases_numbers', $bases_numbers);
     $stmt->bindValue(':support', $support);
-    // $stmt->bindValue(':place', $place);
     $stmt->bindValue(':claim_status', 0);
 
 
-    // echo $stmt;
 
     $stmt->execute();
 
 
 
-    $id = $pdo -> lastInsertId();
-    // printf($id);
-    
-    foreach($industrys as $industry){
+    $id = $pdo->lastInsertId();
+
+
+    foreach ($industrys as $industry) {
         $stmt = $pdo->prepare('INSERT INTO agency_feature(
             agency_id,
             feature_id
@@ -186,7 +171,7 @@ function add_agency_information($pdo)
         $stmt->execute();
     }
 
-    foreach($industry_comparison as $industry){
+    foreach ($industry_comparison as $industry) {
         $stmt = $pdo->prepare('INSERT INTO agency_industry(
             agency_id,
             industry_id
@@ -199,7 +184,7 @@ function add_agency_information($pdo)
         $stmt->bindValue(':industry_id', $industry);
         $stmt->execute();
     }
- 
+
 
 
 
@@ -211,10 +196,9 @@ function add_agency_information($pdo)
     $upload_dir = __DIR__ . '/../../user/uploaded_img/agency' . $now_id['MAX(id)'] . '.png';
 
     $allow_ext = array('jpg', 'jpeg', 'png');
- 
+
     $temp_path = $uploading_img['tmp_name'];
     move_uploaded_file($temp_path, $upload_dir);
-  
 }
 function edit_agency_information($pdo)
 {
@@ -265,7 +249,6 @@ function get_agency_informations($pdo)
     return $agency_informations;
 }
 
-// 使わないかも
 function get_student_informations($pdo)
 {
     $stmt = $pdo->query("SELECT * FROM inquiry");
@@ -279,22 +262,22 @@ function get_inquiry_agency_informations($pdo)
     return $agency_informations;
 }
 
-
-// 編集画面 エージェンシー情報削除
-function agency_delete($pdo){
+function agency_delete($pdo)
+{
     $id = $_GET["id"];
-    $stmt = $pdo->prepare("DELETE FROM agency_information WHERE id = :id" );
+    $stmt = $pdo->prepare("DELETE FROM agency_information WHERE id = :id");
     $stmt->bindValue(':id', $id);
     $res = $stmt->execute();
 }
 
-function student_delete($pdo){
+function student_delete($pdo)
+{
     $cryptography = $_POST["cryptography"];
-    $stmt = $pdo->prepare("DELETE FROM inquiry WHERE cryptography = :cryptography" );
+    $stmt = $pdo->prepare("DELETE FROM inquiry WHERE cryptography = :cryptography");
     $stmt->bindValue(':cryptography', $cryptography);
     $stmt->execute();
 
-    $stmt = $pdo->prepare("DELETE FROM inquiry_agency WHERE cryptography = :cryptography" );
+    $stmt = $pdo->prepare("DELETE FROM inquiry_agency WHERE cryptography = :cryptography");
     $stmt->bindValue(':cryptography', $cryptography);
     $stmt->execute();
 }
@@ -304,17 +287,10 @@ function student_delete($pdo){
 
 function edit_agency_claim_status($pdo)
 {
-    $claim_status_arr = [
-        '未請求',
-        '請求済み',
-        '入金済み',
-        '入金遅滞',
-        '請求不能'
-    ];
+
     $claim_status = $_POST["claim_status"];
     $id = $_POST["id"];
-    $agency_name = $_POST["agency_name"];
-    
+
     $stmt = $pdo->prepare('UPDATE agency_information SET
         claim_status = :claim_status
         WHERE id = :id');
@@ -328,18 +304,12 @@ function edit_agency_claim_status($pdo)
 
 function edit_progress($pdo)
 {
-    $progress_arr = [
-        '未着手',
-        '連絡済み',
-        '対応中',
-        '対応完了',
-        '対応不能'
-    ];
+
     $progress = $_POST["progress"];
     $agency_id = $_POST["agency_id"];
     $cryptography = $_POST["cryptography"];
     $name = $_POST["name"];
-    
+
     $stmt = $pdo->prepare('UPDATE inquiry_agency SET
         progress = :progress
         WHERE agency_id = :agency_id && cryptography = :cryptography');
@@ -347,6 +317,6 @@ function edit_progress($pdo)
     $stmt->execute(array(
         ':progress' => $progress,
         ':agency_id' => $agency_id,
-        ':cryptography'=>$cryptography
+        ':cryptography' => $cryptography
     ));
 }

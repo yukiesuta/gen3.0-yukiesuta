@@ -218,7 +218,7 @@ INSERT INTO
   inquiry
 SET
   name = '谷中雄大',
-  birthday = 2001-03-21,
+  birthday = '2001-03-21',
   university = '明治大学',
   phone = '09077885411',
   address = '神奈川県',

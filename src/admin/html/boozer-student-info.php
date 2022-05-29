@@ -13,13 +13,9 @@ $inquiry_agencys = $stmt->fetchAll();
 $stmt = $pdo->query("SELECT * FROM agency_information");
 $agency_informations = $stmt->fetchAll();
 
-
-
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     student_delete($pdo);
 }
-
-
 
 ?>
 <!DOCTYPE html>
@@ -72,11 +68,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                             </tr>
                         </thead>
                         <tbody class="text-center">
-                        <?php foreach ($inquirys as $inquiry) : ?>
-                            <?
-                            $stmt = $pdo->query("SELECT * FROM inquiry_agency WHERE cryptography = '$inquiry->cryptography'");
-                            $inquiry_agencys = $stmt->fetchAll();
-                            ?>
+                            <?php foreach ($inquirys as $inquiry) : ?>
+                                <?
+                                $stmt = $pdo->query("SELECT * FROM inquiry_agency WHERE cryptography = '$inquiry->cryptography'");
+                                $inquiry_agencys = $stmt->fetchAll();
+                                ?>
                                 <tr>
                                     <th scope="row"><?= $inquiry->name; ?></th>
                                     <td><?= $inquiry->university; ?></td>
@@ -90,8 +86,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                         </td>
                                     </form>
                                 </tr>
-                                <?php endforeach; ?>
-                            </tbody>
+                            <?php endforeach; ?>
+                        </tbody>
                     </table>
                 </div>
             </div>

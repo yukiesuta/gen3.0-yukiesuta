@@ -66,7 +66,6 @@ $agencys = $stmt->fetchAll();
                             <?php foreach ($agencys as $agency) : ?>
                                 <tr>
                                     <th scope="row"><?= $agency->agency_name; ?></th>
-
                                     <td>
                                         <?php
                                         $agency_stmt = $pdo->query("SELECT * FROM inquiry_agency WHERE agency_id = $agency->id");
@@ -85,7 +84,6 @@ $agencys = $stmt->fetchAll();
                                     <td><?= $agency->phone_number; ?></td>
                                     <td>
                                         <form method='POST' action='boozer-claim-info-edit-complete.php'>
-
                                             <select name="claim_status">
                                                 <option value="0" <?php if ($agency->claim_status === 0) {
                                                                         echo "selected";
@@ -109,7 +107,6 @@ $agencys = $stmt->fetchAll();
                                         </form>
                                     </td>
                                 </tr>
-
                             <?php endforeach; ?>
                         </tbody>
                     </table>
