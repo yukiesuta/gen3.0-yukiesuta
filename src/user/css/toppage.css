@@ -17,6 +17,7 @@ main{
     /* object-fit: cover; */
     width: 100%;
     height: 400px;
+    position: relative;
 }
 
 .first-view > ul {
@@ -36,6 +37,11 @@ li {
     -webkit-box-pack: space-between;
     -ms-flex-pack: space-between;
     justify-content: space-between;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 75%;
+    transform: translate(-65%, -50%);
   }
   .flow > li {
     -ms-flex-preferred-size: 22%;
@@ -96,11 +102,11 @@ li {
     text-align: center;
   } 
 
-/* .first-view-img{
+.first-view-img{
     object-fit: cover;
     width: 100%;
-    height: 200px;
-} */
+    height: 100%;
+}
 .search-title{
     background-color: #80cbc4;
     color: white;
@@ -185,7 +191,7 @@ li {
 }
 .right-img{
     height: 100px;
-    width: 100px;
+    width: 200px;
     object-fit: contain;
 }
 .mobile-top-content{
