@@ -103,11 +103,12 @@ function agency_information($pdo)
     }
     if (isset($_POST['feature5'])) {
         $industrys[] = 14;
+    }else{
+        $industrys = [1,2,3,4,5,6,7,8,9,10,11,12,13,14];
     }
 
     if (isset($industrys)) {
         $result = implode(',', $industrys);
-        // print_r($result);
         return $result;
     }
 };
