@@ -17,7 +17,7 @@ CREATE TABLE users (
 INSERT INTO
   users
 SET
-  email = 'test@posse-ap.com',
+  email = 'voozer-inc@voozer.com',
   password = sha1('password');
 
 DROP TABLE IF EXISTS agency_users;
@@ -35,34 +35,25 @@ INSERT INTO
   agency_users
 SET
   agency_id = 1,
-  email = 'agency1@posse-ap.com',
-  password = sha1('pass');
+  email = 'mynaviagent@mynavi.com',
+  password = sha1('password');
+
 INSERT INTO
   agency_users
 SET
   agency_id = 2,
-  email = 'agency2@posse-ap.com',
-  password = sha1('pas');
+  email = 'careeragent@career.com',
+  password = sha1('password');
+
+INSERT INTO
+  agency_users
+SET
+  agency_id = 3,
+  email = 'digupcareer@digupcareer.com',
+  password = sha1('password');
 
 
 DROP TABLE IF EXISTS events;
-
-CREATE TABLE events (
-  id INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
-  title VARCHAR(255) NOT NULL,
-  created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
-  updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-);
-
-INSERT INTO
-  events
-SET
-  title = 'イベント1';
-
-INSERT INTO
-  events
-SET
-  title = 'イベント2';
 
 DROP TABLE IF EXISTS industry_condition;
 
@@ -144,7 +135,6 @@ achievements VARCHAR(255) NOT NULL,
 contract_numbers VARCHAR(255) NOT NULL,
 bases_numbers VARCHAR(255) NOT NULL,
 support VARCHAR(255) NOT NULL,
--- place VARCHAR(255) NOT NULL,
 claim_status INT NOT NULL,
 created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
 updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
@@ -204,7 +194,7 @@ agency_name ='レバテックルーキー',
 catch_copy ='レバテックルーキーはITエンジニア専門の就活エージェント',
 detail= '厳選された多くのベンチャー企業からあなたのスキルに最適な職業をご案内致します。求人はITエンジニア専門であり、キャリアアドバイザーも業界対する知見が豊富なことが特徴です。エンジニアを目指す就活生は必須',
 mail_address = 'revatech@mail.com',
-manager = '田中隆行',
+manager = '濱口大',
 phone_number = '08012344444',
 img  = '0xE382B9E382AFE383AAE383BCE383B3E382B7E383A7E38383E3838820323032322D30352D32372031332E34352E33392E706E67',
 unit_price = 3000,
@@ -253,13 +243,6 @@ major_id INT NOT NULL
 
 );
 
--- INSERT INTO agency_major(agency_id,major_id)VALUES(1,1);
--- INSERT INTO agency_major(agency_id,major_id)VALUES(1,2);
--- INSERT INTO agency_major(agency_id,major_id)VALUES(2,1);
--- INSERT INTO agency_major(agency_id,major_id)VALUES(3,1);
--- INSERT INTO agency_major(agency_id,major_id)VALUES(3,2);
-
-
 
 DROP TABLE IF EXISTS agency_feature;
 
@@ -269,7 +252,6 @@ agency_id INT NOT NULL,
 feature_id INT NOT NULL
 
 );
-
 
 INSERT INTO agency_feature(agency_id,feature_id)VALUES(1,1);
 INSERT INTO agency_feature(agency_id,feature_id)VALUES(1,2);
@@ -295,10 +277,6 @@ INSERT INTO agency_feature(agency_id,feature_id)VALUES(4,4);
 INSERT INTO agency_feature(agency_id,feature_id)VALUES(4,8);
 INSERT INTO agency_feature(agency_id,feature_id)VALUES(4,11);
 INSERT INTO agency_feature(agency_id,feature_id)VALUES(4,14);
-
-
-
-
 
 DROP TABLE IF EXISTS inquiry;
 
@@ -381,5 +359,3 @@ SET
   cryptography = 'jsjdabibdsidcvihc',
   agency_id = 3,
   progress = 0;
-
-  
