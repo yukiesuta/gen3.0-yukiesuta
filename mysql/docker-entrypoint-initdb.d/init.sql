@@ -203,6 +203,28 @@ CREATE TABLE inquiry (
   dt DATETIME DEFAULT CURRENT_TIMESTAMP
 );
 
+INSERT INTO
+  inquiry
+SET
+  name = '西森慶太',
+  birthday = '2001-05-11',
+  university = '早稲田大学',
+  phone = '09052378876',
+  address = '東京都',
+  email = 'wawawa.keita-keikei@waseda.jp',
+  cryptography = 'jkfsdvbcfcmsdbmkd';
+
+INSERT INTO
+  inquiry
+SET
+  name = '谷中雄大',
+  birthday = 2001-03-21,
+  university = '明治大学',
+  phone = '09077885411',
+  address = '神奈川県',
+  email = 'wawtanitanii@meiji.jp',
+  cryptography = 'jsjdabibdsidcvihc';
+
 
 DROP TABLE IF EXISTS inquiry_agency;
 
@@ -212,3 +234,40 @@ CREATE TABLE inquiry_agency (
   agency_id INT  NOT NULL,
   progress INT NOT NULL
 );
+INSERT INTO
+  inquiry_agency
+SET
+  cryptography = 'jkfsdvbcfcmsdbmkd',
+  agency_id = 1,
+  progress = 0;
+
+INSERT INTO
+  inquiry_agency
+SET
+  cryptography = 'jkfsdvbcfcmsdbmkd',
+  agency_id = 2,
+  progress = 0;
+
+INSERT INTO
+  inquiry_agency
+SET
+  cryptography = 'jkfsdvbcfcmsdbmkd',
+  agency_id = 3,
+  progress = 0;
+
+
+INSERT INTO
+  inquiry_agency
+SET
+  cryptography = 'jsjdabibdsidcvihc',
+  agency_id = 1,
+  progress = 0;
+
+INSERT INTO
+  inquiry_agency
+SET
+  cryptography = 'jsjdabibdsidcvihc',
+  agency_id = 3,
+  progress = 0;
+
+  
