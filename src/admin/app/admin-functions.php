@@ -360,5 +360,5 @@ function edit_progress($pdo)
     echo $name;
     echo 'の進行状況を';
     echo $progress;
-    echo 'へ更新しました';
+    echo 'へ更新しました。時間を置いてからもう一度更新してください。';
 }

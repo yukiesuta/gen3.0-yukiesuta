@@ -58,75 +58,74 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     </div>
                 </a>
             </div>
-        </div>
-        <div class="main-right col-10">
-            <div class="table">
-                <table class="table table-striped w-100 mt-5">
-                    <thead class="text-center">
-                        <tr>
-                            <th scope="col">名前</th>
-                            <th scope="col">大学</th>
-                            <th scope="col">メールアドレス</th>
-                            <th scope="col">電話番号</th>
-                            <th scope="col">申し込み日時</th>
-                            <th scope="col">申込先</th>
-                            <!-- <th scope="col">申込先電話番号</th> -->
-                            <th></th>
-                        </tr>
-                    </thead>
-                    <?php foreach ($inquirys as $inquiry) : ?>
-                        <?
-                        $stmt = $pdo->query("SELECT * FROM inquiry_agency WHERE cryptography = '$inquiry->cryptography'");
-                        $inquiry_agencys = $stmt->fetchAll();
-                        ?>
-                        <tbody class="text-center">
+            <div class="main-right col-10">
+                <div class="table">
+                    <table class="table table-striped w-100 mt-5">
+                        <thead class="text-center">
                             <tr>
-                                <th scope="row"><?= $inquiry->name; ?></th>
-                                <td><?= $inquiry->university; ?></td>
-                                <td><?= $inquiry->email; ?></td>
-                                <td><?= $inquiry->phone; ?></td>
-                                <td><?= $inquiry->created_at; ?></td>
-                                <td>
-                                    <?php foreach ($inquiry_agencys as $inquiry_agency) : ?>
+                                <th scope="col">名前</th>
+                                <th scope="col">大学</th>
+                                <th scope="col">メールアドレス</th>
+                                <th scope="col">電話番号</th>
+                                <th scope="col">申し込み日時</th>
+                                <th scope="col">申込先</th>
+                                <!-- <th scope="col">申込先電話番号</th> -->
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <?php foreach ($inquirys as $inquiry) : ?>
+                            <?
+                            $stmt = $pdo->query("SELECT * FROM inquiry_agency WHERE cryptography = '$inquiry->cryptography'");
+                            $inquiry_agencys = $stmt->fetchAll();
+                            ?>
+                            <tbody class="text-center">
+                                <tr>
+                                    <th scope="row"><?= $inquiry->name; ?></th>
+                                    <td><?= $inquiry->university; ?></td>
+                                    <td><?= $inquiry->email; ?></td>
+                                    <td><?= $inquiry->phone; ?></td>
+                                    <td><?= $inquiry->created_at; ?></td>
+                                    <td>
+                                        <?php foreach ($inquiry_agencys as $inquiry_agency) : ?>
+                                            <?
+                                            $count =  $inquiry_agency->agency_id - 1;
+                                            $inquiry_agency_name = $agency_informations[$count]->agency_name;
+                                            $inquiry_phone_number = $agency_informations[$count]->phone_number;
+                                            ?>
+                                            <!-- <option disabled> -->
+                                            <?= $inquiry_agency_name ?>
+                                            <br>
+                                            <!-- <?= $inquiry_phone_number ?> -->
+                                            <!-- </option> -->
+                                        <?php endforeach; ?>
+                                    </td>
+                                    <!-- <td> -->
+                                    <!-- <?php foreach ($inquiry_agencys as $inquiry_agency) : ?>
                                         <?
-                                        $count =  $inquiry_agency->agency_id - 1;
-                                        $inquiry_agency_name = $agency_informations[$count]->agency_name;
-                                        $inquiry_phone_number = $agency_informations[$count]->phone_number;
-                                        ?>
-                                        <!-- <option disabled> -->
-                                        <?= $inquiry_agency_name ?>
-                                        <br>
-                                        <!-- <?= $inquiry_phone_number ?> -->
-                                        <!-- </option> -->
-                                    <?php endforeach; ?>
-                                </td>
-                                <!-- <td> -->
-                                <!-- <?php foreach ($inquiry_agencys as $inquiry_agency) : ?>
-                                                <?
                                                 $count =  $inquiry_agency->agency_id - 1;
                                                 $inquiry_agency_name = $agency_informations[$count]->agency_name;
                                                 $inquiry_phone_number = $agency_informations[$count]->phone_number;
-                                                ?> -->
-                                <!-- <option disabled> -->
-                                <!-- <?= $inquiry_agency_name ?> -->
-                                <!-- <?= $inquiry_phone_number ?>
+                                        ?> -->
+                                    <!-- <option disabled> -->
+                                    <!-- <?= $inquiry_agency_name ?> -->
+                                    <!-- <?= $inquiry_phone_number ?>
                                                     <br> -->
-                                <!-- </option> -->
-                                <!-- <?php endforeach; ?> -->
-                                <!-- </td> -->
-                                <form method='POST' action="">
+                                    <!-- </option> -->
+                                    <!-- <?php endforeach; ?> -->
+                                    <!-- </td> -->
+                                    <form method='POST' action="">
 
-                                    <td>
-                                        <input type="text" value="<?= $inquiry->cryptography ?>" name="cryptography" class="d-none">
-                                        <button type="submit" class="btn btn-primary btn-sm" onclick="delete_check()">削除</button>
-                                    </td>
-                                </form>
-                            </tr>
-                        </tbody>
-                    <?php endforeach; ?>
-                </table>
+                                        <td>
+                                            <input type="text" value="<?= $inquiry->cryptography ?>" name="cryptography" class="d-none">
+                                            <button type="submit" class="btn btn-primary btn-sm" onclick="delete_check()">削除</button>
+                                        </td>
+                                    </form>
+                                </tr>
+                            </tbody>
+                        <?php endforeach; ?>
+                    </table>
+                </div>
             </div>
-        </div>
         </div>
     </main>
 </body>

@@ -535,9 +535,15 @@ $agency_feature_comparison = $stmt->fetchAll();
                             <label for="exampleInputEmail1">メールアドレス</label>
                             <input type="email" name="email" id="email" class="text2 form-control" placeholder="例)xxx@example.com" required>
                         </div>
-                        <div class="form-group w-50 mt-3">
+                        <div class="form-group w-100 mt-3">
                             <input type="checkbox" required>
                             <label for="exampleInputEmail1">入力内容を確認しました</label>
+                        </div>
+                        <div class="form-group w-100 mt-3">
+                            <input type="checkbox" required>
+                            <a href="#">
+                                <label class="cursor-pointer" for="exampleInputEmail1">プライバシーポリシーに同意しました</label>
+                            </a>
                         </div>
                         <div class="form-group w-50 mt-3">
                             <input type="text" name="cryptography" class="text2 form-control d-none" value="<?= md5(uniqid()) ?>">
