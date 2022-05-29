@@ -85,15 +85,6 @@ window.addEventListener("beforeunload", () => {
 });
 
 
-for (let i = 1; i < 100; i++) {
-    let toCompare = document.getElementById("toCompare")
-    let agency_flexCheckDefault = document.getElementById("agency_flexCheckDefault" + i)
-    checkbox.addEventListener("load", function() {
-        if (agency_flexCheckDefault == false) {
-            toCompare.classList.add("display-none")
-        }
-    }, false)
-}
 
 function sorting() {
     document.getElementById("sorting").click();
