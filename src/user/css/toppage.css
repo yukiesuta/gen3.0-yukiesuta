@@ -13,20 +13,107 @@ main{
 }
 
 .first-view{
-    color: #FFF;
+     background-color: #ebedf2;
     /* object-fit: cover; */
     width: 100%;
-    height: 200px;
-
-
-
+    height: 400px;
+    position: relative;
 }
+.moji{
+    font-size: 40px;
+}
+.first-view > ul {
+    padding: 5rem;
+  }
 
-/* .first-view-img{
+.pc{
+    display: none;
+}
+li {
+    list-style-type: none;
+
+} 
+  dd {
+    margin-left: 0;
+  }
+ 
+  .flow {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: space-between;
+    -ms-flex-pack: space-between;
+    justify-content: space-between;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 75%;
+    transform: translate(-65%, -50%);
+  }
+  .flow > li {
+    -ms-flex-preferred-size: 22%;
+    flex-basis: 22%;
+  }
+  .flow > li .icon {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 18px;
+    line-height: 50px;
+    width: 50px;
+    color: #fff;
+    background: rgb(107,144,219);
+    margin: 0 auto 20px;
+    display: block;
+    border-radius: 50%;
+    text-align: center;
+    position: relative;
+    letter-spacing: 2px;
+  }
+  .flow > li .icon::before {
+    content: "";
+    border: solid transparent;
+    border-width: 8px;
+    border-top-color: rgb(107,144,219);
+    position: absolute;
+    top: calc(100% - 2px);
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    transform: translateX(-50%);
+  }
+  .flow > li dl {
+    padding: 30px 20px;
+    margin: 0;
+    border: 3px solid rgb(107,144,219);
+    position: relative;
+  }
+  .flow > li:not(:last-child) dl::before {
+    content: "";
+    width: 14px;
+    height: 14px;
+    margin-right: 10px;
+    display: inline-block;
+    border-top: 4px solid rgb(102,213,233);
+    border-right: 4px solid rgb(102,213,233);
+    position: absolute;
+    top: calc(50% - 14px);
+    left: 104%;
+    -webkit-transform: rotate(45deg);
+    transform: rotate(45deg);
+  }
+  .flow > li dl dt {
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: rgb(107,144,219);
+    -ms-flex-preferred-size: 20%;
+    flex-basis: 20%;
+    margin-bottom: 1vh;
+    text-align: center;
+  } 
+
+.first-view-img{
     object-fit: cover;
     width: 100%;
-    height: 200px;
-} */
+    height: 100%;
+}
 .search-title{
     background-color: #80cbc4;
     color: white;
@@ -35,16 +122,19 @@ main{
     border-radius: 10px  10px 0 0 ;
     background-color: white;
     color: #626262;
+    box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.22);
 }
 .search-middle{
     /* border-radius: 10px; */
     background-color: white;
     color: #626262;
+    box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.22);
 }
 .search-bottom{
     border-radius:0 0 10px 10px;
     background-color: white;
     color: #626262;
+    box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.22);
 }
 .drop-down{
     background-color: #80cbc4;
@@ -166,6 +256,10 @@ main{
 .checked-title{
     margin: 0px auto;
 }
+
+.checked-content{
+    box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.22);
+}
 @media screen and (max-width:480px){
     header{
         height: 50px;
@@ -208,19 +302,48 @@ main{
     .position-fixed{
         display: none;
     }
+
+    .sp{
+        display: none;
+    }
+
+    .pc{
+        display: block;
+        max-width: 480px;
+        object-fit: contain;
+    }
+
+    .flow{
+        width: 100%;
+        font-size: 10%;
+        /* font-size: 1rem; */
+        /* margin-right: 4rem; */
+        margin: 0;
+        padding: 0;
+    }
+
+
+    .flow > li dl dt {
+        font-size: 0.4rem;
+        font-weight: 600;
+        color: rgb(107,144,219);
+        -ms-flex-preferred-size: 20%;
+        flex-basis: 20%;
+        margin-bottom: 1vh;
+        /* margin-right: 2rem; */
+        text-align: center;
+
+      } 
 }
 
 .company-content-wrapper{
-    /* margin: 2em 0; */
-    /* padding: 0; */
-    /* /* color: #5d627b; */
     background: white; 
     /* border-top: solid 5px #5d627b; */
     box-shadow: 0 3px 10px 0px rgba(0, 0, 0, 0.22);
 }
 
 .label-industry{
-    position: relative;
+  position: relative;
   display: inline-block;
   padding: 0.25em 0.5em;
   margin-left:0.1rem ;
@@ -253,8 +376,6 @@ main{
 .table >td{
     color: #FFF;
 }
-
-
 
 
 
