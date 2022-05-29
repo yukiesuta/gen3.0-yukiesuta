@@ -95,11 +95,11 @@ CREATE TABLE feature_condition (
   id INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
   feature VARCHAR(255) NOT NULL
 );
-INSERT INTO feature_condition SET feature = 'ES添削あり';
-INSERT INTO feature_condition SET feature = '面接対策あり';
+INSERT INTO feature_condition SET feature = 'ES添削';
+INSERT INTO feature_condition SET feature = '面接対策';
 INSERT INTO feature_condition SET feature = '即日連絡';
-INSERT INTO feature_condition SET feature = 'オンライン可能';
-INSERT INTO feature_condition SET feature = '担当者変更可能';
+INSERT INTO feature_condition SET feature = 'オンライン面談';
+INSERT INTO feature_condition SET feature = '自己分析サポート';
 
 
 DROP TABLE IF EXISTS features;
@@ -119,11 +119,11 @@ INSERT INTO features SET feature = 'サービス';
 INSERT INTO features SET feature = 'インフラ';
 INSERT INTO features SET feature = '理系';
 INSERT INTO features SET feature = '文系';
-INSERT INTO features SET feature = 'ES添削あり';
-INSERT INTO features SET feature = '面接対策あり';
+INSERT INTO features SET feature = 'ES添削';
+INSERT INTO features SET feature = '面接対策';
 INSERT INTO features SET feature = '即日連絡';
-INSERT INTO features SET feature = 'オンライン可能';
-INSERT INTO features SET feature = '担当者変更可能';
+INSERT INTO features SET feature = 'オンライン面談';
+INSERT INTO features SET feature = '自己分析サポート';
 
 
 
