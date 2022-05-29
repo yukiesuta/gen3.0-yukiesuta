@@ -36,17 +36,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             </div>
             <div>
                 <div class="form-group w-50 mt-3">
-                    <label>エージェンシー名</label>
-                    <input type="text"  name="agency_name" class="form-control" id="form-name" placeholder="例)株式会社クラフト" required>
+                    <label>エージェンシー名（20字以内）</label>
+                    <input type="text" pattern=".{1,20}" name="agency_name" class="form-control" id="form-name" placeholder="例)株式会社クラフト" required>
                 </div>
                 <div class="form-group w-50 mt-3">
-                    <!-- <label>キャッチフレーズ</label> -->
-                    <label>特徴</label>
-                    <input type="text" name="catch_copy" class="form-control" id="form-name" placeholder="例)自慢の即日対応" required>
+                    <label>特徴（40字以内）</label>
+                    <input type="text" pattern=".{1,40}" name="catch_copy" class="form-control" id="form-name" placeholder="例)自慢の即日対応" required>
                 </div>
                 <div class="form-group w-50 mt-3">
-                    <label for="exampleFormControlTextarea1">詳細説明</label>
-                    <textarea name="detail" class="form-control" id="exampleFormControlTextarea1" placeholder="例)性別問わずキャリアに強いヘッドハンターも多数在席しております。若手向けのチャレンジポジションから管理層ポジションまで直接スカウトが届きます。" required></textarea>
+                    <label for="exampleFormControlTextarea1">詳細説明（255字以内）</label>
+                    <textarea name="detail" class="form-control" pattern=".{1,255}" id="exampleFormControlTextarea1" placeholder="例)性別問わずキャリアに強いヘッドハンターも多数在席しております。若手向けのチャレンジポジションから管理層ポジションまで直接スカウトが届きます。" required></textarea>
                 </div>
                 <div class="form-group w-50 mt-3">
                     <label>メールアドレス</label>
