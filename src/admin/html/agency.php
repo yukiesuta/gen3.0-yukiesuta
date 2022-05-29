@@ -96,7 +96,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
                         <!-- <?=$inquiry_agency_results[$count]->progress;?> -->
                         <td>
-                            <form method='POST' action='agency.php?agency_id=<?=$agency_id?>'>
+                            <form method='POST' action='agency-edit-complete.php?agency_id=<?=$agency_id?>'>
                                 <select name="progress">
                                     <option value="0" <?php if($inquiry_agency_results[$count]->progress===0){echo "selected";} ?>>未着手</option>
                                     <option value="1" <?php if($inquiry_agency_results[$count]->progress===1){echo "selected";} ?>>連絡済み</option>

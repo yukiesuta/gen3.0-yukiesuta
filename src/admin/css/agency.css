@@ -4,6 +4,12 @@
         width: 100%;
         max-width: 100%;
         color: white;
+        font-size: 50px;
+    }
+    
+    .icon {
+        font-size: 5rem;
+        color: green;
     }
     
     .header-left {

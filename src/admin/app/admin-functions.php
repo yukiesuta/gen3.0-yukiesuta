@@ -356,9 +356,4 @@ function edit_progress($pdo)
         ':agency_id' => $agency_id,
         ':cryptography'=>$cryptography
     ));
-    echo '「';
-    echo $name;
-    echo '」の進行状況を「';
-    echo $progress_arr[$progress];
-    echo '」へ更新しました。時間を置いてからブラウザを更新してください。';
 }
