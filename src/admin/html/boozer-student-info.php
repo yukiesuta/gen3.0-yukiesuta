@@ -68,8 +68,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                 <th scope="col">メールアドレス</th>
                                 <th scope="col">電話番号</th>
                                 <th scope="col">申し込み日時</th>
-                                <!-- <th scope="col">申込先</th> -->
-                                <!-- <th scope="col">申込先電話番号</th> -->
                                 <th></th>
                             </tr>
                         </thead>

@@ -30,7 +30,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         Craft
     </header>
     <main>
-        <form class=" p-5 ms-5 me-5 form"  method="post" id="inquiry" enctype="multipart/form-data">
+        <form class=" p-5 ms-5 me-5 form"  method="post" id="inquiry" enctype="multipart/form-data" action="new-creation-complete.php">
             <div class=" mb-3 ms-5 me-5 text-center title">
                 新規作成フォーム
             </div>
