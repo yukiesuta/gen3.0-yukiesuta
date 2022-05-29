@@ -306,10 +306,13 @@ li {
     .sp{
         display: none;
     }
-
+    .first-view{
+        height: auto;
+    }
     .pc{
         display: block;
         max-width: 480px;
+        height: auto;
         object-fit: contain;
     }
 
