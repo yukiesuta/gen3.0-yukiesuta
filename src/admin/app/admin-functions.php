@@ -361,5 +361,5 @@ function edit_progress($pdo)
     echo $name;
     echo '」の進行状況を「';
     echo $progress_arr[$progress];
-    echo '」へ更新しました。時間を置いてからもう一度更新してください。';
+    echo '」へ更新しました。時間を置いてからブラウザを更新してください。';
 }
