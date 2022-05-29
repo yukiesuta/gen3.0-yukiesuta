@@ -68,7 +68,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                 <th scope="col">メールアドレス</th>
                                 <th scope="col">電話番号</th>
                                 <th scope="col">申し込み日時</th>
-                                <th scope="col">申込先</th>
+                                <!-- <th scope="col">申込先</th> -->
                                 <!-- <th scope="col">申込先電話番号</th> -->
                                 <th></th>
                             </tr>
@@ -85,20 +85,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                     <td><?= $inquiry->email; ?></td>
                                     <td><?= $inquiry->phone; ?></td>
                                     <td><?= $inquiry->created_at; ?></td>
-                                    <td>
-                                        <?php foreach ($inquiry_agencys as $inquiry_agency) : ?>
-                                            <?
-                                            $count =  $inquiry_agency->agency_id - 1;
-                                            $inquiry_agency_name = $agency_informations[$count]->agency_name;
-                                            $inquiry_phone_number = $agency_informations[$count]->phone_number;
-                                            ?>
-                                            <!-- <option disabled> -->
-                                            <?= $inquiry_agency_name ?>
-                                            <br>
-                                            <!-- <?= $inquiry_phone_number ?> -->
-                                            <!-- </option> -->
-                                        <?php endforeach; ?>
-                                    </td>
                                     <!-- <td> -->
                                     <!-- <?php foreach ($inquiry_agencys as $inquiry_agency) : ?>
                                         <?
