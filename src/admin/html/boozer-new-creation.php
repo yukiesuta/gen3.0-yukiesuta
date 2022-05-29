@@ -169,13 +169,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <div class="form-check w-25">
                         <input name="feature1" class="form-check-input support" type="checkbox" value="" id="flexCheckDefault31">
                         <label class="form-check-label" for="flexCheckDefault">
-                            ES添削あり
+                            ES添削
                         </label>
                     </div>
                     <div class="form-check w-25">
                         <input name="feature2" class="form-check-input support" type="checkbox" value="" id="flexCheckDefault32">
                         <label class="form-check-label" for="flexCheckDefault">
-                            面接対策あり
+                            面接対策
                         </label>
                     </div>
                     <div class="form-check w-25">
@@ -187,13 +187,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <div class="form-check w-25">
                         <input name="feature4" class="form-check-input support" type="checkbox" value="" id="flexCheckDefault34">
                         <label class="form-check-label" for="flexCheckDefault">
-                            オンライン可能
+                            オンライン面談
                         </label>
                     </div>
                     <div class="form-check w-25">
                         <input name="feature5" class="form-check-input support" type="checkbox" value="" id="flexCheckDefault35">
                         <label class="form-check-label" for="flexCheckDefault">
-                            担当者変更可能
+                            自己分析サポート
                         </label>
                     </div>
                     <div class="form-check w-25">
