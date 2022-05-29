@@ -124,39 +124,8 @@ $agency_feature_comparison = $stmt->fetchAll();
     </header>
     <main>
         <div class="first-view">
-        <img src="../img/firstview.png" alt="first-view" class="first-view-img" >
-            <ul class="flow">
-                <li>
-                    <span class="icon">01</span>
-                    <dl>
-                        <dt>絞り込む</dt>
-                        <dd>あなたに最適な条件でエージェントを検索します。</dd>
-                    </dl>
-                </li>
-
-                <li>
-                    <span class="icon">02</span>
-                    <dl>
-                        <dt>選ぶ</dt>
-                        <dd>気になったエージェント全てにチェックをつけます。</dd>
-                    </dl>
-                </li>
-
-                <li>
-                    <span class="icon">03</span>
-                    <dl>
-                        <dt>比較する</dt>
-                        <dd>一括比較しぴったりのエージェントをお選びいただきます。</dd>
-                    </dl>
-                </li>
-
-                <li>
-                    <span class="icon">04</span>
-                    <dl>
-                        <dt>一括申し込み</dt>
-                        <dd>気になるエージェント全てに一括申し込みします。</dd>
-                    </dl>
-                </li>
+            <img src="../img/firstview.png" alt="first-view" class="first-view-img sp">
+            <img src="../img/firstview-sp.png" alt="first-view" class="first-view-img pc">
 
         </div>
         <div class="text-center button">
