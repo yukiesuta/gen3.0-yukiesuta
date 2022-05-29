@@ -276,15 +276,11 @@ $agency_feature_comparison = $stmt->fetchAll();
                 <?php foreach ($uniqueStations as $agency_information) : ?>
                     <div class="mt-4 ms-5 me-5 mb-5 p-3 company-content-wrapper accordion-item" id="accordionExample">
                         <div class="d-flex company-content ">
-                            <a href="#">
-                                <div class="logo-container p-1">
-                                    <img src="../uploaded_img/agency<?= h($agency_information->agency_id); ?>.png" alt="" class="center-img">
-                                </div>
-                            </a>
-                            <div>
-                                <a href="#" class="text-decoration-none">
-                                    <div class="company-content-title p-1"><?= h($agency_information->agency_name); ?></div>
-                                </a>
+                            <div class="logo-container p-1">
+                                <img src="../uploaded_img/agency<?= h($agency_information->agency_id); ?>.png" alt="" class="center-img">
+                            </div>
+                            <div class="ms-3">
+                                <div class="company-content-title p-1"><?= h($agency_information->agency_name); ?></div>
                                 <div class="p-3 company-content-paragraph">
                                     <?= h($agency_information->catch_copy); ?>
                                 </div>
@@ -315,7 +311,7 @@ $agency_feature_comparison = $stmt->fetchAll();
                                 </div>
                             </div>
                         </div>
-                        <div class="d-flex">
+                        <div class="d-flex mt-1">
                             <div class="form-check">
                                 <input class="form-check-input form-check-input-click " type="checkbox" value="" name='looked' id="agency_flexCheckDefault<?= h($agency_information->agency_id); ?>">
                                 <label class="form-check-label mb-3 checked-paragraph" for="flexCheckDefault">
@@ -348,13 +344,13 @@ $agency_feature_comparison = $stmt->fetchAll();
                     </div>
                 </div>
                 <?php foreach ($agency_informations as $agency_information) : ?>
-                    <a href="#" class="text-decoration-none display-none" id="rightContent<?= h($agency_information->agency_id); ?>">
+                    <div class="display-none" id="rightContent<?= h($agency_information->agency_id); ?>">
                         <div class="d-flex checked-content m-5 p-3">
                             <div class="me-2 text-center align-items-center">
                                 <img src="../uploaded_img/agency<?= h($agency_information->agency_id); ?>.png" alt="" class="right-img">
                             </div>
                         </div>
-                    </a>
+                    </div>
                 <?php endforeach; ?>
                 <div class="d-flex m-5 p-3">
                     <a href="#applySection">
@@ -365,8 +361,8 @@ $agency_feature_comparison = $stmt->fetchAll();
         </div>
     </main>
     <main class="w-100">
-        <div class="text-center p-5 ms-5 me-5 compare " id="applySection">
-            <div class="mt-3 mb-5 ms-5 me-5 title ">
+        <div class="text-center p-5 compare " id="applySection">
+            <div class="title m-auto mt-5 mb-5 w-75 text-center">
                 比較リスト
             </div>
             <div class="table-responsive">
@@ -397,9 +393,9 @@ $agency_feature_comparison = $stmt->fetchAll();
                                     <?= h($agency_information->agency_name); ?>
                                 </td> -->
                                 <th scope="row">
-                                    <a href="company.php?id=<?= h($agency_information->agency_id); ?>">
+                                    <div href="company.php?id=<?= h($agency_information->agency_id); ?>">
                                         <img src="../uploaded_img/agency<?= h($agency_information->agency_id); ?>.png" alt="" class="center-img">
-                                    </a>
+                                    </div>
                                 </th>
                                 <td>
                                     <?php
