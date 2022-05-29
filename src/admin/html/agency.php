@@ -98,11 +98,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         <td>
                             <form method='POST' action='agency.php?agency_id=<?=$agency_id?>'>
                                 <select name="progress">
-                                    <option value="0" <?php if($inquiry_agency_results[$count]->progress===0){echo "selected";} ?>>状況0</option>
-                                    <option value="1" <?php if($inquiry_agency_results[$count]->progress===1){echo "selected";} ?>>状況1</option>
-                                    <option value="2" <?php if($inquiry_agency_results[$count]->progress===2){echo "selected";} ?>>状況2</option>
-                                    <option value="3" <?php if($inquiry_agency_results[$count]->progress===3){echo "selected";} ?>>状況3</option>
-                                    <option value="4" <?php if($inquiry_agency_results[$count]->progress===4){echo "selected";} ?>>状況4</option>
+                                    <option value="0" <?php if($inquiry_agency_results[$count]->progress===0){echo "selected";} ?>>未着手</option>
+                                    <option value="1" <?php if($inquiry_agency_results[$count]->progress===1){echo "selected";} ?>>連絡済み</option>
+                                    <option value="2" <?php if($inquiry_agency_results[$count]->progress===2){echo "selected";} ?>>対応中</option>
+                                    <option value="3" <?php if($inquiry_agency_results[$count]->progress===3){echo "selected";} ?>>対応完了</option>
+                                    <option value="4" <?php if($inquiry_agency_results[$count]->progress===4){echo "selected";} ?>>対応不能</option>
                                 </select>
                                 <input type="hidden" value="<?=$agency_id?>" name="agency_id">
                                 <input type="hidden" value="<?=$inquiry_results2->name; ?>" name="name">

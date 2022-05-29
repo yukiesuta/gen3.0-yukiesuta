@@ -336,12 +336,12 @@ function edit_agency_claim_status($pdo)
 
 function edit_progress($pdo)
 {
-    $claim_status_arr = [
-        '状況１',
-        '状況２',
-        '状況3',
-        '状況4',
-        '状況5'
+    $progress_arr = [
+        '未着手',
+        '連絡済み',
+        '対応中',
+        '対応完了',
+        '対応不能'
     ];
     $progress = $_POST["progress"];
     $agency_id = $_POST["agency_id"];
@@ -357,8 +357,9 @@ function edit_progress($pdo)
         ':agency_id' => $agency_id,
         ':cryptography'=>$cryptography
     ));
+    echo '「';
     echo $name;
-    echo 'の進行状況を';
-    echo $progress;
-    echo 'へ更新しました。時間を置いてからもう一度更新してください。';
+    echo '」の進行状況を「';
+    echo $progress_arr[$progress];
+    echo '」へ更新しました。時間を置いてからもう一度更新してください。';
 }
