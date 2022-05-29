@@ -264,7 +264,19 @@ $agency_feature_comparison = $stmt->fetchAll();
                         </h2>
                         <div id="collapse<?= h($agency_information->agency_id); ?>" class="accordion-collapse collapse " aria-labelledby="heading<?= h($agency_information->agency_id); ?>" data-bs-parent="#accordionExample">
                             <div class="accordion-body">
-                                <?= h($agency_information->detail); ?>
+                                詳細説明：<br><?= h($agency_information->detail); ?>
+                            </div>
+                            <div class="accordion-body">
+                                求人エリア：<?= h($agency_information->achievements); ?>
+                            </div>
+                            <div class="accordion-body">
+                                面談場所：<?= h($agency_information->bases_numbers); ?>
+                            </div>
+                            <div class="accordion-body">
+                                契約企業数：<?= h($agency_information->support); ?>
+                            </div>
+                            <div class="accordion-body">
+                                実績数：<?= h($agency_information->contract_numbers); ?>
                             </div>
                             <!-- <div class="accordion-body">
                                 面談場所：<?= h($agency_information->bases_numbers); ?>
@@ -313,6 +325,7 @@ $agency_feature_comparison = $stmt->fetchAll();
                             <th scope="col">求人エリア</th>
                             <th scope="col">面談場所</th>
                             <th scope="col">契約企業数</th>
+                            <th scope="col">実績数</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -349,6 +362,7 @@ $agency_feature_comparison = $stmt->fetchAll();
                                 </td>
                                 <td><?= h($agency_information->achievements); ?></td>
                                 <td><?= h($agency_information->bases_numbers); ?></td>
+                                <td><?= h($agency_information->support); ?></td>
                                 <td><?= h($agency_information->contract_numbers); ?></td>
                             </tr>
                         <?php endforeach; ?>
