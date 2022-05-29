@@ -345,8 +345,8 @@ $agency_feature_comparison = $stmt->fetchAll();
                 </div>
                 <?php foreach ($agency_informations as $agency_information) : ?>
                     <div class="display-none" id="rightContent<?= h($agency_information->agency_id); ?>">
-                        <div class="d-flex checked-content m-5 p-3">
-                            <div class="me-2 text-center align-items-center">
+                        <div class="checked-content m-5 p-3">
+                            <div class="text-center align-items-center">
                                 <img src="../uploaded_img/agency<?= h($agency_information->agency_id); ?>.png" alt="" class="right-img">
                             </div>
                         </div>
