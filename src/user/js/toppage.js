@@ -94,3 +94,7 @@ for (let i = 1; i < 100; i++) {
         }
     }, false)
 }
+
+function sorting() {
+    document.getElementById("sorting").click();
+}

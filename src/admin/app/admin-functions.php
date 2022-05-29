@@ -289,6 +289,21 @@ function agency_delete($pdo){
     $res = $stmt->execute();
 }
 
+function student_delete($pdo){
+    $cryptography = $_POST["cryptography"];
+    $stmt = $pdo->prepare("DELETE FROM inquiry WHERE cryptography = :cryptography" );
+    $stmt->bindValue(':cryptography', $cryptography);
+    $stmt->execute();
+
+    $stmt = $pdo->prepare("DELETE FROM inquiry_agency WHERE cryptography = :cryptography" );
+    $stmt->bindValue(':cryptography', $cryptography);
+    $stmt->execute();
+
+    echo '削除しました。もう一度再更新すると反映されます。';
+}
+
+
+
 
 function edit_agency_claim_status($pdo)
 {

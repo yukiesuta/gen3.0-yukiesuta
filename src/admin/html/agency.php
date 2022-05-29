@@ -17,6 +17,9 @@ $inquiry_agency_results = $inquiry_agency_stmt->fetchAll();
 $inquiry_stmt = $pdo->query("SELECT * FROM inquiry");
 $inquiry_results = $inquiry_stmt->fetchAll();
 
+$agency_name_stmt = $pdo->query("SELECT agency_name FROM agency_information WHERE id = $agency_id");
+$agency_name_result = $agency_name_stmt->fetchAll();
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     edit_progress($pdo);
 }
@@ -33,15 +36,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="../css/agency.css">
-    <title>各エージェンシーのページ</title>
+    <title><?=$agency_name_result[0]->agency_name?>  管理者ページ</title>
 </head>
 
 <body>
     <header>
         <div class="d-flex justify-content-between p-4">
             <div class="d-flex header-left">
-                <div class="m-2">Craft</div>
-                <div class="m-2">エージェンジー名</div>
+                <div class="m-2"><?=$agency_name_result[0]->agency_name?>  管理者ページ</div>
+                <div class="m-2"></div>
             </div>
             <div class="d-flex">
                 <a href="https://forms.gle/jJJArbBQXUxwnzQd8" class="m-2 header-right text-decoration-none">
@@ -55,7 +58,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     </header>
     <main>
         <div class="table">
-            <table class="table table-striped w-75 mt-5">
+            <table class="table table-striped w-90 mt-5">
                 <thead>
                     <tr>
                         <th scope="col">学生名</th>
