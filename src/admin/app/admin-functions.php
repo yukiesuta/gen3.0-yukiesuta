@@ -255,7 +255,6 @@ function edit_agency_information($pdo)
         ':contract_numbers' => $_POST['contract_numbers'],
         ':id' => $_GET["id"]
     ));
-    echo '情報を更新しました';
 }
 
 
@@ -298,8 +297,6 @@ function student_delete($pdo){
     $stmt = $pdo->prepare("DELETE FROM inquiry_agency WHERE cryptography = :cryptography" );
     $stmt->bindValue(':cryptography', $cryptography);
     $stmt->execute();
-
-    echo '削除しました。もう一度再更新すると反映されます。';
 }
 
 
@@ -326,11 +323,6 @@ function edit_agency_claim_status($pdo)
         ':claim_status' => $claim_status,
         ':id' => $id
     ));
-
-    echo $agency_name;
-    echo 'の請求ステータスを';
-    echo $claim_status_arr[$claim_status];
-    echo 'に更新しました';
 }
 
 
@@ -357,9 +349,4 @@ function edit_progress($pdo)
         ':agency_id' => $agency_id,
         ':cryptography'=>$cryptography
     ));
-    echo '「';
-    echo $name;
-    echo '」の進行状況を「';
-    echo $progress_arr[$progress];
-    echo '」へ更新しました。時間を置いてからブラウザを更新してください。';
 }

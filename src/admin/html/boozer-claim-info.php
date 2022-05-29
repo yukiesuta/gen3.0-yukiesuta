@@ -84,7 +84,7 @@ $agencys = $stmt->fetchAll();
                                     </td>
                                     <td><?= $agency->phone_number; ?></td>
                                     <td>
-                                        <form method='POST' action='boozer-claim-info.php'>
+                                        <form method='POST' action='boozer-claim-info-edit-complete.php'>
 
                                             <select name="claim_status">
                                                 <option value="0" <?php if ($agency->claim_status === 0) {
