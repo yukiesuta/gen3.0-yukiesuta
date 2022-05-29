@@ -10,10 +10,10 @@ $agency_informations = get_agency_informations($pdo);
 $industry_conditions = get_industry_conditions($pdo);
 $major_conditions = get_major_conditions($pdo);
 $feature_conditions = get_feature_conditions($pdo);
+$shibori = agency_information($pdo);
 
 // if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 // }
-$shibori = agency_information($pdo);
 
 // if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 //     $shibori = agency_information($pdo);
@@ -35,7 +35,7 @@ ORDER BY unit_price DESC;
 $stmt->execute($ids);
 
 $agency_informations = $stmt->fetchAll();
-// print_r($agency_informations);
+
 
 $tmp = [];
 $uniqueStations = [];
@@ -80,8 +80,6 @@ $agency_feature_comparison = $stmt->fetchAll();
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="../css/toppage.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <!-- <link rel="stylesheet" type="text/css" href="https://coco-factory.jp/ugokuweb/wp-content/themes/ugokuweb/data/reset.css">
-<link rel="stylesheet" type="text/css" href="https://coco-factory.jp/ugokuweb/wp-content/themes/ugokuweb/data/9-2-1/css/9-2-1.css"> -->
 </head>
 <title>Craft</title>
 </head>
@@ -126,52 +124,38 @@ $agency_feature_comparison = $stmt->fetchAll();
     </header>
     <main>
         <div class="first-view">
-            <!-- <img src="../img/firstview.jpg" alt="first-view" class="first-view-img"> -->
-            <!-- <div class="first-view-left">
+            <ul class="flow">
+                <li>
+                    <span class="icon">01</span>
+                    <dl>
+                        <dt>絞り込む</dt>
+                        <dd>あなたに最適な条件でエージェントを検索します。</dd>
+                    </dl>
+                </li>
 
+                <li>
+                    <span class="icon">02</span>
+                    <dl>
+                        <dt>選ぶ</dt>
+                        <dd>気になったエージェント全てにチェックをつけます。</dd>
+                    </dl>
+                </li>
 
-            </div>
-            <div class="first-view-right">
+                <li>
+                    <span class="icon">03</span>
+                    <dl>
+                        <dt>比較する</dt>
+                        <dd>一括比較しぴったりのエージェントをお選びいただきます。</dd>
+                    </dl>
+                </li>
 
-            </div> -->
-            <!-- <div class="accordion" id="accordionExample">
-                <div class="accordion-item">
-                    <h2 class="accordion-header" id="headingOne">
-                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                            Accordion Item #1
-                        </button>
-                    </h2>
-                    <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-                        <div class="accordion-body">
-                            <strong>This is the first item's accordion body.</strong> It is shown by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
-                        </div>
-                    </div>
-                </div> -->
-                <!-- <div class="accordion-item">
-                    <h2 class="accordion-header" id="headingTwo">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                            Accordion Item #2
-                        </button>
-                    </h2>
-                    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
-                        <div class="accordion-body">
-                            <strong>This is the second item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
-                        </div>
-                    </div>
-                </div>
-                <div class="accordion-item">
-                    <h2 class="accordion-header" id="headingThree">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                            Accordion Item #3
-                        </button>
-                    </h2>
-                    <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
-                        <div class="accordion-body">
-                            <strong>This is the third item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
-                        </div>
-                    </div>
-                </div> -->
-            <!-- </div> -->
+                <li>
+                    <span class="icon">04</span>
+                    <dl>
+                        <dt>一括申し込み</dt>
+                        <dd>気になるエージェント全てに一括申し込みします。</dd>
+                    </dl>
+                </li>
 
         </div>
         <div class="text-center button">
@@ -322,15 +306,15 @@ $agency_feature_comparison = $stmt->fetchAll();
                             </div>
                         </div>
                         <h2 class="accordion-header" id="heading<?= h($agency_information->agency_id); ?>">
-                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse<?= h($agency_information->agency_id); ?>" aria-expanded="true" aria-controls="collapse<?= h($agency_information->agency_id); ?>">
-                            詳細説明
-                        </button>
-                    </h2>
-                    <div id="collapse<?= h($agency_information->agency_id); ?>" class="accordion-collapse collapse " aria-labelledby="heading<?= h($agency_information->agency_id); ?>" data-bs-parent="#accordionExample">
-                        <div class="accordion-body">
-                        <?= h($agency_information->detail); ?>
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse<?= h($agency_information->agency_id); ?>" aria-expanded="true" aria-controls="collapse<?= h($agency_information->agency_id); ?>">
+                                詳細説明
+                            </button>
+                        </h2>
+                        <div id="collapse<?= h($agency_information->agency_id); ?>" class="accordion-collapse collapse " aria-labelledby="heading<?= h($agency_information->agency_id); ?>" data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                                <?= h($agency_information->detail); ?>
+                            </div>
                         </div>
-                    </div>
                     </div>
                 <?php endforeach; ?>
                 <!-- <div class="d-flex p-3 justify-content-center">
