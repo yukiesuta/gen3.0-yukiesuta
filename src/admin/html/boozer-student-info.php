@@ -83,7 +83,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                     <td><?= $inquiry->email; ?></td>
                                     <td><?= $inquiry->phone; ?></td>
                                     <td><?= $inquiry->created_at; ?></td>
-                                    <form method='POST' action="">
+                                    <form method='POST' action="boozer-student-delete-complete.php">
                                         <td>
                                             <input type="text" value="<?= $inquiry->cryptography ?>" name="cryptography" class="d-none">
                                             <button type="submit" class="btn btn-primary btn-sm" onclick="delete_check()">削除</button>
