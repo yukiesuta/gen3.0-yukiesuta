@@ -282,6 +282,10 @@ $agency_feature_comparison = $stmt->fetchAll();
                             <div class="accordion-body">
                                 <?= h($agency_information->detail); ?>
                             </div>
+                            <!-- <div class="accordion-body">
+                                面談場所：<?= h($agency_information->bases_numbers); ?>
+                            </div> -->
+                            
                         </div>
                     </div>
                 <?php endforeach; ?>
