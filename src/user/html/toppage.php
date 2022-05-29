@@ -147,7 +147,7 @@ $agency_feature_comparison = $stmt->fetchAll();
                         </div>
                     </div>
                 </div> -->
-                <!-- <div class="accordion-item">
+            <!-- <div class="accordion-item">
                     <h2 class="accordion-header" id="headingTwo">
                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
                             Accordion Item #2
@@ -315,21 +315,24 @@ $agency_feature_comparison = $stmt->fetchAll();
                                 </div>
                             </div>
                         </div>
-                        <div class="d-flex justify-content-end">
+                        <div class="d-flex">
                             <div class="form-check">
                                 <input class="form-check-input form-check-input-click " type="checkbox" value="" name='looked' id="agency_flexCheckDefault<?= h($agency_information->agency_id); ?>">
+                                <label class="form-check-label mb-3 checked-paragraph" for="flexCheckDefault">
+                                    比較リストに追加する
+                                </label>
                             </div>
                         </div>
                         <h2 class="accordion-header" id="heading<?= h($agency_information->agency_id); ?>">
-                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse<?= h($agency_information->agency_id); ?>" aria-expanded="true" aria-controls="collapse<?= h($agency_information->agency_id); ?>">
-                            詳細説明
-                        </button>
-                    </h2>
-                    <div id="collapse<?= h($agency_information->agency_id); ?>" class="accordion-collapse collapse " aria-labelledby="heading<?= h($agency_information->agency_id); ?>" data-bs-parent="#accordionExample">
-                        <div class="accordion-body">
-                        <?= h($agency_information->detail); ?>
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse<?= h($agency_information->agency_id); ?>" aria-expanded="true" aria-controls="collapse<?= h($agency_information->agency_id); ?>">
+                                詳細説明
+                            </button>
+                        </h2>
+                        <div id="collapse<?= h($agency_information->agency_id); ?>" class="accordion-collapse collapse " aria-labelledby="heading<?= h($agency_information->agency_id); ?>" data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                                <?= h($agency_information->detail); ?>
+                            </div>
                         </div>
-                    </div>
                     </div>
                 <?php endforeach; ?>
                 <!-- <div class="d-flex p-3 justify-content-center">
@@ -347,12 +350,9 @@ $agency_feature_comparison = $stmt->fetchAll();
                 <?php foreach ($agency_informations as $agency_information) : ?>
                     <a href="#" class="text-decoration-none display-none" id="rightContent<?= h($agency_information->agency_id); ?>">
                         <div class="d-flex checked-content m-5 p-3">
-                            <div class="me-2">
+                            <div class="me-2 text-center align-items-center">
                                 <img src="../uploaded_img/agency<?= h($agency_information->agency_id); ?>.png" alt="" class="right-img">
                             </div>
-                            <!-- <div class="checked-paragraph">
-                                <?= h($agency_information->agency_name); ?>
-                            </div> -->
                         </div>
                     </a>
                 <?php endforeach; ?>
