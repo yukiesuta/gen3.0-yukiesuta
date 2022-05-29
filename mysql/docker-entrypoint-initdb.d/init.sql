@@ -244,13 +244,6 @@ major_id INT NOT NULL
 
 );
 
--- INSERT INTO agency_major(agency_id,major_id)VALUES(1,1);
--- INSERT INTO agency_major(agency_id,major_id)VALUES(1,2);
--- INSERT INTO agency_major(agency_id,major_id)VALUES(2,1);
--- INSERT INTO agency_major(agency_id,major_id)VALUES(3,1);
--- INSERT INTO agency_major(agency_id,major_id)VALUES(3,2);
-
-
 
 DROP TABLE IF EXISTS agency_feature;
 
@@ -260,7 +253,6 @@ agency_id INT NOT NULL,
 feature_id INT NOT NULL
 
 );
-
 
 INSERT INTO agency_feature(agency_id,feature_id)VALUES(1,1);
 INSERT INTO agency_feature(agency_id,feature_id)VALUES(1,2);
@@ -286,10 +278,6 @@ INSERT INTO agency_feature(agency_id,feature_id)VALUES(4,4);
 INSERT INTO agency_feature(agency_id,feature_id)VALUES(4,8);
 INSERT INTO agency_feature(agency_id,feature_id)VALUES(4,11);
 INSERT INTO agency_feature(agency_id,feature_id)VALUES(4,14);
-
-
-
-
 
 DROP TABLE IF EXISTS inquiry;
 
@@ -372,5 +360,3 @@ SET
   cryptography = 'jsjdabibdsidcvihc',
   agency_id = 3,
   progress = 0;
-
-  
