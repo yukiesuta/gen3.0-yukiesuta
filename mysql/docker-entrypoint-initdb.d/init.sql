@@ -17,7 +17,7 @@ CREATE TABLE users (
 INSERT INTO
   users
 SET
-  email = 'test@posse-ap.com',
+  email = 'voozer-inc@voozer.com',
   password = sha1('password');
 
 DROP TABLE IF EXISTS agency_users;
@@ -35,34 +35,25 @@ INSERT INTO
   agency_users
 SET
   agency_id = 1,
-  email = 'agency1@posse-ap.com',
-  password = sha1('pass');
+  email = 'mynaviagent@mynavi.com',
+  password = sha1('password');
+
 INSERT INTO
   agency_users
 SET
   agency_id = 2,
-  email = 'agency2@posse-ap.com',
-  password = sha1('pas');
+  email = 'careeragent@career.com',
+  password = sha1('password');
+
+INSERT INTO
+  agency_users
+SET
+  agency_id = 3,
+  email = 'digupcareer@digupcareer.com',
+  password = sha1('password');
 
 
 DROP TABLE IF EXISTS events;
-
-CREATE TABLE events (
-  id INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
-  title VARCHAR(255) NOT NULL,
-  created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
-  updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-);
-
-INSERT INTO
-  events
-SET
-  title = 'イベント1';
-
-INSERT INTO
-  events
-SET
-  title = 'イベント2';
 
 DROP TABLE IF EXISTS industry_condition;
 
