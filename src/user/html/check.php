@@ -75,6 +75,16 @@ $mail_header = "From: {$from}\nReply-To: {$from}\nContent-Type: text/plain;";
 if (mb_send_mail($email, $mail_sub, $mail_body, $mail_header, "-f test@test.com")) {
 } else {
 };
+
+$mail_sub_student = 'お問い合わせを受け付けました。';
+$mail_body_student = 'クラフトにて学生の申し込みがありました。';
+$mail_body_student = html_entity_decode($mail_body_student, ENT_QUOTES, "UTF-8");
+// $from = 'test@test.com';
+$mail_header_student = "From: {$name}\nReply-To: {$name}\nContent-Type: text/plain;";
+
+if (mb_send_mail($from, $mail_sub_student, $mail_body_student, $mail_header_student)) {
+} else {
+};
 ?>
 
 <!DOCTYPE html>

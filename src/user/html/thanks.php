@@ -37,6 +37,16 @@ $sql = 'INSERT INTO inquiry(name,birthday,university,phone,address,email)VALUES(
 $stmt = $db->prepare($sql);
 $stmt->execute();
 
+$mail_sub_student = 'お問い合わせを受け付けました。';
+$mail_body_student = $name . '様、ご協力ありがとうございました。';
+$mail_body_student = html_entity_decode($mail_body_stundent, ENT_QUOTES, "UTF-8");
+// $from = 'test@test.com';
+$mail_header_student = "From: {$name}\nReply-To: {$name}\nContent-Type: text/plain;";
+
+if (mb_send_mail($email, $mail_sub_student, $mail_body_student, $mail_header_student, "-f test@test.com")) {
+} else {
+};
+
 
 
 $agencys = array();
@@ -54,8 +64,8 @@ for ($i = 1; $i < 100; $i++) {
 		foreach ($inquiry_agency as $agency) {
 			$mail_address = $agency->mail_address;
 
-			$mail_sub = 'お問い合わせを受け付けました。';
-			$mail_body = $name . '様、ご協力ありがとうございました。';
+			$mail_sub = '学生からお問い合わせを受け付けました。';
+			$mail_body = '';
 			$mail_body = html_entity_decode($mail_body, ENT_QUOTES, "UTF-8");
 			$from = 'test@test.com';
 			$mail_header = "From: {$from}\nReply-To: {$from}\nContent-Type: text/plain;";
@@ -76,6 +86,8 @@ $mail_header = "From: {$from}\nReply-To: {$from}\nContent-Type: text/plain;";
 if (mb_send_mail($email, $mail_sub, $mail_body, $mail_header, "-f test@test.com")) {
 } else {
 };
+
+
 
 ?>
 
