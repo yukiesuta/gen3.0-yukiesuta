@@ -24,5 +24,5 @@ http://localhost/admin/html/agency-login.php
 
 # 学生が見るページ
 
-http://localhost/admin/html/agency-login.php
+http://localhost/user/html/toppage.php
 
