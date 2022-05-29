@@ -190,7 +190,7 @@
             <div class="mt-3">
                 <div class="fs-5">本サービスの改善、認知向上のためSNSでの共有にもご協力いただけますと幸いです。</div>
                 <div class="mt-3">
-                    <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-show-count="false" data-text="就活エージェントマッチングサービス　Craft" data-size="large" data-url="URL">Tweet</a>
+                    <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-show-count="false" data-text="あなたに最適な就活エージェントが見つかる　就活エージェントマッチングサービス　Craft" data-size="large" data-url="http://localhost/user/html/toppage.php">Tweet</a>
                 </div>
             </div>
             <div>
