@@ -49,21 +49,22 @@ for (const i of supports) {
     };
 }
 
-
 const maxFileSize = 1048576;
 $("input[type=file]").change(function() {
-    $(".error_msg").remove()
-    let uploaded_file = $(this).prop('files')[0];
+    $(".error_msg").remove();
+    let uploaded_file = $(this).prop("files")[0];
     if (maxFileSize < uploaded_file.size) {
-        $(this).val("")
-        $(this).after("<p class='error_msg'>アップロードできる画像の最大サイズは1MBです</p>")
+        $(this).val("");
+        $(this).after(
+            "<p class='error_msg'>アップロードできる画像の最大サイズは1MBです</p>"
+        );
     }
-})
+});
 
 function previewImage(obj) {
     var fileReader = new FileReader();
-    fileReader.onload = (function() {
-        document.getElementById('preview').src = fileReader.result;
-    });
+    fileReader.onload = function() {
+        document.getElementById("preview").src = fileReader.result;
+    };
     fileReader.readAsDataURL(obj.files[0]);
 }
