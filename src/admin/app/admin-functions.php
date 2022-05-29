@@ -255,7 +255,6 @@ function edit_agency_information($pdo)
         ':contract_numbers' => $_POST['contract_numbers'],
         ':id' => $_GET["id"]
     ));
-    echo '情報を更新しました';
 }
 
 

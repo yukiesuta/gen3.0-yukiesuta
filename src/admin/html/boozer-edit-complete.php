@@ -41,7 +41,7 @@ $result = $stmt->fetch();
         </header>
         <div class="text-center mt-5">
             <i class="bi bi-check-circle-fill icon"></i>
-            <div class="fs-3 mt-5">編集完了しました</div>
+            <div class="fs-3 mt-5">編集が完了しました</div>
             <a href="boozer-agency.php">
                 <button type="button" class="btn btn-success mt-5">トップページに戻る</button>
             </a>
