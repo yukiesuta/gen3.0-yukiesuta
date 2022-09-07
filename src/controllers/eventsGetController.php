@@ -14,7 +14,7 @@ function group_by($key, array $ary): array
     return $result;
 }
 //イベント一覧を取得
-$events_stmt = $db->query('select id,name,start_at,end_at from events order by start_at asc;');
+$events_stmt = $db->query('select id,name,start_at,end_at,detail from events order by start_at asc;');
 $events = $events_stmt->fetchAll(PDO::FETCH_ASSOC | PDO::FETCH_UNIQUE);
 //出席一覧を取得
 $attendance_stmt = $db->query('select event_id,user_id,attendance_status from event_user_attendance order by attendance_status;');
