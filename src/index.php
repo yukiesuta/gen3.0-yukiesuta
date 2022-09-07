@@ -2,7 +2,7 @@
 require('dbconnect.php');
 require './controllers/loginGetController.php';
 
-$stmt = $db->query('SELECT events.id, events.name, events.start_at, events.end_at, count(event_user_attendance.id) AS total_participants FROM events LEFT JOIN event_user_attendance ON events.id = event_user_attendance.event_id GROUP BY events.id');
+$stmt = $db->query('SELECT events.id, events.name, events.start_at, events.end_at, count(event_user_attendance.id) AS total_participants FROM events LEFT JOIN event_user_attendance ON events.id = event_user_attendance.event_id WHERE events.start_at >= DATE(now()) GROUP BY events.id');
 $events = $stmt->fetchAll();
 
 function get_day_of_week($w)
@@ -54,7 +54,6 @@ function get_day_of_week($w)
             <a href="" class="text-gray-400">カレンダー</a>
           </div>
         </div>
-
         <?php foreach ($events as $event) : ?>
           <?php
           $start_date = strtotime($event['start_at']);
