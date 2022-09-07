@@ -30,7 +30,7 @@ CREATE TABLE event_user_attendance (
   id INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
   event_id INT NOT NULL,
   user_id INT NOT NULL,
-  attendance_status INT DEFAULT 0,
+  attendance_status INT DEFAULT 0,    /*未回答：0、参加：1、不参加：2*/
   created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
   updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   deleted_at DATETIME,
@@ -60,9 +60,14 @@ INSERT INTO users (email, name, password, is_admin) VALUES
     ("user2@gmail.com", "user2", "password2", false),
     ("user3@gmail.com", "user3", "password3", false);
 
-INSERT INTO event_user_attendance SET event_id=1, user_id=1;
-INSERT INTO event_user_attendance SET event_id=1, user_id=1;
-INSERT INTO event_user_attendance SET event_id=1, user_id=1;
-INSERT INTO event_user_attendance SET event_id=2, user_id=2;
-INSERT INTO event_user_attendance SET event_id=2, user_id=2;
-INSERT INTO event_user_attendance SET event_id=3, user_id=3;
+INSERT INTO event_user_attendance SET event_id=1, user_id=1, attendance_status=1;
+INSERT INTO event_user_attendance SET event_id=1, user_id=2, attendance_status=2;
+INSERT INTO event_user_attendance SET event_id=1, user_id=3, attendance_status=1;
+INSERT INTO event_user_attendance SET event_id=2, user_id=1, attendance_status=1;
+INSERT INTO event_user_attendance SET event_id=2, user_id=2, attendance_status=0;
+INSERT INTO event_user_attendance SET event_id=3, user_id=1, attendance_status=1;
+INSERT INTO event_user_attendance SET event_id=4, user_id=1, attendance_status=1;
+INSERT INTO event_user_attendance SET event_id=4, user_id=3, attendance_status=2;
+INSERT INTO event_user_attendance SET event_id=5, user_id=1, attendance_status=1;
+INSERT INTO event_user_attendance SET event_id=5, user_id=2, attendance_status=1;
+INSERT INTO event_user_attendance SET event_id=6, user_id=2, attendance_status=1;
