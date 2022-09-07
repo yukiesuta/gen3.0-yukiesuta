@@ -20,12 +20,17 @@ foreach ($events as $event) {
     $notification_date = $designated_time->format('Y-m-d'); //通知日
 
     // 通知日と今日が同じが同じならメール
+    mb_language("ja");
+    mb_internal_encoding("utf-8");
     if ($notification_date == $today) {
         foreach ($users as $user) {
             $to = $user['email'];
             $subject = "三日前通知！";
             $body = '【リマインド】イベント名「' . $event['name'] . '」の三日前です。内容は「' .$event['detail']  .'」です。開催日時は' .$event['start_at']  .'です。回答をお願いします。このメールは入力状況に関わらず全員に通知しています。';
             $headers = "From: system@posse-ap.com";
+            $headers .= "MIME-Version: 1.0\n";
+            $headers .= "Content-Transfer-Encoding: BASE64\n";
+            $headers .= "Content-Type: text/plain; charset=UTF-8\n";
             if (mb_send_mail($to, $subject, $body, $headers)) {
                 print_r('<pre>');
                 echo $event['name'];
