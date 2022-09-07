@@ -55,10 +55,10 @@ INSERT INTO events SET name='ハッカソン', start_at='2023/09/03 10:00', end_
 INSERT INTO events SET name='遊び', start_at='2023/09/06 18:00', end_at='2023/09/06 22:00';
 
 INSERT INTO users (email, name, password, is_admin) VALUES
-    ("user0@gmail.com", "user0", "password0", true),
-    ("user1@gmail.com", "user1", "password1", false),
-    ("user2@gmail.com", "user2", "password2", false),
-    ("user3@gmail.com", "user3", "password3", false);
+    ("user0@gmail.com", "user0", SHA2('password0',512), true),
+    ("user1@gmail.com", "user1", SHA2('password1',512), false),
+    ("user2@gmail.com", "user2", SHA2('password2',512), false),
+    ("user3@gmail.com", "user3", SHA2('password3',512), false);
 
 INSERT INTO event_user_attendance SET event_id=1, user_id=1, attendance_status=1;
 INSERT INTO event_user_attendance SET event_id=1, user_id=2, attendance_status=2;
