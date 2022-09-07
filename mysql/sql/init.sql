@@ -392,6 +392,7 @@ SET
     event_id = 9,
     user_id = 4,
     attendance_status = 0;
+    
 INSERT INTO
     event_user_attendance
 SET
