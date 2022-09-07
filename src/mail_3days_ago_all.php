@@ -24,7 +24,7 @@ foreach ($events as $event) {
         foreach ($users as $user) {
             $to = $user['email'];
             $subject = "三日前通知！";
-            $body = '【リマインド】' . $event['name'] . 'の三日前です。全員に通知しています。';
+            $body = '【リマインド】イベント名「' . $event['name'] . '」の三日前です。内容は「' .$event['detail']  .'」です。開催日時は' .$event['start_at']  .'です。回答をお願いします。このメールは入力状況に関わらず全員に通知しています。';
             $headers = "From: system@posse-ap.com";
             if (mb_send_mail($to, $subject, $body, $headers)) {
                 mb_send_mail($to, $subject, $body, $headers);
@@ -32,11 +32,11 @@ foreach ($events as $event) {
                 echo $event['name'];
                 echo 'は';
                 echo $designated_date;
-                echo 'に開催予定で、三日前であり、「';
+                echo 'に開催予定で、三日前であり、送信した内容は、「';
                 echo $body;
-                echo '」は';
+                echo '」であり、';
                 echo $to;
-                echo 'に送信されました。';
+                echo 'に正常に送信されました。';
                 print_r('</pre>');
             } else {
                 echo "メール送信失敗です";
