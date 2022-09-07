@@ -38,10 +38,10 @@ function get_day_of_week($w)
       <div id="filter" class="mb-8">
         <h2 class="text-sm font-bold mb-3">フィルター</h2>
         <div class="flex">
-          <a href="index.php" class="px-3 py-2 text-md font-bold mr-2 rounded-md shadow-md bg-blue-600 text-white">全て</a>
-          <a href="index.php?status_id=1" class="px-3 py-2 text-md font-bold mr-2 rounded-md shadow-md bg-white">参加</a>
-          <a href="index.php?status_id=2" class="px-3 py-2 text-md font-bold mr-2 rounded-md shadow-md bg-white">不参加</a>
-          <a href="index.php?status_id=0" class="px-3 py-2 text-md font-bold mr-2 rounded-md shadow-md bg-white">未回答</a>
+          <a href="index.php" class="px-3 py-2 text-md font-bold mr-2 rounded-md shadow-md <?php if(!isset($_GET['attendance_status'])){echo 'bg-blue-600 text-white';}else{echo 'bg-white';}?>">全て</a>
+          <a href="index.php?attendance_status=1" class="px-3 py-2 text-md font-bold mr-2 rounded-md shadow-md <?php if($_GET['attendance_status']==1){echo 'bg-blue-600 text-white';}else{echo 'bg-white';}?>">参加</a>
+          <!-- <a href="index.php?attendance_status=2" class="buttons_to_change_attendance_filter px-3 py-2 text-md font-bold mr-2 rounded-md shadow-md <?php if($_GET['attendance_status']==2){echo 'bg-blue-600 text-white';}else{echo 'bg-white';}?>">不参加</a> -->
+          <!-- <a href="index.php?attendance_status=0" class="buttons_to_change_attendance_filter px-3 py-2 text-md font-bold mr-2 rounded-md shadow-md <?php if($_GET['attendance_status']==0){echo 'bg-blue-600 text-white';}else{echo 'bg-white';}?>">未回答</a> -->
         </div>
       </div>
       <div id="events-list">
@@ -53,11 +53,8 @@ function get_day_of_week($w)
           </div>
         </div>
 
-        <?php foreach ($events as $event) : ?>
+        <?php foreach ($events_filtered_by_login_user_attendance_status as $event) : ?>
           <?php
-          // print_r('<pre>');
-          // var_dump($event);
-          // print_r('</pre>');
           $start_date = strtotime($event['start_at']);
           $end_date = strtotime($event['end_at']);
           $day_of_week = get_day_of_week(date("w", $start_date));

@@ -23,16 +23,30 @@ $attendances = $attendance_stmt->fetchAll();
 $event_user_attendances_grouped_by_event_id = group_by('event_id', $attendances);
 //ログインユーザーのイベントのattendance_statusを取得
 $login_user_attendance_stmt = $db->prepare('select event_id,attendance_status from event_user_attendance where user_id= :user_id order by event_id;');
-$login_user_attendance_stmt->bindValue(':user_id',$_SESSION['login_user']['id']);
+$login_user_attendance_stmt->bindValue(':user_id', $_SESSION['login_user']['id']);
 $login_user_attendance_stmt->execute();
-$login_user_attendance=$login_user_attendance_stmt->fetchAll(PDO::FETCH_ASSOC | PDO::FETCH_UNIQUE);
+$login_user_attendance = $login_user_attendance_stmt->fetchAll(PDO::FETCH_ASSOC | PDO::FETCH_UNIQUE);
 
 foreach ($event_user_attendances_grouped_by_event_id as $event_id => $users) {
     //出席一覧を出席ステータスでgroupbyする。laravelのeager loadを再現してる
     $users_grouped_by_attendance_status = group_by('attendance_status', $users);
     $events[$event_id] = $events[$event_id] + array('attendance_status' => $users_grouped_by_attendance_status);
-    $events[$event_id]=$events[$event_id]+array('login_user_attendance_status'=>$login_user_attendance[$event_id]['attendance_status']);
+    $events[$event_id] = $events[$event_id] + array('login_user_attendance_status' => $login_user_attendance[$event_id]['attendance_status']);
 };
+//URLのクエリパラメータによって返す情報をフィルターする
+$events_filtered_by_login_user_attendance_status=[];
+//全て
+if(!isset($_GET['attendance_status'])){
+    $events_filtered_by_login_user_attendance_status=$events;
+}else{
+    foreach($events as $event){
+        if($_GET['attendance_status']===$event['login_user_attendance_status']){
+            array_push($events_filtered_by_login_user_attendance_status,$event);
+        }
+    }
+}
+
+
 // print_r('<pre>');
 // var_dump($events);
 // // var_dump($grouped_by_attendances);
