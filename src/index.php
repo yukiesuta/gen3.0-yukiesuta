@@ -52,9 +52,12 @@ function get_day_of_week($w)
             <a href="" class="text-gray-400">カレンダー</a>
           </div>
         </div>
-        
+
         <?php foreach ($events as $event) : ?>
           <?php
+          // print_r('<pre>');
+          // var_dump($event);
+          // print_r('</pre>');
           $start_date = strtotime($event['start_at']);
           $end_date = strtotime($event['end_at']);
           $day_of_week = get_day_of_week(date("w", $start_date));
@@ -69,16 +72,23 @@ function get_day_of_week($w)
             </div>
             <div class="flex flex-col justify-between text-right">
               <div>
-                <?php if ($event['id'] % 3 === 1) : ?>
+                <?php if ($event['login_user_attendance_status'] == 0) : ?>
                   <p class="text-sm font-bold text-yellow-400">未回答</p>
                   <p class="text-xs text-yellow-400">期限 <?php echo date("m月d日", strtotime('-3 day', $end_date)); ?></p>
-                <?php elseif ($event['id'] % 3 === 2) : ?>
+                <?php elseif ($event['login_user_attendance_status'] == 2) : ?>
                   <p class="text-sm font-bold text-gray-300">不参加</p>
-                <?php else : ?>
+                <?php elseif ($event['login_user_attendance_status'] == 1) : ?>
                   <p class="text-sm font-bold text-green-400">参加</p>
                 <?php endif; ?>
               </div>
-              <p class="text-sm"><span class="text-xl"><?php echo $event['total_participants']; ?></span>人参加 ></p>
+              <p class="text-sm"><span class="text-xl">
+                  <?php
+                  if (isset($event['attendance_status'][1])) {
+                    echo count($event['attendance_status'][1]);
+                  } else {
+                    echo 0;
+                  }
+                  ?></span>人参加 ></p>
             </div>
           </div>
         <?php endforeach; ?>
