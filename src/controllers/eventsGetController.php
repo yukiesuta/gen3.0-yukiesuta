@@ -45,10 +45,13 @@ if(!isset($_GET['attendance_status'])){
         }
     }
 }
-
-
-// print_r('<pre>');
-// var_dump($events);
-// // var_dump($grouped_by_attendances);
-// // var_dump($events);
-// print_r('</pre>');
+//今日の日付のはじめを数値にして各イベントの開始時刻と比較
+date_default_timezone_set('Asia/Tokyo');
+$start_of_today=date("Y-m-d 00:00:00");
+$time_start_of_today=strtotime($start_of_today);
+foreach($events_filtered_by_login_user_attendance_status as $key=>$value){
+    //今日の00:00:00より前のイベントは消す
+    if(strtotime($value['start_at'])<=$time_start_of_today){
+        unset($events_filtered_by_login_user_attendance_status[$key]);
+    }
+}
