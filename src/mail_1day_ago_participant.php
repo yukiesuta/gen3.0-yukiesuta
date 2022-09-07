@@ -7,8 +7,11 @@ $events = $stmt->fetchAll();
 foreach ($events as $event) {
     $to = $event['email'];
     $subject = "未回答者様へ";
-    $body = '【リマインド】イベント名「' . $event['name'] . '」の一日前です。内容は「' .$event['detail']  .'」です。開催日時は' .$event['start_at']  .'です。回答をお願いします。このメールは参加者のみに通知しています。';;
+    $body = '【リマインド】イベント名「' . $event['name'] . '」の一日前です。内容は「' . $event['detail']  . '」です。開催日時は' . $event['start_at']  . 'です。回答をお願いします。このメールは参加者のみに通知しています。';;
     $headers = "From: system@posse-ap.com";
+    $headers .= "MIME-Version: 1.0\n";
+    $headers .= "Content-Transfer-Encoding: BASE64\n";
+    $headers .= "Content-Type: text/plain; charset=UTF-8\n";
 
     $now_time = new DateTime(); //現在日時
     $designated_time = new DateTime($event['start_at']); //指定日時
