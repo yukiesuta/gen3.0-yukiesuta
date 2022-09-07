@@ -34,24 +34,24 @@ foreach ($event_user_attendances_grouped_by_event_id as $event_id => $users) {
     $events[$event_id] = $events[$event_id] + array('login_user_attendance_status' => $login_user_attendance[$event_id]['attendance_status']);
 };
 //URLのクエリパラメータによって返す情報をフィルターする
-$events_filtered_by_login_user_attendance_status=[];
+$events_filtered_by_login_user_attendance_status = [];
 //全て
-if(!isset($_GET['attendance_status'])){
-    $events_filtered_by_login_user_attendance_status=$events;
-}else{
-    foreach($events as $event){
-        if($_GET['attendance_status']===$event['login_user_attendance_status']){
-            array_push($events_filtered_by_login_user_attendance_status,$event);
+if (!isset($_GET['attendance_status'])) {
+    $events_filtered_by_login_user_attendance_status = $events;
+} else {
+    foreach ($events as $event) {
+        if ($_GET['attendance_status'] === $event['login_user_attendance_status']) {
+            array_push($events_filtered_by_login_user_attendance_status, $event);
         }
     }
 }
 //今日の日付のはじめを数値にして各イベントの開始時刻と比較
 date_default_timezone_set('Asia/Tokyo');
-$start_of_today=date("Y-m-d 00:00:00");
-$time_start_of_today=strtotime($start_of_today);
-foreach($events_filtered_by_login_user_attendance_status as $key=>$value){
+$start_of_today = date("Y-m-d 00:00:00");
+$time_start_of_today = strtotime($start_of_today);
+foreach ($events_filtered_by_login_user_attendance_status as $key => $value) {
     //今日の00:00:00より前のイベントは消す
-    if(strtotime($value['start_at'])<=$time_start_of_today){
+    if (strtotime($value['start_at']) <= $time_start_of_today) {
         unset($events_filtered_by_login_user_attendance_status[$key]);
     }
 }
