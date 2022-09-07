@@ -54,6 +54,7 @@ function get_day_of_week($w)
             <a href="" class="text-gray-400">カレンダー</a>
           </div>
         </div>
+        
         <?php foreach ($events as $event) : ?>
           <?php
           $start_date = strtotime($event['start_at']);
