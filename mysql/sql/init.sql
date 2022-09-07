@@ -101,15 +101,15 @@ INSERT INTO events
 SET
     name = '試合',
     detail = '国立競技場でキックオフ',
-    start_at = '2023/09/11 18:00',
-    end_at = '2023/09/11 22:00';
+    start_at = '2022/09/11 18:00',
+    end_at = '2022/09/11 22:00';
 
 INSERT INTO events
 SET
     name = 'ボドゲカフェ',
     detail = '皆で戦いましょう',
-    start_at = '2023/09/12 18:00',
-    end_at = '2023/09/13 22:00';
+    start_at = '2022/09/12 18:00',
+    end_at = '2022/09/13 22:00';
 
 INSERT INTO
     users (email, name, password, is_admin)
