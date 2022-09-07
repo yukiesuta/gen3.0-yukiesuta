@@ -6,7 +6,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $user_stmt->bindValue(':email', $_POST['email']);
     $user_stmt->execute();
     $user = $user_stmt->fetch();
-    if ($_POST['password'] === $user['password']) {
+    if (hash('sha512',$_POST['password'])===$user['password']) {
         $_SESSION['login_bool'] = 1;
     } else {
         $_SESSION['login_bool'] = 0;
