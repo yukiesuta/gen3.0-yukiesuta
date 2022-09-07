@@ -114,7 +114,7 @@ INSERT INTO events
 SET
     name = '大阪に行こ',
     detail = 'たこ焼きを食べます',
-    start_at = '2022/09/12 18:00',
+    start_at = '2022/09/13 18:00',
     end_at = '2022/09/13 22:00';
 
 INSERT INTO
