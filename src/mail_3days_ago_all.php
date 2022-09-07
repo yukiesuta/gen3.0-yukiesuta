@@ -27,7 +27,6 @@ foreach ($events as $event) {
             $body = '【リマインド】イベント名「' . $event['name'] . '」の三日前です。内容は「' .$event['detail']  .'」です。開催日時は' .$event['start_at']  .'です。回答をお願いします。このメールは入力状況に関わらず全員に通知しています。';
             $headers = "From: system@posse-ap.com";
             if (mb_send_mail($to, $subject, $body, $headers)) {
-                mb_send_mail($to, $subject, $body, $headers);
                 print_r('<pre>');
                 echo $event['name'];
                 echo 'は';
