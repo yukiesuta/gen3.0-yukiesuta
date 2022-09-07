@@ -110,6 +110,12 @@ SET
     detail = '皆で戦いましょう',
     start_at = '2022/09/12 18:00',
     end_at = '2022/09/13 22:00';
+INSERT INTO events
+SET
+    name = '大阪に行こ',
+    detail = 'たこ焼きを食べます',
+    start_at = '2022/09/12 18:00',
+    end_at = '2022/09/13 22:00';
 
 INSERT INTO
     users (email, name, password, is_admin)
@@ -386,3 +392,30 @@ SET
     event_id = 9,
     user_id = 4,
     attendance_status = 0;
+INSERT INTO
+    event_user_attendance
+SET
+    event_id = 10,
+    user_id = 1,
+    attendance_status = 1;
+
+INSERT INTO
+    event_user_attendance
+SET
+    event_id = 10,
+    user_id = 2,
+    attendance_status = 2;
+
+INSERT INTO
+    event_user_attendance
+SET
+    event_id = 10,
+    user_id = 3,
+    attendance_status = 0;
+
+INSERT INTO
+    event_user_attendance
+SET
+    event_id = 10,
+    user_id = 4,
+    attendance_status = 1;
