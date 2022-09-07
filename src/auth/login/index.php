@@ -35,7 +35,8 @@ session_start();
       <?php 
       if($_SESSION['login_bool']===0){
         echo '<div class="text-center">emailまたはpasswordが間違っています</div>';
-      }elseif($_SESSION['changed_password'] === 1){
+      }
+      if($_SESSION['changed_password']===1){
         echo '<div class="text-center">passwordを再設定しました</div>';
       }
       ?>

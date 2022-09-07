@@ -23,7 +23,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $stmt->bindValue(':password', hash('sha512', $_POST['password']));
     $stmt->execute();
     $_SESSION['changed_password'] = 1;
-    $_SESSION['login_bool'] = null;
+    unset($_SESSION['login_bool']);
     header("Location: ../auth/login/index.php");
     exit;
   }
