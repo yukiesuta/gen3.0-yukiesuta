@@ -1,17 +1,17 @@
 'use strict'
-const openModalClassList = document.querySelectorAll('.modal-open');
-const closeModalClassList = document.querySelectorAll('.modal-close');
-const overlay = document.querySelector('.modal-overlay');
-const body = document.querySelector('body');
-const modal = document.querySelector('.modal');
-const modalInnerHTML = document.getElementById('modalInner');
+const openModalClassList = document.querySelectorAll('.modal-open')
+const closeModalClassList = document.querySelectorAll('.modal-close')
+const overlay = document.querySelector('.modal-overlay')
+const body = document.querySelector('body')
+const modal = document.querySelector('.modal')
+const modalInnerHTML = document.getElementById('modalInner')
 
 for (let i = 0; i < openModalClassList.length; i++) {
   openModalClassList[i].addEventListener('click', (e) => {
-    e.preventDefault();
-    let eventId = parseInt(e.currentTarget.id.replace('event_', ''));
-    openModal(eventId);
-  }, false);
+    e.preventDefault()
+    let eventId = parseInt(e.currentTarget.id.replace('event_', ''))
+    openModal(eventId)
+  }, false)
 }
 
 for (var i = 0; i < closeModalClassList.length; i++) {
@@ -23,9 +23,9 @@ overlay.addEventListener('click', closeModal)
 
 async function openModal(eventId) {
   try {
-    const url = '/api/getModalInfo.php?event_id=' + eventId;
-    const res = await fetch(url);
-    const event = await res.json();
+    const url = '/api/getModalInfo.php?event_id=' + eventId
+    const res = await fetch(url)
+    const event = await res.json()
     let modalHTML = `
       <h2 class="text-md font-bold mb-3">${event.name}</h2>
       <p class="text-sm">${event.date}（${event.day_of_week}）</p>
@@ -51,26 +51,26 @@ async function openModal(eventId) {
             <button class="flex-1 bg-blue-500 py-2 mx-3 rounded-3xl text-white text-lg font-bold" onclick="participateEvent(${eventId})">参加する</button>
             <button class="flex-1 bg-gray-300 py-2 mx-3 rounded-3xl text-white text-lg font-bold">参加しない</button>
           </div>
-        `;
+        `
         break;
       case '1':
         modalHTML += `
           <div class="text-center mt-10">
             <p class="text-xl font-bold text-gray-300">不参加</p>
           </div>
-        `;
+        `
         break;
       case '2':
         modalHTML += `
           <div class="text-center mt-10">
             <p class="text-xl font-bold text-green-400">参加</p>
           </div>
-        `;
+        `
         break;
     }
     modalInnerHTML.insertAdjacentHTML('afterbegin', modalHTML)
   } catch (error) {
-    console.log(error);
+    console.log(error)
   }
   toggleModal()
 }
