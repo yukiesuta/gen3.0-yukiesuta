@@ -55,3 +55,18 @@ foreach ($events_filtered_by_login_user_attendance_status as $key => $value) {
         unset($events_filtered_by_login_user_attendance_status[$key]);
     }
 }
+
+//pagination
+//クエリから変数をセット
+$event_limit = 10;
+$total_event_number = count($events_filtered_by_login_user_attendance_status);
+$total_page_number = ceil($total_event_number/$event_limit);
+
+
+if (isset($_GET['page'])) {
+	$page = (int)$_GET['page'];
+} else {
+	$page = 1;
+}
+
+$events_filtered_by_login_user_attendance_status = array_slice($events_filtered_by_login_user_attendance_status, $event_limit*($page-1), $event_limit);
