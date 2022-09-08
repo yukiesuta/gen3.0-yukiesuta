@@ -3,7 +3,7 @@ require_once(dirname(__FILE__) . "/../dbconnect.php");
 require_once(dirname(__FILE__) . "/../controllers/adminLoginGetController.php");
 session_start();
 
-$stmt = $db->query('SELECT events.id, events.name, events.start_at, events.end_at, count(event_user_attendance.id) AS total_participants FROM events LEFT JOIN event_user_attendance ON events.id = event_user_attendance.event_id WHERE events.start_at >= DATE(now()) GROUP BY events.id ORDER BY events.start_at ASC');
+$stmt = $db->query('SELECT events.id, events.name, events.start_at, events.end_at, count(event_user_attendance.id) AS total_participants FROM events LEFT JOIN event_user_attendance ON events.id = event_user_attendance.event_id WHERE events.start_at >= DATE(now()) and event_user_attendance.attendance_status=1 GROUP BY events.id ORDER BY events.start_at ASC');
 $events = $stmt->fetchAll();
 
 function get_day_of_week($w)
