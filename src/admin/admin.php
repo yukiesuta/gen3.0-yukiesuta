@@ -1,6 +1,6 @@
 <?php
 require_once(dirname(__FILE__) . "/../dbconnect.php");
-require_once(dirname(__FILE__) . "/../controllers/loginGetController.php");
+require_once(dirname(__FILE__) . "/../controllers/adminLoginGetController.php");
 session_start();
 
 $stmt = $db->query('SELECT events.id, events.name, events.start_at, events.end_at, count(event_user_attendance.id) AS total_participants FROM events LEFT JOIN event_user_attendance ON events.id = event_user_attendance.event_id WHERE events.start_at >= DATE(now()) GROUP BY events.id ORDER BY events.start_at ASC');
@@ -30,9 +30,12 @@ function get_day_of_week($w)
       <div class="h-full">
         <img src="../img/header-logo.png" alt="" class="h-full">
       </div>
-      <form action="../controllers/logoutPostController.php" method="POST">
-        <input value="ログアウト" type="submit" class="text-white bg-blue-400 px-4 py-2 rounded-3xl bg-gradient-to-r from-blue-600 to-blue-200 text-xs">
-      </form>
+      <div class="flex">
+        <form action="../controllers/logoutPostController.php" method="POST">
+          <input value="ログアウト" type="submit" class="text-white bg-blue-400 px-4 py-2 rounded-3xl bg-gradient-to-r from-blue-600 to-blue-200 text-xs">
+        </form>
+        <a href="/" class="text-xs text-white bg-blue-400 px-4 py-2 rounded-3xl bg-gradient-to-r from-blue-600 to-blue-200">ユーザー画面へ</a>
+      </div>
     </div>
   </header>
 
@@ -41,11 +44,9 @@ function get_day_of_week($w)
       <div id="filter" class="mb-8">
         <h2 class="text-sm font-bold mb-3">メニュー</h2>
         <div class="flex">
-          <a href="" class="px-3 py-2 text-xs font-bold mr-2 rounded-md shadow-md bg-white">イベントリスト</a>
+          <a href="" class="px-3 py-2 text-xs font-bold mr-2 rounded-md shadow-md bg-blue-600 text-white">イベントリスト</a>
           <a href="./userRegister.php" class="px-3 py-2 text-xs font-bold mr-2 rounded-md shadow-md bg-white">ユーザー登録</a>
           <a href="./eventRegister.php" class="px-3 py-2 text-xs font-bold mr-2 rounded-md shadow-md bg-white">イベント追加</a>
-          <a href="/" class="px-3 py-2 text-xs font-bold mr-2 rounded-md shadow-md bg-white">ユーザー画面へ</a>
-
         </div>
       </div>
       <div id="events-list">
@@ -63,7 +64,7 @@ function get_day_of_week($w)
           $end_date = strtotime($event['end_at']);
           $day_of_week = get_day_of_week(date("w", $start_date));
           ?>
-          <div class="modal-open bg-white mb-3 p-4 flex justify-between rounded-md shadow-md cursor-pointer" id="event-<?php echo $event['id']; ?>">
+          <div class="admin-modal-open bg-white mb-3 p-4 flex justify-between rounded-md shadow-md cursor-pointer" id="event_<?php echo $event['id']; ?>">
             <div>
               <h3 class="font-bold text-lg mb-2"><?php echo $event['name'] ?></h3>
               <p><?php echo date("Y年m月d日（${day_of_week}）", $start_date); ?></p>
@@ -72,16 +73,6 @@ function get_day_of_week($w)
               </p>
             </div>
             <div class="flex flex-col justify-between text-right">
-              <div>
-                <?php if ($event['id'] % 3 === 1) : ?>
-                  <p class="text-sm font-bold text-yellow-400">未回答</p>
-                  <p class="text-xs text-yellow-400">期限 <?php echo date("m月d日", strtotime('-3 day', $end_date)); ?></p>
-                <?php elseif ($event['id'] % 3 === 2) : ?>
-                  <p class="text-sm font-bold text-gray-300">不参加</p>
-                <?php else : ?>
-                  <p class="text-sm font-bold text-green-400">参加</p>
-                <?php endif; ?>
-              </div>
               <p class="text-sm"><span class="text-xl"><?php echo $event['total_participants']; ?></span>人参加 ></p>
             </div>
           </div>

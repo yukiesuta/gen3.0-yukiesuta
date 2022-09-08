@@ -9,7 +9,7 @@ DROP TABLE IF EXISTS events;
 CREATE TABLE
     events (
         id INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
-        name VARCHAR(10) NOT NULL,
+        name VARCHAR(20) NOT NULL,
         detail VARCHAR(128) DEFAULT NULL,
         start_at DATETIME,
         end_at DATETIME,
