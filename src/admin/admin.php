@@ -99,6 +99,7 @@ function get_day_of_week($w)
   </div>
 
   <script src="/js/main.js"></script>
+  <script id="toggle_script"></script>
 </body>
 
 </html>

@@ -33,9 +33,8 @@ function get_day_of_week($w)
           <input value="ログアウト" type="submit" class="mr-2 text-xs text-white bg-blue-400 px-4 py-2 rounded-3xl bg-gradient-to-r from-blue-600 to-blue-200">
         </form>
         <?php
-        // echo $_SESSION['login_user']['is_admin'];
         if ($_SESSION['login_user']['is_admin']) {
-          echo '<a href="./admin/admin.php" class="text-xs text-white bg-blue-400 px-4 py-2 rounded-3xl bg-gradient-to-r from-blue-600 to-blue-200">管理者画面へ</a>';
+          echo '<a href="./admin/admin.php" class="text-xs text-white bg-blue-400 px-4 py-2 rounded-3xl bg-gradient-to-r from-blue-600 to-blue-200">管理者画面</a>';
         }
         ?>
       </div>
@@ -149,6 +148,7 @@ function get_day_of_week($w)
   </div>
 
   <script src="/js/main.js"></script>
+  <script id="toggle_script"></script>
 </body>
 
 </html>

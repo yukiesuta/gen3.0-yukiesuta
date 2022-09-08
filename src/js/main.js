@@ -36,6 +36,8 @@ for(let i=0;i<showParticipantsClassList.length;i++){
   })
 }
 
+
+
 async function openModal(eventId) {
   try {
     const url = '/api/getModalInfo.php?event_id=' + eventId
@@ -55,7 +57,7 @@ async function openModal(eventId) {
       <hr class="my-4">
 
       <p id="show_modal_participants" class="text-sm"><span class="text-xl">${event.total_participants}</span>人参加 ></p>
-      <div id="modal_participants">
+      <div class="hidden" id="modal_participants">
     `;
     Object.keys(obj).forEach(function(key){
       modalHTML+=obj[key]['user_name']+'<br>'
@@ -91,11 +93,17 @@ async function openModal(eventId) {
     }
     
     modalInnerHTML.insertAdjacentHTML('afterbegin', modalHTML)
+    document.getElementById('toggle_script').innerHTML=`document.getElementById('show_modal_participants').addEventListener('click',function(){
+      document.getElementById('modal_participants').classList.toggle('hidden')
+    })`
   } catch (error) {
     console.log(error)
   }
   toggleModal()
 }
+
+
+
 async function openAdminModal(eventId) {
   try {
     const url = '/api/getModalInfo.php?event_id=' + eventId
@@ -125,23 +133,26 @@ async function openAdminModal(eventId) {
 
 
       <p id="show_admin_participants" class="text-sm"><span class="text-xl show_participants">${event.total_participants}</span>人参加 ></p>
-      <div id="admin_participants">
+      <div class="hidden" id="admin_participants">
     `;
     Object.keys(obj).forEach(function(key){
       modalHTML+='・'+obj[key]['user_name']+'<br>'
     })
     modalHTML+='</div>'
     modalInnerHTML.insertAdjacentHTML('afterbegin', modalHTML)
+    document.getElementById('toggle_script').innerHTML=`document.getElementById('show_admin_participants').addEventListener('click',function(){
+      document.getElementById('admin_participants').classList.toggle('hidden');
+    })`
   } catch (error) {
     console.log(error)
   }
   toggleModal()
 }
-// 過去の日程選べないようにする（過去表示されないから間違えると戻れない）
 
 function closeModal() {
   modalInnerHTML.innerHTML = ''
   toggleModal()
+  location.reload();
 }
 
 function toggleModal() {
