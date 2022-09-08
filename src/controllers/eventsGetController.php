@@ -58,7 +58,7 @@ foreach ($events_filtered_by_login_user_attendance_status as $key => $value) {
 
 //pagination
 //クエリから変数をセット
-$event_limit = 3;
+$event_limit = 10;
 $total_event_number = count($events_filtered_by_login_user_attendance_status);
 $total_page_number = ceil($total_event_number/$event_limit);
 
