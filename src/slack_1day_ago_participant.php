@@ -1,6 +1,7 @@
 <?php
 $headers = [
-    'Authorization: Bearer xoxb-4051294469826-4048340950789-V7x2EbBthVNlZK5lhVGvBX3Q', //（1)
+    // トークンは保護する
+    'Authorization: Bearer ここにトークンを入力　xoxbで始まる', //（1)
     'Content-Type: application/json;charset=utf-8'
 ];
 
