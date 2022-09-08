@@ -33,6 +33,7 @@ async function openModal(eventId) {
     const url = '/api/getModalInfo.php?event_id=' + eventId
     const res = await fetch(url)
     const event = await res.json()
+    const obj=JSON.parse(event.participants)
     let modalHTML = `
       <h2 class="text-md font-bold mb-3">${event.name}</h2>
       <p class="text-sm">${event.date}（${event.day_of_week}）</p>
@@ -45,8 +46,13 @@ async function openModal(eventId) {
       </p>
       <hr class="my-4">
 
-      <p class="text-sm"><span class="text-xl">${event.total_participants}</span>人参加 ></p>
+      <p id="show_modal_participants" class="text-sm"><span class="text-xl">${event.total_participants}</span>人参加 ></p>
+      <div>
     `;
+    Object.keys(obj).forEach(function(key){
+      modalHTML+=obj[key]['user_name']+'<br>'
+    })
+    modalHTML+='</div>'
     switch (event.status) {
       case '0':
         modalHTML += `
@@ -75,6 +81,7 @@ async function openModal(eventId) {
         `
         break;
     }
+    
     modalInnerHTML.insertAdjacentHTML('afterbegin', modalHTML)
   } catch (error) {
     console.log(error)
@@ -86,6 +93,7 @@ async function openAdminModal(eventId) {
     const url = '/api/getModalInfo.php?event_id=' + eventId
     const res = await fetch(url)
     const event = await res.json()
+    const obj=JSON.parse(event.participants)
     let modalHTML = `
     <input class="border-solid border-black border" hidden name="event_id" value="${eventId}">
     <div>
@@ -108,8 +116,13 @@ async function openAdminModal(eventId) {
     
 
 
-      <p class="text-sm"><span class="text-xl">${event.total_participants}</span>人参加 ></p>
+      <p id="show_admin_participants" class="text-sm"><span class="text-xl show_participants">${event.total_participants}</span>人参加 ></p>
+      <div id="admin_participants">
     `;
+    Object.keys(obj).forEach(function(key){
+      modalHTML+=obj[key]['user_name']+'<br>'
+    })
+    modalHTML+='</div>'
     modalInnerHTML.insertAdjacentHTML('afterbegin', modalHTML)
   } catch (error) {
     console.log(error)

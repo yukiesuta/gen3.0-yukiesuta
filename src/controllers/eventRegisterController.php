@@ -35,4 +35,3 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     header("Location:  /../admin/admin.php");
     exit;
 }
-//管理画面のボタンの色の変化もやるべき。遷移してるから簡単
