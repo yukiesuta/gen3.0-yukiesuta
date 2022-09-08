@@ -1,9 +1,8 @@
 <?php
 require('dbconnect.php');
 require './controllers/loginGetController.php';
-
-$stmt = $db->query('SELECT events.id, events.name, events.start_at, events.end_at, count(event_user_attendance.id) AS total_participants FROM events LEFT JOIN event_user_attendance ON events.id = event_user_attendance.event_id WHERE events.start_at >= DATE(now()) GROUP BY events.id ORDER BY events.start_at ASC');
-$events = $stmt->fetchAll();
+require './controllers/eventsGetController.php';
+session_start();
 
 function get_day_of_week($w)
 {
@@ -29,9 +28,17 @@ function get_day_of_week($w)
       <div class="h-full">
         <img src="img/header-logo.png" alt="" class="h-full">
       </div>
-      <form action="./controllers/logoutPostController.php" method="POST">
-        <input value="ログアウト" type="submit" class="text-white bg-blue-400 px-4 py-2 rounded-3xl bg-gradient-to-r from-blue-600 to-blue-200">
-      </form>
+      <div class="flex">
+        <form action="./controllers/logoutPostController.php" method="POST">
+          <input value="ログアウト" type="submit" class="mr-2 text-xs text-white bg-blue-400 px-4 py-2 rounded-3xl bg-gradient-to-r from-blue-600 to-blue-200">
+        </form>
+        <?php
+        // echo $_SESSION['login_user']['is_admin'];
+        if ($_SESSION['login_user']['is_admin']) {
+          echo '<a href="./admin/admin.php" class="text-xs text-white bg-blue-400 px-4 py-2 rounded-3xl bg-gradient-to-r from-blue-600 to-blue-200">管理者画面へ</a>';
+        }
+        ?>
+      </div>
     </div>
   </header>
 
@@ -40,10 +47,26 @@ function get_day_of_week($w)
       <div id="filter" class="mb-8">
         <h2 class="text-sm font-bold mb-3">フィルター</h2>
         <div class="flex">
-          <a href="" class="px-3 py-2 text-md font-bold mr-2 rounded-md shadow-md bg-blue-600 text-white">全て</a>
-          <a href="" class="px-3 py-2 text-md font-bold mr-2 rounded-md shadow-md bg-white">参加</a>
-          <a href="" class="px-3 py-2 text-md font-bold mr-2 rounded-md shadow-md bg-white">不参加</a>
-          <a href="" class="px-3 py-2 text-md font-bold mr-2 rounded-md shadow-md bg-white">未回答</a>
+          <a href="index.php" class="px-3 py-2 text-md font-bold mr-2 rounded-md shadow-md <?php if (!isset($_GET['attendance_status'])) {
+                                                                                              echo 'bg-blue-600 text-white';
+                                                                                            } else {
+                                                                                              echo 'bg-white';
+                                                                                            } ?>">全て</a>
+          <a href="index.php?attendance_status=1" class="px-3 py-2 text-md font-bold mr-2 rounded-md shadow-md <?php if ($_GET['attendance_status'] == 1) {
+                                                                                                                  echo 'bg-blue-600 text-white';
+                                                                                                                } else {
+                                                                                                                  echo 'bg-white';
+                                                                                                                } ?>">参加</a>
+          <a href="index.php?attendance_status=2" class="buttons_to_change_attendance_filter px-3 py-2 text-md font-bold mr-2 rounded-md shadow-md <?php if ($_GET['attendance_status'] == 2) {
+                                                                                                                                                      echo 'bg-blue-600 text-white';
+                                                                                                                                                    } else {
+                                                                                                                                                      echo 'bg-white';
+                                                                                                                                                    } ?>">不参加</a>
+          <a href="index.php?attendance_status=0" class="buttons_to_change_attendance_filter px-3 py-2 text-md font-bold mr-2 rounded-md shadow-md <?php if ($_GET['attendance_status'] == 0 && isset($_GET['attendance_status'])) {
+                                                                                                                                                      echo 'bg-blue-600 text-white';
+                                                                                                                                                    } elseif ($_GET['attendance_status'] != 0 && isset($_GET['attendance_status'])) {
+                                                                                                                                                      echo 'bg-white';
+                                                                                                                                                    } ?>">未回答</a>
         </div>
       </div>
       <div id="events-list">
@@ -54,14 +77,14 @@ function get_day_of_week($w)
             <a href="" class="text-gray-400">カレンダー</a>
           </div>
         </div>
-        
-        <?php foreach ($events as $event) : ?>
+
+        <?php foreach ($events_filtered_by_login_user_attendance_status as $event_id => $event) : ?>
           <?php
           $start_date = strtotime($event['start_at']);
           $end_date = strtotime($event['end_at']);
           $day_of_week = get_day_of_week(date("w", $start_date));
           ?>
-          <div class="modal-open bg-white mb-3 p-4 flex justify-between rounded-md shadow-md cursor-pointer" id="event-<?php echo $event['id']; ?>">
+          <div class="modal-open bg-white mb-3 p-4 flex justify-between rounded-md shadow-md cursor-pointer" id="event_<?php echo $event_id; ?>">
             <div>
               <h3 class="font-bold text-lg mb-2"><?php echo $event['name'] ?></h3>
               <p><?php echo date("Y年m月d日（${day_of_week}）", $start_date); ?></p>
@@ -71,16 +94,23 @@ function get_day_of_week($w)
             </div>
             <div class="flex flex-col justify-between text-right">
               <div>
-                <?php if ($event['id'] % 3 === 1) : ?>
+                <?php if ($event['login_user_attendance_status'] == 0) : ?>
                   <p class="text-sm font-bold text-yellow-400">未回答</p>
-                  <p class="text-xs text-yellow-400">期限 <?php echo date("m月d日", strtotime('-3 day', $end_date)); ?></p>
-                <?php elseif ($event['id'] % 3 === 2) : ?>
+                  <p class="text-xs text-yellow-400">期限 <?php echo date("m月d日", strtotime('-3 day', $start_date)); ?></p>
+                <?php elseif ($event['login_user_attendance_status'] == 2) : ?>
                   <p class="text-sm font-bold text-gray-300">不参加</p>
-                <?php else : ?>
+                <?php elseif ($event['login_user_attendance_status'] == 1) : ?>
                   <p class="text-sm font-bold text-green-400">参加</p>
                 <?php endif; ?>
               </div>
-              <p class="text-sm"><span class="text-xl"><?php echo $event['total_participants']; ?></span>人参加 ></p>
+              <p class="text-sm"><span class="text-xl">
+                  <?php
+                  if (isset($event['attendance_status'][1])) {
+                    echo count($event['attendance_status'][1]);
+                  } else {
+                    echo 0;
+                  }
+                  ?></span>人参加 ></p>
             </div>
           </div>
         <?php endforeach; ?>
@@ -99,7 +129,8 @@ function get_day_of_week($w)
           </svg>
         </div>
 
-        <div id="modalInner"></div>
+        <div id="modalInner">
+        </div>
 
       </div>
     </div>
