@@ -9,7 +9,7 @@ const modalInnerHTML = document.getElementById('modalInner')
 for (let i = 0; i < openModalClassList.length; i++) {
   openModalClassList[i].addEventListener('click', (e) => {
     e.preventDefault()
-    let eventId = parseInt(e.currentTarget.id.replace('event-', ''))
+    let eventId = parseInt(e.currentTarget.id.replace('event_', ''))
     openModal(eventId)
   }, false)
 }
@@ -23,7 +23,7 @@ overlay.addEventListener('click', closeModal)
 
 async function openModal(eventId) {
   try {
-    const url = '/api/getModalInfo.php?eventId=' + eventId
+    const url = '/api/getModalInfo.php?event_id=' + eventId
     const res = await fetch(url)
     const event = await res.json()
     let modalHTML = `
@@ -36,13 +36,12 @@ async function openModal(eventId) {
       <p class="text-md">
         ${event.message}
       </p>
-
       <hr class="my-4">
 
       <p class="text-sm"><span class="text-xl">${event.total_participants}</span>人参加 ></p>
-    `
+    `;
     switch (event.status) {
-      case 0:
+      case '0':
         modalHTML += `
           <div class="text-center mt-6">
             <p class="text-lg font-bold text-yellow-400">未回答</p>
@@ -54,14 +53,14 @@ async function openModal(eventId) {
           </div>
         `
         break;
-      case 1:
+      case '1':
         modalHTML += `
           <div class="text-center mt-10">
             <p class="text-xl font-bold text-gray-300">不参加</p>
           </div>
         `
         break;
-      case 2:
+      case '2':
         modalHTML += `
           <div class="text-center mt-10">
             <p class="text-xl font-bold text-green-400">参加</p>

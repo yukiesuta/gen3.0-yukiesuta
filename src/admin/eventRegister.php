@@ -42,26 +42,23 @@ function get_day_of_week($w)
         <h2 class="text-sm font-bold mb-3">メニュー</h2>
         <div class="flex">
           <a href="./admin.php" class="px-3 py-2 text-xs font-bold mr-2 rounded-md shadow-md bg-white">イベントリスト</a>
-          <a href="" class="px-3 py-2 text-xs font-bold mr-2 rounded-md shadow-md bg-white">ユーザー登録</a>
+          <a href="./userRegister.php" class="px-3 py-2 text-xs font-bold mr-2 rounded-md shadow-md bg-white">ユーザー登録</a>
           <a href="./eventRegister.php" class="px-3 py-2 text-xs font-bold mr-2 rounded-md shadow-md bg-white">イベント追加</a>
           <a href="/" class="px-3 py-2 text-xs font-bold mr-2 rounded-md shadow-md bg-white">ユーザー画面へ</a>
+
         </div>
       </div>
     <div class="w-full mx-auto py-10 px-5">
-      <h2 class="text-md font-bold mb-5">ユーザー登録</h2>
-      <form action="../../controllers/registerController.php" method="POST">
-        <p>名前</p>
-        <input name="name" type="name" placeholder="名前" class="w-full p-4 text-sm mb-3">
-        <p>メールアドレス</p>
-        <input name="email" type="email" placeholder="メールアドレス" class="w-full p-4 text-sm mb-3">
-        <p>パスワード</p>
-        <input name="password" type="password" placeholder="パスワード" class="w-full p-4 text-sm mb-3">
-        <p>管理者権限</p>
-        <label class="flex items-center"><input name="is_admin" type="checkbox" value="1" class="h-full ml-3 mr-3 p-4 text-sm">管理者権限を付与</label>
-        <p>github ID</p>
-        <input name="githubID" type="email" placeholder="github ID" class="w-full p-4 text-sm mb-3">
-        <p>slack ID</p>
-        <input name="slackID" type="email" placeholder="slack ID" class="w-full p-4 text-sm mb-3">
+      <h2 class="text-md font-bold mb-5">イベント登録</h2>
+      <form action="../../controllers/eventRegisterController.php" method="POST">
+        <p>イベント名</p>
+        <input name="event_name" type="name" class="w-full p-4 text-sm mb-3">
+        <p>イベント詳細</p>
+        <textarea name="detail" rows="4" class="w-full"></textarea>
+        <p>開催日時</p>
+        <input name="start_at" type="datetime-local" class="w-full p-4 text-sm mb-3">
+        <p>終了日時</p>
+        <input name="end_at" type="datetime-local" class="w-full p-4 text-sm mb-3">
         <input type="submit" value="登録" class="cursor-pointer w-full p-3 text-md text-white bg-blue-400 rounded-3xl bg-gradient-to-r from-blue-600 to-blue-300">
       </form>
     </div>
