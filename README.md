@@ -3,6 +3,7 @@
 なるべくIssuesとPull requestsがDevelopmentの機能で紐づくようにしましたが一部ミスでコメントで紐付けをおこなっています。ですので、コメントもご確認ください。
 
 ### クローン
+git clone https://github.com/posse-ap/posse1-hackathon-202209-team2D.git
 
 ### ビルド
 
@@ -37,7 +38,22 @@ pass:password3
 docker ps
 docker exec -it [phpのコンテナid] bash
 ```
-srcの中にある「何日前通知」「誰に」「どの手段で」を注意して実行したいphpファイルを選択
+srcの中にある適切なphpファイルを選択
+
+```bash
+メールを一日前に全員
+php mail_1day_ago_all.php
+メールを１日前に参加者に
+php mail_1day_ago_participant.php
+メールを三日前に全員に
+php mail_3days_ago_all.php
+メールを三日前に未回答者に
+php mail_3days_ago_not_answer.php
+スラックを１日前に参加者に
+php slack_1day_ago_participant.php
+スラックを三日前に未回答者に
+php slack_3days_ago_not_answer.php
+```
 
 ```bash
 php [実行したいphpファイル]
