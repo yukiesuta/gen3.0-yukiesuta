@@ -87,7 +87,7 @@ function get_day_of_week($w)
               <div>
                 <?php if ($event['login_user_attendance_status'] == 0) : ?>
                   <p class="text-sm font-bold text-yellow-400">未回答</p>
-                  <p class="text-xs text-yellow-400">期限 <?php echo date("m月d日", strtotime('-3 day', $end_date)); ?></p>
+                  <p class="text-xs text-yellow-400">期限 <?php echo date("m月d日", strtotime('-3 day', $start_date)); ?></p>
                 <?php elseif ($event['login_user_attendance_status'] == 2) : ?>
                   <p class="text-sm font-bold text-gray-300">不参加</p>
                 <?php elseif ($event['login_user_attendance_status'] == 1) : ?>
