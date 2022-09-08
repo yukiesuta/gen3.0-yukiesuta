@@ -26,6 +26,7 @@ CREATE TABLE
         email VARCHAR(128) NOT NULL,
         name VARCHAR(20) NOT NULL,
         password VARCHAR(128) NOT NULL,
+        slack_id VARCHAR(128) NOT NULL,
         is_admin BOOLEAN,
         created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
         updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
@@ -110,6 +111,7 @@ SET
     detail = '皆で戦いましょう',
     start_at = '2022/09/12 18:00',
     end_at = '2022/09/13 22:00';
+
 INSERT INTO events
 SET
     name = '大阪に行こ',
@@ -118,25 +120,35 @@ SET
     end_at = '2022/09/13 22:00';
 
 INSERT INTO
-    users (email, name, password, is_admin)
+    users (
+        email,
+        name,
+        password,
+        slack_id,
+        is_admin
+    )
 VALUES (
         "user0@gmail.com",
-        "user0",
+        "松本透歩",
+        "U0426V2CJBS",
         SHA2('password0', 512),
         true
     ), (
         "user1@gmail.com",
-        "user1",
+        "本城祐大",
+        "U041E9NM75K",
         SHA2('password1', 512),
         false
     ), (
         "user2@gmail.com",
-        "user2",
+        "井戸宗達",
+        "U041H8XN7DG",
         SHA2('password2', 512),
         false
     ), (
         "user3@gmail.com",
-        "user3",
+        "松本美智子",
+        "U041H5MSGAF",
         SHA2('password3', 512),
         false
     );
@@ -392,7 +404,7 @@ SET
     event_id = 9,
     user_id = 4,
     attendance_status = 0;
-    
+
 INSERT INTO
     event_user_attendance
 SET
