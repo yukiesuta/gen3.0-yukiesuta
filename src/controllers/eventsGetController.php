@@ -13,14 +13,25 @@ function group_by($key, array $ary): array
 
     return $result;
 }
+$user_names_stmt = $db->query('select id,name from users;');
+$user_names = $user_names_stmt->fetchAll(PDO::FETCH_ASSOC | PDO::FETCH_UNIQUE);
+
 //イベント一覧を取得,idをキーとすることでeager loadの再現をしやすくしている
 $events_stmt = $db->query('select id,name,start_at,end_at,detail from events order by start_at asc;');
 $events = $events_stmt->fetchAll(PDO::FETCH_ASSOC | PDO::FETCH_UNIQUE);
+
 //出席一覧を取得
 $attendance_stmt = $db->query('select event_id,user_id,attendance_status from event_user_attendance order by attendance_status;');
 $attendances = $attendance_stmt->fetchAll();
+
+//各ユーザーの出席にユーザー名の情報を追加する
+foreach ($attendances as &$attendance) {
+    $attendance = $attendance + array('user_name' => $user_names[$attendance['user_id']]['name']);
+}
+
 //出席一覧をイベントによってgroupbyする。laravelのeager loadを再現してる
 $event_user_attendances_grouped_by_event_id = group_by('event_id', $attendances);
+
 //ログインユーザーのイベントのattendance_statusを取得
 $login_user_attendance_stmt = $db->prepare('select event_id,attendance_status from event_user_attendance where user_id= :user_id order by event_id;');
 $login_user_attendance_stmt->bindValue(':user_id', $_SESSION['login_user']['id']);
@@ -39,9 +50,9 @@ $events_filtered_by_login_user_attendance_status = [];
 if (!isset($_GET['attendance_status'])) {
     $events_filtered_by_login_user_attendance_status = $events;
 } else {
-    foreach ($events as $event_id=>$event) {
+    foreach ($events as $event_id => $event) {
         if ($_GET['attendance_status'] === $event['login_user_attendance_status']) {
-            $events_filtered_by_login_user_attendance_status=$events_filtered_by_login_user_attendance_status+array($event_id=>$event);
+            $events_filtered_by_login_user_attendance_status = $events_filtered_by_login_user_attendance_status + array($event_id => $event);
         }
     }
 }
@@ -62,11 +73,10 @@ $event_limit = 10;
 $total_event_number = count($events_filtered_by_login_user_attendance_status);
 $total_page_number = ceil($total_event_number/$event_limit);
 
-
 if (isset($_GET['page'])) {
-	$page = (int)$_GET['page'];
+    $page = (int)$_GET['page'];
 } else {
-	$page = 1;
+    $page = 1;
 }
 
-$events_filtered_by_login_user_attendance_status = array_slice($events_filtered_by_login_user_attendance_status, $event_limit*($page-1), $event_limit);
+$events_filtered_by_login_user_attendance_status = array_slice($events_filtered_by_login_user_attendance_status, $event_limit*($page-1), $event_limit,true);
