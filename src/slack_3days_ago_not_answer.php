@@ -65,7 +65,7 @@ foreach ($events as $event) {
         echo $designated_date;
         echo 'に開催されるため今日は三日前であり、「';
         echo $body;
-        echo '」をスラックに投稿し、未回答者である人（未実装）';
+        echo '」をスラックに投稿し、未回答者である人';
         echo 'にメンションしました。';
         print_r('</pre>');
     }
