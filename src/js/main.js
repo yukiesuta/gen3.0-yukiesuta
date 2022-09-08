@@ -2,6 +2,7 @@
 const openModalClassList = document.querySelectorAll('.modal-open')
 const openAdminModalClassList=document.querySelectorAll('.admin-modal-open')
 const closeModalClassList = document.querySelectorAll('.modal-close')
+const showParticipantsClassList=document.querySelectorAll('.show_participants')
 const overlay = document.querySelector('.modal-overlay')
 const showParticipantsClassList=document.querySelectorAll('.show_participants')
 const body = document.querySelector('body')
@@ -90,6 +91,7 @@ async function openModal(eventId) {
         `
         break;
     }
+    
     modalInnerHTML.insertAdjacentHTML('afterbegin', modalHTML)
     document.getElementById('toggle_script').innerHTML=`document.getElementById('show_modal_participants').addEventListener('click',function(){
       document.getElementById('modal_participants').classList.toggle('hidden')
@@ -99,6 +101,9 @@ async function openModal(eventId) {
   }
   toggleModal()
 }
+
+
+
 async function openAdminModal(eventId) {
   try {
     const url = '/api/getModalInfo.php?event_id=' + eventId
@@ -127,8 +132,8 @@ async function openAdminModal(eventId) {
     
 
 
-    <p id="show_admin_participants" class="text-sm"><span class="text-xl show_participants">${event.total_participants}</span>人参加 ></p>
-    <div class="hidden" id="admin_participants">    
+      <p id="show_admin_participants" class="text-sm"><span class="text-xl show_participants">${event.total_participants}</span>人参加 ></p>
+      <div class="hidden" id="admin_participants">
     `;
     Object.keys(obj).forEach(function(key){
       modalHTML+='・'+obj[key]['user_name']+'<br>'
@@ -143,7 +148,6 @@ async function openAdminModal(eventId) {
   }
   toggleModal()
 }
-// 過去の日程選べないようにする（過去表示されないから間違えると戻れない）
 
 function closeModal() {
   modalInnerHTML.innerHTML = ''
