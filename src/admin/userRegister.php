@@ -1,6 +1,6 @@
 <?php
 require_once(dirname(__FILE__) . "/../dbconnect.php");
-require_once(dirname(__FILE__) . "/../controllers/loginGetController.php");
+require_once(dirname(__FILE__) . "/../controllers/adminLoginGetController.php");
 session_start();
 
 
