@@ -3,7 +3,9 @@
 なるべくIssuesとPull requestsがDevelopmentの機能で紐づくようにしましたが一部ミスでコメントで紐付けをおこなっています。ですので、コメント（クローズのログのリンク先）もご確認ください。
 
 ### クローン
+```bash
 git clone https://github.com/posse-ap/posse1-hackathon-202209-team2D.git
+```
 
 ### ビルド
 
