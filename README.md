@@ -16,6 +16,14 @@ docker-compose build --no-cache
 docker-compose up -d
 ```
 
+## ダミーデータ登録
+
+```bash
+docker ps
+docker exec -it [mysqlコンテナ]　bash
+mysql -u root -p < /docker-entrypoint-initdb.d/init.sql
+```
+
 ### 動作確認
 
 ブラウザで `http://localhost:8080/auth/login/index.php` にアクセスして、正しく画面が表示されているか確認してください
