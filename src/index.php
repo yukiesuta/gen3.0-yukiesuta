@@ -68,14 +68,14 @@ function get_day_of_week($w)
             <a href="" class="text-gray-400">カレンダー</a>
           </div>
         </div>
-
-        <?php foreach ($events_filtered_by_login_user_attendance_status as $event) : ?>
+        
+        <?php foreach ($events_filtered_by_login_user_attendance_status as $event_id=>$event) : ?>
           <?php
           $start_date = strtotime($event['start_at']);
           $end_date = strtotime($event['end_at']);
           $day_of_week = get_day_of_week(date("w", $start_date));
           ?>
-          <div class="modal-open bg-white mb-3 p-4 flex justify-between rounded-md shadow-md cursor-pointer" id="event-<?php echo $event['id']; ?>">
+          <div class="modal-open bg-white mb-3 p-4 flex justify-between rounded-md shadow-md cursor-pointer" id="event_<?php echo $event_id; ?>">
             <div>
               <h3 class="font-bold text-lg mb-2"><?php echo $event['name'] ?></h3>
               <p><?php echo date("Y年m月d日（${day_of_week}）", $start_date); ?></p>
@@ -120,7 +120,8 @@ function get_day_of_week($w)
           </svg>
         </div>
 
-        <div id="modalInner"></div>
+        <div id="modalInner">
+        </div>
 
       </div>
     </div>
