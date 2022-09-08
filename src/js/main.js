@@ -60,7 +60,9 @@ async function openModal(eventId) {
     Object.keys(obj).forEach(function(key){
       modalHTML+='・'+obj[key]['user_name']+'<br>'
     })
-    modalHTML+='</div>'
+    modalHTML+=`</div>
+    <form action="./controllers/updateAttendancePostController.php" method="POST">
+    <input hidden name="event_id" value="${eventId}">`
     
     switch (event.status) {
       case '0':
@@ -70,27 +72,29 @@ async function openModal(eventId) {
             <p class="text-xs text-yellow-400">期限 ${event.deadline}</p>
           </div>
           <div class="flex mt-5">
-            <button class="flex-1 bg-blue-500 py-2 mx-3 rounded-3xl text-white text-lg font-bold" onclick="participateEvent(${eventId})">参加する</button>
-            <button class="flex-1 bg-gray-300 py-2 mx-3 rounded-3xl text-white text-lg font-bold">参加しない</button>
-          </div>
-        `
+            <input name="attendance" class="flex-1 bg-blue-500 py-2 mx-3 rounded-3xl text-white text-lg font-bold" value="参加する" type="submit">
+            <input name="attendance" class="flex-1 bg-red-500 py-2 mx-3 rounded-3xl text-white text-lg font-bold" value="参加しない" type="submit">
+            </div>
+            `
         break;
       case '1':
         modalHTML += `
-          <div class="text-center mt-10">
-            <p class="text-xl font-bold text-gray-300">不参加</p>
-          </div>
+        <div class="text-center mt-10">
+        <input disabled name="attendance" class="flex-1 bg-gray-300 py-2 mx-3 rounded-3xl text-white text-lg font-bold" value="参加する" type="submit">
+        <input name="attendance" class="flex-1 bg-red-500 py-2 mx-3 rounded-3xl text-white text-lg font-bold" value="参加しない" type="submit">
+        </div>
         `
         break;
       case '2':
         modalHTML += `
-          <div class="text-center mt-10">
-            <p class="text-xl font-bold text-green-400">参加</p>
+        <div class="text-center mt-10">
+        <input name="attendance" class="flex-1 bg-blue-500 py-2 mx-3 rounded-3xl text-white text-lg font-bold" value="参加する" type="submit">
+        <input disabled name="attendance" class="flex-1 bg-gray-300 py-2 mx-3 rounded-3xl text-white text-lg font-bold" value="参加しない" type="submit">
           </div>
         `
         break;
     }
-    
+    modalHTML += `</form>`
     modalInnerHTML.insertAdjacentHTML('afterbegin', modalHTML)
     document.getElementById('toggle_script').innerHTML=`document.getElementById('show_modal_participants').addEventListener('click',function(){
       document.getElementById('modal_participants').classList.toggle('hidden')
