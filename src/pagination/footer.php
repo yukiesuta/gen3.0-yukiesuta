@@ -18,7 +18,7 @@ if (isset($_GET['attendance_status'])) {
     <div>
       <p class="text-sm text-gray-700">
         Showing
-        <span class="font-medium"><?= ($total_limit_number > 0)?1+$event_limit*($page-1):0; ?></span>
+        <span class="font-medium"><?= ($total_event_number > 0)?1+$event_limit*($page-1):0; ?></span>
         to
         <span class="font-medium"><?= ($event_limit*$page > $total_event_number)?$total_event_number:$event_limit*$page; ?></span>
         of
