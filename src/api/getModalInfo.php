@@ -21,9 +21,7 @@ if (isset($_GET['event_id'])) {
     $login_user_attendance=$login_user_attendance_stmt->fetch()['attendance_status'];
     $start_date = strtotime($event['start_at']);
     $end_date = strtotime($event['end_at']);
-
     $eventMessage = nl2br(htmlspecialchars($event['detail'],ENT_QUOTES,'UTF-8'));
-
     $array = [
       'id' => $event['id'],
       'name' => $event['name'],
