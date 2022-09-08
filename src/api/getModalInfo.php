@@ -23,6 +23,7 @@ if (isset($_GET['event_id'])) {
     $end_date = strtotime($event['end_at']);
     $event_message = nl2br(htmlspecialchars($event['detail'],ENT_QUOTES,'UTF-8'));
     $array = [
+      'current_date'=>date("Y-m-d"),
       'id' => $event['id'],
       'name' => $event['name'],
       'date' => date("Y年m月d日", $start_date),
