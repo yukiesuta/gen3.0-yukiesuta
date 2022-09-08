@@ -58,7 +58,7 @@ async function openModal(eventId) {
       <div class="hidden" id="modal_participants">
     `;
     Object.keys(obj).forEach(function(key){
-      modalHTML+=obj[key]['user_name']+'<br>'
+      modalHTML+='・'+obj[key]['user_name']+'<br>'
     })
     modalHTML+='</div>'
     
