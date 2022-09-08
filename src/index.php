@@ -35,7 +35,7 @@ function get_day_of_week($w)
         <?php
         // echo $_SESSION['login_user']['is_admin'];
         if ($_SESSION['login_user']['is_admin']) {
-          echo '<a href="./admin/admin.php" class="text-xs text-white bg-blue-400 px-4 py-2 rounded-3xl bg-gradient-to-r from-blue-600 to-blue-200">管理者画面へ</a>';
+          echo '<a href="./admin/admin.php" class="text-xs text-white bg-blue-400 px-4 py-2 rounded-3xl bg-gradient-to-r from-blue-600 to-blue-200">管理者画面</a>';
         }
         ?>
       </div>
@@ -84,41 +84,52 @@ function get_day_of_week($w)
           $end_date = strtotime($event['end_at']);
           $day_of_week = get_day_of_week(date("w", $start_date));
           ?>
-          <div class="modal-open bg-white mb-3 p-4 flex justify-between rounded-md shadow-md cursor-pointer" id="event_<?php echo $event_id; ?>">
-            <div>
-              <h3 class="font-bold text-lg mb-2"><?php echo $event['name'] ?></h3>
-              <p><?php echo date("Y年m月d日（${day_of_week}）", $start_date); ?></p>
-              <p class="text-xs text-gray-600">
-                <?php echo date("H:i", $start_date) . "~" . date("H:i", $end_date); ?>
-              </p>
-            </div>
-            <div class="flex flex-col justify-between text-right">
+          <div class="bg-white mb-3 p-4 shadow-md rounded-md">
+            <div class="modal-open flex justify-between cursor-pointer" id="event_<?php echo $event_id; ?>">
               <div>
-                <?php if ($event['login_user_attendance_status'] == 0) : ?>
-                  <p class="text-sm font-bold text-yellow-400">未回答</p>
-                  <p class="text-xs text-yellow-400">期限 <?php echo date("m月d日", strtotime('-3 day', $start_date)); ?></p>
-                <?php elseif ($event['login_user_attendance_status'] == 2) : ?>
-                  <p class="text-sm font-bold text-gray-300">不参加</p>
-                <?php elseif ($event['login_user_attendance_status'] == 1) : ?>
-                  <p class="text-sm font-bold text-green-400">参加</p>
-                <?php endif; ?>
+                <h3 class="font-bold text-lg mb-2"><?php echo $event['name'] ?></h3>
+                <p><?php echo date("Y年m月d日（${day_of_week}）", $start_date); ?></p>
+                <p class="text-xs text-gray-600">
+                  <?php echo date("H:i", $start_date) . "~" . date("H:i", $end_date); ?>
+                </p>
               </div>
-              <p class="text-sm"><span class="text-xl">
-                  <?php
-                  if (isset($event['attendance_status'][1])) {
-                    echo count($event['attendance_status'][1]);
-                  } else {
-                    echo 0;
-                  }
-                  ?></span>人参加 ></p>
+              <div class="flex flex-col justify-between text-right">
+                <div>
+                  <?php if ($event['login_user_attendance_status'] == 0) : ?>
+                    <p class="text-sm font-bold text-yellow-400">未回答</p>
+                    <p class="text-xs text-yellow-400">期限 <?php echo date("m月d日", strtotime('-3 day', $start_date)); ?></p>
+                  <?php elseif ($event['login_user_attendance_status'] == 2) : ?>
+                    <p class="text-sm font-bold text-gray-300">不参加</p>
+                  <?php elseif ($event['login_user_attendance_status'] == 1) : ?>
+                    <p class="text-sm font-bold text-green-400">参加</p>
+                  <?php endif; ?>
+                </div>
+              </div>
+            </div>
+            <p id="show_participants_<?php echo $event_id; ?>" class="text-sm show_participants"><span class="text-xl">
+                <?php
+                if (isset($event['attendance_status'][1])) {
+                  echo count($event['attendance_status'][1]);
+                } else {
+                  echo 0;
+                }
+                ?></span>人参加 ></p>
+            <div class="hidden" id="participants_<?php echo $event_id; ?>">
+              <p>参加者一覧</p>
+              <div>
+                <?php
+                foreach ($event['attendance_status'][1] as $participant) {
+                  echo '・' . $participant['user_name'] . '<br>';
+                }
+                ?>
+              </div>
             </div>
           </div>
         <?php endforeach; ?>
       </div>
-    </div>
-    <?php
-    include_once(dirname(__FILE__) . "/pagination/footer.php");
-    ?>
+      <?php
+      include_once(dirname(__FILE__) . "/pagination/footer.php");
+      ?>
   </main>
 
   <div class="modal opacity-0 pointer-events-none fixed w-full h-full top-0 left-0 flex items-center justify-center">
@@ -140,6 +151,7 @@ function get_day_of_week($w)
   </div>
 
   <script src="/js/main.js"></script>
+  <script id="toggle_script"></script>
 </body>
 
 </html>
