@@ -2,7 +2,6 @@
 const openModalClassList = document.querySelectorAll('.modal-open')
 const openAdminModalClassList=document.querySelectorAll('.admin-modal-open')
 const closeModalClassList = document.querySelectorAll('.modal-close')
-const showParticipantsClassList=document.querySelectorAll('.show_participants')
 const overlay = document.querySelector('.modal-overlay')
 const showParticipantsClassList=document.querySelectorAll('.show_participants')
 const body = document.querySelector('body')
