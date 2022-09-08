@@ -40,23 +40,30 @@ docker exec -it [phpのコンテナid] bash
 ```
 srcの中にある適切なphpファイルを選択
 
-```bash
-メールを一日前に全員
-php mail_1day_ago_all.php
-メールを１日前に参加者に
-php mail_1day_ago_participant.php
-メールを三日前に全員に
-php mail_3days_ago_all.php
-メールを三日前に未回答者に
-php mail_3days_ago_not_answer.php
-スラックを１日前に参加者に
-php slack_1day_ago_participant.php
-スラックを三日前に未回答者に
-php slack_3days_ago_not_answer.php
-```
 
+メールを一日前に全員に
 ```bash
-php [実行したいphpファイル]
+php mail_1day_ago_all.php
+```
+メールを１日前に参加者に
+```bash
+php mail_1day_ago_participant.php
+```
+メールを三日前に全員に
+```bash
+php mail_3days_ago_all.php
+```
+メールを三日前に未回答者に
+```bash
+php mail_3days_ago_not_answer.php
+```
+スラックを１日前に参加者に
+```bash
+php slack_1day_ago_participant.php
+```
+スラックを三日前に未回答者に
+```bash
+php slack_3days_ago_not_answer.php
 ```
 で実行。
 
