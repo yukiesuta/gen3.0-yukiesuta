@@ -130,26 +130,26 @@ INSERT INTO
 VALUES (
         "user0@gmail.com",
         "松本透歩",
-        "U0426V2CJBS",
         SHA2('password0', 512),
+        "U0426V2CJBS",
         true
     ), (
         "user1@gmail.com",
         "本城祐大",
-        "U041E9NM75K",
         SHA2('password1', 512),
+        "U041E9NM75K",
         false
     ), (
         "user2@gmail.com",
         "井戸宗達",
-        "U041H8XN7DG",
         SHA2('password2', 512),
+        "U041H8XN7DG",
         false
     ), (
         "user3@gmail.com",
         "松本美智子",
-        "U041H5MSGAF",
         SHA2('password3', 512),
+        "U041H5MSGAF",
         false
     );
 
