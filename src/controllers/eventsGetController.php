@@ -13,7 +13,7 @@ function group_by($key, array $ary): array
 
     return $result;
 }
-//イベント一覧を取得
+//イベント一覧を取得,idをキーとすることでeager loadの再現をしやすくしている
 $events_stmt = $db->query('select id,name,start_at,end_at,detail from events order by start_at asc;');
 $events = $events_stmt->fetchAll(PDO::FETCH_ASSOC | PDO::FETCH_UNIQUE);
 //出席一覧を取得
@@ -39,9 +39,9 @@ $events_filtered_by_login_user_attendance_status = [];
 if (!isset($_GET['attendance_status'])) {
     $events_filtered_by_login_user_attendance_status = $events;
 } else {
-    foreach ($events as $event) {
+    foreach ($events as $event_id=>$event) {
         if ($_GET['attendance_status'] === $event['login_user_attendance_status']) {
-            array_push($events_filtered_by_login_user_attendance_status, $event);
+            $events_filtered_by_login_user_attendance_status=$events_filtered_by_login_user_attendance_status+array($event_id=>$event);
         }
     }
 }
