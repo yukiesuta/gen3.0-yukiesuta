@@ -34,6 +34,7 @@ function get_day_of_week($w)
       <form action="../controllers/logoutPostController.php" method="POST">
         <input value="ログアウト" type="submit" class="text-white bg-blue-400 px-4 py-2 rounded-3xl bg-gradient-to-r from-blue-600 to-blue-200 text-xs">
       </form>
+      <a href="/" class="text-xs text-white bg-blue-400 px-4 py-2 rounded-3xl bg-gradient-to-r from-blue-600 to-blue-200">ユーザー画面へ</a>
     </div>
   </header>
   <main class="bg-gray-100">
@@ -42,9 +43,8 @@ function get_day_of_week($w)
         <h2 class="text-sm font-bold mb-3">メニュー</h2>
         <div class="flex">
           <a href="./admin.php" class="px-3 py-2 text-xs font-bold mr-2 rounded-md shadow-md bg-white">イベントリスト</a>
-          <a href="" class="px-3 py-2 text-xs font-bold mr-2 rounded-md shadow-md bg-white">ユーザー登録</a>
+          <a href="" class="px-3 py-2 text-xs font-bold mr-2 rounded-md shadow-md bg-blue-600 text-white">ユーザー登録</a>
           <a href="./eventRegister.php" class="px-3 py-2 text-xs font-bold mr-2 rounded-md shadow-md bg-white">イベント追加</a>
-          <a href="/" class="px-3 py-2 text-xs font-bold mr-2 rounded-md shadow-md bg-white">ユーザー画面へ</a>
         </div>
       </div>
     <div class="w-full mx-auto py-10 px-5">
