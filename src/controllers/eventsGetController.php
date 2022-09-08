@@ -69,4 +69,4 @@ if (isset($_GET['page'])) {
 	$page = 1;
 }
 
-$events_filtered_by_login_user_attendance_status = array_slice($events_filtered_by_login_user_attendance_status, $event_limit*($page-1), $event_limit);
+$events_filtered_by_login_user_attendance_status = array_slice($events_filtered_by_login_user_attendance_status, $event_limit*($page-1), $event_limit,true);

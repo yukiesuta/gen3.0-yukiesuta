@@ -46,6 +46,7 @@ async function openModal(eventId) {
       <hr class="my-4">
 
       <p class="text-sm"><span class="text-xl">${event.total_participants}</span>人参加 ></p>
+      <form action="/controllers/updateAttendancePostController.php" method="POST">
     `;
     switch (event.status) {
       case '0':
@@ -75,6 +76,7 @@ async function openModal(eventId) {
         `
         break;
     }
+    modalHTML +='</form>';
     modalInnerHTML.insertAdjacentHTML('afterbegin', modalHTML)
   } catch (error) {
     console.log(error)
