@@ -106,7 +106,7 @@ function get_day_of_week($w)
                 </div>
               </div>
             </div>
-                <p class="text-sm show_participants"><span class="text-xl">
+                <p id="show_participants_<?php echo $event_id;?>" class="text-sm show_participants"><span class="text-xl">
                     <?php
                     if (isset($event['attendance_status'][1])) {
                       echo count($event['attendance_status'][1]);
@@ -114,9 +114,8 @@ function get_day_of_week($w)
                       echo 0;
                     }
                     ?></span>人参加 ></p>
-            <div>
-              <!-- ユーザー一覧 -->
-              <p>参加ユーザー一覧</p>
+            <div class="hidden" id="participants_<?php echo $event_id;?>">
+              <p>参加者一覧</p>
               <div>
                 <?php
                 foreach ($event['attendance_status'][1] as $participant) {

@@ -2,6 +2,7 @@
 const openModalClassList = document.querySelectorAll('.modal-open')
 const openAdminModalClassList=document.querySelectorAll('.admin-modal-open')
 const closeModalClassList = document.querySelectorAll('.modal-close')
+const showParticipantsClassList=document.querySelectorAll('.show_participants')
 const overlay = document.querySelector('.modal-overlay')
 const body = document.querySelector('body')
 const modal = document.querySelector('.modal')
@@ -27,6 +28,13 @@ for (var i = 0; i < closeModalClassList.length; i++) {
 
 overlay.addEventListener('click', closeModal)
 
+for(let i=0;i<showParticipantsClassList.length;i++){
+  showParticipantsClassList[i].addEventListener('click',(e)=>{
+    e.preventDefault()
+    let eventId=parseInt(e.currentTarget.id.replace('show_participants_',''))
+    document.getElementById(`participants_${eventId}`).classList.toggle('hidden')
+  })
+}
 
 async function openModal(eventId) {
   try {
@@ -47,7 +55,7 @@ async function openModal(eventId) {
       <hr class="my-4">
 
       <p id="show_modal_participants" class="text-sm"><span class="text-xl">${event.total_participants}</span>人参加 ></p>
-      <div>
+      <div id="modal_participants">
     `;
     Object.keys(obj).forEach(function(key){
       modalHTML+=obj[key]['user_name']+'<br>'
@@ -120,7 +128,7 @@ async function openAdminModal(eventId) {
       <div id="admin_participants">
     `;
     Object.keys(obj).forEach(function(key){
-      modalHTML+=obj[key]['user_name']+'<br>'
+      modalHTML+='・'+obj[key]['user_name']+'<br>'
     })
     modalHTML+='</div>'
     modalInnerHTML.insertAdjacentHTML('afterbegin', modalHTML)
