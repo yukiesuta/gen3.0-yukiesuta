@@ -2,6 +2,7 @@
 require('dbconnect.php');
 require './controllers/loginGetController.php';
 require './controllers/eventsGetController.php';
+session_start();
 
 function get_day_of_week($w)
 {
@@ -27,9 +28,17 @@ function get_day_of_week($w)
       <div class="h-full">
         <img src="img/header-logo.png" alt="" class="h-full">
       </div>
-      <form action="./controllers/logoutPostController.php" method="POST">
-        <input value="ログアウト" type="submit" class="text-white bg-blue-400 px-4 py-2 rounded-3xl bg-gradient-to-r from-blue-600 to-blue-200">
-      </form>
+      <div class="flex">
+        <form action="./controllers/logoutPostController.php" method="POST">
+          <input value="ログアウト" type="submit" class="mr-2 text-xs text-white bg-blue-400 px-4 py-2 rounded-3xl bg-gradient-to-r from-blue-600 to-blue-200">
+        </form>
+        <?php
+        // echo $_SESSION['login_user']['is_admin'];
+        if ($_SESSION['login_user']['is_admin']) {
+          echo '<a href="./admin/admin.php" class="text-xs text-white bg-blue-400 px-4 py-2 rounded-3xl bg-gradient-to-r from-blue-600 to-blue-200">管理者画面へ</a>';
+        }
+        ?>
+      </div>
     </div>
   </header>
 
@@ -55,7 +64,7 @@ function get_day_of_week($w)
                                                                                                                                                     } ?>">不参加</a>
           <a href="index.php?attendance_status=0" class="buttons_to_change_attendance_filter px-3 py-2 text-md font-bold mr-2 rounded-md shadow-md <?php if ($_GET['attendance_status'] == 0 && isset($_GET['attendance_status'])) {
                                                                                                                                                       echo 'bg-blue-600 text-white';
-                                                                                                                                                    } elseif($_GET['attendance_status']!=0 && isset($_GET['attendance_status'])) {
+                                                                                                                                                    } elseif ($_GET['attendance_status'] != 0 && isset($_GET['attendance_status'])) {
                                                                                                                                                       echo 'bg-white';
                                                                                                                                                     } ?>">未回答</a>
         </div>
@@ -68,8 +77,8 @@ function get_day_of_week($w)
             <a href="" class="text-gray-400">カレンダー</a>
           </div>
         </div>
-        
-        <?php foreach ($events_filtered_by_login_user_attendance_status as $event_id=>$event) : ?>
+
+        <?php foreach ($events_filtered_by_login_user_attendance_status as $event_id => $event) : ?>
           <?php
           $start_date = strtotime($event['start_at']);
           $end_date = strtotime($event['end_at']);

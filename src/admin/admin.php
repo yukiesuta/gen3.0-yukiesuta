@@ -33,15 +33,21 @@ function get_day_of_week($w)
       <form action="../controllers/logoutPostController.php" method="POST">
         <input value="ログアウト" type="submit" class="text-white bg-blue-400 px-4 py-2 rounded-3xl bg-gradient-to-r from-blue-600 to-blue-200 text-xs">
       </form>
-      <a href="./userRegister.php" class="text-white bg-blue-400 px-4 py-2 rounded-3xl bg-gradient-to-r from-blue-600 to-blue-200 text-xs">ユーザー登録</a>
-      <!-- <form action="./userRegister.php" method="post">
-        <input value="ユーザー登録" type="submit" class="text-white bg-blue-400 px-4 py-2 rounded-3xl bg-gradient-to-r from-blue-600 to-blue-200 text-xs">
-      </form> -->
     </div>
   </header>
 
   <main class="bg-gray-100">
     <div class="w-full mx-auto p-5">
+      <div id="filter" class="mb-8">
+        <h2 class="text-sm font-bold mb-3">メニュー</h2>
+        <div class="flex">
+          <a href="" class="px-3 py-2 text-xs font-bold mr-2 rounded-md shadow-md bg-white">イベントリスト</a>
+          <a href="./userRegister.php" class="px-3 py-2 text-xs font-bold mr-2 rounded-md shadow-md bg-white">ユーザー登録</a>
+          <a href="./eventRegister.php" class="px-3 py-2 text-xs font-bold mr-2 rounded-md shadow-md bg-white">イベント追加</a>
+          <a href="/" class="px-3 py-2 text-xs font-bold mr-2 rounded-md shadow-md bg-white">ユーザー画面へ</a>
+
+        </div>
+      </div>
       <div id="events-list">
         <div class="flex justify-between items-center mb-3">
           <h2 class="text-sm font-bold">一覧</h2>
@@ -50,7 +56,7 @@ function get_day_of_week($w)
             <a href="" class="text-gray-400">カレンダー</a>
           </div>
         </div>
-        
+
         <?php foreach ($events as $event) : ?>
           <?php
           $start_date = strtotime($event['start_at']);
