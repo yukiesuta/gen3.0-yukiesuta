@@ -21,8 +21,7 @@ docker-compose up -d
 ブラウザで `http://localhost:8080/auth/login/index.php` にアクセスして、正しく画面が表示されているか確認してください
 
 ## ログイン
-初期データ
-管理画面はuser0@gmail.comにのみあります。
+初期データ（管理者権限はuser0@gmail.comにのみあります。）
 ```bash
 email:user0@gmail.com
 pass:password0
