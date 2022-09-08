@@ -36,7 +36,7 @@ pass:password3
 
 ### メール・スラックについて
 
-## メール送信
+## メール送信のバッジ
 ```bash
 docker ps
 docker exec -it [phpのコンテナid] bash
