@@ -87,16 +87,20 @@ async function openAdminModal(eventId) {
     const res = await fetch(url)
     const event = await res.json()
     let modalHTML = `
-      <h2 class="text-md font-bold mb-3">${event.name}</h2>
-      <p class="text-sm">${event.date}（${event.day_of_week}）</p>
-      <p class="text-sm">${event.start_at} ~ ${event.end_at}</p>
+    <div class="font-bold">イベント編集フォーム</div>
+    <input hidden name="event_id" value="${eventId}">
+    <p>イベント名</p>
+    <input value="${event.name}" name="event_name" type="name" class="w-full text-sm mb-3">
+    <p>イベント詳細</p>
+    <textarea name="detail" rows="3" class="w-full">${event.message}</textarea>
+    <p>開催日時</p>
+    <input value="${event.start_at}" name="start_at" type="datetime-local" class="w-full p-4 text-sm mb-3">
+    <p>終了日時</p>
+    <input value="${event.end_at}" name="end_at" type="datetime-local" class="w-full p-4 text-sm mb-3">
+    <input type="submit" value="編集完了" class="cursor-pointer w-full p-3 text-md text-white bg-blue-400 rounded-3xl bg-gradient-to-r from-blue-600 to-blue-300">
+    
 
-      <hr class="my-4">
 
-      <p class="text-md">
-        ${event.message}
-      </p>
-      <hr class="my-4">
 
       <p class="text-sm"><span class="text-xl">${event.total_participants}</span>人参加 ></p>
     `;

@@ -92,7 +92,7 @@ function get_day_of_week($w)
           </svg>
         </div>
 
-        <div id="modalInner"></div>
+        <form action="../controllers/updateEventPostController.php" method="POST" id="modalInner"></form>
 
       </div>
     </div>

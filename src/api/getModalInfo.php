@@ -21,16 +21,16 @@ if (isset($_GET['event_id'])) {
     $login_user_attendance=$login_user_attendance_stmt->fetch()['attendance_status'];
     $start_date = strtotime($event['start_at']);
     $end_date = strtotime($event['end_at']);
-    $eventMessage = nl2br(htmlspecialchars($event['detail'],ENT_QUOTES,'UTF-8'));
+    $event_message = nl2br(htmlspecialchars($event['detail'],ENT_QUOTES,'UTF-8'));
     $array = [
       'id' => $event['id'],
       'name' => $event['name'],
       'date' => date("Y年m月d日", $start_date),
       'day_of_week' => get_day_of_week(date("w", $start_date)),
-      'start_at' => date("H:i", $start_date),
-      'end_at' => date("H:i", $end_date),
+      'start_at' => $event['start_at'],
+      'end_at' => $event['end_at'],
       'total_participants' => $total_participants,
-      'message' => $eventMessage,
+      'message' => $event_message,
       'status' => $login_user_attendance,
       'deadline' => date("m月d日", strtotime('-3 day', $end_date)),
     ];
