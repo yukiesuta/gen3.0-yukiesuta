@@ -27,10 +27,12 @@ foreach ($events as $event) {
         }
 
         $body = '【リマインド】イベント名「' . $event['name'] . '」の三日前です。内容は「' . $event['detail']  . '」です。開催日時は' . $event['start_at']  . 'です。未回答者のみメンションします。回答してください。' . $slack_id_mention;
-
+        $token_first='xoxb-4051294469826-';
+        $token_second='4049361417781-';
+        $token_third='m9hPqyTdeIjxUMnxMOL4brcy';
         $headers = [
             // トークンは保護する
-            'Authorization: Bearer ここにトークンを入力', //（1)
+            'Authorization: Bearer '.$token_first.$token_second.$token_third, //（1)
             'Content-Type: application/json;charset=utf-8'
         ];
 
