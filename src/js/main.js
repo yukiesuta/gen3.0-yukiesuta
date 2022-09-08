@@ -87,16 +87,26 @@ async function openAdminModal(eventId) {
     const res = await fetch(url)
     const event = await res.json()
     let modalHTML = `
-      <h2 class="text-md font-bold mb-3">${event.name}</h2>
-      <p class="text-sm">${event.date}（${event.day_of_week}）</p>
-      <p class="text-sm">${event.start_at} ~ ${event.end_at}</p>
+    <input class="border-solid border-black border" hidden name="event_id" value="${eventId}">
+    <div>
+    <label>イベント名</label>
+    <input class="border-solid border-black border" value="${event.name}" name="event_name" type="name" class="w-full text-sm mb-3">
+    </div>
+    <div>
+    <label>イベント詳細</label>
+    <textarea class="border-solid border-black border w-full" name="detail" rows="2">${event.message.replace('<br />',"")}</textarea>
+    </div>
+    <div>
+    <label>開催日時</label>
+    <input min="${event.current_date}" class="border-solid border-black border" value="${event.start_at}" name="start_at" type="datetime-local" class="w-full p-4 text-sm mb-3">
+    </div>
+    <div>
+    <label>終了日時</label>
+    <input min="${event.current_date}" class="border-solid border-black border" value="${event.end_at}" name="end_at" type="datetime-local" class="w-full p-4 text-sm mb-3">
+    </div>
+    <input type="submit" value="編集完了" class="cursor-pointer w-full p-3 text-md text-white bg-blue-400 rounded-3xl bg-gradient-to-r from-blue-600 to-blue-300">
+    
 
-      <hr class="my-4">
-
-      <p class="text-md">
-        ${event.message}
-      </p>
-      <hr class="my-4">
 
       <p class="text-sm"><span class="text-xl">${event.total_participants}</span>人参加 ></p>
     `;
@@ -106,6 +116,7 @@ async function openAdminModal(eventId) {
   }
   toggleModal()
 }
+// 過去の日程選べないようにする（過去表示されないから間違えると戻れない）
 
 function closeModal() {
   modalInnerHTML.innerHTML = ''
