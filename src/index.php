@@ -127,6 +127,9 @@ function get_day_of_week($w)
         <?php endforeach; ?>
       </div>
     </div>
+    <?php
+    include_once(dirname(__FILE__) . "/pagination/footer.php");
+    ?>
   </main>
 
   <div class="modal opacity-0 pointer-events-none fixed w-full h-full top-0 left-0 flex items-center justify-center">

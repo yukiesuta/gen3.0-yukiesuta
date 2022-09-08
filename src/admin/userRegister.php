@@ -60,10 +60,8 @@ function get_day_of_week($w)
         <input name="password" type="password" placeholder="パスワード" class="w-full p-4 text-sm mb-3">
         <p>管理者権限</p>
         <label class="flex items-center"><input name="is_admin" type="checkbox" value="1" class="h-full ml-3 mr-3 p-4 text-sm">管理者権限を付与</label>
-        <p>github ID</p>
-        <input name="githubID" type="email" placeholder="github ID" class="w-full p-4 text-sm mb-3">
         <p>slack ID</p>
-        <input name="slackID" type="email" placeholder="slack ID" class="w-full p-4 text-sm mb-3">
+        <input name="slack_id" placeholder="slack ID" class="w-full p-4 text-sm mb-3">
         <input type="submit" value="登録" class="cursor-pointer w-full p-3 text-md text-white bg-blue-400 rounded-3xl bg-gradient-to-r from-blue-600 to-blue-300">
       </form>
     </div>
