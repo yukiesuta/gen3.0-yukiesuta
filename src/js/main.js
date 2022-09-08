@@ -53,14 +53,14 @@ async function openModal(eventId) {
           </div>
         `;
         break;
-      case '2':
+      case '1':
         modalHTML += `
           <div class="text-center mt-10">
             <p class="text-xl font-bold text-gray-300">不参加</p>
           </div>
         `;
         break;
-      case '1':
+      case '2':
         modalHTML += `
           <div class="text-center mt-10">
             <p class="text-xl font-bold text-green-400">参加</p>
