@@ -1,5 +1,6 @@
 'use strict'
 const openModalClassList = document.querySelectorAll('.modal-open')
+const openAdminModalClassList=document.querySelectorAll('.admin-modal-open')
 const closeModalClassList = document.querySelectorAll('.modal-close')
 const overlay = document.querySelector('.modal-overlay')
 const body = document.querySelector('body')
@@ -13,7 +14,13 @@ for (let i = 0; i < openModalClassList.length; i++) {
     openModal(eventId)
   }, false)
 }
-
+for(let i=0;i<openAdminModalClassList.length;i++){
+  openAdminModalClassList[i].addEventListener('click',(e)=>{
+    e.preventDefault()
+    let eventId=parseInt(e.currentTarget.id.replace('event_',''))
+    openAdminModal(eventId)
+  })
+}
 for (var i = 0; i < closeModalClassList.length; i++) {
   closeModalClassList[i].addEventListener('click', closeModal)
 }
@@ -68,6 +75,31 @@ async function openModal(eventId) {
         `
         break;
     }
+    modalInnerHTML.insertAdjacentHTML('afterbegin', modalHTML)
+  } catch (error) {
+    console.log(error)
+  }
+  toggleModal()
+}
+async function openAdminModal(eventId) {
+  try {
+    const url = '/api/getModalInfo.php?event_id=' + eventId
+    const res = await fetch(url)
+    const event = await res.json()
+    let modalHTML = `
+      <h2 class="text-md font-bold mb-3">${event.name}</h2>
+      <p class="text-sm">${event.date}（${event.day_of_week}）</p>
+      <p class="text-sm">${event.start_at} ~ ${event.end_at}</p>
+
+      <hr class="my-4">
+
+      <p class="text-md">
+        ${event.message}
+      </p>
+      <hr class="my-4">
+
+      <p class="text-sm"><span class="text-xl">${event.total_participants}</span>人参加 ></p>
+    `;
     modalInnerHTML.insertAdjacentHTML('afterbegin', modalHTML)
   } catch (error) {
     console.log(error)
