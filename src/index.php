@@ -48,16 +48,16 @@ function get_day_of_week($w)
                                                                                                                 } else {
                                                                                                                   echo 'bg-white';
                                                                                                                 } ?>">参加</a>
-          <!-- <a href="index.php?attendance_status=2" class="buttons_to_change_attendance_filter px-3 py-2 text-md font-bold mr-2 rounded-md shadow-md <?php if ($_GET['attendance_status'] == 2) {
-                                                                                                                                                          echo 'bg-blue-600 text-white';
-                                                                                                                                                        } else {
-                                                                                                                                                          echo 'bg-white';
-                                                                                                                                                        } ?>">不参加</a> -->
-          <!-- <a href="index.php?attendance_status=0" class="buttons_to_change_attendance_filter px-3 py-2 text-md font-bold mr-2 rounded-md shadow-md <?php if ($_GET['attendance_status'] == 0) {
-                                                                                                                                                          echo 'bg-blue-600 text-white';
-                                                                                                                                                        } else {
-                                                                                                                                                          echo 'bg-white';
-                                                                                                                                                        } ?>">未回答</a> -->
+          <a href="index.php?attendance_status=2" class="buttons_to_change_attendance_filter px-3 py-2 text-md font-bold mr-2 rounded-md shadow-md <?php if ($_GET['attendance_status'] == 2) {
+                                                                                                                                                      echo 'bg-blue-600 text-white';
+                                                                                                                                                    } else {
+                                                                                                                                                      echo 'bg-white';
+                                                                                                                                                    } ?>">不参加</a>
+          <a href="index.php?attendance_status=0" class="buttons_to_change_attendance_filter px-3 py-2 text-md font-bold mr-2 rounded-md shadow-md <?php if ($_GET['attendance_status'] == 0 && isset($_GET['attendance_status'])) {
+                                                                                                                                                      echo 'bg-blue-600 text-white';
+                                                                                                                                                    } elseif($_GET['attendance_status']!=0 && isset($_GET['attendance_status'])) {
+                                                                                                                                                      echo 'bg-white';
+                                                                                                                                                    } ?>">未回答</a>
         </div>
       </div>
       <div id="events-list">
