@@ -2,6 +2,8 @@
 ### 注意
 なるべくIssuesとPull requestsがDevelopmentの機能で紐づくようにしましたが一部ミスでコメントで紐付けをおこなっています。ですので、コメントもご確認ください。
 
+### クローン
+
 ### ビルド
 
 ディレクトリに移動して以下のコマンドを実行してください
@@ -33,7 +35,7 @@ pass:password3
 ## メール送信
 ```bash
 docker ps
-docker exec [phpのコンテナid]
+docker exec -it [phpのコンテナid] bash
 ```
 srcの中にある「何日前通知」「誰に」「どの手段で」を注意して実行したいphpファイルを選択
 
