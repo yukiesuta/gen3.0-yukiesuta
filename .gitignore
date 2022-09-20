@@ -1,3 +1,4 @@
 # PhpStorm
 .idea
 .history
+infra/docker/mysql/data
