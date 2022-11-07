@@ -1,6 +1,5 @@
 FROM node:16-alpine as node
 FROM nginx:1.20-alpine
-LABEL maintainer="ucan-lab <yes@u-can.pro>"
 SHELL ["/bin/ash", "-oeux", "pipefail", "-c"]
 
 ENV TZ=UTC
@@ -17,4 +16,4 @@ COPY --from=node /opt /opt
 # nginx config file
 COPY ./*.conf /etc/nginx/conf.d/
 
-WORKDIR /work/backend
+WORKDIR /src
