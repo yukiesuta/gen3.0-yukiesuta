@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('questions', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('big_question_id');
+            $table->string('title');
             $table->string('image');
             $table->timestamps();
         });
