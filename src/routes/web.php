@@ -72,5 +72,13 @@ Route::middleware(['auth'])->group(function () {
             Route::get('/',     'DeliveryListController@index')->name('delivery-list');
             Route::get('/{id}', 'DeliveryListDetailController@detail')->name('delivery-list.detail');
         });
+        Route::prefix('product-management')->group(function () {
+            Route::get('/',       'AdminController@index')->name('product-management');
+            Route::post('/deleteproduct','AdminController@deleteproduct')->name('deleteproduct');
+            // Route::get('/create', 'DeliveryAddressController@showCreateForm')->name('delivery-address.showCreateForm');
+            // Route::post('/create', 'DeliveryAddressController@create')->name('delivery-address.create');
+        });
     });
+
+
 });
