@@ -20,6 +20,11 @@
                 </button>
                 <div class="collapse navbar-collapse justify-content-end" id="navbarNav4">
                     <ul class="navbar-nav">
+                       @if ('admin' == session()->get('role'))
+                        <li class="nav-item">
+                            <a href="{{  route('product-management') }}" class="nav-link"><i class="material-icons md-light cartColor">receipt</i>商品管理画面</a>
+                        </li>
+                       @endif
                         <li class="nav-item">
                             <a href="{{  route('order') }}" class="nav-link"><i class="material-icons md-light cartColor">receipt</i>注文履歴</a>
                         </li>
