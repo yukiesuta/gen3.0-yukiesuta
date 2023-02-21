@@ -103,9 +103,12 @@
                         <div class="col-12 text-right">¥{{ $cart->get('price') }}</div>
                     </div>
                     <dt class="border-top pt-1">合計金額</dt>
-                    <dd class="text-right">¥{{ $cart->get('price') }}</dd>
+                    <dd class="text-right pb-5">¥{{  $cart->get('quantity')*$cart->get('price') }}</dd>
 
                 @endforeach
+                <dt class="border-top pt-1">総額</dt>
+                <dd class="text-right">¥{{ $sum }}</dd>
+            
 
             </div>
         </div>

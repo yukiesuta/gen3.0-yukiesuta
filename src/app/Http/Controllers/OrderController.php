@@ -79,9 +79,14 @@ class OrderController extends Controller
                 );
             });
         }
+        $sum= 0;
+        foreach($cart_collection as $cart){
+            $sum += $cart->get('quantity')*$cart->get('price');
+        }
 
 
-        return view('order.confirm', compact('delivery_address', 'cart_collection', 'delivery_time_disp', 'delivery_method_disp', 'user'));
+
+        return view('order.confirm', compact('delivery_address', 'cart_collection', 'delivery_time_disp', 'delivery_method_disp', 'user','sum'));
     }
 
     /**
