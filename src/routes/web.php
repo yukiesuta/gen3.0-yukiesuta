@@ -70,7 +70,7 @@ Route::middleware(['auth'])->group(function () {
     Route::middleware(['role:delivery-agent'])->group(function () {
         Route::prefix('delivery-list')->group(function () {
             Route::get('/',     'DeliveryListController@index')->name('delivery-list');
-            Route::get('/{id}', 'DeliveryListDetailController@detail')->name('delivery-list.detail');
+            Route::get('/{id}', 'DeliveryListController@detail')->name('delivery-list.detail');
         });
     });
 });
