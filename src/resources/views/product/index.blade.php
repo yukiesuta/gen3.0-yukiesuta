@@ -123,7 +123,7 @@
             <script>
                 /*
                 いつまでに注文するといつまでに届くのかを表示する
-                    12:00:00:000 ~ 23:59:59:999 の注文の場合は、明日の午前中
+                    12:00:00:000 ~ 22:59:59:999 の注文の場合は、明日の午前中
                     03:00:00:000 ~ 11:59:59:999 の注文の場合は、今日の午後
                     00:00:00:000 ~ 02:59:59:999 の注文の場合は、今日の午前中
                 */
@@ -133,7 +133,7 @@
                     var targetDate, targetMessage;
 
                     if (12 <= nowHour && nowHour < 24) {
-                        targetDate = (new Date()).setHours(23, 59, 59, 999);
+                        targetDate = (new Date()).setHours(22, 59, 59, 999);
                         targetMessage = "明日の午前中";
                     } else if (3 <= nowHour && nowHour < 12) {
                         targetDate = (new Date()).setHours(11, 59, 59, 999);
