@@ -8,6 +8,7 @@ use App\Models\Truck;
 use App\Models\DeliveryMethod;
 use App\Models\DeliveryStatus;
 use App\Models\Order;
+use Carbon\Carbon;
 
 class OrderTableSeeder extends Seeder
 {
@@ -21,11 +22,12 @@ class OrderTableSeeder extends Seeder
         $user_id = User::where('role_id', Role::getUserId())->first()->id;
         $delivery_addresses = DeliveryAddress::where('user_id', $user_id)->get();
         $truck_id = Truck::first()->id;
+        $today=Carbon::today();
         foreach ($delivery_addresses as $delivery_address) {
             Order::create([
                 'user_id'             => $user_id,
                 'delivery_address_id' => $delivery_address->id,
-                'delivery_date'       => '2019-12-24',
+                'delivery_date'       => $today->format('Y-m-d'),
                 'is_am'               => true,
                 'delivery_method_id'  => DeliveryMethod::getPackageDropId(),
                 'delivery_status_id'  => DeliveryStatus::getInPreparationId(),
@@ -35,7 +37,7 @@ class OrderTableSeeder extends Seeder
             Order::create([
                 'user_id'             => $user_id,
                 'delivery_address_id' => $delivery_address->id,
-                'delivery_date'       => '2019-12-25',
+                'delivery_date'       => $today->addDay(1)->format('Y-m-d'),
                 'is_am'               => false,
                 'delivery_method_id'  => DeliveryMethod::getPackageDropId(),
                 'delivery_status_id'  => DeliveryStatus::getInPreparationId(),

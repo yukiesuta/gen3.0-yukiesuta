@@ -5,16 +5,28 @@
         <h2>配送一覧</h2>
         <select id="sampleSelect" onChange="goFilter();">
             <option value="all">全て</option>
-            <option value="today_am">本日(2019/11/20) AM</option>
-            <option value="today_pm">本日(2019/11/20) PM</option>
-            <option value="tomorrow_am">明日(2019/11/20) AM</option>
-            <option value="tomorrow_pm">明日(2019/11/20) PM</option>
+            <option value="today_am">本日({{ $today }}) AM</option>
+            <option value="today_pm">本日({{ $today }}) PM</option>
+            <option value="tomorrow_am">明日({{ $tomorrow }}) AM</option>
+            <option value="tomorrow_pm">明日({{ $tomorrow }}) PM</option>
         </select>
         <ul id="sampleTable">
-
             @foreach($orders as $order)
-
-                <li today_am data-filter-key="20191120AM">
+            @if(explode(' ',$order->delivery_date)[0]===str_replace('/','-',$today)&&$order->is_am===1)
+            <!-- 今日かつ午前 -->
+            <li today_am data-filter-key="today_am">
+            @elseif(explode(' ',$order->delivery_date)[0]===str_replace('/','-',$today)&&$order->is_am===0)
+            <!-- 今日かつ午後 -->
+            <li today_pm data-filter-key="today_pm">
+            @elseif(explode(' ',$order->delivery_date)[0]===str_replace('/','-',$tomorrow)&&$order->is_am===1)
+            <!-- 明日かつ午前 -->
+            <li tomorrow_am data-filter-key="tomorrow_am">
+            @elseif(explode(' ',$order->delivery_date)[0]===str_replace('/','-',$tomorrow)&&$order->is_am===0)
+            <!-- 明日かつ午後 -->
+            <li tomorrow_pm data-filter-key="tomorrow_pm">
+            @else
+            <li>
+            @endif
                     {{ $order->getFullFormatDeliveryDateAttribute() }} 配達予定
                     <div class="block">
                         <div class="row position">
