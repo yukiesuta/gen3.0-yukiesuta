@@ -38,6 +38,7 @@ Route::middleware([])->group(function () {
     Route::prefix('cart')->group(function () {
         Route::get('/', 		              'CartController@index')->name('cart');
         Route::get('/{productid}/{quantity?}', 'CartController@add');
+        Route::post('/{productid}', 'CartController@delete');
         Route::get('/flush',                  'CartController@flush');
     });
 });
