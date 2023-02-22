@@ -15,60 +15,64 @@
                 id="targetMessage"></span>に届きます！</div>
     </div>
     @if ('user' == session()->get('role'))
-        <div class="py-5 bg-light">
-            <div class="container">
-                <h2>あなたが最近購入した商品</h2>
-                <div class="row">
-                    @foreach ($repeat_products as $product)
-                        <div class="col-md-4">
-                            <div class="card mb-4 box-shadow">
-                                <img class="card-img-top btn fly" src="{{ asset('img/' . $product->thumbnail) }}"
-                                    alt="tomato" style="height: 225px; width: 100%; display: block;" data-toggle="modal"
-                                    data-target="#productModal{{ $product->id }}" data-whatever="productTomato">
-                                <div class="card-body">
-                                    <p class="card-text">{{ $product->name }}</p>
-                                    @if ($product->stock == 0)
-                                        <div>売り切れ</div>
-                                    @else
-                                        <div>残り{{ $product->stock }}個</div>
-                                    @endif
-                                    <div class="text-right">
+        @if ($repeat_products->isEmpty())
+        @else
+            <div class="py-5 bg-light">
+                <div class="container">
+                    <h2>あなたが最近購入した商品</h2>
+                    <div class="row">
+                        @foreach ($repeat_products as $product)
+                            <div class="col-md-4">
+                                <div class="card mb-4 box-shadow">
+                                    <img class="card-img-top btn fly" src="{{ asset('img/' . $product->thumbnail) }}"
+                                        alt="tomato" style="height: 225px; width: 100%; display: block;"
+                                        data-toggle="modal" data-target="#productModal{{ $product->id }}"
+                                        data-whatever="productTomato">
+                                    <div class="card-body">
+                                        <p class="card-text">{{ $product->name }}</p>
                                         @if ($product->stock == 0)
-                                            <small class="text-muted">￥{{ $product->price }}</small>
-                                        @elseif(date('H') >= 12 && $product->stock >= 50)
-                                            <small>20%off</small>
-                                            <small class="text-muted">￥{{ floor($product->price * 0.8) }}</small>
+                                            <div>売り切れ</div>
                                         @else
-                                            <small class="text-muted">￥{{ $product->price }}</small>
+                                            <div>残り{{ $product->stock }}個</div>
+                                        @endif
+                                        <div class="text-right">
+                                            @if ($product->stock == 0)
+                                                <small class="text-muted">￥{{ $product->price }}</small>
+                                            @elseif(date('H') >= 12 && $product->stock >= 50)
+                                                <small>20%off</small>
+                                                <small class="text-muted">￥{{ floor($product->price * 0.8) }}</small>
+                                            @else
+                                                <small class="text-muted">￥{{ $product->price }}</small>
+                                            @endif
+                                        </div>
+                                        @if ($product->stock != 0)
+                                            <div class="d-flex justify-content-between align-items-center">
+                                                <div class="input-group col-sm-7">
+                                                    <select class="form-control quantity pr-5"
+                                                        aria-label="Dollar amount (with dot and two decimal places)"
+                                                        value="0">
+                                                        @for ($i = 1; $i < $product->stock + 1; $i++)
+                                                            <option>{{ $i }}</option>
+                                                        @endfor
+                                                    </select>
+
+                                                    <div class="input-group-append">
+                                                        <span class="input-group-text">個</span>
+                                                    </div>
+                                                </div>
+                                                <button type="button" class="btn col-sm-5 btn-sm btn-outline-danger"
+                                                    onclick="ToCart({{ $product->id }}, {{ $loop->index }});">カートに追加
+                                                </button>
+                                            </div>
                                         @endif
                                     </div>
-                                    @if ($product->stock != 0)
-                                        <div class="d-flex justify-content-between align-items-center">
-                                            <div class="input-group col-sm-7">
-                                                <select class="form-control quantity pr-5"
-                                                    aria-label="Dollar amount (with dot and two decimal places)"
-                                                    value="0">
-                                                    @for ($i = 1; $i < $product->stock + 1; $i++)
-                                                        <option>{{ $i }}</option>
-                                                    @endfor
-                                                </select>
-
-                                                <div class="input-group-append">
-                                                    <span class="input-group-text">個</span>
-                                                </div>
-                                            </div>
-                                            <button type="button" class="btn col-sm-5 btn-sm btn-outline-danger"
-                                                onclick="ToCart({{ $product->id }}, {{ $loop->index }});">カートに追加
-                                            </button>
-                                        </div>
-                                    @endif
                                 </div>
                             </div>
-                        </div>
-                    @endforeach
+                        @endforeach
+                    </div>
                 </div>
             </div>
-        </div>
+        @endif
     @endif
     <section class="jumbotron text-center">
         <div class="container">
@@ -181,11 +185,11 @@
     </script>
     <script>
         /*
-                                                    いつまでに注文するといつまでに届くのかを表示する
-                                                        12:00:00:000 ~ 22:59:59:999 の注文の場合は、明日の午前中
-                                                        23:00:00:000 ~ 23:59:59:999 の注文の場合は、明日の午後
-                                                        00:00:00:000 ~ 11:59:59:999 の注文の場合は、今日の午後
-                                                    */
+                                                            いつまでに注文するといつまでに届くのかを表示する
+                                                                12:00:00:000 ~ 22:59:59:999 の注文の場合は、明日の午前中
+                                                                23:00:00:000 ~ 23:59:59:999 の注文の場合は、明日の午後
+                                                                00:00:00:000 ~ 11:59:59:999 の注文の場合は、今日の午後
+                                                            */
         function showCountdown() {
             const now = new Date();
             const nowHour = now.getHours();
