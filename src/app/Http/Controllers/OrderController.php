@@ -22,7 +22,6 @@ class OrderController extends Controller
     {
 
         $orders = Order::where('user_id', Auth::id())->with('delivery_status')->get();
-
         return view('order.index', compact('orders'));
     }
 
