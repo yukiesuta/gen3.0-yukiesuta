@@ -1,9 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
-<div>新規商品登録</div>
-<form action="" method="post" enctype="multipart/form-data">
-    <form action="" method="post" enctype="multipart/form-data">
+    <div>新規商品登録</div>
+    <form action="/product-management/createproduct" method="post" enctype="multipart/form-data">
+        @csrf
         <table>
             <tr>
                 <th>
@@ -22,20 +22,20 @@
                 </th>
             </tr>
             <tr>
-                <th>
-                    <input type="file" name="img" accept="image/*" name="thumbnail">
+                {{-- <th>
+                    <input type="file" accept="image/*" name="thumbnail">
                 </th>
                 <th>
                     <div>サムネイル画像</div>
-                </th>
+                </th> --}}
             </tr>
             <tr>
-                <th>
-                    <input type="file" name="img" accept="image/*"  name="image1">
+                {{-- <th>
+                    <input type="file" accept="image/*" name="detail">
                 </th>
                 <th>
                     <div>詳細画像</div>
-                </th>
+                </th> --}}
             </tr>
             <tr>
                 <th>
@@ -54,6 +54,6 @@
                 </th>
             </tr>
         </table>
+        <input type="submit" value="登録">
     </form>
-</form>
 @endsection
