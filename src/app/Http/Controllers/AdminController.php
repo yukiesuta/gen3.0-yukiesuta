@@ -21,4 +21,8 @@ class AdminController extends Controller
         return view('admin.index',compact('message','products'));
 
     }
+
+    public function createproduct(Request $request, Product $product) {
+        return view('admin.create');
+    }
  }
