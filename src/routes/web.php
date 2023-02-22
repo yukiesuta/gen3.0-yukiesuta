@@ -74,5 +74,16 @@ Route::middleware(['auth'])->group(function () {
             Route::get('/{id}', 'DeliveryListController@detail')->name('delivery-list.detail');
             Route::post('/{id}','DeliveryListController@change_status');
         });
+        Route::prefix('product-management')->group(function () {
+            Route::get('/',       'AdminController@index')->name('product-management');
+            Route::post('/deleteproduct','AdminController@deleteproduct')->name('deleteproduct');
+            Route::post('/addproduct','AdminController@addproduct')->name('add');
+            Route::post('/createproduct','AdminController@createproduct')->name('create');
+            Route::post('/updateproduct/{productid}','AdminController@updateproduct')->name('update');
+            // Route::get('/create', 'DeliveryAddressController@showCreateForm')->name('delivery-address.showCreateForm');
+            // Route::post('/create', 'DeliveryAddressController@create')->name('delivery-address.create');
+        });
     });
+
+
 });
