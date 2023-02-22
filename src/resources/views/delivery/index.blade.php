@@ -33,10 +33,6 @@
                             <div class="col-5 order-head">■ 注文番号 {{ $order->id }}</div>
                             <div class="col-7 order-head">
                                 トラック{{ $order->truck_id }}
-                                <i class="material-icons track"
-                                   data-toggle="modal"
-                                   data-target="#trackModal"
-                                   data-whatever="track1">local_shipping</i>
                             </div>
                         </div>
                         ■ 配送先住所
@@ -78,32 +74,6 @@
             @endforeach
 
         </ul>
-
-        <!-- Modal -->
-        <div class="modal fade" id="trackModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
-            <!-- //モーダルウィンドウの縦表示位置を調整・画像を大きく見せる -->
-            <div class="modal-dialog modal-lg modal-middle">
-                <div class="modal-content">
-                    <form>
-                        <div class="modal-body">
-                            <label for="trackSelect">配送トラック選択</label>
-                            <select class="form-control" id="trackSelect">
-                                <option>トラック１</option>
-                                <option>トラック２</option>
-                                <option>トラック３</option>
-                                <option>トラック４</option>
-                            </select>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-ash" data-dismiss="modal">Close</button>
-                            <button type="submit" class="btn btn-outline-danger" data-dismiss="modal" id="testttt">
-                                決定
-                            </button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
     </div>
 @endsection
 
@@ -123,33 +93,5 @@
                 console.log(2);
             }
         }
-
-        $('#testttt').on('click', function () {
-            alert("testtttt");
-            var cusno = $('#cusno').val();
-            var oldday = $('#oldday').val();
-            var newday = $('#newday').val();
-            $.ajax({
-                url: "/", // 送信先 URL
-                type: "POST", // GET,POSTとか
-                dataType: "text",
-                data: { // 送信するデータ
-                    xxx: 'dateup',
-                    oldday: oldday,
-                    newday: newday,
-                    cusno: cusno
-                }
-            }).done(function (data) {
-                // 通信成功時の処理
-                // PHP から返ってきた値（メッセージ）を p タグにセット
-                $('#mess').text(data);
-            }).fail(function (data) {
-                // 通信失敗時の処理
-                console.dir(data);
-            }).always(function (data) {
-                // 常に実行する処理
-                $("#modalForm").modal('hide'); // モーダルを閉じる
-            });
-        });
     </script>
 @endpush
