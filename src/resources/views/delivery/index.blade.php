@@ -38,38 +38,38 @@
                         @endif
                     </div>
                 </div>
-                </li>
-            @endforeach
-
-        </ul>
-        <!-- Modal -->
-        <div class="modal fade" id="trackModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
-            <!-- //モーダルウィンドウの縦表示位置を調整・画像を大きく見せる -->
-            <div class="modal-dialog modal-lg modal-middle">
-                <div class="modal-content">
-                    <form>
-                        <div class="modal-body">
-                            <label for="trackSelect">配送トラック選択</label>
-                            <select class="form-control" id="trackSelect">
-                                <option>トラック１</option>
-                                <option>トラック２</option>
-                                <option>トラック３</option>
-                                <option>トラック４</option>
-                            </select>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-ash" data-dismiss="modal">Close</button>
-                            <button type="submit" class="btn btn-outline-danger" data-dismiss="modal" id="testttt">
-                                決定
-                            </button>
-                        </div>
-                    </form>
+                ■ 配送先住所
+                <div class="row">
+                    <div class="col-12">〒{{ $order->delivery_address->postal_code }}</div>
                 </div>
-            </div>
+                <div class="row">
+                    <div class="col-12">{{ $order->delivery_address->getFullAddressAttribute() }}</div>
+                </div>
+                <div class="row mb-2">
+                    <div class="col-12">{{ $order->user->company_name }}</div>
+                </div>
+                ■ 注文内容
+
+                @foreach ($order->order_details as $order_detail)
+                <div class="row">
+                    <div class="col-5">{{ $order_detail->product->name }}</div>
+                    <div class="col-4 text-right">{{ $order_detail->quantity }}個</div>
+                    <div class="col-3 text-right">¥{{ $order_detail->product->price }}</div>
+                </div>
+                @endforeach
+
+                <dt class="border-top pt-1">合計金額</dt>
+                <div class="row">
+                    <div class="col-12 text-right">¥{{ $order->total_price }}</div>
+                </div>
+
+                <div class="text-right">
+                    <button type="button" class="btn btn-ash" onclick="location.href='/delivery-list/{{ $order->id }}'">
+                        詳細を見る
+                    </button>
+                </div>
         </li>
-
         @endforeach
-
     </ul>
     @if($is_admin)
     <!-- Modal -->
@@ -116,8 +116,10 @@
             wTable.className = 'allNoDisplay ' + value;
             console.log(2);
         }
+    }
 </script>
 @endpush
+@push('scripts')
 @if($is_admin)
 <script>
     $('#testttt').on('click', function() {
@@ -149,5 +151,4 @@
     });
 </script>
 @endif
- 
 @endpush
