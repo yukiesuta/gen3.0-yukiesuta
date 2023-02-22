@@ -22,12 +22,9 @@
                                     <div class="text-right">
                                         @if ($product->stock == 0)
                                             <small class="text-muted">￥{{ $product->price }}</small>
-                                        @elseif(date('H') >= 20)
+                                        @elseif(date('H') >= 12 && $product->stock >= 50)
                                             <small>20%off</small>
                                             <small class="text-muted">￥{{ floor($product->price * 0.8) }}</small>
-                                        @elseif($product->stock >= 50)
-                                            <small>5%off</small>
-                                            <small class="text-muted">￥{{ floor($product->price * 0.95) }}</small>
                                         @else
                                             <small class="text-muted">￥{{ $product->price }}</small>
                                         @endif
@@ -95,12 +92,9 @@
                                 <div class="text-right">
                                     @if ($product->stock == 0)
                                         <small class="text-muted">￥{{ $product->price }}</small>
-                                    @elseif(date('H') >= 20)
+                                    @elseif(date('H') >= 12 && $product->stock >= 50)
                                         <small>20%off</small>
                                         <small class="text-muted">￥{{ floor($product->price * 0.8) }}</small>
-                                    @elseif($product->stock >= 50)
-                                        <small>5%off</small>
-                                        <small class="text-muted">￥{{ floor($product->price * 0.95) }}</small>
                                     @else
                                         <small class="text-muted">￥{{ $product->price }}</small>
                                     @endif
