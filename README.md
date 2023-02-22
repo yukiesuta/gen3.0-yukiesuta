@@ -4,6 +4,14 @@
 3. php artisan command:sendInvoice
 4. mailhog開いて直近のメールを開いてMIMEを押してpdfをダウンロード
 
+# seederが存在しない
+1. php artisan optimize:clear
+2. composer dump-autoload
+
+# 請求書送信しようとするとtrying to get 'email' of a non-object,mpdf not found
+1. composer install
+2. php artisan optimize:clear
+
 
 # 環境構築手順
 
