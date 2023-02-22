@@ -32,7 +32,7 @@ class Product extends Model
     }
 
     public function deleteProduct($product_id) {
-        $delete = $this->where('product_id',$product_id)->delete();
+        $delete = $this->where('id',$product_id)->delete();
 
         if($delete > 0){
             $message = 'カートから一つの商品を削除しました';
