@@ -3,6 +3,8 @@
 namespace App\Mail;
 
 use App\Models\Order;
+use App\Models\Product;
+use Exception;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
@@ -19,21 +21,22 @@ class invoice_mail extends Mailable
      *
      * @return void
      */
-    public function __construct($user)
+    public function __construct($user, $month)
     {
         // dd($user);
         $this->user = $user;
+        $this->company = $user->company_name;
         $this->id = $user->id;
         $this->email = $user->email;
+        $this->month_of_request = $month;
         $this->date_of_request = Carbon::today()->format('Y/m/d');
         $this->year_month_of_last_month = Carbon::today()->subMonthsWithNoOverflow(1)->format('Y-m');
         $this->email_without_period = str_replace('.', '', $this->email);
         $this->document_file_name = 'invoice' . $this->year_month_of_last_month . $this->email_without_period . '.pdf';
         $this->invoice_id = count(Storage::allFiles('public')) - 1;
-        $all_orders = Order::where('user_id', $this->id)->with('order_details')->get();
-        dd($all_orders);
-        // $this->all_orders=
+        $this->table_info = '';
     }
+    //いまだとページ数の制限で無視される＝＞ページ数増やせばいいじゃないか＝＞どのタイミングでページどのくらい増やすのか？＝＞セル一個の立幅をとってページの長さで割ってページ数出力＝＞ページ数の制限なしになるメソッドないかな？
 
     /**
      * Build the message.
@@ -64,31 +67,57 @@ class invoice_mail extends Mailable
         $document->WriteHTML('
         <h1 style="color:blue;width:100%;text-align:center;">請求書</h1>
         <section style="width:80%;margin:0 auto;">
-            <table style="width:100%;">
-            <tr>
-            <td rowspan="2" style="width:50%;">サンプル株式会社</td>
-            <td style="width:50%;text-align:right;">No '.$this->invoice_id.'</td>
+        <table style="width:100%;">
+        <tr>
+            <td rowspan="2" style="width:50%;">' . $this->company . '</td>
+            <td style="width:50%;text-align:right;">No ' . $this->invoice_id . '</td>
             </tr>
                 <tr>
-                <td style="width:50%;text-align:right;">請求日 '.$this->date_of_request.'</td>
+                <td style="width:50%;text-align:right;">請求日 ' . $this->date_of_request . '</td>
                 </tr>
-            </table>
-            <table style="width:100%;">
-            <tr><th>下記の通り、</th><th>御請求申し上げます。</th></tr>
-            <tr><th style="background-color:black;color:white;">件名</th><td>今月の請求</td></tr>
-            <tr><th style="background-color:black;color:white;">支払期限</th><td>'.Carbon::today()->addMonthsNoOverflow(1)->format('Y/m/t').'</tr>
-            <tr><th style="background-color:black;color:white;">振込先</th><td>'.env('BANK_ACCOUNT').'</td></tr>
-            <tr><th style="background-color:black;color:white;">合計</th><td>請求額円(税込み)</td></tr>
-            </table>
-            <table>
-            <tr><th>摘要</th><th>数量</th><th>単位</th><th>単価</th><th>金額</th></tr>
-            ' . $all_orders . '
                 </table>
+            <table style="width:100%;">
+            <tr><th>下記の通り、御請求申し上げます。</th></tr>
+            <tr><th style="background-color:black;color:white;width:50%;">件名</th><td style="width:50%;">今月の請求</td></tr>
+            <tr><th style="background-color:black;color:white;width:50%;">支払期限</th><td style="width:50%;">' . Carbon::today()->addMonthsNoOverflow(1)->format('Y/m/t') . '</tr>
+            <tr><th style="background-color:black;color:white;width:50%;">振込先</th><td style="width:50%;">' . env('BANK_ACCOUNT') . '</td></tr>
+            <tr><th style="background-color:black;color:white;width:50%;">合計</th><td style="width:50%;">請求額円(税込み)</td></tr>
+            </table>
+            <table style="width:100%;margin:0 auto;">
+            <tr><th style="width:30%;background-color:black;color:white;">商品名</th><th style="width:10%;background-color:black;color:white;">数量</th><th style="width:20%;background-color:black;color:white;">単位</th><th style="width:20%;background-color:black;color:white;">単価</th><th style="width:20%;background-color:black;color:white;">金額</th></tr>');
+        // $count=0;
+        // $document->WriteHTML($this->table_info);
+        // dd($this->table_info);
+        $product_names = Product::pluck('name', 'id');
+        //今月購入したものが届いたか確認
+        $all_orders = Order::where('user_id', $this->id)->whereMonth('delivery_date', $this->month_of_request - 1)->with('order_details')->get();
+        $product_quantities_per_unit = Product::pluck('quantity', 'id');
+        $product_price_per_unit = Product::pluck('price', 'id');
+        foreach ($all_orders as $orders) {
+            // $document->WriteHTML('<div>aaaa</div>');
+            foreach ($orders->order_details as $order) {
+                // $count++;
+                // dd($product_names[$order->product_id]);
+                // dd($order->quantity);
+                // dd($product_quantities_per_unit[$order->product_id]);
+                // dd($product_price_per_unit[$order->product_id]);
+                try {
+                    //ここにif文で超えそうになったらpageadd
+                    $document->WriteHTML('<tr><th style="background-color:black;width:30%;">' . $product_names[$order->product_id] . '</th><th style="width:10%;">' . $order->quantity . '</th><th style="width:20%;">' . $product_quantities_per_unit[$order->product_id] . '</th><th style="width:20%;">' . $product_price_per_unit[$order->product_id] . '</th><th style="width:20%;">' . $product_price_per_unit[$order->product_id] . '</th></tr>');
+                    $document->WriteHTML('<pagebreak />');
+                } catch (Exception $e) {
+                    dd($e);
+                }
+            }
+            $document->WriteHTML('
+                </table>
+                hhhhhh
                 </div>
         </section>
         ');
-        
-        Storage::disk('public')->put($this->document_file_name, $document->Output($this->document_file_name, "S"));
-        return $this->text('emails.invoice')->from(env('MAIL_FROM_ADDRESS'))->with(['user' => $this->user])->attach(storage_path('app/public/' . $this->document_file_name));
+
+            Storage::disk('public')->put($this->document_file_name, $document->Output($this->document_file_name, "S"));
+            return $this->text('emails.invoice')->from(env('MAIL_FROM_ADDRESS'))->with(['user' => $this->user])->attach(storage_path('app/public/' . $this->document_file_name));
+        }
     }
 }

@@ -40,8 +40,9 @@ class send_invoice extends Command
     public function handle()
     {
         $users=User::get();
+        $month=Carbon::today()->format('m');
         foreach($users as $user){
-            return new invoice_mail($user);
+            return new invoice_mail($user,,$month);
         }
     }
 }
