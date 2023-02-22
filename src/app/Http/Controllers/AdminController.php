@@ -68,6 +68,8 @@ class AdminController extends Controller
     }
 
     public function updateproduct($productid,Request $request){
+        $product=Product::where('id',$productid)->first();
+        
         // サムネイル画像保存
         $path = public_path('img');
         $upload_dir = $path . '/';
@@ -78,7 +80,11 @@ class AdminController extends Controller
         $thumbnail_filesize = $thumbnail_file['size'];
         $save_thumbnail_filename = date('YmdHis') . $thumbnail_filename;
         move_uploaded_file($tmp_path, $upload_dir . $save_thumbnail_filename);
-     
+        
+        if($thumbnail_file['name']==''){
+            $save_thumbnail_filename=$product->thumbnail;
+        }
+    
 
         // 詳細画像保存
         $detail_file = $_FILES['detail'];
@@ -88,6 +94,10 @@ class AdminController extends Controller
         $detail_filesize = $detail_file['size'];
         $save_detail_filename = date('YmdHis') . $detail_filename;
         move_uploaded_file($tmp_path, $upload_dir . $save_detail_filename);
+
+        if($detail_file['name']==''){
+            $save_detail_filename=$product->image1;
+        }
 
         //postの値を取得
         $name=$_POST['name'];
