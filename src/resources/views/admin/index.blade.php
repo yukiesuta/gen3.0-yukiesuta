@@ -2,6 +2,7 @@
 
 @section('content')
 <div class="product-index">
+    <h2>商品一覧</h2>
     <div class="py-5 bg-light">
         <div class="container">
             <form action="/product-management/createproduct" method="post" class="btn col-sm-5 btn-sm btn-outline-green">
