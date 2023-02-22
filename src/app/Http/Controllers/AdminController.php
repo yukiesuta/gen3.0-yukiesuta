@@ -22,7 +22,7 @@ class AdminController extends Controller
 
     }
 
-    public function createproduct(Request $request, Product $product) {
-        return view('admin.create');
+    public function addproduct(Request $request, Product $product) {
+        return view('admin.add');
     }
  }

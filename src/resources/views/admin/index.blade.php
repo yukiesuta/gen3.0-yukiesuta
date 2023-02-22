@@ -4,7 +4,7 @@
 <div class="product-index">
     <div class="py-5 bg-light">
         <div class="container">
-            <form action="/product-management/createproduct" method="post" class="btn col-sm-5 btn-sm btn-outline-green">
+            <form action="/product-management/addproduct" method="post" class="btn col-sm-5 btn-sm btn-outline-green">
                 @csrf
                 <input type="submit" value="新規作成">
             </form>
