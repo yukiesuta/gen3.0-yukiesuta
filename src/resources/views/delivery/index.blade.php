@@ -78,9 +78,11 @@
                 </div>
 
                 <div class="text-right">
+                    @if($is_admin)
                     <button type="button" class="btn btn-ash" onclick="location.href='/delivery-list/{{ $order->id }}'">
                         詳細を見る
                     </button>
+                    @endif
                 </div>
         </li>
         @endforeach
