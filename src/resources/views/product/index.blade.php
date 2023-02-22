@@ -1,6 +1,19 @@
 @extends('layouts.app')
 
 @section('content')
+    <div style="line-height: 50px" class="text-center py-3">
+        <div>あと<span
+                style="font-weight:bold; background-color:yellow; color:darkgreen; padding:10px 10px; border-radius: 50%;"
+                class="hour" id="hour"></span>時間<span
+                style="font-weight:bold; background-color:yellow; color:darkgreen; padding:10px 10px; border-radius: 50%;"
+                class="minute" id="minute"></span>分<span
+                style="font-weight:bold; background-color:yellow; color:darkgreen; padding:10px 10px; border-radius: 50%;"
+                class="seconds" id="seconds"></span>秒以内に
+        </div>
+        <div>ご注文いただくと<span
+                style="font-weight:bold; background-color:yellow; color:darkgreen; padding:10px 10px; border-radius: 10%;"
+                id="targetMessage"></span>に届きます！</div>
+    </div>
     @if ('user' == session()->get('role'))
         <div class="py-5 bg-light">
             <div class="container">
@@ -22,12 +35,9 @@
                                     <div class="text-right">
                                         @if ($product->stock == 0)
                                             <small class="text-muted">￥{{ $product->price }}</small>
-                                        @elseif(date('H') >= 20)
+                                        @elseif(date('H') >= 12 && $product->stock >= 50)
                                             <small>20%off</small>
                                             <small class="text-muted">￥{{ floor($product->price * 0.8) }}</small>
-                                        @elseif($product->stock >= 50)
-                                            <small>5%off</small>
-                                            <small class="text-muted">￥{{ floor($product->price * 0.95) }}</small>
                                         @else
                                             <small class="text-muted">￥{{ $product->price }}</small>
                                         @endif
@@ -60,17 +70,11 @@
             </div>
         </div>
     @endif
-    <div class="text-center py-3">
-        <div>あと<span class="hour" id="hour"></span>時間<span class="minute" id="minute"></span>分<span
-                class="seconds" id="seconds"></span>秒以内に
-        </div>
-        <div>ご注文いただくと<span id="targetMessage"></span>に届きます！</div>
-    </div>
     <section class="jumbotron text-center">
         <div class="container">
-            <h1 class="jumbotron-heading">『新鮮な野菜を市場から素早く配達』</h1>
+            <h1 class="jumbotron-heading">『豊洲から最高品質の食材を調達』</h1>
             <p class="lead text-muted">
-                食事をするとき、その食材を誰がどこでどのように作ったか、意識することは少ないと思います。しかし、そんなストーリーが見えれば、食事をするときにまた違った思いを感じるかもしれません。</p>
+                役者の質が観客に与える感動の程度に影響するのと同じように<br>食材の質はお客様に与える喜びの程度に大きく影響します。<br>あなたの作る料理が、誰かの心を動かすためのお手伝いをさせてください。</p>
         </div>
     </section>
 
@@ -95,12 +99,9 @@
                                 <div class="text-right">
                                     @if ($product->stock == 0)
                                         <small class="text-muted">￥{{ $product->price }}</small>
-                                    @elseif(date('H') >= 20)
+                                    @elseif(date('H') >= 12 && $product->stock >= 50)
                                         <small>20%off</small>
                                         <small class="text-muted">￥{{ floor($product->price * 0.8) }}</small>
-                                    @elseif($product->stock >= 50)
-                                        <small>5%off</small>
-                                        <small class="text-muted">￥{{ floor($product->price * 0.95) }}</small>
                                     @else
                                         <small class="text-muted">￥{{ $product->price }}</small>
                                     @endif
@@ -180,11 +181,11 @@
     </script>
     <script>
         /*
-                                                いつまでに注文するといつまでに届くのかを表示する
-                                                    12:00:00:000 ~ 22:59:59:999 の注文の場合は、明日の午前中
-                                                    23:00:00:000 ~ 23:59:59:999 の注文の場合は、明日の午後
-                                                    00:00:00:000 ~ 11:59:59:999 の注文の場合は、今日の午後
-                                                */
+                                                    いつまでに注文するといつまでに届くのかを表示する
+                                                        12:00:00:000 ~ 22:59:59:999 の注文の場合は、明日の午前中
+                                                        23:00:00:000 ~ 23:59:59:999 の注文の場合は、明日の午後
+                                                        00:00:00:000 ~ 11:59:59:999 の注文の場合は、今日の午後
+                                                    */
         function showCountdown() {
             const now = new Date();
             const nowHour = now.getHours();

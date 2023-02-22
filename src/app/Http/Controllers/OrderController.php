@@ -44,9 +44,11 @@ class OrderController extends Controller
         $delivery = session('delivery');
         [$delivery_time, $delivery_time_isam] = explode(' ', $request->input('delivery_time'));
         $delivery_method = $request->input('delivery_method');
+        $regular = $request->input('regular');
         $delivery->put('delivery_time', $delivery_time);
         $delivery->put('delivery_time_isam', $delivery_time_isam);
         $delivery->put('delivery_method', $delivery_method);
+        $delivery->put('regular', $regular);
         session(['delivery' => $delivery]);
 
         //配送先情報取得
@@ -65,9 +67,20 @@ class OrderController extends Controller
         $cart_collection = collect();
 
         if (isset($cart)) {
-            $cart->each(function ($item, $key) use ($cart_collection) {
+            $cart->each(function ($item, $key) use ($cart_collection,$regular) {
                 $product = Product::findOrFail($key);
-                if(date('H')>=20){
+                if($regular==2){
+                    $cart_collection->put(
+                    $key,
+                    collect([
+                        'quantity'  => $item,
+                        'product_id'=>$product->id,
+                        'name'      => $product->name,
+                        'thumbnail' => $product->thumbnail,
+                        'price'     => ($product->price)*0.95
+                    ])
+                );
+                }else if(date('H')>=12 && $product->stock>=50){
                     $cart_collection->put(
                     $key,
                     collect([
@@ -76,17 +89,6 @@ class OrderController extends Controller
                         'name'      => $product->name,
                         'thumbnail' => $product->thumbnail,
                         'price'     => ($product->price)*0.8
-                    ])
-                );
-                }else if($product->stock>=50){
-                $cart_collection->put(
-                    $key,
-                    collect([
-                        'quantity'  => $item,
-                        'product_id'=>$product->id,
-                        'name'      => $product->name,
-                        'thumbnail' => $product->thumbnail,
-                        'price'     => $product->price*0.95
                     ])
                 );
                 }else{
@@ -106,16 +108,19 @@ class OrderController extends Controller
         foreach($cart_collection as $cart){
             $sum += $cart->get('quantity')*$cart->get('price');
         }
-        return view('order.confirm', compact('delivery_address', 'cart_collection', 'delivery_time_disp', 'delivery_method_disp', 'user','sum'));
+        return view('order.confirm', compact('delivery_address', 'cart_collection', 'delivery_time_disp', 'delivery_method_disp', 'user','sum','delivery'));
     }}
     /**
      * 確認
      * サンクスページ
      */
-    public function thanks()
+    public function thanks(Request $request)
     {
         $delivery = session('delivery');
         $total_value = session('total_value');
+        if($delivery['regular']==2){
+            $total_value*=0.95;
+        }
 
         $order = Order::create([
             'user_id'               => Auth::id(),
@@ -126,6 +131,7 @@ class OrderController extends Controller
             'delivery_status_id'    => DeliveryStatus::getInPreparationId(),
             'total_price'           => session('total_value'),
             'truck_id'              =>5,
+            'regular'               =>$delivery['regular'],
             'total_price'           => $total_value,
         ]);
 

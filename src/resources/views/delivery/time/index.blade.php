@@ -22,6 +22,12 @@
                     <option value="2">受け取り</option>
                 </select>
 
+                <label for="exampleFormControlSelect3">２週間おきの定期便の希望</label>
+                <select name="regular" class="form-control" id="exampleFormControlSelect3">
+                    <option value="1">定期便を希望しない</option>
+                    <option value="2" selected>定期便を希望する（5％オフ）</option>
+                </select>
+
                 <div class="text-right mt-3">
                     <button type="submit" class="btn btn-danger">
                         OK

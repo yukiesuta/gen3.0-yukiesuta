@@ -38,6 +38,23 @@ class DeliveryListController extends Controller
         $order->delivery_status_id = $new_delivery_status;
         $order->truck_id = $new_truck_id;
         $order->save();
+        // dd($order->id);
+        $carbon = new Carbon($order->delivery_date);
+        $new_delivery_date=$carbon->addDays(14); 
+
+        if ($new_delivery_status==3 && $order->regular==2) {
+            Order::create([
+                'user_id'=>$order->user_id,
+                'delivery_address_id'=>$order->delivery_address_id,
+                'delivery_date'=>$new_delivery_date,
+                'is_am'=>$order->is_am,
+                'delivery_method_id'=>$order->delivery_method_id,
+                'delivery_status_id'=>1,
+                'total_price'=>$order->total_price,
+                'truck_id'=>5,
+                'regular'=>2
+        ]);
+        }
         return redirect('/delivery-list');
     }
 }
