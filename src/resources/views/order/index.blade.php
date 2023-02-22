@@ -9,7 +9,7 @@
                 <div class="block">
                     <div class="row my-3 flex">
                         <div class="col-4">■ 注文番号 {{ $order->id }}</div>
-                        <div class="col-4">■ 注文希望日 {{ $order->delivery_date->format('Y/m/d') }}{{ $order->is_am ? 'AM' : 'PM' }} </div>
+                        <div class="col-4">■ 配送希望日 {{ $order->delivery_date->format('Y/m/d') }}{{ $order->is_am ? 'AM' : 'PM' }} </div>
                         <div class="col-4">■ 配送状況 {{ $order->delivery_status->name }} </div>
                     </div>
                 <table class="table">
