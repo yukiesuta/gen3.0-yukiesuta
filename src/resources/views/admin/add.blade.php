@@ -23,7 +23,7 @@
             </tr>
             <tr>
                 <th>
-                    <div>サムネイル画像</div>
+                    <div>サムネイル画像 ※写真サイズが大きすぎると、アップロードできないことがあります</div>
                 </th>
                 <th>
                     <input type="file" accept="image/*" name="thumbnail">
@@ -31,7 +31,7 @@
             </tr>
             <tr>
                 <th>
-                    <div>詳細画像</div>
+                    <div>詳細画像 ※写真サイズが大きすぎると、アップロードできないことがあります</div>
                 </th>
                 <th>
                     <input type="file" accept="image/*" name="detail">
@@ -39,7 +39,7 @@
             </tr>
             <tr>
                 <th>
-                    <div>1箱あたりの数量</div>
+                    <div>1箱あたりの数量 ※一箱あたり〇〇個、のフォーマッドで記入</div>
                 </th>
                 <th>
                     <input type="text" name="quantity">

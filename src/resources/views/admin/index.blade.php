@@ -51,35 +51,35 @@
                 <div class="modal-body">
                     <img src="{{ asset('img/' . $product->thumbnail) }}" alt="tomato" style=" width: 100%;" class="aligncenter size-full wp-image-425" />
                     <input type="file" accept="image/*" name="thumbnail">
-                    <div>サムネイル画像</div>
+                    <div>サムネイル画像 ※写真の大きさが大きすぎると、アップロードできないことがあります</div>
                 </div>
                 <div class="modal-body">
                     <img src="{{ asset('img/' . $product->image1) }}" alt="tomato" style=" width: 100%;" class="aligncenter size-full wp-image-425" />
                     <input type="file" accept="image/*" name="detail">
-                    <div>詳細画像</div>
+                    <div>詳細画像 ※写真の大きさが大きすぎると、アップロードできないことがあります</div>
                 </div>
                     <div class="container-fluid">
-                        <div class="row mb-2">
+                        <div class="row mb-2 ml-1">
                             <input value={{$product->name }} name="name">
                             <div>商品名</div>
                         </div>
-                        <div class="row mb-2">
+                        <div class="row mb-2 ml-1">
                             <input value={{$product->description }} name="description">
                             <div>商品説明</div>
                         </div>
-                        <div class="row mb-2">
+                        <div class="row mb-2 ml-1">
                             <input  value={{$product->quantity }} name="quantity">
-                            <div>1箱あたりの個数</div>
+                            <div>1箱あたりの個数 ※一箱あたり〇〇個、のフォーマッドで記入</div>
                         </div>
-                        <div class="row mb-2">
+                        <div class="row mb-2 ml-1">
                             <input  value={{$product->price }} name="price">
                             <div>値段</div>
                         </div>
-                        <div class="row mb-2">
+                        <div class="row mb-2 ml-1">
                             <input  value={{$product->stock }} name="stock">
                             <div>在庫</div>
                         </div>
-                        {{-- <div class="row mb-2">
+                        {{-- <div class="row mb-2 ml-1">
                             <div class="input-group">
                                 <input type="text" class="form-control col-md-4 quantityfromdetail" aria-label="Dollar amount (with dot and two decimal places)">
                                 <div class="input-group-append">
