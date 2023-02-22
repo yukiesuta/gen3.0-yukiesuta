@@ -25,14 +25,38 @@
 11. Please try to access `http://localhost:80`
 
 ```
-※CSSについて
- src/resources/sassにSASSファイルが入っています
- 修正した場合は`npm run dev`を再実行することで
- src/public/css/app.css に出力され、画面に反映されます
-``` 
+シーダー実行後のログインできるサンプルユーザー
+管理者1
+admin1@gmail.com
+password
 
-```
-※npm installについて
-　　完了までに結構時間がかかります
- 環境構築を実行しながら実装の作戦会議などしたほうがよいかも！？
+管理者2
+admin2@gmail.com
+password
+
+user1（購入者）
+user1@gmail.com
+password
+
+user2（購入者）
+user2@gmail.com
+password
+
+ドライバー1
+delivery_agent1@gmail.com
+password
+
+ドライバー2
+delivery_agent2@gmail.com
+password
+
+ドライバー3
+delivery_agent3@gmail.com
+password
+
+ドライバー4
+delivery_agent4@gmail.com
+password
+
+
 ```
