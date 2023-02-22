@@ -34,7 +34,6 @@ class invoice_mail extends Mailable
         $this->email_without_period = str_replace('.', '', $this->email);
         $this->document_file_name = 'invoice' . $this->year_month_of_last_month . $this->email_without_period . '.pdf';
         $this->invoice_id = count(Storage::allFiles('public')) - 1;
-        $this->table_info = '';
     }
     //いまだとページ数の制限で無視される＝＞ページ数増やせばいいじゃないか＝＞どのタイミングでページどのくらい増やすのか？＝＞セル一個の立幅をとってページの長さで割ってページ数出力＝＞ページ数の制限なしになるメソッドないかな？
 
@@ -93,31 +92,78 @@ class invoice_mail extends Mailable
         $all_orders = Order::where('user_id', $this->id)->whereMonth('delivery_date', $this->month_of_request - 1)->with('order_details')->get();
         $product_quantities_per_unit = Product::pluck('quantity', 'id');
         $product_price_per_unit = Product::pluck('price', 'id');
-        foreach ($all_orders as $orders) {
-            // $document->WriteHTML('<div>aaaa</div>');
-            foreach ($orders->order_details as $order) {
-                // $count++;
-                // dd($product_names[$order->product_id]);
-                // dd($order->quantity);
-                // dd($product_quantities_per_unit[$order->product_id]);
-                // dd($product_price_per_unit[$order->product_id]);
-                try {
-                    //ここにif文で超えそうになったらpageadd
-                    $document->WriteHTML('<tr><th style="background-color:black;width:30%;">' . $product_names[$order->product_id] . '</th><th style="width:10%;">' . $order->quantity . '</th><th style="width:20%;">' . $product_quantities_per_unit[$order->product_id] . '</th><th style="width:20%;">' . $product_price_per_unit[$order->product_id] . '</th><th style="width:20%;">' . $product_price_per_unit[$order->product_id] . '</th></tr>');
-                    $document->WriteHTML('<pagebreak />');
-                } catch (Exception $e) {
-                    dd($e);
-                }
-            }
-            $document->WriteHTML('
+        $table_info = [];
+        $count = 0;
+        // $document->shrink_tables_to_fit;
+        $document->WriteHTML('<tr><th style="width:30%;"> 2 </th><th style="width:10%;"> 4 </th><th style="width:20%;"> 3 </th><th style="width:20%;"> 2 </th><th style="width:20%;">2 </th></tr>');
+        $document->WriteHTML('<tr><th style="width:30%;"> 2 </th><th style="width:10%;"> 4 </th><th style="width:20%;"> 3 </th><th style="width:20%;"> 2 </th><th style="width:20%;">2 </th></tr>');
+        $document->WriteHTML('<tr><th style="width:30%;"> 2 </th><th style="width:10%;"> 4 </th><th style="width:20%;"> 3 </th><th style="width:20%;"> 2 </th><th style="width:20%;">2 </th></tr>');
+        $document->WriteHTML('<tr><th style="width:30%;"> 2 </th><th style="width:10%;"> 4 </th><th style="width:20%;"> 3 </th><th style="width:20%;"> 2 </th><th style="width:20%;">2 </th></tr>');
+        $document->WriteHTML('<tr><th style="width:30%;"> 2 </th><th style="width:10%;"> 4 </th><th style="width:20%;"> 3 </th><th style="width:20%;"> 2 </th><th style="width:20%;">2 </th></tr>');
+        $document->WriteHTML('<tr><th style="width:30%;"> 2 </th><th style="width:10%;"> 4 </th><th style="width:20%;"> 3 </th><th style="width:20%;"> 2 </th><th style="width:20%;">2 </th></tr>');
+        $document->WriteHTML('<tr><th style="width:30%;"> 2 </th><th style="width:10%;"> 4 </th><th style="width:20%;"> 3 </th><th style="width:20%;"> 2 </th><th style="width:20%;">2 </th></tr>');
+        $document->WriteHTML('<tr><th style="width:30%;"> 2 </th><th style="width:10%;"> 4 </th><th style="width:20%;"> 3 </th><th style="width:20%;"> 2 </th><th style="width:20%;">2 </th></tr>');
+        $document->WriteHTML('<tr><th style="width:30%;"> 2 </th><th style="width:10%;"> 4 </th><th style="width:20%;"> 3 </th><th style="width:20%;"> 2 </th><th style="width:20%;">2 </th></tr>');
+        $document->WriteHTML('<tr><th style="width:30%;"> 2 </th><th style="width:10%;"> 4 </th><th style="width:20%;"> 3 </th><th style="width:20%;"> 2 </th><th style="width:20%;">2 </th></tr>');
+        $document->WriteHTML('<tr><th style="width:30%;"> 2 </th><th style="width:10%;"> 4 </th><th style="width:20%;"> 3 </th><th style="width:20%;"> 2 </th><th style="width:20%;">2 </th></tr>');
+        $document->WriteHTML('<tr><th style="width:30%;"> 2 </th><th style="width:10%;"> 4 </th><th style="width:20%;"> 3 </th><th style="width:20%;"> 2 </th><th style="width:20%;">2 </th></tr>');
+        $document->WriteHTML('<tr><th style="width:30%;"> 2 </th><th style="width:10%;"> 4 </th><th style="width:20%;"> 3 </th><th style="width:20%;"> 2 </th><th style="width:20%;">2 </th></tr>');
+        $document->WriteHTML('<tr><th style="width:30%;"> 2 </th><th style="width:10%;"> 4 </th><th style="width:20%;"> 3 </th><th style="width:20%;"> 2 </th><th style="width:20%;">2 </th></tr>');
+        $document->WriteHTML('<tr><th style="width:30%;"> 2 </th><th style="width:10%;"> 4 </th><th style="width:20%;"> 3 </th><th style="width:20%;"> 2 </th><th style="width:20%;">2 </th></tr>');
+        $document->WriteHTML('<tr><th style="width:30%;"> 2 </th><th style="width:10%;"> 4 </th><th style="width:20%;"> 3 </th><th style="width:20%;"> 2 </th><th style="width:20%;">2 </th></tr>');
+        $document->WriteHTML('<tr><th style="width:30%;"> 2 </th><th style="width:10%;"> 4 </th><th style="width:20%;"> 3 </th><th style="width:20%;"> 2 </th><th style="width:20%;">2 </th></tr>');
+        $document->WriteHTML('<tr><th style="width:30%;"> 2 </th><th style="width:10%;"> 4 </th><th style="width:20%;"> 3 </th><th style="width:20%;"> 2 </th><th style="width:20%;">2 </th></tr>');
+        $document->WriteHTML('<tr><th style="width:30%;"> 2 </th><th style="width:10%;"> 4 </th><th style="width:20%;"> 3 </th><th style="width:20%;"> 2 </th><th style="width:20%;">2 </th></tr>');
+        $document->WriteHTML('<tr><th style="width:30%;"> 2 </th><th style="width:10%;"> 4 </th><th style="width:20%;"> 3 </th><th style="width:20%;"> 2 </th><th style="width:20%;">2 </th></tr>');
+        $document->WriteHTML('<tr><th style="width:30%;"> 2 </th><th style="width:10%;"> 4 </th><th style="width:20%;"> 3 </th><th style="width:20%;"> 2 </th><th style="width:20%;">2 </th></tr>');
+        $document->WriteHTML('<tr><th style="width:30%;"> 2 </th><th style="width:10%;"> 4 </th><th style="width:20%;"> 3 </th><th style="width:20%;"> 2 </th><th style="width:20%;">2 </th></tr>');
+        $document->WriteHTML('<tr><th style="width:30%;"> 2 </th><th style="width:10%;"> 4 </th><th style="width:20%;"> 3 </th><th style="width:20%;"> 2 </th><th style="width:20%;">2 </th></tr>');
+        $document->WriteHTML('<tr><th style="width:30%;"> 2 </th><th style="width:10%;"> 4 </th><th style="width:20%;"> 3 </th><th style="width:20%;"> 2 </th><th style="width:20%;">2 </th></tr>');
+        $document->WriteHTML('<tr><th style="width:30%;"> 2 </th><th style="width:10%;"> 4 </th><th style="width:20%;"> 3 </th><th style="width:20%;"> 2 </th><th style="width:20%;">2 </th></tr>');
+        $document->WriteHTML('<tr><th style="width:30%;"> 2 </th><th style="width:10%;"> 4 </th><th style="width:20%;"> 3 </th><th style="width:20%;"> 2 </th><th style="width:20%;">2 </th></tr>');
+        $document->WriteHTML('<tr><th style="width:30%;"> 2 </th><th style="width:10%;"> 4 </th><th style="width:20%;"> 3 </th><th style="width:20%;"> 2 </th><th style="width:20%;">2 </th></tr>');
+        $document->WriteHTML('<tr><th style="width:30%;"> 2 </th><th style="width:10%;"> 4 </th><th style="width:20%;"> 3 </th><th style="width:20%;"> 2 </th><th style="width:20%;">2 </th></tr>');
+        $document->WriteHTML('<tr><th style="width:30%;"> 2 </th><th style="width:10%;"> 4 </th><th style="width:20%;"> 3 </th><th style="width:20%;"> 2 </th><th style="width:20%;">2 </th></tr>');
+        $document->WriteHTML('<tr><th style="width:30%;"> 2 </th><th style="width:10%;"> 4 </th><th style="width:20%;"> 3 </th><th style="width:20%;"> 2 </th><th style="width:20%;">2 </th></tr>');
+        $document->WriteHTML('<tr><th style="width:30%;"> 2 </th><th style="width:10%;"> 4 </th><th style="width:20%;"> 3 </th><th style="width:20%;"> 2 </th><th style="width:20%;">2 </th></tr>');
+        $document->WriteHTML('<tr><th style="width:30%;"> 2 </th><th style="width:10%;"> 4 </th><th style="width:20%;"> 3 </th><th style="width:20%;"> 2 </th><th style="width:20%;">2 </th></tr>');
+        $document->WriteHTML('<tr><th style="width:30%;"> 2 </th><th style="width:10%;"> 4 </th><th style="width:20%;"> 3 </th><th style="width:20%;"> 2 </th><th style="width:20%;">2 </th></tr>');
+        $document->WriteHTML('<tr><th style="width:30%;"> 2 </th><th style="width:10%;"> 4 </th><th style="width:20%;"> 3 </th><th style="width:20%;"> 2 </th><th style="width:20%;">2 </th></tr>');
+        $document->WriteHTML('<tr><th style="width:30%;"> 2 </th><th style="width:10%;"> 4 </th><th style="width:20%;"> 3 </th><th style="width:20%;"> 2 </th><th style="width:20%;">2 </th></tr>');
+        $document->WriteHTML('<tr><th style="width:30%;"> 2 </th><th style="width:10%;"> 4 </th><th style="width:20%;"> 3 </th><th style="width:20%;"> 2 </th><th style="width:20%;">2 </th></tr>');
+        $document->WriteHTML('<tr><th style="width:30%;"> 2 </th><th style="width:10%;"> 4 </th><th style="width:20%;"> 3 </th><th style="width:20%;"> 2 </th><th style="width:20%;">2 </th></tr>');
+        $document->WriteHTML('<tr><th style="width:30%;"> 2 </th><th style="width:10%;"> 4 </th><th style="width:20%;"> 3 </th><th style="width:20%;"> 2 </th><th style="width:20%;">2 </th></tr>');
+        $document->WriteHTML('<tr><th style="width:30%;"> 2 </th><th style="width:10%;"> 4 </th><th style="width:20%;"> 3 </th><th style="width:20%;"> 2 </th><th style="width:20%;">2 </th></tr>');
+        $document->WriteHTML('<tr><th style="width:30%;"> 2 </th><th style="width:10%;"> 4 </th><th style="width:20%;"> 3 </th><th style="width:20%;"> 2 </th><th style="width:20%;">2 </th></tr>');
+        $document->WriteHTML('<tr><th style="width:30%;"> 2 </th><th style="width:10%;"> 4 </th><th style="width:20%;"> 3 </th><th style="width:20%;"> 2 </th><th style="width:20%;">2 </th></tr>');
+        $document->WriteHTML('<tr><th style="width:30%;"> 2 </th><th style="width:10%;"> 4 </th><th style="width:20%;"> 3 </th><th style="width:20%;"> 2 </th><th style="width:20%;">2 </th></tr>');
+        $document->WriteHTML('<tr><th style="width:30%;"> 2 </th><th style="width:10%;"> 4 </th><th style="width:20%;"> 3 </th><th style="width:20%;"> 2 </th><th style="width:20%;">2 </th></tr>');
+        $document->WriteHTML('<tr><th style="width:30%;"> 2 </th><th style="width:10%;"> 4 </th><th style="width:20%;"> 3 </th><th style="width:20%;"> 2 </th><th style="width:20%;">2 </th></tr>');
+        $document->WriteHTML('<tr><th style="width:30%;"> 2 </th><th style="width:10%;"> 4 </th><th style="width:20%;"> 3 </th><th style="width:20%;"> 2 </th><th style="width:20%;">2 </th></tr>');
+        $document->WriteHTML('<tr><th style="width:30%;"> 2 </th><th style="width:10%;"> 4 </th><th style="width:20%;"> 3 </th><th style="width:20%;"> 2 </th><th style="width:20%;">2 </th></tr>');
+        $document->WriteHTML('<tr><th style="width:30%;"> 2 </th><th style="width:10%;"> 4 </th><th style="width:20%;"> 3 </th><th style="width:20%;"> 2 </th><th style="width:20%;">2 </th></tr>');
+        $document->WriteHTML('<tr><th style="width:30%;"> 2 </th><th style="width:10%;"> 4 </th><th style="width:20%;"> 3 </th><th style="width:20%;"> 2 </th><th style="width:20%;">2 </th></tr>');
+        $document->WriteHTML('<tr><th style="width:30%;"> 2 </th><th style="width:10%;"> 4 </th><th style="width:20%;"> 3 </th><th style="width:20%;"> 2 </th><th style="width:20%;">2 </th></tr>');
+        $document->WriteHTML('<tr><th style="width:30%;"> 2 </th><th style="width:10%;"> 4 </th><th style="width:20%;"> 3 </th><th style="width:20%;"> 2 </th><th style="width:20%;">2 </th></tr>');
+        // try {
+        //     foreach ($all_orders as $orders) {
+        //         foreach ($orders->order_details as $order) {
+        //             //ここにif文で超えそうになったらpageadd
+        //             $document->WriteHTML('<tr><th style="background-color:black;width:30%;">' . $product_names[$order->product_id] . '</th><th style="width:10%;">' . $order->quantity . '</th><th style="width:20%;">' . $product_quantities_per_unit[$order->product_id] . '</th><th style="width:20%;">' . $product_price_per_unit[$order->product_id] . '</th><th style="width:20%;">' . $product_price_per_unit[$order->product_id] . '</th></tr>');
+        //         }
+        //         $document->addPage();
+        //     }
+        // } catch (\Mpdf\MpdfException $e) {
+        //     echo $e->getMessage();
+        // }
+        $document->WriteHTML('
                 </table>
                 hhhhhh
                 </div>
         </section>
         ');
 
-            Storage::disk('public')->put($this->document_file_name, $document->Output($this->document_file_name, "S"));
-            return $this->text('emails.invoice')->from(env('MAIL_FROM_ADDRESS'))->with(['user' => $this->user])->attach(storage_path('app/public/' . $this->document_file_name));
-        }
+        Storage::disk('public')->put($this->document_file_name, $document->Output($this->document_file_name, "S"));
+        return $this->text('emails.invoice')->from(env('MAIL_FROM_ADDRESS'))->with(['user' => $this->user])->attach(storage_path('app/public/' . $this->document_file_name));
     }
 }

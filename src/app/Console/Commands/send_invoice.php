@@ -4,6 +4,7 @@ namespace App\Console\Commands;
 
 use App\Mail\invoice_mail;
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Console\Command;
 
 class send_invoice extends Command
@@ -40,9 +41,10 @@ class send_invoice extends Command
     public function handle()
     {
         $users=User::get();
+        //請求日
         $month=Carbon::today()->format('m');
         foreach($users as $user){
-            return new invoice_mail($user,,$month);
+            return redirect()->route('invoice_mail')->with(compact('user','month'));
         }
     }
 }

@@ -85,5 +85,5 @@ Route::middleware(['auth'])->group(function () {
         });
     });
     //メール送信テスト
-    Route::get('/invoice_mail','test@sendmail');
+    Route::get('/invoice_mail','writePdfController@index')->name('invoice_mail');
 });
