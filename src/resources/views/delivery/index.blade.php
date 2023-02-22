@@ -118,6 +118,7 @@
             wTable.className = 'allNoDisplay ' + value;
             console.log(2);
         }
+<<<<<<< HEAD
         $('#testttt').on('click', function () {
             alert("testtttt");
             var cusno = $('#cusno').val();
@@ -147,3 +148,8 @@
         });
     </script>
 @endpush
+=======
+    }
+</script>
+@endpush
+>>>>>>> 8ee5c72 (復元のためのコミット)
