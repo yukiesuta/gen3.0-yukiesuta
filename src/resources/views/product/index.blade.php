@@ -34,6 +34,11 @@
                                 >
                                 <div class="card-body">
                                     <p class="card-text">{{ $product->name }}</p>
+                                    @if($product->stock==0)
+                                    <div>売り切れ</div>
+                                    @else
+                                    <div>残り{{$product->stock}}個</div>
+                                    @endif
                                     <div class="text-right">
                                         <small class="text-muted">{{ $product->format_price }}</small>
                                     </div>
