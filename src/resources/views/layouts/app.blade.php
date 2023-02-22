@@ -20,12 +20,24 @@
                 </button>
                 <div class="collapse navbar-collapse justify-content-end" id="navbarNav4">
                     <ul class="navbar-nav">
+                       @if ('admin' == session()->get('role'))
+                        <li class="nav-item">
+                            <a href="{{  route('product-management') }}" class="nav-link"><i class="material-icons md-light cartColor">receipt</i>商品管理画面</a>
+                        </li>
+                       @endif
+                       @if ('admin' == session()->get('role'))
+                        <li class="nav-item">
+                            <a href="{{  route('delivery-list') }}" class="nav-link"><i class="material-icons md-light cartColor">receipt</i>運送管理画面</a>
+                        </li>
+                       @endif
+                       @if ('user' == session()->get('role'))
                         <li class="nav-item">
                             <a href="{{  route('order') }}" class="nav-link"><i class="material-icons md-light cartColor">receipt</i>注文履歴</a>
                         </li>
                         <li class="nav-item">
                             <a href="{{  route('cart') }}" class="nav-link"><i class="material-icons md-light cartColor">shopping_cart</i>カートに行く</a>
                         </li>
+                        @endif
                         @auth
                             <li class="nav-item">
                                 <a href="{{  route('logout') }}" class="nav-link"><i class="material-icons md-light cartColor">exit_to_app</i>ログアウト</a>
