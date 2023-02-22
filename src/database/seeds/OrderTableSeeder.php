@@ -22,7 +22,7 @@ class OrderTableSeeder extends Seeder
         $user_id = User::where('role_id', Role::getUserId())->first()->id;
         $delivery_addresses = DeliveryAddress::where('user_id', $user_id)->get();
         $truck_id = Truck::first()->id;
-        $today=Carbon::today();
+        $today = Carbon::today();
         foreach ($delivery_addresses as $delivery_address) {
             Order::create([
                 'user_id'             => $user_id,
@@ -32,7 +32,7 @@ class OrderTableSeeder extends Seeder
                 'delivery_method_id'  => DeliveryMethod::getPackageDropId(),
                 'delivery_status_id'  => DeliveryStatus::getInPreparationId(),
                 'total_price'         => collect([1000, 1500, 2000, 3000, 4000])->random(),
-                'truck_id'            => $truck_id,
+                'truck_id'            => collect([1, 2, 3, 4, 5])->random(),
             ]);
             Order::create([
                 'user_id'             => $user_id,
@@ -42,7 +42,7 @@ class OrderTableSeeder extends Seeder
                 'delivery_method_id'  => DeliveryMethod::getPackageDropId(),
                 'delivery_status_id'  => DeliveryStatus::getInPreparationId(),
                 'total_price'         => collect([1000, 1500, 2000, 3000, 4000])->random(),
-                'truck_id'            => $truck_id,
+                'truck_id'            => collect([1, 2, 3, 4, 5])->random(),
             ]);
         }
     }
