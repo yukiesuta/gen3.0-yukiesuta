@@ -68,17 +68,41 @@ class OrderController extends Controller
         if (isset($cart)) {
             $cart->each(function ($item, $key) use ($cart_collection) {
                 $product = Product::findOrFail($key);
+                if(date('H')>=20){
+                    $cart_collection->put(
+                    $key,
+                    collect([
+                        'quantity'  => $item,
+                        'product_id'=>$product->id,
+                        'name'      => $product->name,
+                        'thumbnail' => $product->thumbnail,
+                        'price'     => ($product->price)*0.8
+                    ])
+                );
+                }else if($product->stock<=5){
                 $cart_collection->put(
                     $key,
                     collect([
                         'quantity'  => $item,
+                        'product_id'=>$product->id,
+                        'name'      => $product->name,
+                        'thumbnail' => $product->thumbnail,
+                        'price'     => $product->price*0.85
+                    ])
+                );
+                }else{
+                    $cart_collection->put(
+                    $key,
+                    collect([
+                        'quantity'  => $item,
+                        'product_id'=>$product->id,
                         'name'      => $product->name,
                         'thumbnail' => $product->thumbnail,
                         'price'     => $product->price
                     ])
                 );
-            });
-        }
+                }
+    });
         $sum= 0;
         foreach($cart_collection as $cart){
             $sum += $cart->get('quantity')*$cart->get('price');
@@ -87,8 +111,7 @@ class OrderController extends Controller
 
 
         return view('order.confirm', compact('delivery_address', 'cart_collection', 'delivery_time_disp', 'delivery_method_disp', 'user','sum'));
-    }
-
+    }}
     /**
      * 確認
      * サンクスページ
