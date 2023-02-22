@@ -7,11 +7,13 @@
         @foreach ($orders as $order)
             <a href="{{  route('order.detail', [ 'id' => $order->id ]) }}" class="link-area">
                 <div class="block">
-                    <div class="row my-3">
-                        <div class="col-5">■ 注文番号 {{ $order->id }}</div>
+                    <div class="row my-3 flex">
+                        <div class="col-3">■ 注文番号 {{ $order->id }}</div>
+                        <div class="col-3">■ 注文日 {{ $order->created_at }}</div>
+                        <div class="col-3">■ 配送希望日 {{ $order->delivery_date->format('Y-m-d') }}{{ $order->is_am ? 'AM' : 'PM' }} </div>
+                        <div class="col-3">■ 配送状況 {{ $order->delivery_status->name }} </div>
                     </div>
-
-                    <table class="table">
+                <table class="table">
                         <thead>
                             <tr>
                               <th scope="col" class="text-left">商品名</th>
@@ -28,6 +30,9 @@
                                 </tr>
                             @endforeach
                         </tbody>
+                        <th scope="col" class="text-left">総額</th>
+                        <td class="text-right"></td>
+                        <td class="text-right">¥{{ $order -> total_price }}</td>
                     </table>
                 </div>
             </a>

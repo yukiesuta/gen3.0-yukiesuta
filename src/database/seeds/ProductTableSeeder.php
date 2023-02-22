@@ -20,6 +20,7 @@ class ProductTableSeeder extends Seeder
             "image1"      => '1_image1.jpg',
             "quantity"    => '1箱10個入り',
             "price"       => 900,
+            "stock"       => 100,
             "is_active"   => true,
         ]);
         Product::create([
@@ -30,6 +31,7 @@ class ProductTableSeeder extends Seeder
             "image1"      => '2_image1.jpg',
             "quantity"    => '1箱20個入り',
             "price"       => 100,
+            "stock"       => 100,
             "is_active"   => true,
         ]);
         Product::create([
@@ -40,6 +42,7 @@ class ProductTableSeeder extends Seeder
             "image1"      => '3_image1.jpg',
             "quantity"    => '1箱30個入り',
             "price"       => 200,
+            "stock"       => 100,
             "is_active"   => false,
         ]);
         Product::create([
@@ -50,6 +53,7 @@ class ProductTableSeeder extends Seeder
             "image1"      => '4_image1.jpg',
             "quantity"    => '1箱5玉入り',
             "price"       => 200,
+            "stock"       => 100,
             "is_active"   => true,
         ]);
         Product::create([
@@ -60,6 +64,7 @@ class ProductTableSeeder extends Seeder
             "image1"      => '5_image1.jpg',
             "quantity"    => '1箱5玉入り',
             "price"       => 400,
+            "stock"       => 100,
             "is_active"   => true,
         ]);
         Product::create([
@@ -70,6 +75,7 @@ class ProductTableSeeder extends Seeder
             "image1"      => '6_image1.jpg',
             "quantity"    => '1箱5玉入り',
             "price"       => 800,
+            "stock"       => 100,
             "is_active"   => false,
         ]);
         Product::create([
@@ -80,6 +86,7 @@ class ProductTableSeeder extends Seeder
             "image1"      => '7_image1.jpg',
             "quantity"    => '1箱8本入り',
             "price"       => 700,
+            "stock"       => 100,
             "is_active"   => true,
         ]);
         Product::create([
@@ -90,6 +97,7 @@ class ProductTableSeeder extends Seeder
             "image1"      => '8_image1.jpg',
             "quantity"    => '1箱4本入り',
             "price"       => 400,
+            "stock"       => 100,
             "is_active"   => true,
         ]);
         Product::create([
@@ -100,6 +108,7 @@ class ProductTableSeeder extends Seeder
             "image1"      => '9_image1.jpg',
             "quantity"    => '1箱3本入り',
             "price"       => 200,
+            "stock"       => 100,
             "is_active"   => false,
         ]);
     }

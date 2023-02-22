@@ -21,7 +21,7 @@ Route::middleware([])->group(function () {
         });
 
         // ログイン
-        Route::prefix('login')->group(function() {
+        Route::prefix('login')->group(function () {
             Route::get('/',  'LoginController@showLoginForm')->name('login');
             Route::post('/', 'LoginController@login')->name('login.post');
         });
@@ -36,8 +36,9 @@ Route::middleware([])->group(function () {
 
     // カート
     Route::prefix('cart')->group(function () {
-        Route::get('/', 		              'CartController@index')->name('cart');
+        Route::get('/',                       'CartController@index')->name('cart');
         Route::get('/{productid}/{quantity?}', 'CartController@add');
+        Route::post('/{productid}', 'CartController@delete');
         Route::get('/flush',                  'CartController@flush');
     });
 });
@@ -58,7 +59,7 @@ Route::middleware(['auth'])->group(function () {
 
         // 注文
         Route::prefix('order')->group(function () {
-            Route::get('/', 	    'OrderController@index')->name('order');
+            Route::get('/',         'OrderController@index')->name('order');
             Route::get('/thanks',   'OrderController@thanks')->name('order.thanks');
             Route::get('/{id}',     'OrderController@detail')->name('order.detail');
             Route::post('/confirm', 'OrderController@confirm')->name('order.confirm');
@@ -70,7 +71,19 @@ Route::middleware(['auth'])->group(function () {
     Route::middleware(['role:delivery-agent'])->group(function () {
         Route::prefix('delivery-list')->group(function () {
             Route::get('/',     'DeliveryListController@index')->name('delivery-list');
-            Route::get('/{id}', 'DeliveryListDetailController@detail')->name('delivery-list.detail');
+            Route::get('/{id}', 'DeliveryListController@detail')->name('delivery-list.detail');
+            Route::post('/{id}', 'DeliveryListController@change_status')->name('delivery-list.detail');
+        });
+        Route::prefix('product-management')->group(function () {
+            Route::get('/',       'AdminController@index')->name('product-management');
+            Route::post('/deleteproduct', 'AdminController@deleteproduct')->name('deleteproduct');
+            Route::post('/addproduct', 'AdminController@addproduct')->name('add');
+            Route::post('/createproduct', 'AdminController@createproduct')->name('create');
+            Route::post('/updateproduct/{productid}', 'AdminController@updateproduct')->name('update');
+            // Route::get('/create', 'DeliveryAddressController@showCreateForm')->name('delivery-address.showCreateForm');
+            // Route::post('/create', 'DeliveryAddressController@create')->name('delivery-address.create');
         });
     });
+    //メール送信テスト
+    Route::get('/invoice_mail','writePdfController@index')->name('invoice_mail');
 });

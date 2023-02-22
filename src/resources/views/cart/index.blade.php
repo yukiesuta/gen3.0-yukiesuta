@@ -36,6 +36,10 @@
                     <div class="col-3">{{ $cart->get('name') }}</div>
                     <div class="col-2 text-right">{{ $cart->get('quantity') }}個</div>
                     <div class="col-3 text-right">¥{{ $cart->get('price') }}</div>
+                    <form action="/cart/{{$cart->get('product_id')}}" method="POST">
+                        @csrf
+                        <input type="submit" value="削除">
+                    </form>
                 </div>
 
                 @endforeach
