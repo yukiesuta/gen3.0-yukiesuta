@@ -24,7 +24,7 @@
                                 <input type="submit" data-toggle="modal" data-target="#productModal{{ $product->id }}" value="編集" class="btn btn-sm btn-outline-success"> 
                                 
                                 
-                                <form action="/product-management/deleteproduct" method="post">
+                                <form action="/product-management/deleteproduct" method="post" class="mb-0">
                                     @csrf
                                     <input type="hidden" name="product_id" value="{{ $product->id }}">
                                     <input type="submit" value="削除" onclick="return confirm('削除しますか?')" class="btn btn-sm btn-outline-danger">
