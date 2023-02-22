@@ -21,7 +21,7 @@
                                 <small class="text-muted">{{ $product->format_price }}</small>
                             </div>
                             <div class="d-flex justify-content-between align-items-center">
-                                <input type="submit" data-toggle="modal" data-target="#productModal{{ $product->id }}" value="編集" class="btn btn-sm btn-outline-success> 
+                                <input type="submit" data-toggle="modal" data-target="#productModal{{ $product->id }}" value="編集" class="btn btn-sm btn-outline-success"> 
                                 
                                 
                                 <form action="/product-management/deleteproduct" method="post">
