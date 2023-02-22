@@ -114,12 +114,14 @@
                         <div class="col-12 text-right">¥{{ $order->total_price }}</div>
                     </div>
 
+                    @if ('admin' == session()->get('role'))
                     <div class="text-right">
                         <button type="button" class="btn btn-ash"
                             onclick="location.href='/delivery-list/{{ $order->id }}'">
                             詳細を見る
                         </button>
                     </div>
+                    @endif
                     </li>
             @endforeach
         </ul>
