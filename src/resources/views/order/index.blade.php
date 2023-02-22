@@ -7,8 +7,9 @@
         @foreach ($orders as $order)
             <a href="{{  route('order.detail', [ 'id' => $order->id ]) }}" class="link-area">
                 <div class="block">
-                    <div class="row my-3">
+                    <div class="row my-3 flex">
                         <div class="col-5">■ 注文番号 {{ $order->id }}</div>
+                        <div class="col-5">■ 注文希望日 {{ $order->delivery_date->format('Y/m/d') }}{{ $order->is_am ? 'AM' : 'PM' }} </div>
                     </div>
 
                     <table class="table">
