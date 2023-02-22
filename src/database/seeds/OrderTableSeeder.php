@@ -44,6 +44,26 @@ class OrderTableSeeder extends Seeder
                 'total_price'         => collect([1000, 1500, 2000, 3000, 4000])->random(),
                 'truck_id'            => collect([1, 2, 3, 4, 5])->random(),
             ]);
+            Order::create([
+                'user_id'             => $user_id,
+                'delivery_address_id' => $delivery_address->id,
+                'delivery_date'       => $today->subMonthNoOverflow()->format('Y-m-d'),
+                'is_am'               => true,
+                'delivery_method_id'  => DeliveryMethod::getPackageDropId(),
+                'delivery_status_id'  => DeliveryStatus::getDeliveredId(),
+                'total_price'         => collect([1000, 1500, 2000, 3000, 4000])->random(),
+                'truck_id'            => collect([1, 2, 3, 4, 5])->random(),
+            ]);
+            Order::create([
+                'user_id'             => $user_id,
+                'delivery_address_id' => $delivery_address->id,
+                'delivery_date'       => $today->addDay(1)->subMonthNoOverflow()->format('Y-m-d'),
+                'is_am'               => false,
+                'delivery_method_id'  => DeliveryMethod::getPackageDropId(),
+                'delivery_status_id'  => DeliveryStatus::getDeliveredId(),
+                'total_price'         => collect([1000, 1500, 2000, 3000, 4000])->random(),
+                'truck_id'            => collect([1, 2, 3, 4, 5])->random(),
+            ]);
         }
     }
 }
