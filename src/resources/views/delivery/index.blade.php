@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="delivery-index">
-        <h2>配送一覧</h2>
+        <h2>運送管理</h2>
         <select id="sampleSelect" onChange="goFilter();">
             <option value="all">全て</option>
             <option value="today_am">本日({{ $today }}) AM</option>
