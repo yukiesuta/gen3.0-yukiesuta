@@ -105,7 +105,6 @@
                             <div class="col-3 text-right">¥{{ $order_detail->product->price }}</div>
                         </div>
                     @endforeach
-
                     <dt class="border-top pt-1">合計金額</dt>
                     <div class="row">
                         <div class="col-12 text-right">¥{{ $order->total_price }}</div>

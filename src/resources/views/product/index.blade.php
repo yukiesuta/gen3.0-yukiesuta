@@ -34,8 +34,19 @@
                                         <div>残り{{ $product->stock }}個</div>
                                     @endif
                                     <div class="text-right">
-                                        <small class="text-muted">{{ $product->format_price }}</small>
+                                        @if($product->stock==0)
+                                        <small class="text-muted">￥{{ $product->price }}</small>
+                                        @elseif(date('H')>=20)
+                                        <small>20%off</small>
+                                        <small class="text-muted">￥{{ floor($product->price*0.8) }}</small>
+                                        @elseif($product->stock>=50)
+                                        <small>5%off</small>
+                                        <small class="text-muted">￥{{ floor($product->price*0.95) }}</small>
+                                        @else
+                                        <small class="text-muted">￥{{ $product->price }}</small>
+                                        @endif
                                     </div>
+                                    @if ($product->stock!=0)
                                     <div class="d-flex justify-content-between align-items-center">
                                         <div class="input-group col-sm-7">
                                             <select class="form-control quantity pr-5"
@@ -44,6 +55,7 @@
                                                     <option>{{ $i }}</option>
                                                 @endfor
                                             </select>
+
                                             <div class="input-group-append">
                                                 <span class="input-group-text">個</span>
                                             </div>
@@ -52,6 +64,7 @@
                                             onclick="ToCart({{ $product->id }}, {{ $loop->index }});">カートに追加
                                         </button>
                                     </div>
+                                    @endif
                                 </div>
                             </div>
                         </div>

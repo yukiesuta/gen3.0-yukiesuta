@@ -68,27 +68,47 @@ class OrderController extends Controller
         if (isset($cart)) {
             $cart->each(function ($item, $key) use ($cart_collection) {
                 $product = Product::findOrFail($key);
+                if(date('H')>=20){
+                    $cart_collection->put(
+                    $key,
+                    collect([
+                        'quantity'  => $item,
+                        'product_id'=>$product->id,
+                        'name'      => $product->name,
+                        'thumbnail' => $product->thumbnail,
+                        'price'     => ($product->price)*0.8
+                    ])
+                );
+                }else if($product->stock>=50){
                 $cart_collection->put(
                     $key,
                     collect([
                         'quantity'  => $item,
+                        'product_id'=>$product->id,
+                        'name'      => $product->name,
+                        'thumbnail' => $product->thumbnail,
+                        'price'     => $product->price*0.95
+                    ])
+                );
+                }else{
+                    $cart_collection->put(
+                    $key,
+                    collect([
+                        'quantity'  => $item,
+                        'product_id'=>$product->id,
                         'name'      => $product->name,
                         'thumbnail' => $product->thumbnail,
                         'price'     => $product->price
                     ])
                 );
-            });
-        }
+                }
+    });
         $sum= 0;
         foreach($cart_collection as $cart){
             $sum += $cart->get('quantity')*$cart->get('price');
         }
-
-
-
         return view('order.confirm', compact('delivery_address', 'cart_collection', 'delivery_time_disp', 'delivery_method_disp', 'user','sum'));
-    }
-
+    }}
     /**
      * 確認
      * サンクスページ
@@ -96,6 +116,7 @@ class OrderController extends Controller
     public function thanks()
     {
         $delivery = session('delivery');
+        $total_value = session('total_value');
 
         $order = Order::create([
             'user_id'               => Auth::id(),
@@ -106,6 +127,7 @@ class OrderController extends Controller
             'delivery_status_id'    => DeliveryStatus::getInPreparationId(),
             'total_price'           => session('total_value'),
             'truck_id'              =>5
+            'total_price'           => $total_value,
         ]);
 
         $cart = session('cart');
