@@ -22,20 +22,20 @@
                 </th>
             </tr>
             <tr>
-                {{-- <th>
+                <th>
                     <input type="file" accept="image/*" name="thumbnail">
                 </th>
                 <th>
                     <div>サムネイル画像</div>
-                </th> --}}
+                </th>
             </tr>
             <tr>
-                {{-- <th>
+                <th>
                     <input type="file" accept="image/*" name="detail">
                 </th>
                 <th>
                     <div>詳細画像</div>
-                </th> --}}
+                </th>
             </tr>
             <tr>
                 <th>

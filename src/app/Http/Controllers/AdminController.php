@@ -27,28 +27,25 @@ class AdminController extends Controller
     }
 
     public function createproduct(Request $request){
-        // dd(1);
         // サムネイル画像保存
-        // $path = public_path('img');
-        // $upload_dir = $path . '/';
-        // $thumbnail_file = 'thumbnail';
-        // $thumbnail_filename = basename($thumbnail_file['name']);
-        $save_thumbnail_filename = 'thumbnail';
-        // $tmp_path = $thumbnail_file['tmp_name'];
-        // $thumbnail_file_err = $thumbnail_file['error'];
-        // $thumbnail_filesize = $thumbnail_file['size'];
-        // $save_thumbnail_filename = date('YmdHis') . $thumbnail_filename;
-        // move_uploaded_file($tmp_path, $upload_dir . $save_thumbnail_filename);
+        $path = public_path('img');
+        $upload_dir = $path . '/';
+        $thumbnail_file = $_FILES['thumbnail'];
+        $thumbnail_filename = basename($thumbnail_file['name']);
+        $tmp_path = $thumbnail_file['tmp_name'];
+        $thumbnail_file_err = $thumbnail_file['error'];
+        $thumbnail_filesize = $thumbnail_file['size'];
+        $save_thumbnail_filename = date('YmdHis') . $thumbnail_filename;
+        move_uploaded_file($tmp_path, $upload_dir . $save_thumbnail_filename);
 
         // 詳細画像保存
-        // $detail_file = $_FILES['detail'];
-        // $detail_filename = 'test.png';
-        // $tmp_path = $detail_file['tmp_name'];
-        // $detail_file_err = $detail_file['error'];
-        // $detail_filesize = $detail_file['size'];
-        // $save_detail_filename = date('YmdHis') . $detail_filename;
-        $save_detail_filename = 'detail';
-        // move_uploaded_file($tmp_path, $upload_dir . $save_detail_filename);
+        $detail_file = $_FILES['detail'];
+        $detail_filename = basename($thumbnail_file['name']);
+        $tmp_path = $detail_file['tmp_name'];
+        $detail_file_err = $detail_file['error'];
+        $detail_filesize = $detail_file['size'];
+        $save_detail_filename = date('YmdHis') . $detail_filename;
+        move_uploaded_file($tmp_path, $upload_dir . $save_detail_filename);
 
         //postの値を取得
         $name=$_POST['name'];
