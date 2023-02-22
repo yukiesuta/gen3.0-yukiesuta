@@ -13,7 +13,7 @@
                 @foreach ($products as $product)
                 <div class="col-md-4">
                     <div class="card mb-4 box-shadow">
-                        <img class="card-img-top btn fly" src="{{ asset('img/' . $product->thumbnail) }}" alt="tomato" style="height: 225px; width: 100%; display: block;" data-toggle="modal" data-target="#productModal{{ $product->id }}" data-whatever="productTomato">
+                        <img class="card-img-top btn fly" src="{{ asset('img/' . $product->thumbnail) }}" style="height: 225px; width: 100%; display: block;">
                         <div class="card-body">
                             <p class="card-text">{{ $product->name }}</p>
                             <div class="text-right">
@@ -26,10 +26,13 @@
                                         <span class="input-group-text">個</span>
                                     </div>
                                 </div>
-                                <form action="/product-management/deleteproduct" method="post" class="btn col-sm-5 btn-sm btn-outline-danger">
+                                <input type="submit" data-toggle="modal" data-target="#productModal{{ $product->id }}" value="編集" class="btn btn-sm btn-outline-success> 
+                                
+                                
+                                <form action="/product-management/deleteproduct" method="post">
                                     @csrf
                                     <input type="hidden" name="product_id" value="{{ $product->id }}">
-                                    <input type="submit" value="削除">
+                                    <input type="submit" value="削除" onclick="return confirm('削除しますか?')" class="btn btn-sm btn-outline-danger">
                                 </form>
                             </div>
                         </div>
