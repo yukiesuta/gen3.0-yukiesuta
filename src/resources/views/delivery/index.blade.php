@@ -76,6 +76,18 @@
                 <div class="row">
                     <div class="col-12 text-right">¥{{ $order->total_price }}</div>
                 </div>
+                    @foreach ($order->order_details as $order_detail)
+                        <div class="row">
+                            <div class="col-5">{{ $order_detail->product->name }}</div>
+                            <div class="col-4 text-right">{{ $order_detail->quantity }}個</div>
+                            <div class="col-3 text-right">¥{{ $order_detail->product->price }}</div>
+                        </div>
+                    @endforeach
+
+                    <dt class="border-top pt-1">合計金額</dt>
+                    <div class="row">
+                        <div class="col-12 text-right">¥{{ $order->total_price }}</div>
+                    </div>
 
                 <div class="text-right">
                     <button type="button" class="btn btn-ash" onclick="location.href='/delivery-list/{{ $order->id }}'">
@@ -131,39 +143,32 @@
             wTable.className = 'allNoDisplay ' + value;
             console.log(2);
         }
-    }
-</script>
-@endpush
-@push('scripts')
-@if($is_admin)
-<script>
-    $('#testttt').on('click', function() {
-        alert("testtttt");
-        var cusno = $('#cusno').val();
-        var oldday = $('#oldday').val();
-        var newday = $('#newday').val();
-        $.ajax({
-            url: "/", // 送信先 URL
-            type: "POST", // GET,POSTとか
-            dataType: "text",
-            data: { // 送信するデータ
-                xxx: 'dateup',
-                oldday: oldday,
-                newday: newday,
-                cusno: cusno
-            }
-        }).done(function(data) {
-            // 通信成功時の処理
-            // PHP から返ってきた値（メッセージ）を p タグにセット
-            $('#mess').text(data);
-        }).fail(function(data) {
-            // 通信失敗時の処理
-            console.dir(data);
-        }).always(function(data) {
-            // 常に実行する処理
-            $("#modalForm").modal('hide'); // モーダルを閉じる
+        $('#testttt').on('click', function () {
+            alert("testtttt");
+            var cusno = $('#cusno').val();
+            var oldday = $('#oldday').val();
+            var newday = $('#newday').val();
+            $.ajax({
+                url: "/", // 送信先 URL
+                type: "POST", // GET,POSTとか
+                dataType: "text",
+                data: { // 送信するデータ
+                    xxx: 'dateup',
+                    oldday: oldday,
+                    newday: newday,
+                    cusno: cusno
+                }
+            }).done(function (data) {
+                // 通信成功時の処理
+                // PHP から返ってきた値（メッセージ）を p タグにセット
+                $('#mess').text(data);
+            }).fail(function (data) {
+                // 通信失敗時の処理
+                console.dir(data);
+            }).always(function (data) {
+                // 常に実行する処理
+                $("#modalForm").modal('hide'); // モーダルを閉じる
+            });
         });
-    });
-</script>
-@endif
+    </script>
 @endpush
