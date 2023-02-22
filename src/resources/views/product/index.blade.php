@@ -150,25 +150,9 @@
                                 <div class="col-md-4">{{ $product->description }}</div>
                                 <div class="col-md-4 ml-auto text-right">{{ $product->quantity }}</div>
                             </div>
-                            <div class="row mb-2">
-                                <div class="input-group">
-                                    <select class="form-control quantity"
-                                        aria-label="Dollar amount (with dot and two decimal places)" value="0">
-                                        @for ($i = 1; $i < $product->stock + 1; $i++)
-                                            <option>{{ $i }}</option>
-                                        @endfor
-                                    </select>
-                                    <div class="input-group-append">
-                                        <span class="input-group-text">個</span>
-                                    </div>
-                                </div>
-                            </div>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-ash" data-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-danger"
-                                onclick="ToCartFromDetail({{ $product->id }}, {{ $loop->index }});">カートに追加
-                            </button>
                         </div>
                 </div>
             </div>
