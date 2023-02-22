@@ -19,6 +19,7 @@ class CartController extends Controller
                     $key,
                     collect([
                         'quantity'  => $item,
+                        'product_id'=>$product->id,
                         'name'      => $product->name,
                         'thumbnail' => $product->thumbnail,
                         'price'     => $product->price
@@ -67,6 +68,15 @@ class CartController extends Controller
 
         return redirect()->route('cart');
     }
+
+    public function delete($product_id){
+        $cart = session('cart');
+        $cart_collection = collect();
+        unset($cart[$product_id]);
+
+        return redirect()->route('cart');
+    }
+
 
     public function flush()
     {

@@ -116,6 +116,12 @@ class OrderController extends Controller
             ]);
         });
 
+        //在庫を減らす
+        $cart->each(function ($quantity, $product_id) use ($order) {
+            $stock=Product::where('id', $product_id)->first()->stock;
+            Product::where('id', $product_id)->update(['stock'=>$stock-$quantity]);
+        });
+
         //不要になったセッションのクリア
         session()->flash('delivery');
         session()->flash('cart');
