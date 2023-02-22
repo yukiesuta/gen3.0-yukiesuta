@@ -67,9 +67,20 @@ class OrderController extends Controller
         $cart_collection = collect();
 
         if (isset($cart)) {
-            $cart->each(function ($item, $key) use ($cart_collection) {
+            $cart->each(function ($item, $key) use ($cart_collection,$regular) {
                 $product = Product::findOrFail($key);
-                if(date('H')>=12 && $product->stock>=50){
+                if($regular==2){
+                    $cart_collection->put(
+                    $key,
+                    collect([
+                        'quantity'  => $item,
+                        'product_id'=>$product->id,
+                        'name'      => $product->name,
+                        'thumbnail' => $product->thumbnail,
+                        'price'     => ($product->price)*0.95
+                    ])
+                );
+                }else if(date('H')>=12 && $product->stock>=50){
                     $cart_collection->put(
                     $key,
                     collect([
@@ -103,10 +114,13 @@ class OrderController extends Controller
      * 確認
      * サンクスページ
      */
-    public function thanks()
+    public function thanks(Request $request)
     {
         $delivery = session('delivery');
         $total_value = session('total_value');
+        if($delivery['regular']==2){
+            $total_value*=0.95;
+        }
 
         $order = Order::create([
             'user_id'               => Auth::id(),
