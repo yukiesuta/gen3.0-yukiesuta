@@ -40,7 +40,7 @@ class AdminController extends Controller
 
         // 詳細画像保存
         $detail_file = $_FILES['detail'];
-        $detail_filename = basename($thumbnail_file['name']);
+        $detail_filename = basename($detail_file['name']);
         $tmp_path = $detail_file['tmp_name'];
         $detail_file_err = $detail_file['error'];
         $detail_filesize = $detail_file['size'];
@@ -78,10 +78,11 @@ class AdminController extends Controller
         $thumbnail_filesize = $thumbnail_file['size'];
         $save_thumbnail_filename = date('YmdHis') . $thumbnail_filename;
         move_uploaded_file($tmp_path, $upload_dir . $save_thumbnail_filename);
+     
 
         // 詳細画像保存
         $detail_file = $_FILES['detail'];
-        $detail_filename = basename($thumbnail_file['name']);
+        $detail_filename = basename($detail_file['name']);
         $tmp_path = $detail_file['tmp_name'];
         $detail_file_err = $detail_file['error'];
         $detail_filesize = $detail_file['size'];

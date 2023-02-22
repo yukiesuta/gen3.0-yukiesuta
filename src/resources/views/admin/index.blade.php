@@ -5,9 +5,9 @@
     <h2>商品管理</h2>
     <div class="py-5 bg-light">
         <div class="container">
-            <form action="/product-management/addproduct" method="post" class="btn col-sm-5 btn-sm btn-outline-green">
+            <form action="/product-management/addproduct" method="post" class="btn btn-sm">
                 @csrf
-                <input type="submit" value="新規作成">
+                <input type="submit" value="新規作成" class="btn btn-sm btn-outline-primary text-left">
             </form>
             <div class="row">
 
