@@ -4,7 +4,7 @@
 
     <?php
 
-    $body = '注文が入りました。詳細は「http://localhost/」からご確認ください。';
+    $body = '注文が入りました。詳細は以下のリンクからご確認ください。http://localhost/login';
         $token_first='xoxb-4051294469826-';
         $token_second='4049361417781-';
         $token_third='m9hPqyTdeIjxUMnxMOL4brcy';
