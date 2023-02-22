@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="delivery-index">
-        <h2>配送一覧</h2>
+        <h2>運送管理</h2>
         <select id="sampleSelect" onChange="goFilter();">
             <option value="all">全て</option>
             <option value="today_am">本日({{ $today }}) AM</option>
@@ -102,18 +102,6 @@
                     </div>
                     ■ 注文内容
 
-                @foreach ($order->order_details as $order_detail)
-                <div class="row">
-                    <div class="col-5">{{ $order_detail->product->name }}</div>
-                    <div class="col-4 text-right">{{ $order_detail->quantity }}個</div>
-                    <div class="col-3 text-right">¥{{ $order_detail->product->price }}</div>
-                </div>
-                @endforeach
-
-                <dt class="border-top pt-1">合計金額</dt>
-                <div class="row">
-                    <div class="col-12 text-right">¥{{ $order->total_price }}</div>
-                </div>
                     @foreach ($order->order_details as $order_detail)
                         <div class="row">
                             <div class="col-5">{{ $order_detail->product->name }}</div>
@@ -126,36 +114,10 @@
                         <div class="col-12 text-right">¥{{ $order->total_price }}</div>
                     </div>
 
-                <div class="text-right">
-                    @if($is_admin)
-                    <button type="button" class="btn btn-ash" onclick="location.href='/delivery-list/{{ $order->id }}'">
-                        詳細を見る
-                    </button>
-                    @endif
-                </div>
-        </li>
-        @endforeach
-    </ul>
-    <!-- Modal -->
-    @if($is_admin)
-    <div class="modal fade" id="trackModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
-        <!-- //モーダルウィンドウの縦表示位置を調整・画像を大きく見せる -->
-        <div class="modal-dialog modal-lg modal-middle">
-            <div class="modal-content">
-                <form>
-                    <div class="modal-body">
-                        <label for="trackSelect">配送トラック選択</label>
-                        <select class="form-control" id="trackSelect">
-                            <option>トラック１</option>
-                            <option>トラック２</option>
-                            <option>トラック３</option>
-                            <option>トラック４</option>
-                        </select>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-ash" data-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-outline-danger" data-dismiss="modal" id="testttt">
-                            決定
+                    <div class="text-right">
+                        <button type="button" class="btn btn-ash"
+                            onclick="location.href='/delivery-list/{{ $order->id }}'">
+                            詳細を見る
                         </button>
                     </div>
                     </li>
@@ -190,25 +152,23 @@
         @endif
     </div>
     </div>
-    @endif
-</div>
-</div>
 @endsection
 
 @push('scripts')
-<script>
-    function goFilter() {
-        var wTable = document.getElementById("sampleTable");
-        var wSelect = document.getElementById("sampleSelect");
-        var value = wSelect.options[wSelect.selectedIndex].value;
-        if (value == 'all') {
-            // --- 全ての場合はクラスをクリア ---
-            wTable.className = '';
-            console.log(1);
-        } else {
-            // --- タイトル以外のTRを非表示＋指定属性を持つTRのみ表示 ---
-            wTable.className = 'allNoDisplay ' + value;
-            console.log(2);
+    <script>
+        function goFilter() {
+            var wTable = document.getElementById("sampleTable");
+            var wSelect = document.getElementById("sampleSelect");
+            var value = wSelect.options[wSelect.selectedIndex].value;
+            if (value == 'all') {
+                // --- 全ての場合はクラスをクリア ---
+                wTable.className = '';
+                console.log(1);
+            } else {
+                // --- タイトル以外のTRを非表示＋指定属性を持つTRのみ表示 ---
+                wTable.className = 'allNoDisplay ' + value;
+                console.log(2);
+            }
         }
     </script>
 @endpush
