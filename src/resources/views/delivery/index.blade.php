@@ -96,6 +96,10 @@
                     <div class="row mb-2">
                         <div class="col-12">{{ $order->user->company_name }}</div>
                     </div>
+                    ■ 配送方法
+                    <div class="row mb-2">
+                        <div class="col-12">{{ $order->delivery_method->name }}</div>
+                    </div>
                     ■ 注文内容
 
                     @foreach ($order->order_details as $order_detail)

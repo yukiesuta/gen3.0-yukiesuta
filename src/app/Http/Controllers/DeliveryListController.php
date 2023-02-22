@@ -17,8 +17,7 @@ class DeliveryListController extends Controller
         $is_agent = Auth::user()->role_id === Role::getDeliveryAgentId();
         $today = Carbon::today()->format('Y/m/d');
         $tomorrow = Carbon::today()->addDay(1)->format('Y/m/d');
-        $orders = Order::with('delivery_address', 'order_details', 'order_details.product', 'user')
-            ->where('delivery_date', '>=', Carbon::today()->format('Y-m-d'))
+        $orders = Order::with('delivery_address', 'order_details', 'order_details.product', 'user','delivery_method')            ->where('delivery_date', '>=', Carbon::today()->format('Y-m-d'))
             ->where('delivery_date', '<', Carbon::today()->addDay(7)->format('Y-m-d'))
             ->get();
         $delivery_statuses = DeliveryStatus::select('id', 'name')->get();
