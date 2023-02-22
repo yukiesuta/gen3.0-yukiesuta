@@ -33,8 +33,10 @@
                         <div class="col-5 order-head">■ 注文番号 {{ $order->id }}</div>
                         <div class="col-7 order-head">
                             トラック{{ $order->truck_id }}
+                            @if($is_admin)
                             <i class="material-icons track" data-toggle="modal" data-target="#trackModal"
                                 data-whatever="track1">local_shipping</i>
+                            @endif
                         </div>
                     </div>
                     ■ 配送先住所
@@ -116,7 +118,6 @@
             wTable.className = 'allNoDisplay ' + value;
             console.log(2);
         }
-<<<<<<< HEAD
         $('#testttt').on('click', function () {
             alert("testtttt");
             var cusno = $('#cusno').val();
@@ -146,8 +147,3 @@
         });
     </script>
 @endpush
-=======
-    }
-</script>
-@endpush
->>>>>>> 8ee5c72 (復元のためのコミット)
