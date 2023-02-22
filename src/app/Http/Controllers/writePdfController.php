@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\invoice_mail;
 use App\Models\Order;
 use App\Models\Product;
 use App\Models\Role;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class writePdfController extends Controller
 {
@@ -24,13 +26,34 @@ class writePdfController extends Controller
             $string_for_pdf = '';
             foreach ($all_orders as $order) {
                 foreach ($order->order_details as $order_detail) {
-                    dd($order_detail);
-                    $tmp_string = '<tr><th style="background-color:black;width:30%;">'.$product_names[$order_detail->product_id].'</th><th style="width:10%;">'.$order_detail->quantity.'</th><th style="width:20%;">'.$product_quantities_per_unit[$order_detail->product_id].'</th><th style="width:20%;">'.$product_price_per_unit[$order_detail->product_id].'</th><th style="width:20%;">'.$product_price_per_unit[$order_detail->product_id].'</th></tr>';
+                    // dd($order_detail);
+                    $tmp_string = "<tr>
+                    <td>"
+                    // <td style='width:30%;'>"
+                    .$product_names[$order_detail->product_id].
+                    "</td>
+                    <td>"
+                    // <td style='width:10%;'>"
+                    .$order_detail->quantity.
+                    "</td>
+                    <td>"
+                    // <td style='width:20%;'>"
+                    .$product_quantities_per_unit[$order_detail->product_id].
+                    "</td>
+                    <td>"
+                    // <td style='width:20%;'>"
+                    .$product_price_per_unit[$order_detail->product_id].
+                    "</td>
+                    <td>"
+                    // <td style='width:20%;'>"
+                    .$product_price_per_unit[$order_detail->product_id]*$order_detail->quantity.
+                    "</td>
+                    </tr>
+                    ";
                     $string_for_pdf = $string_for_pdf . $tmp_string;
                 }
             }
-            $view_string = view('emails.monthly_invoice')->with(compact('all_orders', 'product_names', 'product_quantities_per_unit', 'product_price_per_unit', 'month_of_request'))->render();
-            dd($view_string);
+            Mail::to($customer->email)->send(new invoice_mail($customer,$month_of_request,$string_for_pdf));
         }
     }
 }
