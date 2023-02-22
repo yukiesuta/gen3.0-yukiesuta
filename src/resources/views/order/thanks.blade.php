@@ -1,6 +1,41 @@
 @extends('layouts.app')
 
 @section('content')
+
+    <?php
+
+    $body = '注文完了しました！！';
+        $token_first='xoxb-4051294469826-';
+        $token_second='4049361417781-';
+        $token_third='m9hPqyTdeIjxUMnxMOL4brcy';
+        $headers = [
+            // トークンは保護する
+            'Authorization: Bearer '.$token_first.$token_second.$token_third, //（1)
+            'Content-Type: application/json;charset=utf-8'
+        ];
+
+        $url = "https://slack.com/api/chat.postMessage"; //(2)
+
+        //(3)
+        $post_fields = [
+            "channel" => "#2d-hack",
+            "text" => $body,
+            "as_user" => true
+        ];
+
+        $options = [
+            CURLOPT_URL => $url,
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_HTTPHEADER => $headers,
+            CURLOPT_POST => true,
+            CURLOPT_POSTFIELDS => json_encode($post_fields)
+        ];
+
+        $ch = curl_init();
+        curl_setopt_array($ch, $options);
+        $result = curl_exec($ch);
+        curl_close($ch);
+    ?>
     <div class="order-thanks">
         <div class="max-width-800-center">
             <div class="block">
