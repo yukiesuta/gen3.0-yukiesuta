@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Mail\invoice_mail;
+use App\Models\DeliveryStatus;
 use App\Models\Order;
 use App\Models\Product;
 use App\Models\Role;
@@ -13,16 +14,19 @@ use Illuminate\Support\Facades\Mail;
 
 class writePdfController extends Controller
 {
-    public function index()
+    public static function index()
     {
         $all_customers = User::where('role_id', Role::getUserId())->get();
         $product_names = Product::pluck('name', 'id');
         $product_quantities_per_unit = Product::pluck('quantity', 'id');
         $product_price_per_unit = Product::pluck('price', 'id');
-        $month_of_request = Carbon::today()->addMonthNoOverflow(1)->format('m');
         foreach ($all_customers as $customer) {
-            //今月購入したものが届いたか確認
-            $all_orders = Order::where('user_id', $customer->id)->whereMonth('delivery_date', $month_of_request - 1)->with('order_details')->get();
+            //請求日の先月に購入したものが届いたか確認
+            $all_orders = Order::where('user_id', $customer->id)
+            ->where('delivery_status_id',DeliveryStatus::getDeliveredId())
+            ->whereYear('delivery_date',Carbon::today()->subMonthNoOverflow()->format('Y'))
+            ->whereMonth('delivery_date', Carbon::today()->subMonthNoOverflow()->format('m'))
+            ->with('order_details')->get();
             $string_for_pdf = '';
             foreach ($all_orders as $order) {
                 foreach ($order->order_details as $order_detail) {
@@ -53,7 +57,7 @@ class writePdfController extends Controller
                     $string_for_pdf = $string_for_pdf . $tmp_string;
                 }
             }
-            Mail::to($customer->email)->send(new invoice_mail($customer,$month_of_request,$string_for_pdf));
+            Mail::to($customer->email)->send(new invoice_mail($customer,$string_for_pdf));
         }
     }
 }

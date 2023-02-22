@@ -22,18 +22,19 @@ class invoice_mail extends Mailable
      *
      * @return void
      */
-    public function __construct($user, $month, $string_for_pdf)
+    public function __construct($user,$string_for_pdf)
     {
-        // dd($user);
         $this->user = $user;
         $this->name=$user->name;
         $this->company = $user->company_name;
         $this->id = $user->id;
-        $this->month_of_request = $month;
+        $this->month_of_request = Carbon::today()->format('m');
+        $this->minus_one_month_year=Carbon::today()->subMonthNoOverflow()->format('Y');
+        $this->minus_one_month_month=Carbon::today()->subMonthNoOverflow()->format('m');
+        $this->year_of_request = Carbon::today()->format('Y');
         $this->date_of_request = Carbon::today()->format('Y/m/d');
-        $this->year_month_of_last_month = Carbon::today()->subMonthsWithNoOverflow(1)->format('Y-m');
+        $this->year_month_of_last_month = Carbon::today()->subMonthNoOverflow()->format('Y-m');
         $this->email_without_period = str_replace('.', '', $user->email);
-        // dd($user);
         $this->document_file_name = 'invoice' . $this->year_month_of_last_month . $this->email_without_period . '.pdf';
         $this->invoice_id = count(Storage::allFiles('public')) - 1;
         $this->string_for_pdf = $string_for_pdf;
@@ -67,7 +68,7 @@ class invoice_mail extends Mailable
             'Content-Type' => 'application/pdf',
             'Content-Disposition' => 'inline; filename="' . $this->document_file_name . '"'
         ];
-        $total_payment=Order::where('user_id',$this->id)->whereMonth('delivery_date',$this->month_of_request-1)->where('delivery_status_id',DeliveryStatus::getDeliveredId())->sum('total_price')*1.1;
+        $total_payment=Order::where('user_id',$this->id)->whereYear('delivery_date',$this->minus_one_month_year)->whereMonth('delivery_date',$this->minus_one_month_month)->where('delivery_status_id',DeliveryStatus::getDeliveredId())->sum('total_price');
         $total_payment_with_tax=$total_payment*1.1;
         $string = '';
         $string = $string . '<h1 style="width:100%;text-align:center;">請求書</h1>

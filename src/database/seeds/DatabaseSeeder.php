@@ -26,5 +26,8 @@ class DatabaseSeeder extends Seeder
             OrderTableSeeder::class,
             OrderDetailTableSeeder::class,
         ]);
+        $this->call([
+            FixOrderSeeder::class,
+        ]);
     }
 }
