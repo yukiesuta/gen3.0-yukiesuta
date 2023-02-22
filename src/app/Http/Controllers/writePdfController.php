@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Mail;
 
 class writePdfController extends Controller
 {
-    public function index()
+    public static function index()
     {
         $all_customers = User::where('role_id', Role::getUserId())->get();
         $product_names = Product::pluck('name', 'id');

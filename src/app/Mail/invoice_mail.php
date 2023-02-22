@@ -24,7 +24,6 @@ class invoice_mail extends Mailable
      */
     public function __construct($user,$string_for_pdf)
     {
-        // dd($user);
         $this->user = $user;
         $this->name=$user->name;
         $this->company = $user->company_name;
@@ -36,7 +35,6 @@ class invoice_mail extends Mailable
         $this->date_of_request = Carbon::today()->format('Y/m/d');
         $this->year_month_of_last_month = Carbon::today()->subMonthNoOverflow()->format('Y-m');
         $this->email_without_period = str_replace('.', '', $user->email);
-        // dd($user);
         $this->document_file_name = 'invoice' . $this->year_month_of_last_month . $this->email_without_period . '.pdf';
         $this->invoice_id = count(Storage::allFiles('public')) - 1;
         $this->string_for_pdf = $string_for_pdf;
