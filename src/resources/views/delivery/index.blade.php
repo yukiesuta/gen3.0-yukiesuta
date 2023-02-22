@@ -46,11 +46,11 @@
                 <div class="row position">
                     <div class="col-5 order-head">■ 注文番号 {{ $order->id }}</div>
                     <div class="col-7 order-head">
+                        @if($is_admin)
+                        <i class="material-icons track" data-toggle="modal" data-target="#trackModal" data-whatever="track1">local_shipping</i>
+                        @endif
                         トラック{{ $order->truck_id }}
                     </div>
-                    @if($is_admin)
-                    <i class="material-icons track" data-toggle="modal" data-target="#trackModal" data-whatever="track1">local_shipping</i>
-                    @endif
                 </div>
                 ■ 配送先住所
                 <div class="row">
