@@ -2,7 +2,7 @@
     <head>
         <meta http-equiv="content-type" charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <title>ichiIchiban</title>
+        <title>Nile</title>
         <link href="{{  mix('/css/app.css') }}" rel="stylesheet">
         <script src="{{ mix('/js/app.js') }}"></script>
 
@@ -11,7 +11,7 @@
     <body>
         @section('header')
             <nav class="navbar sticky-top navbar-expand-sm navbar-green mb-3">
-                <a class="navbar-brand" href="{{ route('home') }}">IchiIchiban</a>
+                <a class="navbar-brand" href="{{ route('home') }}">Nile</a>
                 @if (null!==session()->get('user_name') and null!==session()->get('role'))
                 <div class="navbar-brand">Hello {{session()->get('user_name')}} as {{session()->get('role')}}</div>
                 @endif
