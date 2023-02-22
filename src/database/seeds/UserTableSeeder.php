@@ -36,6 +36,13 @@ class UserTableSeeder extends Seeder
             "role_id"      => Role::getUserId(),
         ]);
         User::create([
+            "name"         => 'HBGs',
+            "email"        => 'user3@gmail.com',
+            "password"     => Hash::make('password'),
+            "company_name" => 'テスト株式会社',
+            "role_id"      => Role::getUserId(),
+        ]);
+        User::create([
             "name"         => '佐藤真澄',
             "email"        => 'delivery_agent1@gmail.com',
             "password"     => Hash::make('password'),
