@@ -1,3 +1,10 @@
+# 請求書送信機能
+docker-compose up -d
+docker compose exec php bash
+php artisan command:sendInvoice
+mailhog開いて直近のメールを開いてMIMEを押してpdfをダウンロード
+
+
 # 環境構築手順
 
 1. `git clone git@github.com:posse-ap/hackathon-202202-sample.git`
