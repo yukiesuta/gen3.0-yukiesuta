@@ -71,37 +71,8 @@
         </li>
         @endforeach
     </ul>
-    @if($is_admin)
     <!-- Modal -->
-    <div class="modal fade" id="trackModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
-        <!-- //モーダルウィンドウの縦表示位置を調整・画像を大きく見せる -->
-        <div class="modal-dialog modal-lg modal-middle">
-            <div class="modal-content">
-                <form>
-                    <div class="modal-body">
-                        <label for="trackSelect">配送トラック選択</label>
-                        <select class="form-control" id="trackSelect">
-                            <option>トラック１</option>
-                            <option>トラック２</option>
-                            <option>トラック３</option>
-                            <option>トラック４</option>
-                        </select>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-ash" data-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-outline-danger" data-dismiss="modal" id="testttt">
-                            決定
-                        </button>
-                    </div>
-                </form>
-            </div>
-        </li>
-
-        @endforeach
-
-    </ul>
     @if($is_admin)
-    <!-- Modal -->
     <div class="modal fade" id="trackModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
         <!-- //モーダルウィンドウの縦表示位置を調整・画像を大きく見せる -->
         <div class="modal-dialog modal-lg modal-middle">
@@ -127,6 +98,7 @@
         </div>
     </div>
     @endif
+</div>
 </div>
 @endsection
 
