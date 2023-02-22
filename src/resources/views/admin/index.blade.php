@@ -21,12 +21,6 @@
                                 <small class="text-muted">{{ $product->format_price }}</small>
                             </div>
                             <div class="d-flex justify-content-between align-items-center">
-                                <div class="input-group col-sm-5">
-                                    <input type="text" class="form-control quantity" aria-label="Dollar amount (with dot and two decimal places)">
-                                    <div class="input-group-append">
-                                        <span class="input-group-text">個</span>
-                                    </div>
-                                </div>
                                 <input type="submit" data-toggle="modal" data-target="#productModal{{ $product->id }}" value="編集" class="btn btn-sm btn-outline-success> 
                                 
                                 
@@ -52,29 +46,53 @@
         <!-- //モーダルウィンドウの縦表示位置を調整・画像を大きく見せる -->
         <div class="modal-dialog modal-lg modal-middle">
             <div class="modal-content">
+                <form action="/product-management/updateproduct/{{ $product->id }}" method="post" enctype="multipart/form-data">
+                    @csrf
+                <div class="modal-body">
+                    <img src="{{ asset('img/' . $product->thumbnail) }}" alt="tomato" style=" width: 100%;" class="aligncenter size-full wp-image-425" />
+                    <input type="file" accept="image/*" name="thumbnail">
+                    <div>サムネイル画像</div>
+                </div>
                 <div class="modal-body">
                     <img src="{{ asset('img/' . $product->image1) }}" alt="tomato" style=" width: 100%;" class="aligncenter size-full wp-image-425" />
+                    <input type="file" accept="image/*" name="detail">
+                    <div>詳細画像</div>
                 </div>
-                <form>
                     <div class="container-fluid">
                         <div class="row mb-2">
-                            <div class="col-md-4">{{ $product->description }}</div>
-                            <div class="col-md-4 ml-auto text-right">{{ $product->quantity }}</div>
+                            <input value={{$product->name }} name="name">
+                            <div>商品名</div>
                         </div>
                         <div class="row mb-2">
+                            <input value={{$product->description }} name="description">
+                            <div>商品説明</div>
+                        </div>
+                        <div class="row mb-2">
+                            <input  value={{$product->quantity }} name="quantity">
+                            <div>1箱あたりの個数</div>
+                        </div>
+                        <div class="row mb-2">
+                            <input  value={{$product->price }} name="price">
+                            <div>値段</div>
+                        </div>
+                        <div class="row mb-2">
+                            <input  value={{$product->stock }} name="stock">
+                            <div>在庫</div>
+                        </div>
+                        {{-- <div class="row mb-2">
                             <div class="input-group">
                                 <input type="text" class="form-control col-md-4 quantityfromdetail" aria-label="Dollar amount (with dot and two decimal places)">
                                 <div class="input-group-append">
                                     <span class="input-group-text">個</span>
                                 </div>
                             </div>
-                        </div>
+                        </div> --}}
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-ash" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-danger" onclick="ToCartFromDetail({{ $product->id }}, {{ $loop->index }});">カートに追加
-                        </button>
+                        <input type="submit" class="btn btn-danger" value="更新">
                     </div>
+                </form>
             </div>
         </div>
     </div>

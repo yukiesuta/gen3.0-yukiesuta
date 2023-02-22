@@ -77,6 +77,7 @@ Route::middleware(['auth'])->group(function () {
             Route::post('/deleteproduct','AdminController@deleteproduct')->name('deleteproduct');
             Route::post('/addproduct','AdminController@addproduct')->name('add');
             Route::post('/createproduct','AdminController@createproduct')->name('create');
+            Route::post('/updateproduct/{productid}','AdminController@updateproduct')->name('update');
             // Route::get('/create', 'DeliveryAddressController@showCreateForm')->name('delivery-address.showCreateForm');
             // Route::post('/create', 'DeliveryAddressController@create')->name('delivery-address.create');
         });
