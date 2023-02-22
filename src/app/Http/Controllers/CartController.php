@@ -15,7 +15,7 @@ class CartController extends Controller
         if (isset($cart)) {
             $cart->each(function ($item, $key) use ($cart_collection) {
                 $product = Product::findOrFail($key);
-                if(date('H')>=20){
+                if(date('H')>=12 && $product->stock>=50){
                     $cart_collection->put(
                     $key,
                     collect([
@@ -24,17 +24,6 @@ class CartController extends Controller
                         'name'      => $product->name,
                         'thumbnail' => $product->thumbnail,
                         'price'     => ($product->price)*0.8
-                    ])
-                );
-                }else if($product->stock>=50){
-                $cart_collection->put(
-                    $key,
-                    collect([
-                        'quantity'  => $item,
-                        'product_id'=>$product->id,
-                        'name'      => $product->name,
-                        'thumbnail' => $product->thumbnail,
-                        'price'     => $product->price*0.95
                     ])
                 );
                 }else{
@@ -86,8 +75,8 @@ class CartController extends Controller
         $total_value = 0;
         $cart->each(function ($quantity, $product_id) use (&$total_value) {
             $product = Product::findOrFail($product_id);
-            if ($product->stock>=50) {
-                $total_value = $total_value + ($product->price * $quantity)*0.95;
+            if ($product->stock>=50 && date('H') >= 12) {
+                $total_value = $total_value + ($product->price * $quantity)*0.8;
             }else{
                 $total_value = $total_value + ($product->price * $quantity);
             }

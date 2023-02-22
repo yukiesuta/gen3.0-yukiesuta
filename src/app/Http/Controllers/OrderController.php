@@ -69,7 +69,7 @@ class OrderController extends Controller
         if (isset($cart)) {
             $cart->each(function ($item, $key) use ($cart_collection) {
                 $product = Product::findOrFail($key);
-                if(date('H')>=20){
+                if(date('H')>=12 && $product->stock>=50){
                     $cart_collection->put(
                     $key,
                     collect([
@@ -78,17 +78,6 @@ class OrderController extends Controller
                         'name'      => $product->name,
                         'thumbnail' => $product->thumbnail,
                         'price'     => ($product->price)*0.8
-                    ])
-                );
-                }else if($product->stock>=50){
-                $cart_collection->put(
-                    $key,
-                    collect([
-                        'quantity'  => $item,
-                        'product_id'=>$product->id,
-                        'name'      => $product->name,
-                        'thumbnail' => $product->thumbnail,
-                        'price'     => $product->price*0.95
                     ])
                 );
                 }else{
