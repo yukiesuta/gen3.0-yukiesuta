@@ -145,7 +145,7 @@
                         targetMessage = "明日の午後";
                     } else {
                         targetDate = (new Date()).setHours(11, 59, 59, 999);
-                        targetMessage = "今日の午前中";
+                        targetMessage = "今日の午後";
                     }
 
                     remainTime = targetDate - now.getTime();
