@@ -102,21 +102,21 @@
 @endsection
 
 @push('scripts')
-    <script>
-        function goFilter() {
-            var wTable = document.getElementById("sampleTable");
-            var wSelect = document.getElementById("sampleSelect");
-            var value = wSelect.options[wSelect.selectedIndex].value;
-            if (value == 'all') {
-                // --- 全ての場合はクラスをクリア ---
-                wTable.className = '';
-                console.log(1);
-            } else {
-                // --- タイトル以外のTRを非表示＋指定属性を持つTRのみ表示 ---
-                wTable.className = 'allNoDisplay ' + value;
-                console.log(2);
-            }
+<script>
+    function goFilter() {
+        var wTable = document.getElementById("sampleTable");
+        var wSelect = document.getElementById("sampleSelect");
+        var value = wSelect.options[wSelect.selectedIndex].value;
+        if (value == 'all') {
+            // --- 全ての場合はクラスをクリア ---
+            wTable.className = '';
+            console.log(1);
+        } else {
+            // --- タイトル以外のTRを非表示＋指定属性を持つTRのみ表示 ---
+            wTable.className = 'allNoDisplay ' + value;
+            console.log(2);
         }
+<<<<<<< HEAD
         $('#testttt').on('click', function () {
             alert("testtttt");
             var cusno = $('#cusno').val();
@@ -146,3 +146,8 @@
         });
     </script>
 @endpush
+=======
+    }
+</script>
+@endpush
+>>>>>>> 8ee5c72 (復元のためのコミット)
