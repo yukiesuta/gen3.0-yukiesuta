@@ -40,7 +40,17 @@
                                     <div>残り{{$product->stock}}個</div>
                                     @endif
                                     <div class="text-right">
-                                        <small class="text-muted">{{ $product->format_price }}</small>
+                                        @if($product->stock==0)
+                                        <small class="text-muted">￥{{ $product->price }}</small>
+                                        @elseif(date('H')>=20)
+                                        <small>20%off</small>
+                                        <small class="text-muted">￥{{ floor($product->price*0.8) }}</small>
+                                        @elseif($product->stock<=5)
+                                        <small>5%off</small>
+                                        <small class="text-muted">￥{{ floor($product->price*0.95) }}</small>
+                                        @else
+                                        <small class="text-muted">￥{{ $product->price }}</small>
+                                        @endif
                                     </div>
                                     <div class="d-flex justify-content-between align-items-center">
                                         <div class="input-group col-sm-5">
