@@ -1,6 +1,19 @@
 @extends('layouts.app')
 
 @section('content')
+    <div style="line-height: 50px" class="text-center py-3">
+        <div>あと<span
+                style="font-weight:bold; background-color:yellow; color:darkgreen; padding:10px 10px; border-radius: 50%;"
+                class="hour" id="hour"></span>時間<span
+                style="font-weight:bold; background-color:yellow; color:darkgreen; padding:10px 10px; border-radius: 50%;"
+                class="minute" id="minute"></span>分<span
+                style="font-weight:bold; background-color:yellow; color:darkgreen; padding:10px 10px; border-radius: 50%;"
+                class="seconds" id="seconds"></span>秒以内に
+        </div>
+        <div>ご注文いただくと<span
+                style="font-weight:bold; background-color:yellow; color:darkgreen; padding:10px 10px; border-radius: 10%;"
+                id="targetMessage"></span>に届きます！</div>
+    </div>
     @if ('user' == session()->get('role'))
         <div class="py-5 bg-light">
             <div class="container">
@@ -60,12 +73,6 @@
             </div>
         </div>
     @endif
-    <div style="line-height: 50px" class="text-center py-3">
-        <div>あと<span style="font-weight:bold; background-color:yellow; color:darkgreen; padding:10px 10px; border-radius: 50%;"  class="hour" id="hour"></span>時間<span style="font-weight:bold; background-color:yellow; color:darkgreen; padding:10px 10px; border-radius: 50%;"  class="minute" id="minute"></span>分<span
-            style="font-weight:bold; background-color:yellow; color:darkgreen; padding:10px 10px; border-radius: 50%;" class="seconds" id="seconds"></span>秒以内に
-        </div>
-        <div>ご注文いただくと<span style="font-weight:bold; background-color:yellow; color:darkgreen; padding:10px 10px; border-radius: 10%;"  id="targetMessage"></span>に届きます！</div>
-    </div>
     <section class="jumbotron text-center">
         <div class="container">
             <h1 class="jumbotron-heading">『豊洲から最高品質の食材を調達』</h1>
@@ -180,11 +187,11 @@
     </script>
     <script>
         /*
-                                                いつまでに注文するといつまでに届くのかを表示する
-                                                    12:00:00:000 ~ 22:59:59:999 の注文の場合は、明日の午前中
-                                                    23:00:00:000 ~ 23:59:59:999 の注文の場合は、明日の午後
-                                                    00:00:00:000 ~ 11:59:59:999 の注文の場合は、今日の午後
-                                                */
+                                                    いつまでに注文するといつまでに届くのかを表示する
+                                                        12:00:00:000 ~ 22:59:59:999 の注文の場合は、明日の午前中
+                                                        23:00:00:000 ~ 23:59:59:999 の注文の場合は、明日の午後
+                                                        00:00:00:000 ~ 11:59:59:999 の注文の場合は、今日の午後
+                                                    */
         function showCountdown() {
             const now = new Date();
             const nowHour = now.getHours();
