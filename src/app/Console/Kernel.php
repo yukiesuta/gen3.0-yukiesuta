@@ -13,7 +13,7 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
-        //
+        $schedule->command('email:send_invoice')->monthly();
     ];
 
     /**
