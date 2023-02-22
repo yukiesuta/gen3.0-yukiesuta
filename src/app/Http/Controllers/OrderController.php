@@ -79,7 +79,7 @@ class OrderController extends Controller
                         'price'     => ($product->price)*0.8
                     ])
                 );
-                }else if($product->stock<=5){
+                }else if($product->stock>=50){
                 $cart_collection->put(
                     $key,
                     collect([
@@ -87,7 +87,7 @@ class OrderController extends Controller
                         'product_id'=>$product->id,
                         'name'      => $product->name,
                         'thumbnail' => $product->thumbnail,
-                        'price'     => $product->price*0.85
+                        'price'     => $product->price*0.95
                     ])
                 );
                 }else{

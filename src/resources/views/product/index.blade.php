@@ -45,7 +45,7 @@
                                         @elseif(date('H')>=20)
                                         <small>20%off</small>
                                         <small class="text-muted">￥{{ floor($product->price*0.8) }}</small>
-                                        @elseif($product->stock<=5)
+                                        @elseif($product->stock>=50)
                                         <small>5%off</small>
                                         <small class="text-muted">￥{{ floor($product->price*0.95) }}</small>
                                         @else
