@@ -55,6 +55,7 @@ class OrderTableSeeder extends Seeder
                 'delivery_status_id'  => DeliveryStatus::getDeliveredId(),
                 'total_price'         => collect([1000, 1500, 2000, 3000, 4000])->random(),
                 'truck_id'            => collect([1, 2, 3, 4, 5])->random(),
+                'regular'            => 1,
             ]);
             Order::create([
                 'user_id'             => $user_id,
@@ -65,6 +66,7 @@ class OrderTableSeeder extends Seeder
                 'delivery_status_id'  => DeliveryStatus::getDeliveredId(),
                 'total_price'         => collect([1000, 1500, 2000, 3000, 4000])->random(),
                 'truck_id'            => collect([1, 2, 3, 4, 5])->random(),
+                'regular'            => 1,
             ]);
         }
     }
