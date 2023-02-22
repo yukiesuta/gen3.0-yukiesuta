@@ -126,7 +126,7 @@ class OrderController extends Controller
             'delivery_method_id'    => $delivery->get('delivery_method'),
             'delivery_status_id'    => DeliveryStatus::getInPreparationId(),
             'total_price'           => session('total_value'),
-            'truck_id'              =>5
+            'truck_id'              =>5,
             'total_price'           => $total_value,
         ]);
 
