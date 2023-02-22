@@ -108,8 +108,6 @@
                 @endforeach
                 <dt class="border-top pt-1">総額</dt>
                 <dd class="text-right">¥{{ $sum }}</dd>
-            
-
             </div>
         </div>
 

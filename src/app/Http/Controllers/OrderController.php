@@ -107,9 +107,6 @@ class OrderController extends Controller
         foreach($cart_collection as $cart){
             $sum += $cart->get('quantity')*$cart->get('price');
         }
-
-
-
         return view('order.confirm', compact('delivery_address', 'cart_collection', 'delivery_time_disp', 'delivery_method_disp', 'user','sum'));
     }}
     /**
@@ -119,6 +116,7 @@ class OrderController extends Controller
     public function thanks()
     {
         $delivery = session('delivery');
+        $total_value = session('total_value');
 
         $order = Order::create([
             'user_id'               => Auth::id(),
@@ -127,7 +125,7 @@ class OrderController extends Controller
             'is_am'                 => $delivery->get('delivery_time_isam'),
             'delivery_method_id'    => $delivery->get('delivery_method'),
             'delivery_status_id'    => DeliveryStatus::getInPreparationId(),
-            'total_price'           => session('total_value'),
+            'total_price'           => $total_value,
         ]);
 
         $cart = session('cart');
