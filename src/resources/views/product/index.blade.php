@@ -46,6 +46,7 @@
                                         <small class="text-muted">￥{{ $product->price }}</small>
                                         @endif
                                     </div>
+                                    @if ($product->stock!=0)
                                     <div class="d-flex justify-content-between align-items-center">
                                         <div class="input-group col-sm-7">
                                             <select class="form-control quantity pr-5"
@@ -54,6 +55,7 @@
                                                     <option>{{ $i }}</option>
                                                 @endfor
                                             </select>
+
                                             <div class="input-group-append">
                                                 <span class="input-group-text">個</span>
                                             </div>
@@ -62,6 +64,7 @@
                                             onclick="ToCart({{ $product->id }}, {{ $loop->index }});">カートに追加
                                         </button>
                                     </div>
+                                    @endif
                                 </div>
                             </div>
                         </div>
