@@ -22,7 +22,6 @@ class OrderController extends Controller
     {
 
         $orders = Order::where('user_id', Auth::id())->with('delivery_status')->get();
-
         return view('order.index', compact('orders'));
     }
 
@@ -125,6 +124,8 @@ class OrderController extends Controller
             'is_am'                 => $delivery->get('delivery_time_isam'),
             'delivery_method_id'    => $delivery->get('delivery_method'),
             'delivery_status_id'    => DeliveryStatus::getInPreparationId(),
+            'total_price'           => session('total_value'),
+            'truck_id'              =>5,
             'total_price'           => $total_value,
         ]);
 
