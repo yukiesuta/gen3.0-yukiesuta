@@ -84,4 +84,6 @@ Route::middleware(['auth'])->group(function () {
             // Route::post('/create', 'DeliveryAddressController@create')->name('delivery-address.create');
         });
     });
+    //メール送信テスト
+    Route::get('/invoice_mail','writePdfController@index')->name('invoice_mail');
 });

@@ -26,6 +26,14 @@ RUN cd '/' \
        && php -r "unlink('composer-setup.php');" \
        && mv composer.phar /usr/local/bin/composer
 
+#install gd to enable mpdf
+RUN apt-get update && apt-get install -y \
+	libfreetype6-dev \
+	libjpeg62-turbo-dev \
+	libpng-dev \
+	&& docker-php-ext-configure gd --with-freetype --with-jpeg \
+	&& docker-php-ext-install -j$(nproc) gd
+
 WORKDIR /var/www
 # install vim-gnome
 RUN aptitude install -y vim
