@@ -2,19 +2,18 @@
 
 namespace App\Console\Commands;
 
-use Illuminate\Console\Command;
-use Illuminate\Support\Facades\Mail;
-use App\Mail\WelcomeMail;
+use App\Mail\invoice_mail;
 use App\Models\User;
-use Carbon\Carbon;
-class NewUser extends Command
+use Illuminate\Console\Command;
+
+class send_invoice extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'email:newuser';
+    protected $signature = 'email:invoice';
 
     /**
      * The console command description.
@@ -42,8 +41,7 @@ class NewUser extends Command
     {
         $users=User::get();
         foreach($users as $user){
-            return Mail::to($user->email)->send(new WelcomeMail($user));
- 
+            return new invoice_mail($user);
         }
     }
 }

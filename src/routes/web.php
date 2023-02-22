@@ -75,4 +75,6 @@ Route::middleware(['auth'])->group(function () {
             Route::post('/{id}','DeliveryListController@change_status');
         });
     });
+    //メール送信テスト
+    Route::get('/invoice_mail','test@sendmail');
 });
