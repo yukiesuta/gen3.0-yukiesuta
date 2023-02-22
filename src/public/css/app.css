@@ -2327,7 +2327,9 @@ pre code {
   display: block;
   width: 100%;
   height: calc(1.5em + 0.75rem + 2px);
-  padding: 0.375rem 0.75rem;
+  padding-right: 0rem;
+  padding-left: 0rem;
+  padding-top: 0rem;
   font-size: 1rem;
   font-weight: 400;
   line-height: 1.5;
@@ -4027,7 +4029,7 @@ input[type=button].btn-block {
   position: relative;
   display: -webkit-box;
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   -webkit-box-align: stretch;
           align-items: stretch;
   width: 100%;

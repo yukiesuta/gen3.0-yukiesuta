@@ -47,16 +47,16 @@
                                         @endif
                                     </div>
                                     <div class="d-flex justify-content-between align-items-center">
-                                        <div class="input-group col-sm-5">
+                                        <div class="input-group col-sm-7">
                                             <select class="form-control quantity pr-5"
-                                            aria-label="Dollar amount (with dot and two decimal places)" value="0">
-                                            @for ($i = 1; $i < $product->stock+1; $i++)
-                                                <option>{{ $i }}</option>
-                                            @endfor
-                                        </select>
-                                        <div class="input-group-append">
-                                            <span class="input-group-text">個</span>
-                                        </div>
+                                                aria-label="Dollar amount (with dot and two decimal places)" value="0">
+                                                @for ($i = 1; $i < $product->stock + 1; $i++)
+                                                    <option>{{ $i }}</option>
+                                                @endfor
+                                            </select>
+                                            <div class="input-group-append">
+                                                <span class="input-group-text">個</span>
+                                            </div>
                                         </div>
                                         <button type="button" class="btn col-sm-5 btn-sm btn-outline-danger"
                                             onclick="ToCart({{ $product->id }}, {{ $loop->index }});">カートに追加
@@ -92,7 +92,7 @@
                                     <div class="input-group">
                                         <select class="form-control quantity"
                                             aria-label="Dollar amount (with dot and two decimal places)" value="0">
-                                            @for ($i = 1; $i < $product->stock+1; $i++)
+                                            @for ($i = 1; $i < $product->stock + 1; $i++)
                                                 <option>{{ $i }}</option>
                                             @endfor
                                         </select>
@@ -134,11 +134,11 @@
         </script>
         <script>
             /*
-                                いつまでに注文するといつまでに届くのかを表示する
-                                    12:00:00:000 ~ 22:59:59:999 の注文の場合は、明日の午前中
-                                    23:00:00:000 ~ 23:59:59:999 の注文の場合は、明日の午後
-                                    00:00:00:000 ~ 11:59:59:999 の注文の場合は、今日の午後
-                                */
+                                        いつまでに注文するといつまでに届くのかを表示する
+                                            12:00:00:000 ~ 22:59:59:999 の注文の場合は、明日の午前中
+                                            23:00:00:000 ~ 23:59:59:999 の注文の場合は、明日の午後
+                                            00:00:00:000 ~ 11:59:59:999 の注文の場合は、今日の午後
+                                        */
             function showCountdown() {
                 const now = new Date();
                 const nowHour = now.getHours();
