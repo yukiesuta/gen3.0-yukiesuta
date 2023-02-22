@@ -13,7 +13,7 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
-        //
+        \App\Console\Commands\sendInvoice::class
     ];
 
     /**
@@ -24,9 +24,9 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        $schedule->command('email:invoice')->monthOn(22,'15:30');
+        $schedule->command('command:sendInvoice')->cron('* * * * *');
     }
-
+    
     /**
      * Register the commands for the application.
      *

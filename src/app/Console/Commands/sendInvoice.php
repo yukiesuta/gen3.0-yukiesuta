@@ -2,26 +2,25 @@
 
 namespace App\Console\Commands;
 
-use App\Mail\invoice_mail;
-use App\Models\User;
-use Carbon\Carbon;
+use App\Http\Controllers\writePdfController;
 use Illuminate\Console\Command;
+use Illuminate\Support\Facades\Log;
 
-class send_invoice extends Command
+class sendInvoice extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'email:invoice';
+    protected $signature = 'command:sendInvoice';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'send email with pdf invoice at the end of every month';
+    protected $description = '毎月のはじめに請求書を送る';
 
     /**
      * Create a new command instance.
@@ -40,11 +39,9 @@ class send_invoice extends Command
      */
     public function handle()
     {
-        $users=User::get();
-        //請求日
-        $month=Carbon::today()->format('m');
-        foreach($users as $user){
-            return redirect()->route('invoice_mail')->with(compact('user','month'));
-        }
+        Log::info('start');
+        writePdfController::index();
+        Log::info('end');
+        return 0;
     }
 }
