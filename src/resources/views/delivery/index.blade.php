@@ -29,14 +29,28 @@
             @endif
             {{ $order->getFullFormatDeliveryDateAttribute() }} 配達予定
             <div class="block">
+                <form style="margin-top:10px;align-items:center;display:flex;gap:70px;margin-bottom:0;" action="/delivery-list/{{ $order->id }}" method="POST">
+                    @csrf
+                    <div>■配送ステータス</div>
+                    <select name="delivery_status">
+                        @foreach($delivery_statuses as $status)
+                        @if($status->id===$order->delivery_status_id)
+                        <option selected value="{{ $status->id }}">{{ $status->name }}</option>
+                        @else
+                        <option value="{{ $status->id }}">{{ $status->name }}</option>
+                        @endif
+                        @endforeach
+                    </select>
+                    <input style="border-radius:10%;background-color:#78A663;color:white;" type="submit" value="更新">
+                </form>
                 <div class="row position">
                     <div class="col-5 order-head">■ 注文番号 {{ $order->id }}</div>
                     <div class="col-7 order-head">
                         トラック{{ $order->truck_id }}
-                        @if($is_admin)
-                        <i class="material-icons track" data-toggle="modal" data-target="#trackModal" data-whatever="track1">local_shipping</i>
-                        @endif
                     </div>
+                    @if($is_admin)
+                    <i class="material-icons track" data-toggle="modal" data-target="#trackModal" data-whatever="track1">local_shipping</i>
+                    @endif
                 </div>
                 ■ 配送先住所
                 <div class="row">

@@ -66,12 +66,15 @@ class Order extends Model
 
     public static function getDeliveryDateWhen(Carbon $delivery_date)
     {
-        $diff_in_days = Carbon::now()->diffInDays($delivery_date);
-        if (0 == $diff_in_days) {
+
+        $today=Carbon::today();
+        $tomorrow=Carbon::today()->addDay(1);
+        $day_after_tomorrow=Carbon::today()->addDay(2);
+        if ($today->isSameDay($delivery_date)) {
             return '今日';
-        } elseif (1 == $diff_in_days) {
+        } elseif ($tomorrow->isSameDay($delivery_date)) {
             return '明日';
-        } elseif (2 == $diff_in_days) {
+        } elseif ($day_after_tomorrow->isSameDay($delivery_date)) {
             return '明後日';
         }
 
