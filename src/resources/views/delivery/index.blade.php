@@ -48,7 +48,11 @@
                         action="/delivery-list/{{ $order->id }}" method="POST">
                         @csrf
                         ■配送車・配送ステータス<br>
+                        @if ('admin' == session()->get('role'))
                         <select name="truck_id">
+                        @elseif ('delivery-agent' == session()->get('role'))
+                        <select name="truck_id" disabled>
+                        @endif
                             <option value="5" @if ($order->truck_id === 5) selected @endif>
                                 未選択
                             </option>
@@ -134,7 +138,11 @@
                         <form>
                             <div class="modal-body">
                                 <label for="trackSelect">配送トラック選択</label>
+                                @if ('admin' == session()->get('role'))
                                 <select class="form-control" id="trackSelect">
+                                @elseif ('delivery-agent' == session()->get('role'))
+                                <select class="form-control" id="trackSelect" disabled>
+                                @endif
                                     <option>トラック１</option>
                                     <option>トラック２</option>
                                     <option>トラック３</option>
