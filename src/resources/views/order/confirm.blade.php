@@ -87,6 +87,9 @@
                 </dd>
                 <dt>配送方法</dt>
                 <dd>{{ $delivery_method_disp }}</dd>
+                <dt>定期便の希望</dt>
+                @if($delivery['regular'] ==1)<dd>希望しない</dd>@endif
+                @if($delivery['regular'] ==2)<dd>希望する（5%オフ）</dd>@endif
 
                 <dt class="mb-2">カートに入っている商品</dt>
 

@@ -21,6 +21,7 @@ class Order extends Model
         'delivery_status_id',
         'total_price',
         'truck_id',
+        'regular',
         'canceled_at',
     ];
 
