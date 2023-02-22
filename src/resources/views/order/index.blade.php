@@ -8,11 +8,11 @@
             <a href="{{  route('order.detail', [ 'id' => $order->id ]) }}" class="link-area">
                 <div class="block">
                     <div class="row my-3 flex">
-                        <div class="col-5">■ 注文番号 {{ $order->id }}</div>
-                        <div class="col-5">■ 注文希望日 {{ $order->delivery_date->format('Y/m/d') }}{{ $order->is_am ? 'AM' : 'PM' }} </div>
+                        <div class="col-4">■ 注文番号 {{ $order->id }}</div>
+                        <div class="col-4">■ 注文希望日 {{ $order->delivery_date->format('Y/m/d') }}{{ $order->is_am ? 'AM' : 'PM' }} </div>
+                        <div class="col-4">■ 配送状況 {{ $order->delivery_status->name }} </div>
                     </div>
-
-                    <table class="table">
+                <table class="table">
                         <thead>
                             <tr>
                               <th scope="col" class="text-left">商品名</th>
