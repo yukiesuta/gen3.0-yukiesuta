@@ -1,8 +1,8 @@
 # 請求書送信機能
-docker-compose up -d
-docker compose exec php bash
-php artisan command:sendInvoice
-mailhog開いて直近のメールを開いてMIMEを押してpdfをダウンロード
+1.docker-compose up -d
+2.docker compose exec php bash
+3.php artisan command:sendInvoice
+4.mailhog開いて直近のメールを開いてMIMEを押してpdfをダウンロード
 
 
 # 環境構築手順
