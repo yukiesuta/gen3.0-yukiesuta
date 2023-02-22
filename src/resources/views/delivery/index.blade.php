@@ -123,9 +123,6 @@
         </li>
         @endforeach
     </ul>
-    </div>
-    </div>
-    @endif
 </div>
 </div>
 @endsection
