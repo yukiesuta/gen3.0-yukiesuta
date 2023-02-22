@@ -44,9 +44,11 @@ class OrderController extends Controller
         $delivery = session('delivery');
         [$delivery_time, $delivery_time_isam] = explode(' ', $request->input('delivery_time'));
         $delivery_method = $request->input('delivery_method');
+        $regular = $request->input('regular');
         $delivery->put('delivery_time', $delivery_time);
         $delivery->put('delivery_time_isam', $delivery_time_isam);
         $delivery->put('delivery_method', $delivery_method);
+        $delivery->put('regular', $regular);
         session(['delivery' => $delivery]);
 
         //配送先情報取得
@@ -106,7 +108,7 @@ class OrderController extends Controller
         foreach($cart_collection as $cart){
             $sum += $cart->get('quantity')*$cart->get('price');
         }
-        return view('order.confirm', compact('delivery_address', 'cart_collection', 'delivery_time_disp', 'delivery_method_disp', 'user','sum'));
+        return view('order.confirm', compact('delivery_address', 'cart_collection', 'delivery_time_disp', 'delivery_method_disp', 'user','sum','delivery'));
     }}
     /**
      * 確認
@@ -126,6 +128,7 @@ class OrderController extends Controller
             'delivery_status_id'    => DeliveryStatus::getInPreparationId(),
             'total_price'           => session('total_value'),
             'truck_id'              =>5,
+            'regular'               =>$delivery['regular'],
             'total_price'           => $total_value,
         ]);
 
